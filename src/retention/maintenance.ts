@@ -1,0 +1,112 @@
+/**
+ * Background maintenance cycle.
+ * Triggered by cron or manual `openclaw memory aegis maintenance`.
+ */
+
+import type Database from "better-sqlite3";
+import { runStateTransitions, archiveOldSuppressed } from "./decay.js";
+import { CONSTANTS, type AegisConfig } from "../core/models.js";
+import { nowISO } from "../core/id.js";
+import { Viper } from "../maintenance/viper.js";
+import { LeafcutterAnt } from "../maintenance/leafcutter.js";
+import { Axolotl } from "../maintenance/axolotl.js";
+
+export interface MaintenanceReport {
+  stateTransitions: number;
+  archived: number;
+  ttlExpired: number;
+  staleEdgesPruned: number;
+  ftsOptimized: boolean;
+  viperShedSkin: boolean;
+  leafcutterArchivedEvents: number;
+  axolotlPrunedDerived: number;
+}
+
+/**
+ * Run the full maintenance cycle.
+ */
+export async function runMaintenanceCycle(
+  db: Database.Database,
+  workspaceDir: string,
+  config: AegisConfig
+): Promise<MaintenanceReport> {
+  const report: MaintenanceReport = {
+    stateTransitions: 0,
+    archived: 0,
+    ttlExpired: 0,
+    staleEdgesPruned: 0,
+    ftsOptimized: false,
+    viperShedSkin: false,
+    leafcutterArchivedEvents: 0,
+    axolotlPrunedDerived: 0,
+  };
+
+  // 1. Viper Shedding (Rotation & Hard Caps)
+  try {
+    const viper = new Viper(db, workspaceDir, config);
+    await viper.shedSkin();
+    report.viperShedSkin = true;
+  } catch (err) {
+    console.error("Viper maintenance failed:", err);
+  }
+
+  // 2. Leafcutter Ant (Cold Storage Archiving)
+  try {
+    const leafcutter = new LeafcutterAnt(db, workspaceDir, config);
+    const result = await leafcutter.cleanAndArchive();
+    report.leafcutterArchivedEvents = result.archivedEvents;
+  } catch (err) {
+    console.error("Leafcutter maintenance failed:", err);
+  }
+
+  // 3. Axolotl Pruning (Derived Data Cleanup)
+  try {
+    const axolotl = new Axolotl(db, config);
+    report.axolotlPrunedDerived = await axolotl.pruneDerivedData();
+  } catch (err) {
+    console.error("Axolotl maintenance failed:", err);
+  }
+
+  // 4. State transitions (volatile → stable → crystallized, suppress decayed)
+  report.stateTransitions = runStateTransitions(db);
+
+  // 5. Archive long-suppressed
+  report.archived = archiveOldSuppressed(db);
+
+  // 6. TTL cleanup (Nutcracker)
+  const now = nowISO();
+  const ttlResult = db.prepare(`
+    UPDATE memory_nodes SET status = 'expired', updated_at = ?
+    WHERE ttl_expires_at IS NOT NULL AND ttl_expires_at < ? AND status = 'active'
+  `).run(now, now);
+  report.ttlExpired = ttlResult.changes;
+
+  // 7. Prune stale edges
+  const staleCutoff = new Date(
+    Date.now() - CONSTANTS.EDGE_STALE_DAYS * 24 * 60 * 60 * 1000,
+  ).toISOString();
+
+  // Weaken stale edges
+  db.prepare(`
+    UPDATE memory_edges
+    SET weight = weight * ?, updated_at = ?
+    WHERE last_activated_at < ? AND status = 'active'
+  `).run(CONSTANTS.EDGE_DECAY_FACTOR, now, staleCutoff);
+
+  // Remove near-zero weight edges
+  const pruneResult = db.prepare(`
+    DELETE FROM memory_edges
+    WHERE weight < ? AND status = 'active' AND coactivation_count < ?
+  `).run(CONSTANTS.EDGE_PRUNE_THRESHOLD, CONSTANTS.EDGE_PRUNE_MIN_COACTIVATION);
+  report.staleEdgesPruned = pruneResult.changes;
+
+  // 8. FTS5 optimize
+  try {
+    db.exec("INSERT INTO memory_nodes_fts(memory_nodes_fts) VALUES('optimize')");
+    report.ftsOptimized = true;
+  } catch {
+    report.ftsOptimized = false;
+  }
+
+  return report;
+}

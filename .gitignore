@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.bak
+*.log
+.DS_Store
