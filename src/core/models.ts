@@ -36,7 +36,9 @@ export type CognitiveLayers =
   | "chimpanzee"
   | "sea-lion"
   | "salmon"
-  | "nutcracker";
+  | "nutcracker"
+  | "tardigrade"
+  | "planarian";
 
 // --- Core Tables ---
 
