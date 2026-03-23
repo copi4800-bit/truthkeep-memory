@@ -33,7 +33,7 @@ export const ZONE_POLICIES: Record<string, ZonePolicy> = {
   minimal:    { zone1Ratio: 0.30, zone1MinSlots: 1, maxSnippetChars: 400 },
   balanced:   { zone1Ratio: 0.20, zone1MinSlots: 1, maxSnippetChars: 800 },
   "local-safe": { zone1Ratio: 0.25, zone1MinSlots: 2, maxSnippetChars: 600 },
-  "max-memory": { zone1Ratio: 0.15, zone1MinSlots: 1, maxSnippetChars: 1200 },
+  "full": { zone1Ratio: 0.15, zone1MinSlots: 1, maxSnippetChars: 1200 },
 };
 
 export class ChameleonBudgeter {

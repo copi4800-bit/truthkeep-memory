@@ -1,66 +1,138 @@
-# Memory Aegis v4 (Full Beast Architecture)
+# Memory Aegis v4
 
-**Produced by Hali12**
+> Local-first cognitive memory engine for OpenClaw. Smart recall, automatic maintenance, conflict detection, and guided setup — no cloud required.
 
-**Version:** 4.0.0  
-**Framework:** OpenClaw Plugin (Memory Slot)  
-**Status:** Stable - System Verified
-
-Memory Aegis v4 is a local-first, autonomic cognitive memory engine for OpenClaw. It provides a tiered memory structure using **22 specialized animal layers** to protect, evolve, and budget your AI's knowledge across pipelines—from simple storage to system-verified autonomy.
-
-## 🐾 The 22 Cognitive Layers
-
-### Phase 1: Core Storage & Safety Guard (v3.0)
-1. **Elephant:** Long-term invariant memory. Essential facts that never change.
-2. **Orca:** Semantic graph activation. Connects the dots between different topics.
-3. **Dolphin:** Active working memory. Maintains context during your current session.
-4. **Octopus:** Context splitting. Manages complex subgraphs and partitions.
-5. **Sea Lion:** Logical inference. Inherits concepts and recognizes temporal patterns.
-6. **Salmon:** Data Fingerprinting. De-duplicates information to keep DB clean.
-7. **Nutcracker:** Micro-chunking. Breaks down large data and manages TTL hygiene.
-8. **Tardigrade:** High-durability snapshots and exports.
-9. **Planarian:** Deep restoration and memory rebuilding.
-
-### Phase 2: Observability & Pruning (v3.5)
-10. **Honeybee:** Telemetry and internal metric measurement.
-11. **Viper:** Automatic backup rotation and interaction state caps.
-12. **Leafcutter Ant:** Archives events > 90 days into compressed cold storage.
-13. **Axolotl:** Regenerates derived knowledge links.
-14. **EagleEye (Eagle):** Visual graph explorer generating whole-brain panorama reports.
-15. **Chimpanzee:** Tool craft & Interaction trace capture for corrections.
-
-### Phase 3: Autonomic Maturation (v4.0)
-16. **Bowerbird:** Taxonomy classifier. Meticulously labels unclassified memory shards.
-17. **Meerkat:** Conflict Sentinel. Scans the graph for contradictory facts.
-18. **Zebra Finch:** Memory Consolidator. Resolves logic clashes via temporal superseding.
-19. **Scrub Jay:** Episodic Grouping. Packages active memory traces into discrete episodes.
-20. **Platypus:** Hybrid Semantic Rescue. In-memory cosine fallback for FTS lexical misses.
-21. **Weaver Bird:** Procedural Extractor. Harvests tool execution blueprints quietly.
-22. **Chameleon:** Zone Context Budgeting. Allocates context tokens to protect core persona from task overflow.
-
-## 🛠 Available Tools
-- `memory_stats`: View Honeybee telemetry.
-- `memory_search`: Search deep memories using FTS5 (rescued by Platypus when necessary).
-- `memory_store`: Persist specific facts.
-- `memory_rebuild`: Manually trigger Axolotl regeneration.
-- `memory_backup_upload`: Create snapshots (Tardigrade).
-- `memory_backup_download`: Restore memory (Planarian).
-- `memory_taxonomy_clean`: Trigger Bowerbird classification manually.
-
-## 🚀 Quick Start for Beginners
-Aegis v4 is designed to be fully autonomic. To set up the entire engine automatically, just run:
-
-```shell
-npm run setup
-```
-
-This one-click command will:
-1. **Build** the biological cognitive layers.
-2. **Initialize** the SQLite memory graph.
-3. **Execute** a full health diagnostic (Aegis Doctor).
-4. **Verify** storage and retrieval pipelines with a guided onboarding test.
-
-Once finished, move this folder to `~/.openclaw/extensions/` and enable it in your configuration.
+**Version:** 4.0.0 | **Status:** Stable
 
 ---
-*Developed by Bim Bim & The OpenClaw Team.*
+
+## What it does
+
+Aegis gives your AI agent a persistent, self-maintaining long-term memory:
+
+- **Remembers** facts, procedures, preferences, and decisions across sessions
+- **Retrieves** the most relevant context for any query (FTS5 + graph spreading activation)
+- **Cleans itself** — expires stale memories, resolves conflicts, archives old data
+- **Protects** core persona and safety rules from being diluted by task overflow
+- **Works offline** — pure SQLite, no embeddings, no external API
+
+---
+
+## Quick Start
+
+### 1. Install
+```bash
+npm install
+npm run build
+```
+
+### 2. Place in OpenClaw
+```bash
+cp -r . ~/.openclaw/extensions/memory-aegis-v4
+```
+
+### 3. Run guided setup
+Use the `/memory-setup` skill or call `memory_setup` tool from your agent.
+
+---
+
+## Presets
+
+Choose a preset when initializing:
+
+| Preset | Layers | Best for |
+|--------|--------|----------|
+| `minimal` | Storage + dedup only | Fast, low overhead |
+| `balanced` | + Graph + Maintenance | Most users (default) |
+| `local-safe` | + Archive + Health | Privacy-sensitive use |
+| `full` | All layers | Maximum capability |
+
+---
+
+## Tools
+
+### Basic (everyday use)
+| Tool | What it does |
+|------|-------------|
+| `memory_search` | Find relevant memories for a query |
+| `memory_store` | Save a new memory |
+| `memory_profile` | See what Aegis remembers about you |
+| `memory_setup` | First-time guided onboarding |
+| `memory_stats` | Memory count, growth, health summary |
+
+### Advanced (power users)
+| Tool | What it does |
+|------|-------------|
+| `memory_doctor` | Run full health diagnostics |
+| `memory_clean` | Expire TTL nodes, run maintenance |
+| `memory_backup` | Snapshot or JSONL export |
+| `memory_restore` | Restore from backup |
+| `memory_taxonomy` | View/fix memory label distribution |
+| `memory_debug` | Trace retrieval decisions, inspect nodes |
+| `memory_get` | Read a specific memory citation |
+
+---
+
+## Skills (slash commands)
+
+| Skill | Shortcut | What it does |
+|-------|----------|-------------|
+| remember | `/remember` | Store information into long-term memory |
+| recall | `/recall` | Search memory for relevant context |
+| memory-status | `/memory-status` | Health + stats overview |
+| memory-clean | `/memory-clean` | Run maintenance |
+| memory-backup | `/memory-backup` | Create a snapshot |
+| memory-profile | `/memory-profile` | Show your memory profile |
+| memory-setup | `/memory-setup` | Guided first-time setup |
+
+---
+
+## Cognitive Layers
+
+Aegis uses specialized layers — each responsible for one aspect of memory:
+
+| Layer | Role |
+|-------|------|
+| **Elephant** | Long-term invariant facts and safety rules |
+| **Orca** | Graph spreading activation — connects related topics |
+| **Dolphin** | Active session working memory |
+| **Octopus** | Context partitioning and subgraph management |
+| **Sea Lion** | Logical inference and concept inheritance |
+| **Salmon** | Deduplication via content fingerprinting |
+| **Nutcracker** | Micro-chunking and TTL hygiene |
+| **Dragonfly** | Hybrid FTS rescue for low-hit queries |
+| **Bowerbird** | Taxonomy classifier — labels unclassified memories |
+| **Meerkat** | Contradiction sentinel — finds conflicting facts |
+| **Zebra Finch** | Memory consolidator — supersedes outdated nodes |
+| **Eagle** | Health monitoring and telemetry reports |
+| **Scrub Jay** | Episodic grouping of session memory |
+| **Weaver Bird** | Procedural knowledge extractor |
+| **Chameleon** | Context budget allocation for prompt assembly |
+| **Tardigrade** | Durable snapshots and exports |
+| **Planarian** | Memory restoration and FTS rebuild |
+| **Viper** | Backup rotation (daily/weekly/monthly) |
+| **Leafcutter** | Cold archive for events older than 90 days |
+| **Axolotl** | Derived knowledge regeneration |
+| **Chimpanzee** | Tool trace capture for correction learning |
+
+---
+
+## Architecture
+
+- **Storage:** SQLite (WAL mode) + FTS5 full-text index
+- **Graph:** Bidirectional weighted edges with Hebbian reinforcement
+- **Retrieval:** FTS5 seed → Orca spreading activation → reranker → Chameleon budget
+- **Maintenance:** Automated decay, TTL, conflict detection, near-duplicate merge
+- **Vietnamese support:** Tone-normalized synonym bridging (no LLM required)
+
+---
+
+## Requirements
+
+- Node.js 18+
+- OpenClaw host application
+- No GPU, no cloud, no embeddings required
+
+---
+
+*Memory Aegis v4 — built for reliability, designed to be forgotten about.*

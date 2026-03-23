@@ -1,7 +1,7 @@
 {
   "name": "memory-aegis-v4",
   "version": "4.0.0",
-  "description": "Memory Aegis v4 — Full Beast Autonomic Memory Engine (Produced by Hali12)",
+  "description": "Local-first cognitive memory engine for OpenClaw — smart recall, automatic maintenance, and conflict detection.",
   "author": "Hali12",
   "license": "MIT",
   "repository": {
@@ -11,11 +11,13 @@
   "keywords": [
     "openclaw",
     "memory",
-    "aegis",
-    "ai",
     "cognitive",
+    "local-first",
     "sqlite",
-    "autonomic"
+    "rag",
+    "knowledge-graph",
+    "ai-memory",
+    "vietnamese"
   ],
   "type": "module",
   "bin": {

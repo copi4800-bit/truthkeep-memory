@@ -1,6 +1,6 @@
 import { type AegisConfig, type CognitiveLayers, DEFAULT_AEGIS_CONFIG } from "./models.js";
 
-export type AegisPreset = "minimal" | "balanced" | "max-memory" | "local-safe";
+export type AegisPreset = "minimal" | "balanced" | "local-safe" | "full";
 
 export const AEGIS_PRESETS: Record<AegisPreset, Partial<AegisConfig>> = {
   "minimal": {
@@ -28,7 +28,7 @@ export const AEGIS_PRESETS: Record<AegisPreset, Partial<AegisConfig>> = {
     archiveEnabled: true,
     archiveAfterDays: 60,
   },
-  "max-memory": {
+  "full": {
     ...DEFAULT_AEGIS_CONFIG,
     enabledLayers: [
       "elephant", "orca", "dolphin", "octopus", "chimpanzee",

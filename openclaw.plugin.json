@@ -1,15 +1,15 @@
 {
   "id": "memory-aegis-v4",
   "name": "Memory Aegis v4",
-  "description": "Cognitive memory engine showcasing a 22-Layer Full Beast Architecture (Produced by Hali12)",
+  "description": "Local-first memory engine for OpenClaw — smart recall, automatic maintenance, conflict detection, and guided setup. No cloud required.",
   "kind": "memory",
   "version": "4.0.0",
   "configSchema": {
     "preset": {
       "type": "string",
-      "enum": ["minimal", "balanced", "local-safe", "max-memory"],
+      "enum": ["minimal", "balanced", "local-safe", "full"],
       "default": "balanced",
-      "description": "Choose a memory performance profile. 'balanced' is recommended for most users."
+      "description": "Memory profile: 'minimal' (lightweight), 'balanced' (default, recommended), 'local-safe' (privacy-first with archiving), 'full' (all layers enabled)."
     },
     "enabledLayers": {
       "type": "array",
@@ -58,7 +58,7 @@
   "tools": [
     {
       "name": "memory_search",
-      "description": "Search Aegis memory for relevant context.",
+      "description": "[Basic] Search long-term memory for context relevant to a query.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -71,7 +71,7 @@
     },
     {
       "name": "memory_get",
-      "description": "Read a specific Aegis memory citation or file fragment.",
+      "description": "[Advanced] Read a specific memory node by citation path.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -84,7 +84,7 @@
     },
     {
       "name": "memory_store",
-      "description": "Persist user-provided text into Aegis memory.",
+      "description": "[Basic] Save new information into long-term memory.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -95,7 +95,7 @@
     },
     {
       "name": "memory_backup",
-      "description": "Create a snapshot backup of the Aegis memory database.",
+      "description": "[Advanced] Create a snapshot backup (binary) or JSONL logical export of all memories.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -113,7 +113,7 @@
     },
     {
       "name": "memory_restore",
-      "description": "Restore Aegis memory from a backup snapshot.",
+      "description": "[Advanced] Restore memory database from a .db.bak snapshot file.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -127,7 +127,7 @@
     },
     {
       "name": "memory_stats",
-      "description": "View detailed Aegis memory telemetry, growth stats, and taxonomy distribution.",
+      "description": "[Basic] Memory count, growth trend, health status, and taxonomy overview.",
       "parameters": {
         "type": "object",
         "properties": {}
@@ -135,7 +135,7 @@
     },
     {
       "name": "memory_doctor",
-      "description": "Run health diagnostics on the Aegis memory system.",
+      "description": "[Advanced] Run full health diagnostics: FTS integrity, schema version, node counts, anomaly detection.",
       "parameters": {
         "type": "object",
         "properties": {}
@@ -143,7 +143,7 @@
     },
     {
       "name": "memory_clean",
-      "description": "Run maintenance: expire TTL nodes, archive old suppressed, run taxonomy classifier, migrate old labels.",
+      "description": "[Advanced] Run maintenance: expire TTL nodes, resolve conflicts, archive old data, classify unlabeled memories.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -156,7 +156,7 @@
     },
     {
       "name": "memory_taxonomy",
-      "description": "View taxonomy distribution, find stray labels, or migrate old taxonomy to v1.",
+      "description": "[Advanced] Inspect or fix memory label distribution — view stats, find stray labels, migrate old taxonomy.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -171,7 +171,7 @@
     },
     {
       "name": "memory_debug",
-      "description": "Debug panel for power users: trace retrieval decisions, inspect nodes, view supersede chains.",
+      "description": "[Advanced] Power-user debug panel: trace retrieval signals, inspect node metadata, view supersede chains.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -190,7 +190,7 @@
     },
     {
       "name": "memory_profile",
-      "description": "Show what Aegis remembers about the user: persona, preferences, projects, procedures, recent facts.",
+      "description": "[Basic] Show what Aegis remembers about you: identity, preferences, projects, and recent facts.",
       "parameters": {
         "type": "object",
         "properties": {}
@@ -198,13 +198,13 @@
     },
     {
       "name": "memory_setup",
-      "description": "Run guided onboarding: health check, store test, recall test, quick start guide.",
+      "description": "[Basic] Guided first-time setup: health check, store test, recall test, and quick start guide.",
       "parameters": {
         "type": "object",
         "properties": {
           "preset": {
             "type": "string",
-            "enum": ["minimal", "balanced", "local-safe", "max-memory"],
+            "enum": ["minimal", "balanced", "local-safe", "full"],
             "description": "Memory performance profile to use."
           }
         }
