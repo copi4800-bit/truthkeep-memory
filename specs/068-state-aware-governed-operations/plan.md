@@ -1,6 +1,6 @@
 # Implementation Plan: State-Aware Governed Operations
 
-**Branch**: `068-state-aware-governed-operations` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/068-state-aware-governed-operations/spec.md)
+**Branch**: `068-state-aware-governed-operations` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/068-state-aware-governed-operations/spec.md)
 **Input**: Feature specification from `/specs/068-state-aware-governed-operations/spec.md`
 
 ## Summary
@@ -10,7 +10,7 @@ Open the next bounded tranche after `067` by creating explicit architecture seam
 ## Technical Context
 
 **Language/Version**: Python 3.11+, TypeScript bridge for host bootstrap  
-**Primary Dependencies**: `aegis_py/app.py`, `aegis_py/operations.py`, `aegis_py/mcp/server.py`, `aegis_py/storage/manager.py`, `aegis_py/v7/*`, `aegis_py/surface.py`, `src/python-adapter.ts`, `index.ts`, `openclaw.plugin.json`  
+**Primary Dependencies**: `aegis_py/app.py`, `aegis_py/operations.py`, `aegis_py/mcp/server.py`, `aegis_py/storage/manager.py`, `aegis_py/v10/*`, `aegis_py/surface.py`, `src/python-adapter.ts`, `index.ts`, `openclaw.plugin.json`  
 **Storage**: SQLite with one Python-owned connection manager and existing migrations  
 **Testing**: pytest plus host bootstrap checks (`vitest`)  
 **Target Platform**: current local-first Python-owned runtime and thin-host adapter path  
@@ -28,14 +28,14 @@ Open the next bounded tranche after `067` by creating explicit architecture seam
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── operations.py
 │   ├── surface.py
 │   ├── mcp/server.py
 │   ├── storage/manager.py
-│   └── v7/
+│   └── v10/
 ├── src/
 │   └── python-adapter.ts
 ├── index.ts

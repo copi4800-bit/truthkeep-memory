@@ -1,6 +1,6 @@
 # Implementation Plan: Production Observability
 
-**Branch**: `071-production-observability` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/071-production-observability/spec.md)
+**Branch**: `071-production-observability` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/071-production-observability/spec.md)
 **Input**: Feature specification from `/specs/071-production-observability/spec.md`
 
 ## Summary

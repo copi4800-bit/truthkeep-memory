@@ -55,9 +55,9 @@ Completed so far:
 
 **Purpose**: Create the feature working area and align documentation artifacts with the current brownfield codebase.
 
-- [x] T001 [FOUNDATION] Verify the feature documentation set in [`aegis_py/specs/001-aegis-vnext-memory-engine/spec.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/specs/001-aegis-vnext-memory-engine/spec.md) and [`aegis_py/specs/001-aegis-vnext-memory-engine/plan.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/specs/001-aegis-vnext-memory-engine/plan.md) stays aligned with the active constitution in [`aegis_py/.specify/memory/constitution.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/.specify/memory/constitution.md)
-- [x] T002 [P] [FOUNDATION] Audit current test coverage and map which scenarios belong to storage, retrieval, lifecycle, and integration in [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_storage.py), [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py), [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_core.py), [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_lifecycle.py), [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_hygiene.py), and [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py)
-- [x] T003 [P] [FOUNDATION] Capture the current schema and model mismatch inventory across [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql), [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.py), [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py), and [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/models.py)
+- [x] T001 [FOUNDATION] Verify the feature documentation set in [`aegis_py/specs/001-aegis-vnext-memory-engine/spec.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/specs/001-aegis-vnext-memory-engine/spec.md) and [`aegis_py/specs/001-aegis-vnext-memory-engine/plan.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/specs/001-aegis-vnext-memory-engine/plan.md) stays aligned with the active constitution in [`aegis_py/.specify/memory/constitution.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/.specify/memory/constitution.md)
+- [x] T002 [P] [FOUNDATION] Audit current test coverage and map which scenarios belong to storage, retrieval, lifecycle, and integration in [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_storage.py), [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py), [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_core.py), [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_lifecycle.py), [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_hygiene.py), and [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py)
+- [x] T003 [P] [FOUNDATION] Capture the current schema and model mismatch inventory across [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql), [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.py), [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py), and [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/models.py)
 
 ---
 
@@ -67,11 +67,11 @@ Completed so far:
 
 **⚠️ CRITICAL**: No user story implementation should proceed until these tasks are complete
 
-- [x] T004 [FOUNDATION] Define the canonical memory, link, conflict, and lifecycle contract in [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/models.py) and [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py) so both layers agree on scope, provenance, status, and timestamps
-- [x] T005 [FOUNDATION] Align SQLite schema and Python schema wrappers with the canonical contract in [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql) and [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.py)
-- [x] T006 [FOUNDATION] Consolidate low-level persistence semantics in [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py) and [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py) so storage concerns are explicit and non-duplicated
-- [x] T007 [P] [FOUNDATION] Add or update schema and persistence regression tests in [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_storage.py) for statuses, provenance fields, scope fields, and lifecycle-safe persistence behavior
-- [x] T008 [P] [FOUNDATION] Add integration coverage proving the canonical storage contract works through the current engine entrypoints in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py)
+- [x] T004 [FOUNDATION] Define the canonical memory, link, conflict, and lifecycle contract in [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/models.py) and [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py) so both layers agree on scope, provenance, status, and timestamps
+- [x] T005 [FOUNDATION] Align SQLite schema and Python schema wrappers with the canonical contract in [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql) and [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.py)
+- [x] T006 [FOUNDATION] Consolidate low-level persistence semantics in [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py) and [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py) so storage concerns are explicit and non-duplicated
+- [x] T007 [P] [FOUNDATION] Add or update schema and persistence regression tests in [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_storage.py) for statuses, provenance fields, scope fields, and lifecycle-safe persistence behavior
+- [x] T008 [P] [FOUNDATION] Add integration coverage proving the canonical storage contract works through the current engine entrypoints in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py)
 
 **Checkpoint**: Canonical storage/domain contract is stable and all stories can now build on it
 
@@ -85,17 +85,17 @@ Completed so far:
 
 ### Tests for User Story 1
 
-- [x] T009 [P] [US1] Expand scope-isolation and result-shape tests in [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py) to cover project/session/global filtering and empty-result behavior
-- [x] T010 [P] [US1] Add retrieval explainability and conflict-visibility tests in [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_core.py) and [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py)
-- [x] T011 [P] [US1] Add benchmark-oriented assertions for relevance, leakage, and explanation completeness in [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
+- [x] T009 [P] [US1] Expand scope-isolation and result-shape tests in [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py) to cover project/session/global filtering and empty-result behavior
+- [x] T010 [P] [US1] Add retrieval explainability and conflict-visibility tests in [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_core.py) and [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py)
+- [x] T011 [P] [US1] Add benchmark-oriented assertions for relevance, leakage, and explanation completeness in [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
 
 ### Implementation for User Story 1
 
-- [x] T012 [US1] Choose the canonical retrieval path and adapt competing code in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py) and [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py) so the engine exposes one consistent search contract
-- [x] T013 [P] [US1] Formalize search query and result contracts, including explanation and provenance fields, in [`aegis_py/retrieval/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/models.py) and [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/models.py)
-- [x] T014 [US1] Implement stable scope filtering, optional global fallback, and active-status selection in [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py) and/or [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py)
-- [x] T015 [US1] Implement explanation construction for score reasons, provenance, scope, and conflict state in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py) and [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
-- [x] T016 [US1] Update retrieval benchmarks and fixtures in [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py) to reflect the canonical search path and report the spec metrics
+- [x] T012 [US1] Choose the canonical retrieval path and adapt competing code in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py) and [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py) so the engine exposes one consistent search contract
+- [x] T013 [P] [US1] Formalize search query and result contracts, including explanation and provenance fields, in [`aegis_py/retrieval/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/models.py) and [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/models.py)
+- [x] T014 [US1] Implement stable scope filtering, optional global fallback, and active-status selection in [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py) and/or [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py)
+- [x] T015 [US1] Implement explanation construction for score reasons, provenance, scope, and conflict state in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py) and [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
+- [x] T016 [US1] Update retrieval benchmarks and fixtures in [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py) to reflect the canonical search path and report the spec metrics
 
 **Checkpoint**: User Story 1 is independently functional as the MVP retrieval engine
 
@@ -109,16 +109,16 @@ Completed so far:
 
 ### Tests for User Story 2
 
-- [x] T017 [P] [US2] Strengthen session conclusion and working-memory lifecycle coverage in [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_lifecycle.py)
-- [x] T018 [P] [US2] Add hygiene and conflict safety tests in [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_hygiene.py) for decay, archival, and non-destructive conflict handling
-- [x] T019 [P] [US2] Add regression tests for superseded, archived, expired, and conflict-candidate visibility in [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_core.py) and [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_storage.py)
+- [x] T017 [P] [US2] Strengthen session conclusion and working-memory lifecycle coverage in [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_lifecycle.py)
+- [x] T018 [P] [US2] Add hygiene and conflict safety tests in [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_hygiene.py) for decay, archival, and non-destructive conflict handling
+- [x] T019 [P] [US2] Add regression tests for superseded, archived, expired, and conflict-candidate visibility in [`tests/test_memory_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_core.py) and [`tests/test_storage.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_storage.py)
 
 ### Implementation for User Story 2
 
-- [x] T020 [US2] Separate lifecycle operations from ad hoc storage updates in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py) and [`aegis_py/hygiene/engine.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/engine.py)
-- [x] T021 [P] [US2] Standardize decay, archival, and session-end transitions in [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py) and [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py)
-- [x] T022 [US2] Refine conflict detection and safe resolution/suggestion flows in [`aegis_py/conflict/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/conflict/core.py) and [`aegis_py/evolve/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/evolve/core.py)
-- [x] T023 [US2] Ensure provenance-preserving status mutation and traceability for archived, expired, superseded, and conflict-candidate records in [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql), [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py), and [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
+- [x] T020 [US2] Separate lifecycle operations from ad hoc storage updates in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py) and [`aegis_py/hygiene/engine.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/engine.py)
+- [x] T021 [P] [US2] Standardize decay, archival, and session-end transitions in [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py) and [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py)
+- [x] T022 [US2] Refine conflict detection and safe resolution/suggestion flows in [`aegis_py/conflict/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/conflict/core.py) and [`aegis_py/evolve/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/evolve/core.py)
+- [x] T023 [US2] Ensure provenance-preserving status mutation and traceability for archived, expired, superseded, and conflict-candidate records in [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql), [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py), and [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
 
 **Checkpoint**: User Stories 1 and 2 both work independently, and the store can age safely over time
 
@@ -132,16 +132,16 @@ Completed so far:
 
 ### Tests for User Story 3
 
-- [x] T024 [P] [US3] Expand integration tests for store, search, status, clean, and export flows in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py)
-- [x] T025 [P] [US3] Add MCP-facing output and error-shape regression tests in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py)
-- [x] T026 [P] [US3] Add local initialization and smoke coverage for the current runtime entrypoints in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py) and [`tests/test_ingest.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_ingest.py)
+- [x] T024 [P] [US3] Expand integration tests for store, search, status, clean, and export flows in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py)
+- [x] T025 [P] [US3] Add MCP-facing output and error-shape regression tests in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py)
+- [x] T026 [P] [US3] Add local initialization and smoke coverage for the current runtime entrypoints in [`tests/test_integration.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py) and [`tests/test_ingest.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_ingest.py)
 
 ### Implementation for User Story 3
 
-- [x] T027 [US3] Refactor [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) to depend on the canonical memory and retrieval services instead of duplicating domain behavior
-- [x] T028 [P] [US3] Align entrypoint orchestration and thin-adapter behavior in [`aegis_py/app.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) and [`aegis_py/main.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/main.py)
-- [x] T029 [US3] Normalize JSON responses, empty-result semantics, and operational output in [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py), with any required support changes in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
-- [x] T030 [US3] Ensure local initialization and configuration defaults remain cloud-free and operational in [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py), [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py), and [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
+- [x] T027 [US3] Refactor [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) to depend on the canonical memory and retrieval services instead of duplicating domain behavior
+- [x] T028 [P] [US3] Align entrypoint orchestration and thin-adapter behavior in [`aegis_py/app.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) and [`aegis_py/main.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/main.py)
+- [x] T029 [US3] Normalize JSON responses, empty-result semantics, and operational output in [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py), with any required support changes in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
+- [x] T030 [US3] Ensure local initialization and configuration defaults remain cloud-free and operational in [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py), [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py), and [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
 
 **Checkpoint**: All user stories are independently functional and available through stable local integration surfaces
 
@@ -151,9 +151,9 @@ Completed so far:
 
 **Purpose**: Tighten quality gates, documentation, and release readiness across all stories
 
-- [x] T031 [P] [FOUNDATION] Finalize benchmark reporting and regression thresholds in [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py) and [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
-- [x] T032 [P] [FOUNDATION] Update architecture and contributor-facing documentation in [`/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md) and [`/home/hali/.openclaw/extensions/memory-aegis-v7/README.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) to reflect the canonical engine contract
-- [x] T033 [FOUNDATION] Run the full validation workflow across retrieval, lifecycle, storage, and integration tests and record remaining gaps in [`aegis_py/specs/001-aegis-vnext-memory-engine/plan.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/specs/001-aegis-vnext-memory-engine/plan.md) or follow-up spec artifacts
+- [x] T031 [P] [FOUNDATION] Finalize benchmark reporting and regression thresholds in [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py) and [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
+- [x] T032 [P] [FOUNDATION] Update architecture and contributor-facing documentation in [`/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md) and [`/home/hali/.openclaw/extensions/memory-aegis-v10/README.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) to reflect the canonical engine contract
+- [x] T033 [FOUNDATION] Run the full validation workflow across retrieval, lifecycle, storage, and integration tests and record remaining gaps in [`aegis_py/specs/001-aegis-vnext-memory-engine/plan.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/specs/001-aegis-vnext-memory-engine/plan.md) or follow-up spec artifacts
 
 ---
 

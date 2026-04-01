@@ -1,6 +1,6 @@
 # Implementation Plan: Axolotl Derived Rebuild Hardening
 
-**Branch**: `034-axolotl-derived-rebuild-hardening` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/034-axolotl-derived-rebuild-hardening/spec.md)
+**Branch**: `034-axolotl-derived-rebuild-hardening` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/034-axolotl-derived-rebuild-hardening/spec.md)
 **Input**: Feature specification from `/specs/034-axolotl-derived-rebuild-hardening/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Harden the Python rebuild flow so it regenerates missing derived `subject` and `
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/app.py`, `aegis_py/memory/extractor.py`, existing rebuild integration tests  
 **Storage**: existing SQLite `memories.subject`, `memories.summary`, and `memory_links` tables  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: local-only deterministic derivation, preserve explicit non-empty metadata, keep rebuild conservative and non-destructive  
 
 ## Constitution Check
@@ -43,14 +43,14 @@ Harden the Python rebuild flow so it regenerates missing derived `subject` and `
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
 - `./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`: pass
-  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v7/specs/034-axolotl-derived-rebuild-hardening`
+  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v10/specs/034-axolotl-derived-rebuild-hardening`
   - reported `AVAILABLE_DOCS` containing `tasks.md`
 - `npm run lint`: pass
 - `npm run test:bootstrap`: pass, 17 tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`: pass, 94 passed in 2.96s
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`: pass, 94 passed in 2.96s
 

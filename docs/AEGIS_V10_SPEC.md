@@ -7,7 +7,7 @@ Aegis v10 follows the **Residual Judgment Engine** design. Every memory record i
 
 ### Tier 1: Base Relevance (`S_base`)
 - **Semantic Relevance (60%)**: Contextual meaning match.
-- **Lexical Match (5%)**: Direct keyword overlap (drastically reduced in v9).
+- **Lexical Match (5%)**: Direct keyword overlap (drastically reduced in v10).
 - **Link Support (10%)**: Relationship-based relevance.
 - **Scope Fit**: Hard multiplier (1.0 or penalty).
 
@@ -32,9 +32,9 @@ Aegis v10 follows the **Residual Judgment Engine** design. Every memory record i
 - `is_slot_winner`: Explicitly determined by `adapter.py` based on status and metadata.
 
 ## 3. Operational Modes
-- `v9_primary`: v9 controls ranking and filtering (Default).
-- `shadow_v9`: v8 controls ranking, v9 metadata attached for audit.
-- `v8_primary`: Bypass v9 entirely.
+- `v9_primary`: v10 controls ranking and filtering (Default).
+- `shadow_v9`: v10 controls ranking, v10 metadata attached for audit.
+- `v8_primary`: Bypass v10 entirely.
 
 ## 4. Explanation Contract
 - **Compact**: Single sentence decisive factor.

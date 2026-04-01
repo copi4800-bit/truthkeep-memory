@@ -54,10 +54,10 @@ changes that are irrelevant to code review.
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/pr-branch.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/pr-branch.md
 </execution_context>
 
 <process>
-Execute the pr-branch workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/pr-branch.md end-to-end.
+Execute the pr-branch workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/pr-branch.md end-to-end.
 </process>
 

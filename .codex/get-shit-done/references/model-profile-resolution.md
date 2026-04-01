@@ -12,7 +12,7 @@ Default: `balanced` if not set or config missing.
 
 ## Lookup Table
 
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/references/model-profiles.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/references/model-profiles.md
 
 Look up the agent in the table for the resolved profile. Pass the model parameter to Task calls:
 

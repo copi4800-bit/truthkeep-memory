@@ -1,6 +1,6 @@
 # Implementation Plan: Guardian Partial Scope Rejection
 
-**Branch**: `031-guardian-partial-scope-rejection` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/031-guardian-partial-scope-rejection/spec.md)
+**Branch**: `031-guardian-partial-scope-rejection` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/031-guardian-partial-scope-rejection/spec.md)
 **Input**: Feature specification from `/specs/031-guardian-partial-scope-rejection/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the next Guardian slice by rejecting ambiguous partial retrieval scope
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/app.py`, `aegis_py/mcp/server.py`, current retrieval surfaces  
 **Storage**: existing local scope fields and current default retrieval scope behavior  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep the contract additive and strict, preserve valid retrieval flows, avoid changing public tool names  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the next Guardian slice by rejecting ambiguous partial retrieval scope
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/031-guardian-partial-scope-rejection`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/031-guardian-partial-scope-rejection`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `760ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `90 passed in 2.93s`
 

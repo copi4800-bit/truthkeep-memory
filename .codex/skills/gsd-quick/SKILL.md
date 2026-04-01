@@ -65,7 +65,7 @@ Flags are composable: `--discuss --research --full` gives discussion + research 
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/quick.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/quick.md
 </execution_context>
 
 <context>
@@ -75,7 +75,7 @@ Context files are resolved inside the workflow (`init quick`) and delegated via 
 </context>
 
 <process>
-Execute the quick workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/quick.md end-to-end.
+Execute the quick workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/quick.md end-to-end.
 Preserve all workflow gates (validation, task description, planning, execution, state updates, commits).
 </process>
 

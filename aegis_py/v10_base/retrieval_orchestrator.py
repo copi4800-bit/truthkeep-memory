@@ -63,7 +63,7 @@ class RetrievalOrchestrator:
         )
         
         # Use SearchPipeline to materialize and GOVERN the vector results
-        # This ensures v9 scoring and v10 governance are applied consistently
+        # This ensures v10 scoring and v10 governance are applied consistently
         return self.search_pipeline._materialize_results(
             rows, # raw_candidates
             min_score=query.min_score,

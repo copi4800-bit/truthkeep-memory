@@ -56,11 +56,11 @@ Output ONLY the reference content below. Do NOT add:
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/help.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/help.md
 </execution_context>
 
 <process>
-Output the complete GSD command reference from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/help.md.
+Output the complete GSD command reference from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/help.md.
 Display the reference content directly — no additions or modifications.
 </process>
 

@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from aegis_py.app import AegisApp
-from aegis_py.retrieval.v8_dynamics import (
+from aegis_py.retrieval.v10_dynamics import (
     V8DynamicsProfile,
     get_active_v8_profile,
     reset_active_v8_profile,
@@ -100,7 +100,7 @@ class V8ProfileSelection:
     gate: V8BenchmarkGateResult
 
 
-def run_v8_dynamics_benchmark(
+def run_v10_dynamics_benchmark(
     app: AegisApp,
     *,
     retrieval_cases: list[V8RetrievalCase],
@@ -348,7 +348,7 @@ def select_best_v8_profile(
         for name, profile in candidate_profiles.items():
             set_active_v8_profile(profile)
             app = app_factory()
-            summary = run_v8_dynamics_benchmark(
+            summary = run_v10_dynamics_benchmark(
                 app,
                 retrieval_cases=retrieval_cases,
                 transition_cases=transition_cases,

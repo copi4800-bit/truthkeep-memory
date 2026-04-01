@@ -11,7 +11,7 @@ Read all files referenced by the invoking prompt's execution_context before star
 ## 1. Setup
 
 ```bash
-INIT=$(node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/gsd-tools.cjs" init list-workspaces)
+INIT=$(node "/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/bin/gsd-tools.cjs" init list-workspaces)
 if [[ "$INIT" == @file:* ]]; then INIT=$(cat "${INIT#@file:}"); fi
 ```
 

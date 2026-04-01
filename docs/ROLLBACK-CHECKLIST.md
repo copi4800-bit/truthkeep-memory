@@ -24,7 +24,7 @@ Target: recover from a bad release in under 5 minutes for the normal local-first
 7. If the DB state itself is damaged, restore from the selected snapshot using the validated restore flow.
 8. Verify recovery:
    - service is active
-   - `memory-aegis-v7 registered` appears
+   - `memory-aegis-v10 registered` appears
    - one Telegram round-trip succeeds
    - no new critical log spam appears
 9. Record what was rolled back and why.

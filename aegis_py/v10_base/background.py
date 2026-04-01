@@ -512,7 +512,7 @@ class GovernedBackgroundIntelligence:
             action_type="transition",
             entity_type="memory",
             entity_id=memory_id,
-            explanation="Background v8 transition review applied a governed state transition.",
+            explanation="Background v10 transition review applied a governed state transition.",
             details={
                 "previous_state": previous_state,
                 "run_id": run["id"],

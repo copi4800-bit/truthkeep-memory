@@ -16,7 +16,7 @@ ALLOWED_STATE_TRANSITIONS: dict[str, set[str]] = {
 
 
 class MemoryStateMachine:
-    """Applies explicit v7 state transitions with audit logging."""
+    """Applies explicit v10 state transitions with audit logging."""
 
     def __init__(self, storage: StorageManager):
         self.storage = storage
@@ -47,7 +47,7 @@ class MemoryStateMachine:
             to_state=to_state,
             reason=reason,
             actor="policy_gate",
-            policy_name="v7-default-policy-gate",
+            policy_name="v10-default-policy-gate",
             evidence_event_id=evidence_event_id,
             details=details,
         )
@@ -73,7 +73,7 @@ class MemoryStateMachine:
         metadata["memory_state"] = to_state
         metadata["admission_state"] = to_state
         
-        # Map v7 state to storage visibility status
+        # Map v10 state to storage visibility status
         if to_state == "invalidated":
             new_status = "superseded"
         elif to_state == "archived":

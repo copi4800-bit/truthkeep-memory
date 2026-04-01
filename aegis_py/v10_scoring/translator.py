@@ -5,7 +5,7 @@ from ..ux.i18n import get_text
 
 class FaithfulRenderer:
     """
-    Translates v9 JudgmentTrace into human-centric, faithful explanations.
+    Translates v10 JudgmentTrace into human-centric, faithful explanations.
     Follows 'Explain Before Acting' and 'Absolute Beauty' mandates.
     """
 
@@ -34,7 +34,7 @@ class FaithfulRenderer:
             return " ".join(parts)
 
         # 4. Level 3: Deep / Audit Mode (Math + Delta details)
-        parts.append(f"\n[v9 Audit]: base={trace.base_score:.2f}, judge={trace.judge_delta:+.2f}, life={trace.life_delta:+.2f}, final={trace.factors.get('final_score', 0.0):.2f}.")
+        parts.append(f"\n[v10 Audit]: base={trace.base_score:.2f}, judge={trace.judge_delta:+.2f}, life={trace.life_delta:+.2f}, final={trace.factors.get('final_score', 0.0):.2f}.")
         return " ".join(parts)
 
     def _get_factor_text(self, trace: JudgmentTrace, factor: str, locale: str) -> str:
@@ -55,7 +55,7 @@ class FaithfulRenderer:
         if factor == "usage":
             return get_text("reason_usage_high", locale=locale)
             
-        # Specific mappings for v9 scorer factors
+        # Specific mappings for v10 scorer factors
         v9_map = {
             "sem": "khớp ngữ nghĩa mạnh",
             "lex": "trùng khớp từ khóa",

@@ -28,7 +28,7 @@ Execute the next Tranche B slice by making Aegis easier to demo and easier to be
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── scripts/
 │   ├── demo_first_memory.py

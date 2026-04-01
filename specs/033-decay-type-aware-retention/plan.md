@@ -1,6 +1,6 @@
 # Implementation Plan: Decay Type-Aware Retention
 
-**Branch**: `033-decay-type-aware-retention` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/033-decay-type-aware-retention/spec.md)
+**Branch**: `033-decay-type-aware-retention` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/033-decay-type-aware-retention/spec.md)
 **Input**: Feature specification from `/specs/033-decay-type-aware-retention/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the first Tranche C slice by applying type-aware decay half-lives duri
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/hygiene/engine.py`, `aegis_py/storage/manager.py`, current lifecycle tests  
 **Storage**: existing SQLite `memories.activation_score`, `last_accessed_at`, and `updated_at` fields  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep decay deterministic and local-only, preserve existing explicit override behavior, avoid destructive lifecycle automation  
 
 ## Constitution Check
@@ -43,14 +43,14 @@ Implement the first Tranche C slice by applying type-aware decay half-lives duri
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
 - `./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`: pass
-  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v7/specs/033-decay-type-aware-retention`
+  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v10/specs/033-decay-type-aware-retention`
   - reported `AVAILABLE_DOCS` containing `tasks.md`
 - `npm run lint`: pass
 - `npm run test:bootstrap`: pass, 17 tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`: pass, 93 passed in 1.99s
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`: pass, 93 passed in 1.99s
 

@@ -9,10 +9,10 @@ from aegis_py.surface import serialize_search_result
 
 async def test_v9_full_path_integration():
     """
-    Scenario: User corrects an old fact. v9 must rank the new one #1 
+    Scenario: User corrects an old fact. v10 must rank the new one #1 
     with a 'correction winner' explanation.
     """
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v7/test_v9_full_path_gsd.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_full_path_gsd.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -59,7 +59,7 @@ async def test_v9_full_path_integration():
     query = SearchQuery(query="CEO", scope_type="agent", scope_id="default", min_score=-10.0)
     results = pipeline.search(query)
     
-    print(f"\n--- v9 Full Path Integration Test ---")
+    print(f"\n--- v10 Full Path Integration Test ---")
     print(f"Results: {len(results)}")
     
     assert len(results) > 0, "Should find at least the new fact"
@@ -72,7 +72,7 @@ async def test_v9_full_path_integration():
     print(f"Human Reason: {serialized['human_reason']}")
     
     # Assertions
-    assert top_result.memory.id == "new_fact", "v9 should rank the new fact first"
+    assert top_result.memory.id == "new_fact", "v10 should rank the new fact first"
     assert serialized["v9_audit"]["decisive_factor"] == "hard_constraint_winner", "Should identify as truth winner"
     assert "được xác nhận là sự thật hiện tại" in serialized["human_reason"]
 

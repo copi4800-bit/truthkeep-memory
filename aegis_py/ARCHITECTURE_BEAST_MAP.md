@@ -22,9 +22,9 @@ Owns ingest, extraction, normalization, classification, and write-time scoring.
 
 Current anchors:
 
-- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/ingest.py)
-- [memory/core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
-- [memory/filter.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/filter.py)
+- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/ingest.py)
+- [memory/core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
+- [memory/filter.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/filter.py)
 
 ### `retrieval`
 
@@ -32,9 +32,9 @@ Owns lexical recall, optional semantic recall, bounded relation expansion, reran
 
 Current anchors:
 
-- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
-- [retrieval/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/engine.py)
-- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/contract.py)
+- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
+- [retrieval/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/engine.py)
+- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/contract.py)
 
 ### `hygiene`
 
@@ -42,9 +42,9 @@ Owns conflict detection, taxonomy cleanup, rebuild flows, lifecycle/decay, conso
 
 Current anchors:
 
-- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/engine.py)
-- [hygiene/transitions.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/transitions.py)
-- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/conflict/core.py)
+- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/engine.py)
+- [hygiene/transitions.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/transitions.py)
+- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/conflict/core.py)
 
 ### `profiles`
 
@@ -52,8 +52,8 @@ Owns constitution-like invariants, long-lived preferences, identity, and style/p
 
 Current anchors:
 
-- [preferences/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/preferences/manager.py)
-- [preferences/extractor.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/preferences/extractor.py)
+- [preferences/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/preferences/manager.py)
+- [preferences/extractor.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/preferences/extractor.py)
 
 Note: the repo still uses `preferences/` as the current directory name for most profile behavior.
 
@@ -63,9 +63,9 @@ Owns schema, repositories, backup/archive, indexes, and future durable relation 
 
 Current anchors:
 
-- [storage/schema.sql](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql)
-- [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
-- [operations.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/operations.py)
+- [storage/schema.sql](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql)
+- [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
+- [operations.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/operations.py)
 
 ### `integration`
 
@@ -73,10 +73,10 @@ Owns external entrypoints and adapters while preserving Python-owned semantics.
 
 Current anchors:
 
-- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py)
-- [surface.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/surface.py)
-- [cli.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/cli.py)
-- [mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py)
+- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py)
+- [surface.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/surface.py)
+- [cli.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/cli.py)
+- [mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py)
 
 ## Beast Mapping
 

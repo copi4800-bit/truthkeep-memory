@@ -55,7 +55,7 @@ Output: updated VALIDATION.md + generated test files.
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/validate-phase.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/validate-phase.md
 </execution_context>
 
 <context>
@@ -63,7 +63,7 @@ Phase: {{GSD_ARGS}} — optional, defaults to last completed phase.
 </context>
 
 <process>
-Execute @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/validate-phase.md.
+Execute @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/validate-phase.md.
 Preserve all workflow gates.
 </process>
 

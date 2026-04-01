@@ -28,7 +28,7 @@ Close the current product-facing tranche by turning Aegis explainability into a 
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── package.json
 ├── scripts/

@@ -1,6 +1,6 @@
 # Implementation Plan: App Surface Refactor
 
-**Branch**: `008-app-surface-refactor` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/008-app-surface-refactor/spec.md)
+**Branch**: `008-app-surface-refactor` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/008-app-surface-refactor/spec.md)
 **Input**: Feature specification from `/specs/008-app-surface-refactor/spec.md`
 
 ## Summary
@@ -81,16 +81,16 @@ Objective: Move backup/restore and scope-policy operations into service helpers 
 - preserve all existing payload contracts
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
 Observed on 2026-03-24:
 
-- [aegis_py/surface.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/surface.py) now owns public contract assembly, search-result serialization, and context-pack shaping
-- [aegis_py/operations.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/operations.py) now owns backup, restore, and scope-policy operational workflows
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now delegates those responsibilities while preserving existing method names and payloads
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) now documents the extracted ownership boundary
+- [aegis_py/surface.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/surface.py) now owns public contract assembly, search-result serialization, and context-pack shaping
+- [aegis_py/operations.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/operations.py) now owns backup, restore, and scope-policy operational workflows
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now delegates those responsibilities while preserving existing method names and payloads
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) now documents the extracted ownership boundary
 
 Validation results:
 
@@ -98,6 +98,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `16` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `69 passed in 1.70s`
 

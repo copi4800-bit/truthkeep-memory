@@ -1,6 +1,6 @@
 # Implementation Plan: Aegis Python-Only Runtime
 
-**Branch**: `005-python-only-engine` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/005-python-only-engine/spec.md)
+**Branch**: `005-python-only-engine` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/005-python-only-engine/spec.md)
 **Input**: Feature specification from `/specs/005-python-only-engine/spec.md`
 
 ## Summary
@@ -74,10 +74,10 @@ Objective: Prove whether OpenClaw can load a Python runtime directly or still re
 
 Observed repository evidence on 2026-03-23:
 
-- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v7/package.json) currently points OpenClaw at `./dist/index.js`.
-- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v7/openclaw.plugin.json) defines the plugin manifest but does not obviously declare a direct Python command runtime.
-- The TypeScript runtime currently registers tools and services through [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) and [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/plugin.ts).
-- `openclaw.extensions` in [package.json](/home/hali/.openclaw/extensions/memory-aegis-v7/package.json) explicitly lists `./dist/index.js` as the installed extension entry.
+- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v10/package.json) currently points OpenClaw at `./dist/index.js`.
+- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v10/openclaw.plugin.json) defines the plugin manifest but does not obviously declare a direct Python command runtime.
+- The TypeScript runtime currently registers tools and services through [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) and [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/plugin.ts).
+- `openclaw.extensions` in [package.json](/home/hali/.openclaw/extensions/memory-aegis-v10/package.json) explicitly lists `./dist/index.js` as the installed extension entry.
 
 Planning implication:
 
@@ -86,10 +86,10 @@ Planning implication:
 
 Current inventory of TypeScript runtime ownership:
 
-- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts): plugin registration, hooks, and runtime tool surface
-- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/plugin.ts): duplicate plugin runtime surface
-- [src/aegis-manager.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/aegis-manager.ts): legacy TypeScript memory engine, storage, retrieval, maintenance, backup, and UX logic
-- [src/](/home/hali/.openclaw/extensions/memory-aegis-v7/src): broad set of legacy runtime modules that still represent the old engine even when the Python adapter is enabled
+- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts): plugin registration, hooks, and runtime tool surface
+- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/plugin.ts): duplicate plugin runtime surface
+- [src/aegis-manager.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/aegis-manager.ts): legacy TypeScript memory engine, storage, retrieval, maintenance, backup, and UX logic
+- [src/](/home/hali/.openclaw/extensions/memory-aegis-v10/src): broad set of legacy runtime modules that still represent the old engine even when the Python adapter is enabled
 
 ### Phase 1 - Python Runtime Completion
 
@@ -112,17 +112,17 @@ Extension added on 2026-03-24:
 
 Implemented on 2026-03-24:
 
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now exposes Python-owned readback, snapshot/export, and restore helpers
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now serves `memory_get`, `memory_backup_upload`, and `memory_backup_download`
-- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) now route those host tools into Python rather than returning unsupported
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now exposes Python-owned readback, snapshot/export, and restore helpers
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now serves `memory_get`, `memory_backup_upload`, and `memory_backup_download`
+- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) now route those host tools into Python rather than returning unsupported
 
 Implemented on 2026-03-23:
 
-- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) now acts as a Python-first host bootstrap for core tools instead of a fallback-heavy TypeScript engine
-- core runtime tools `memory_search`, `memory_store`, `memory_stats`, `memory_clean`, and `memory_profile` now execute through [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) without TypeScript manager fallback
+- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) now acts as a Python-first host bootstrap for core tools instead of a fallback-heavy TypeScript engine
+- core runtime tools `memory_search`, `memory_store`, `memory_stats`, `memory_clean`, and `memory_profile` now execute through [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) without TypeScript manager fallback
 - the `before_agent_start` recall hook now pulls memory context through Python only
 - the `agent_end` auto-capture flow now stores user text through Python and optionally runs Python maintenance instead of using the TypeScript manager
-- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/plugin.ts) is reduced to a re-export of the root bootstrap so the repo no longer carries two competing plugin runtime implementations
+- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/plugin.ts) is reduced to a re-export of the root bootstrap so the repo no longer carries two competing plugin runtime implementations
 
 ### Phase 2 - Packaging And Host Entry Simplification
 
@@ -136,11 +136,11 @@ Expected outputs:
 
 Implemented on 2026-03-24:
 
-- [src/cli/setup.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/cli/setup.ts) no longer initializes the legacy TypeScript manager and now runs the Python MCP self-test through a Node compatibility wrapper
-- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v7/package.json) now ships `aegis_py`, `requirements.txt`, and Python-facing release docs while excluding the legacy `src/` tree from published package files
-- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v7/package.json) now exposes Python-first contributor scripts such as `test:python`, `validate:python`, and `package:python`
-- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v7/openclaw.plugin.json) now reflects the actual bootstrap tool surface and labels unsupported advanced tools as compatibility surfaces instead of pretending they are Python-complete
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) and [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md) now describe the Python-first validation and packaging contract more explicitly
+- [src/cli/setup.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/cli/setup.ts) no longer initializes the legacy TypeScript manager and now runs the Python MCP self-test through a Node compatibility wrapper
+- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v10/package.json) now ships `aegis_py`, `requirements.txt`, and Python-facing release docs while excluding the legacy `src/` tree from published package files
+- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v10/package.json) now exposes Python-first contributor scripts such as `test:python`, `validate:python`, and `package:python`
+- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v10/openclaw.plugin.json) now reflects the actual bootstrap tool surface and labels unsupported advanced tools as compatibility surfaces instead of pretending they are Python-complete
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) and [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md) now describe the Python-first validation and packaging contract more explicitly
 
 ### Phase 3 - TypeScript Runtime Removal
 
@@ -154,10 +154,10 @@ Scope:
 
 Implemented on 2026-03-24:
 
-- [src/aegis-manager.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/aegis-manager.ts) is now a compatibility stub that fails fast instead of providing a working TypeScript memory engine
-- [src/index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/index.ts) no longer re-exports `AegisMemoryManager` or `closeAllManagers` as part of the package public surface
-- manager-centric legacy tests that treated the TypeScript engine as a supported runtime path were removed from [test/](/home/hali/.openclaw/extensions/memory-aegis-v7/test)
-- [test/README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/test/README.md) now documents that `tests/` is canonical and `test/` is legacy/bootstrap-only
+- [src/aegis-manager.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/aegis-manager.ts) is now a compatibility stub that fails fast instead of providing a working TypeScript memory engine
+- [src/index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/index.ts) no longer re-exports `AegisMemoryManager` or `closeAllManagers` as part of the package public surface
+- manager-centric legacy tests that treated the TypeScript engine as a supported runtime path were removed from [test/](/home/hali/.openclaw/extensions/memory-aegis-v10/test)
+- [test/README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/test/README.md) now documents that `tests/` is canonical and `test/` is legacy/bootstrap-only
 
 ## Complexity Tracking
 
@@ -176,7 +176,7 @@ Observed on 2026-03-23:
 - `npm run lint`
   - passed
   - confirms the reduced bootstrap still type-checks
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `55 passed in 0.91s`
   - confirms the Python engine remains green after the bootstrap reduction
 
@@ -188,28 +188,28 @@ Observed on 2026-03-24:
 - `npm run test:bootstrap`
   - passed: `17` tests
   - confirms the JS bootstrap now routes `memory_get`, backup upload, and restore in addition to the earlier core tools and hook flows
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `114 passed in 3.92s`
   - includes Python runtime smoke tests for citation readback, backup/export/restore, maintenance, inspection, trust shaping, and the current user-facing surface
 
 Current residual risks:
 
-- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v7/package.json) still makes OpenClaw load `./dist/index.js`, so a tiny JS bootstrap remains on the host path
-- the repository still contains many legacy TypeScript helper modules under [src/](/home/hali/.openclaw/extensions/memory-aegis-v7/src) even though the central manager and public engine surface have been quarantined
-- some legacy TypeScript utility tests still remain in [test/](/home/hali/.openclaw/extensions/memory-aegis-v7/test) for isolated helper behavior, so contributors must continue to treat that tree as non-canonical
+- [package.json](/home/hali/.openclaw/extensions/memory-aegis-v10/package.json) still makes OpenClaw load `./dist/index.js`, so a tiny JS bootstrap remains on the host path
+- the repository still contains many legacy TypeScript helper modules under [src/](/home/hali/.openclaw/extensions/memory-aegis-v10/src) even though the central manager and public engine surface have been quarantined
+- some legacy TypeScript utility tests still remain in [test/](/home/hali/.openclaw/extensions/memory-aegis-v10/test) for isolated helper behavior, so contributors must continue to treat that tree as non-canonical
 
 Ops/inspection extension implemented on 2026-03-24:
 
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now exposes Python-owned doctor, taxonomy cleanup, rebuild, scan, and graph snapshot helpers
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now serves `memory_doctor`, `memory_taxonomy_clean`, `memory_rebuild`, `memory_scan`, and `memory_visualize`
-- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) now route those host tools into Python rather than reporting unsupported
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now exposes Python-owned doctor, taxonomy cleanup, rebuild, scan, and graph snapshot helpers
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now serves `memory_doctor`, `memory_taxonomy_clean`, `memory_rebuild`, `memory_scan`, and `memory_visualize`
+- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) now route those host tools into Python rather than reporting unsupported
 
 Additional validation observed on 2026-03-24:
 
 - `npm run test:bootstrap`
   - passed: `17` tests
   - confirms all remaining maintenance and inspection tools now route through Python
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `114 passed in 3.92s`
   - includes runtime coverage for doctor, taxonomy cleanup, rebuild, scan, and visualize
 

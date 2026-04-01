@@ -665,7 +665,7 @@ def run_phase(name: str, fn) -> PhaseResult:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Heavy stress harness for Memory Aegis v7.")
+    parser = argparse.ArgumentParser(description="Heavy stress harness for Memory Aegis v10.")
     parser.add_argument("--db-path", default=str(REPO_ROOT / ".tmp_stress" / "stress_v7.db"))
     parser.add_argument("--workspace-dir", default=str(REPO_ROOT / ".tmp_stress"))
     parser.add_argument("--profile", choices=["default", "heavy", "apocalypse"], default="default")

@@ -1,6 +1,6 @@
 # Implementation Plan: Aegis Python vNext Memory Engine
 
-**Branch**: `001-aegis-vnext-memory-engine` | **Date**: 2026-03-23 | **Spec**: [`/home/hali/.openclaw/extensions/memory-aegis-v7/specs/001-aegis-vnext-memory-engine/spec.md`](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/001-aegis-vnext-memory-engine/spec.md)
+**Branch**: `001-aegis-vnext-memory-engine` | **Date**: 2026-03-23 | **Spec**: [`/home/hali/.openclaw/extensions/memory-aegis-v10/specs/001-aegis-vnext-memory-engine/spec.md`](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/001-aegis-vnext-memory-engine/spec.md)
 **Input**: Feature specification from `/specs/001-aegis-vnext-memory-engine/spec.md`
 
 **Note**: This plan is tailored to the current brownfield `aegis_py` codebase. The immediate goal is to harden and reshape the existing Python implementation into a stable local-first memory engine, not to perform a disruptive rewrite.
@@ -26,7 +26,7 @@ Build Aegis Python vNext as a local-first, explainable memory engine by stabiliz
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 - `Local-First Memory Engine`: Pass. The current design already uses SQLite/FTS5 and must stay that way for the default path.
-- `Brownfield Refactor Over Rewrite`: Pass with caution. Current code shows overlapping implementations in [`storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py), [`storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py), [`memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py), and [`retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py). Refactor must converge these paths without breaking public flows abruptly.
+- `Brownfield Refactor Over Rewrite`: Pass with caution. Current code shows overlapping implementations in [`storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py), [`storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py), [`memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py), and [`retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py). Refactor must converge these paths without breaking public flows abruptly.
 - `Explainable Retrieval Is Non-Negotiable`: Pass only if retrieval refactors preserve and improve ranking reasons, provenance, scope visibility, and conflict visibility.
 - `Safe Memory Mutation By Default`: Pass only if hygiene, conflict, and lifecycle work remains suggestion-first and provenance-preserving.
 - `Measured Simplicity`: Pass. This feature explicitly excludes full orchestration-platform scope and keeps focus on memory engine boundaries.
@@ -98,10 +98,10 @@ Deliverables:
 
 - Inventory current storage, retrieval, lifecycle, conflict, and MCP flows.
 - Record overlap and divergence between:
-  - [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
-  - [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py)
-  - [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
-  - [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
+  - [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
+  - [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py)
+  - [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
+  - [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
 - Confirm current schema coverage versus the v1 spec and constitution.
 - Identify which existing tests are authoritative for current behavior.
 
@@ -123,12 +123,12 @@ Workstreams:
 
 Primary Files:
 
-- [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql)
-- [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.py)
-- [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/db.py)
-- [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
-- [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/models.py)
-- [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py)
+- [`aegis_py/storage/schema.sql`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql)
+- [`aegis_py/storage/schema.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.py)
+- [`aegis_py/storage/db.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/db.py)
+- [`aegis_py/storage/manager.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
+- [`aegis_py/memory/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/models.py)
+- [`aegis_py/storage/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py)
 
 Exit Criteria:
 
@@ -148,11 +148,11 @@ Workstreams:
 
 Primary Files:
 
-- [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
-- [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
-- [`aegis_py/retrieval/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/models.py)
-- [`aegis_py/memory/filter.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/filter.py)
-- relevant tests under [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py) and [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
+- [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
+- [`aegis_py/retrieval/search.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
+- [`aegis_py/retrieval/models.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/models.py)
+- [`aegis_py/memory/filter.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/filter.py)
+- relevant tests under [`tests/test_retrieval.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py) and [`tests/test_benchmark_core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
 
 Exit Criteria:
 
@@ -173,11 +173,11 @@ Workstreams:
 
 Primary Files:
 
-- [`aegis_py/hygiene/engine.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/engine.py)
-- [`aegis_py/conflict/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/conflict/core.py)
-- [`aegis_py/evolve/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/evolve/core.py)
-- lifecycle-related logic in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/core.py)
-- relevant tests under [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_hygiene.py) and [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_memory_lifecycle.py)
+- [`aegis_py/hygiene/engine.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/engine.py)
+- [`aegis_py/conflict/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/conflict/core.py)
+- [`aegis_py/evolve/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/evolve/core.py)
+- lifecycle-related logic in [`aegis_py/memory/core.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/core.py)
+- relevant tests under [`tests/test_hygiene.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_hygiene.py) and [`tests/test_memory_lifecycle.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_memory_lifecycle.py)
 
 Exit Criteria:
 
@@ -197,9 +197,9 @@ Workstreams:
 
 Primary Files:
 
-- [`aegis_py/app.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py)
-- [`aegis_py/main.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/main.py)
-- [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py)
+- [`aegis_py/app.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py)
+- [`aegis_py/main.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/main.py)
+- [`aegis_py/mcp/server.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py)
 
 Exit Criteria:
 
@@ -219,8 +219,8 @@ Workstreams:
 
 Primary Files:
 
-- [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py)
-- test suite under [`tests/`](/home/hali/.openclaw/extensions/memory-aegis-v7/tests)
+- [`aegis_py/retrieval/benchmark.py`](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py)
+- test suite under [`tests/`](/home/hali/.openclaw/extensions/memory-aegis-v10/tests)
 
 Exit Criteria:
 
@@ -259,8 +259,8 @@ Validation run completed on 2026-03-23 against the Python suite.
 Executed command:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
-PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
+PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests
 ```
 
 Observed result:

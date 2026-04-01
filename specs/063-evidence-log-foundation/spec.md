@@ -3,7 +3,7 @@
 **Feature Branch**: `063-evidence-log-foundation`  
 **Created**: 2026-03-28  
 **Status**: Draft  
-**Input**: Open the first implementation tranche from `062-v4-to-v7-migration-roadmap` by introducing the immutable evidence backbone proposed in `/home/hali/.openclaw/11.md` without destabilizing the current retrieval/runtime surface.
+**Input**: Open the first implementation tranche from `062-v4-to-v10-migration-roadmap` by introducing the immutable evidence backbone proposed in `/home/hali/.openclaw/11.md` without destabilizing the current retrieval/runtime surface.
 
 ## User Scenarios & Testing
 
@@ -21,7 +21,7 @@ As a maintainer, I want stored memories to retain a stable pointer to the eviden
 
 ### User Story 3 - Existing Retrieval Surface Does Not Regress (Priority: P1)
 
-As an integrator, I want the existing `memory_remember`, `memory_recall`, `memory_search`, and `memory_context_pack` surfaces to keep their current public shapes while evidence logging is introduced, so the first v7 tranche does not break OpenClaw or MCP clients.
+As an integrator, I want the existing `memory_remember`, `memory_recall`, `memory_search`, and `memory_context_pack` surfaces to keep their current public shapes while evidence logging is introduced, so the first v10 tranche does not break OpenClaw or MCP clients.
 
 **Independent Test**: Run the current Python and host contract tests and verify that existing retrieval and tool surfaces still pass after the evidence layer lands.
 
@@ -38,7 +38,7 @@ As a maintainer, I want the new evidence layer to be explicitly append-only and 
 - **FR-003**: New memory records MUST retain evidence linkage fields or structured evidence metadata that can later support span binding.
 - **FR-004**: The current public retrieval and tool payload shapes MUST remain backward-compatible during this tranche.
 - **FR-005**: The evidence store MUST remain local-first and SQLite-native.
-- **FR-006**: This tranche MUST avoid introducing the full v7 admission/state machine in the same slice.
+- **FR-006**: This tranche MUST avoid introducing the full v10 admission/state machine in the same slice.
 
 ## Success Criteria
 

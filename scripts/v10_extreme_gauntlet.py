@@ -112,13 +112,13 @@ class V9ExtremeGauntlet:
         self.populate_noise()
         self.setup_scenarios()
         
-        print(f"\n{'Scenario':<25} | {'v8 Rank':<10} | {'v9 Rank':<10} | {'v9 Score':<8} | {'Status'}")
+        print(f"\n{'Scenario':<25} | {'v10 Rank':<10} | {'v10 Rank':<10} | {'v10 Score':<8} | {'Status'}")
         print("-" * 85)
         
         report = []
 
         for s in self.scenarios:
-            # 1. Run v9
+            # 1. Run v10
             q_v9 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
             setattr(q_v9, "scoring_mode", "v9_primary")
             
@@ -127,7 +127,7 @@ class V9ExtremeGauntlet:
             lat_v9 = (time.perf_counter() - t0) * 1000
             self.stats["v9_latencies"].append(lat_v9)
 
-            # 2. Run v8 (if requested)
+            # 2. Run v10 (if requested)
             lat_v8 = 0
             v8_top = "N/A"
             if self.compare_v8:
@@ -178,12 +178,12 @@ if __name__ == "__main__":
     parser.add_argument("--noise-memories", type=int, default=100)
     parser.add_argument("--scopes", type=int, default=2)
     parser.add_argument("--conflict-pairs", type=int, default=5)
-    parser.add_argument("--compare-v8", action="store_true", default=True)
+    parser.add_argument("--compare-v10", action="store_true", default=True)
     parser.add_argument("--json-out", type=str, default=None)
     args = parser.parse_args()
 
     gauntlet = V9ExtremeGauntlet(
-        "/home/hali/.openclaw/extensions/memory-aegis-v7/extreme_gauntlet.db",
+        "/home/hali/.openclaw/extensions/memory-aegis-v10/extreme_gauntlet.db",
         args.noise_memories, args.scopes, args.conflict_pairs, args.compare_v8
     )
     
@@ -194,5 +194,5 @@ if __name__ == "__main__":
             json.dump(results, f, indent=2)
         print(f"\n[+] Results saved to {args.json_out}")
     
-    os.remove("/home/hali/.openclaw/extensions/memory-aegis-v7/extreme_gauntlet.db")
+    os.remove("/home/hali/.openclaw/extensions/memory-aegis-v10/extreme_gauntlet.db")
     exit(0 if gauntlet.stats["fail"] == 0 else 1)

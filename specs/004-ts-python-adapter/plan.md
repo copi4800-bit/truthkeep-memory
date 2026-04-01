@@ -1,6 +1,6 @@
 # Implementation Plan: Aegis TypeScript Adapter To Python Engine
 
-**Branch**: `004-ts-python-adapter` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/004-ts-python-adapter/spec.md)
+**Branch**: `004-ts-python-adapter` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/004-ts-python-adapter/spec.md)
 **Input**: Feature specification from `/specs/004-ts-python-adapter/spec.md`
 
 ## Summary
@@ -108,10 +108,10 @@ Objective: Define how the TypeScript plugin shell will call or map to the Python
 
 Primary Files:
 
-- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/plugin.ts)
-- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts)
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py)
-- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v7/openclaw.plugin.json)
+- [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/plugin.ts)
+- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts)
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py)
+- [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v10/openclaw.plugin.json)
 
 First routing slice recommendation:
 
@@ -125,8 +125,8 @@ Objective: Route the safest canonical surface, likely retrieval-oriented behavio
 
 Implemented on 2026-03-23:
 
-- `memory_search` in [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) and [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/plugin.ts) now supports a Python-backed retrieval slice via [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts)
-- the adapter invokes [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) with a single-tool CLI contract instead of re-implementing Python retrieval semantics in TypeScript
+- `memory_search` in [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) and [src/plugin.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/plugin.ts) now supports a Python-backed retrieval slice via [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts)
+- the adapter invokes [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) with a single-tool CLI contract instead of re-implementing Python retrieval semantics in TypeScript
 - the same adapter path now covers `memory_store`, `memory_stats`, `memory_clean`, and `memory_profile` for the TypeScript shell
 - the `before_agent_start` recall hook also prefers Python retrieval when the adapter is enabled, so the highest-value recall path no longer stays pinned to the TypeScript retriever
 - routing is intentionally gated by `pythonToolAdapter` / `pythonRetrievalAdapter` (`off`, `auto`, `force`) so the migration can be exercised without claiming full parity
@@ -179,10 +179,10 @@ Observed on 2026-03-23:
   - proves `memory_search`, `memory_store`, `memory_stats`, `memory_clean`, and `memory_profile` all work through the TypeScript shell with Python-backed execution where expected
   - proves `memory_search` falls back to the TypeScript manager in `auto` mode
   - proves the `before_agent_start` recall hook prefers Python retrieval when forced
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `55 passed in 1.66s`
   - confirms the Python canonical engine remains green after exposing the single-tool CLI path
-- `AEGIS_DB_PATH=/tmp/aegis_python_adapter_smoke.db PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/python aegis_py/mcp/server.py --tool memory_search --args-json '{"text":"SQLite retrieval","limit":2,"scope_type":"project","scope_id":"aegis-v4"}'`
+- `AEGIS_DB_PATH=/tmp/aegis_python_adapter_smoke.db PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/python aegis_py/mcp/server.py --tool memory_search --args-json '{"text":"SQLite retrieval","limit":2,"scope_type":"project","scope_id":"aegis-v4"}'`
   - passed
   - returned `[]` on a fresh isolated database, which is expected for an empty Python store
 
@@ -197,7 +197,7 @@ Observed on 2026-03-24:
 - `npm run test:bootstrap`
   - passed: `17` tests
   - confirms the public TS bootstrap routes the current manifest tool surface through Python-owned behavior
-- `PYTHONPATH=. /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=. /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `114 passed in 3.92s`
   - confirms the Python canonical engine remains green while serving the adapter-owned public surface
 

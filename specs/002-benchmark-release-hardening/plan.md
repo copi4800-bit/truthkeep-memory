@@ -1,6 +1,6 @@
 # Implementation Plan: Aegis Python Benchmark And Release Hardening
 
-**Branch**: `002-benchmark-release-hardening` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/spec.md)
+**Branch**: `002-benchmark-release-hardening` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/spec.md)
 **Input**: Feature specification from `/specs/002-benchmark-release-hardening/spec.md`
 
 ## Summary
@@ -94,9 +94,9 @@ Objective: Broaden the benchmark harness and make threshold evaluation explicit 
 
 Primary Files:
 
-- [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py)
-- [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
-- supporting retrieval tests under [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py)
+- [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py)
+- [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
+- supporting retrieval tests under [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py)
 
 Exit Criteria:
 
@@ -115,8 +115,8 @@ Objective: Make the local validation path obvious and stable for contributors.
 
 Primary Files:
 
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md)
-- [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md)
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md)
+- [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md)
 
 Exit Criteria:
 
@@ -129,7 +129,7 @@ Objective: Record what was actually validated and what remains outside the curre
 
 Primary Files:
 
-- [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/plan.md)
+- [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/plan.md)
 - follow-up `spec-kit` artifacts for tasks or closeout notes if created
 
 Exit Criteria:
@@ -148,8 +148,8 @@ Validation run completed on 2026-03-23 for feature `002-benchmark-release-harden
 Executed command:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
-PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
+PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests
 ```
 
 Observed result:

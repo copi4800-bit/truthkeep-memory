@@ -8,7 +8,7 @@ def build_v9_query_signals(
     context: Optional[Dict[str, Any]] = None
 ) -> Dict[str, float]:
     """
-    Enhanced Builder that produces granular mathematical query signals for v9.
+    Enhanced Builder that produces granular mathematical query signals for v10.
     Leverages stage-specific normalization and cross-signal calibration.
     """
     context = context or {}

@@ -8,7 +8,7 @@ from aegis_py.surface import serialize_search_result
 
 async def test_v9_runtime_full_path():
     # Setup real temporary storage
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v7/test_v9_full_path.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_full_path.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -63,12 +63,12 @@ async def test_v9_runtime_full_path():
     if results:
         serialized = serialize_search_result(results[0])
         print(f"Top Result: {results[0].memory.content}")
-        print(f"Top Result v9 Score: {results[0].v9_score:.4f}")
+        print(f"Top Result v10 Score: {results[0].v9_score:.4f}")
         print(f"Top Result Human Reason: {serialized['human_reason']}")
         
         # Assertions
-        assert results[0].memory.id == new_mem.id, "v9 should rank the newer winner first"
-        assert "bản sửa lỗi mới nhất" in serialized["human_reason"], "Should use v9 faithful explanation"
+        assert results[0].memory.id == new_mem.id, "v10 should rank the newer winner first"
+        assert "bản sửa lỗi mới nhất" in serialized["human_reason"], "Should use v10 faithful explanation"
     else:
         print("❌ FAILED: No results found!")
 

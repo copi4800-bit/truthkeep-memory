@@ -1,14 +1,14 @@
 # Research: Beast Architecture Mapping
 
 **Date**: 2026-03-24  
-**Feature**: [010-beast-architecture-mapping](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/010-beast-architecture-mapping/spec.md)
+**Feature**: [010-beast-architecture-mapping](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/010-beast-architecture-mapping/spec.md)
 
 ## Input Reviewed
 
 - [1.md](/home/hali/.openclaw/1.md): the 23-beast architecture synthesis and six-module consolidation
-- [specs/007-hybrid-memory-core/research.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/research.md): prior feature-level interpretation of the beast model
-- [aegis_py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py): current Python package structure
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md): current contributor-facing architecture summary
+- [specs/007-hybrid-memory-core/research.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/007-hybrid-memory-core/research.md): prior feature-level interpretation of the beast model
+- [aegis_py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py): current Python package structure
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md): current contributor-facing architecture summary
 
 ## Key Findings
 

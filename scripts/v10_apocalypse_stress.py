@@ -141,7 +141,7 @@ def make_scopes(scope_count: int) -> list[tuple[str, str]]:
 
 
 def canary_value(index: int) -> str:
-    return f"v8-canary-{index:06d}-{(index * 37) % 997:03d}"
+    return f"v10-canary-{index:06d}-{(index * 37) % 997:03d}"
 
 
 def build_memory_content(index: int, canary: str, topic: str, lane: int) -> str:
@@ -707,13 +707,13 @@ def evaluate_report(report: dict[str, Any]) -> dict[str, Any]:
 
 def save_report(results_dir: Path, report: dict[str, Any], profile_name: str) -> Path:
     results_dir.mkdir(parents=True, exist_ok=True)
-    output = results_dir / f"v8-superstress-{profile_name}_{now_slug()}.json"
+    output = results_dir / f"v10-superstress-{profile_name}_{now_slug()}.json"
     output.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     return output
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run the heaviest v8 stress test available in this repo.")
+    parser = argparse.ArgumentParser(description="Run the heaviest v10 stress test available in this repo.")
     parser.add_argument("--profile", choices=sorted(PROFILES), default="apocalypse")
     parser.add_argument("--workspace-dir", type=Path, default=Path("/tmp") / f"aegis_v8_superstress_{uuid.uuid4().hex[:8]}")
     parser.add_argument("--results-dir", type=Path, default=REPO_ROOT / "stress-results")

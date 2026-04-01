@@ -1,11 +1,11 @@
 # Implementation Plan: Production Hardening
 
-**Branch**: `070-production-hardening` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/070-production-hardening/spec.md)
+**Branch**: `070-production-hardening` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/070-production-hardening/spec.md)
 **Input**: Feature specification from `/specs/070-production-hardening/spec.md`
 
 ## Summary
 
-Harden the already-working Aegis v7 runtime by adding acceptance coverage for critical flows, explicit regression coverage for known failure classes, and invariant-focused tests for dry-run safety, rollback safety, restore safety, and scope isolation.
+Harden the already-working Aegis v10 runtime by adding acceptance coverage for critical flows, explicit regression coverage for known failure classes, and invariant-focused tests for dry-run safety, rollback safety, restore safety, and scope isolation.
 
 ## Technical Context
 

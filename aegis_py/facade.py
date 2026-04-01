@@ -43,7 +43,7 @@ class Aegis:
     ) -> str:
         """
         Store a new memory. 
-        Uses the high-level ingest engine to ensure full v9/v10 processing.
+        Uses the high-level ingest engine to ensure full v10/v10 processing.
         """
         metadata = metadata or {}
         

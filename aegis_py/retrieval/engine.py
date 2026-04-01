@@ -6,7 +6,7 @@ import json
 from typing import Any
 
 from .contract import blend_retrieval_score, build_reason_tags
-from .v8_dynamics import compute_v8_core_signals, dynamic_reason_tags, dynamic_score_bonus
+from .v10_dynamics import compute_v8_core_signals, dynamic_reason_tags, dynamic_score_bonus
 from ..storage.models import RETRIEVABLE_MEMORY_STATUS_SQL
 
 

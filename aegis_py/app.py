@@ -11,7 +11,7 @@ from .memory.ingest import IngestEngine
 from .retrieval.search import SearchPipeline
 from .retrieval.models import SearchQuery, SearchResult
 from .retrieval.contract import ExplainerBeast
-from .retrieval.v8_dynamics import (
+from .retrieval.v10_dynamics import (
     LEGACY_V8_DYNAMICS_METADATA_KEY,
     V8_STATE_METADATA_KEY,
     apply_outcome_feedback,
@@ -47,7 +47,7 @@ from .observability import (
     ObservedOperation,
     get_global_runtime_observability,
 )
-from .v7 import (
+from .v10 import (
     GovernedBackgroundIntelligence,
     MemoryStateMachine,
     RetrievalOrchestrator,

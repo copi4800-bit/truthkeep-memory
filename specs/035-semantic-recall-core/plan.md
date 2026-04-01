@@ -1,6 +1,6 @@
 # Implementation Plan: Semantic Recall Core
 
-**Branch**: `035-semantic-recall-core` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/035-semantic-recall-core/spec.md)
+**Branch**: `035-semantic-recall-core` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/035-semantic-recall-core/spec.md)
 **Input**: Feature specification from `/specs/035-semantic-recall-core/spec.md`
 
 ## Summary

@@ -28,7 +28,7 @@ Turn the service-boundary contract into a clearer product story by adding one ru
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── package.json
 ├── scripts/

@@ -1,6 +1,6 @@
 # Implementation Plan: Sync Revision Stamps
 
-**Branch**: `020-sync-revision-stamps` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/020-sync-revision-stamps/spec.md)
+**Branch**: `020-sync-revision-stamps` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/020-sync-revision-stamps/spec.md)
 **Input**: Feature specification from `/specs/020-sync-revision-stamps/spec.md`
 
 ## Summary
@@ -28,7 +28,7 @@ Add a lightweight scope revision counter and include it in sync envelopes, previ
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -46,6 +46,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `17` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `83 passed in 2.67s`
 

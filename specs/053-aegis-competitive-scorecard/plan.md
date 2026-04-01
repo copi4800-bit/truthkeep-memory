@@ -35,7 +35,7 @@ Create one reusable scorecard that measures whether Aegis is actually becoming s
 ├── ROADMAP.md
 └── STATE.md
 
-extensions/memory-aegis-v7/specs/053-aegis-competitive-scorecard/
+extensions/memory-aegis-v10/specs/053-aegis-competitive-scorecard/
 ├── spec.md
 ├── plan.md
 └── tasks.md

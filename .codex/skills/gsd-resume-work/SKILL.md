@@ -58,11 +58,11 @@ Routes to the resume-project workflow which handles:
   </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/resume-project.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/resume-project.md
 </execution_context>
 
 <process>
-**Follow the resume-project workflow** from `@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/resume-project.md`.
+**Follow the resume-project workflow** from `@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/resume-project.md`.
 
 The workflow handles all resumption logic including:
 

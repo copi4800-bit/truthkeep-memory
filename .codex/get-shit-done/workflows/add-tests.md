@@ -33,7 +33,7 @@ Exit.
 Load phase operation context:
 
 ```bash
-INIT=$(node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/gsd-tools.cjs" init phase-op "${PHASE_ARG}")
+INIT=$(node "/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/bin/gsd-tools.cjs" init phase-op "${PHASE_ARG}")
 if [[ "$INIT" == @file:* ]]; then INIT=$(cat "${INIT#@file:}"); fi
 ```
 
@@ -297,7 +297,7 @@ Create a test coverage report and present to user:
 
 Record test generation in project state:
 ```bash
-node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/gsd-tools.cjs" state-snapshot
+node "/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/bin/gsd-tools.cjs" state-snapshot
 ```
 
 If there are passing tests to commit:

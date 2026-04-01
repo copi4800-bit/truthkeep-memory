@@ -30,7 +30,7 @@ Make recovery and trust-oriented diagnostics understandable for ordinary users w
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── cli.py
@@ -65,7 +65,7 @@ Validation run completed on 2026-03-28 for feature `049-consumer-recovery-trust`
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_integration.py tests/test_user_surface.py tests/operations/test_backup.py
 node_modules/.bin/vitest run test/integration/python-adapter-plugin.test.ts
 .venv/bin/python -m pytest -q tests

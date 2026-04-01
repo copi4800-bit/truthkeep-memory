@@ -1,9 +1,9 @@
-# Feature Specification: Aegis v7 Runtime
+# Feature Specification: Aegis v10 Runtime
 
-**Feature Branch**: `069-aegis-v7-runtime`  
+**Feature Branch**: `069-aegis-v10-runtime`  
 **Created**: 2026-03-28  
 **Status**: Draft  
-**Input**: User description: "Implement Aegis v7 runtime architecture from 11.md with immutable evidence log governance, validation and policy gate, memory state machine, specialized storage surfaces, governed background intelligence, and retrieval orchestrator in the Python-owned runtime."
+**Input**: User description: "Implement Aegis v10 runtime architecture from 11.md with immutable evidence log governance, validation and policy gate, memory state machine, specialized storage surfaces, governed background intelligence, and retrieval orchestrator in the Python-owned runtime."
 
 ## User Scenarios & Testing
 
@@ -11,7 +11,7 @@
 
 As an operator, I want every admitted memory to pass through immutable evidence capture and a validation gate so weak extraction cannot silently become durable truth.
 
-**Why this priority**: This is the core safety contract of v7. Without it, the rest of the architecture is cosmetic.
+**Why this priority**: This is the core safety contract of v10. Without it, the rest of the architecture is cosmetic.
 
 **Independent Test**: Ingest one strong fact and one weak fact, then verify evidence exists for both while only the strong fact is admitted into active retrieval.
 
@@ -25,15 +25,15 @@ As an operator, I want every admitted memory to pass through immutable evidence 
 
 ### User Story 2 - Explicit Memory State Governance (Priority: P1)
 
-As a maintainer, I want memories to move through explicit v7 states with audit history so lifecycle changes can be explained, reviewed, and rolled back.
+As a maintainer, I want memories to move through explicit v10 states with audit history so lifecycle changes can be explained, reviewed, and rolled back.
 
-**Why this priority**: v7 requires a real state machine, not flat storage with implicit interpretation.
+**Why this priority**: v10 requires a real state machine, not flat storage with implicit interpretation.
 
 **Independent Test**: Persist a validated memory, transition it through archival behavior, and verify the state history is recorded.
 
 **Acceptance Scenarios**:
 
-1. **Given** a newly admitted memory, **When** it is stored, **Then** its explicit v7 state is persisted alongside the existing runtime metadata.
+1. **Given** a newly admitted memory, **When** it is stored, **Then** its explicit v10 state is persisted alongside the existing runtime metadata.
 2. **Given** a memory changes lifecycle status, **When** the runtime applies the change, **Then** the state transition is recorded with reason and timestamp.
 3. **Given** governance inspection is requested, **When** the runtime returns the audit view, **Then** state transitions and governance events are visible without reading raw database rows manually.
 
@@ -43,7 +43,7 @@ As a maintainer, I want memories to move through explicit v7 states with audit h
 
 As an agent host, I want retrieval to assemble a ranked view from specialized storage surfaces while background intelligence only produces shadow proposals unless explicitly promoted.
 
-**Why this priority**: This delivers the operational behavior promised by the v7 diagram without letting autonomous jobs mutate memory blindly.
+**Why this priority**: This delivers the operational behavior promised by the v10 diagram without letting autonomous jobs mutate memory blindly.
 
 **Independent Test**: Query a scope with multiple memory types and confirm the retrieval bundle is ranked and filtered by allowed states; then run background planning and verify only working-copy proposals are created.
 
@@ -65,7 +65,7 @@ As an agent host, I want retrieval to assemble a ranked view from specialized st
 
 - **FR-001**: The system MUST persist raw evidence in an append-only evidence log before a new memory is admitted.
 - **FR-002**: The system MUST evaluate new memory candidates through a validation and policy gate that can block, validate, or route to hypothesized review state.
-- **FR-003**: The system MUST persist an explicit `memory_state` for v7 with at least `draft`, `validated`, `hypothesized`, `consolidated`, `invalidated`, and `archived`.
+- **FR-003**: The system MUST persist an explicit `memory_state` for v10 with at least `draft`, `validated`, `hypothesized`, `consolidated`, `invalidated`, and `archived`.
 - **FR-004**: The system MUST record state transitions with reason, actor, timestamp, and optional evidence reference.
 - **FR-005**: The system MUST record governance events for admission and validation outcomes.
 - **FR-006**: The system MUST expose specialized storage surfaces for fact storage, vector candidate inspection, and graph traversal support.
@@ -78,7 +78,7 @@ As an agent host, I want retrieval to assemble a ranked view from specialized st
 
 - **Evidence Event**: Immutable raw capture for a memory candidate, including source, scope, and raw content.
 - **Governance Event**: Audit record describing why admission or background decisions occurred.
-- **Memory State Transition**: Durable record of movement between v7 memory states.
+- **Memory State Transition**: Durable record of movement between v10 memory states.
 - **Background Intelligence Run**: Shadow-only proposal emitted by a governed worker for later review.
 
 ## Success Criteria

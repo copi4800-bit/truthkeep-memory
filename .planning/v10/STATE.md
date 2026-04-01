@@ -4,8 +4,8 @@
 - None (All phases complete)
 
 ## Completed Tasks
-- [x] Create Feature Spec `075-aegis-v9-complete-definition`.
-- [x] Setup GSD Planning artifacts in `.planning/v9/`.
+- [x] Create Feature Spec `075-aegis-v10-complete-definition`.
+- [x] Setup GSD Planning artifacts in `.planning/v10/`.
 - [x] Implement Architectural & Semantic Completion (Phase 1).
 - [x] Implement Runtime & Retrieval Completion (Phase 2).
 - [x] Implement UX & Explanation Completion (Phase 3).
@@ -13,7 +13,7 @@
 - [x] Establish Canonical Specification.
 
 ## Current Focus
-- Project handover and chốt bản v9.
+- Project handover and chốt bản v10.
 
 ## Blockers
 - None.

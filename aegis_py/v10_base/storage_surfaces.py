@@ -7,7 +7,7 @@ from ..storage.models import Memory
 
 
 class SpecializedStorageSurfaces:
-    """Thin v7 storage facades over the existing SQLite runtime."""
+    """Thin v10 storage facades over the existing SQLite runtime."""
 
     def __init__(self, storage: StorageManager):
         self.storage = storage

@@ -14,7 +14,7 @@ from aegis_py.retrieval.v8_benchmark import (
     V8TransitionCase,
     select_best_v8_profile,
 )
-from aegis_py.retrieval.v8_dynamics import DEFAULT_V8_DYNAMICS_PROFILE, with_profile
+from aegis_py.retrieval.v10_dynamics import DEFAULT_V8_DYNAMICS_PROFILE, with_profile
 
 
 def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
@@ -24,7 +24,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Release plan evidence-backed checklist for launch.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://strong",
         subject="release.plan.strong",
@@ -33,7 +33,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Release plan rumor checklist for launch.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://weak",
         subject="release.plan.weak",
@@ -42,7 +42,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Release plan rumor checklist is not approved.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://challenger",
         subject="release.plan.weak",
@@ -51,7 +51,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Deployment runbook applies to release automation and rollback.",
         type="procedural",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://runbook",
         subject="deployment.runbook",
@@ -60,7 +60,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Deployment runbook applies to release automation.",
         type="procedural",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://runbook-cold",
         subject="deployment.runbook.alt",
@@ -69,7 +69,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
 
     app.storage.create_evidence_event(
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         memory_id=strong.id,
         source_kind="manual",
         source_ref="bench://strong/evidence",
@@ -82,7 +82,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "Validated release policy for launch trains.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://draft",
         subject="release.policy",
@@ -98,7 +98,7 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
     )
     app.storage.create_evidence_event(
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         memory_id=draft.id,
         source_kind="manual",
         source_ref="bench://draft/evidence",
@@ -107,28 +107,28 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
     )
 
     demote = app.put_memory(
-        "The release gate is enabled for project v8.",
+        "The release gate is enabled for project v10.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/a",
         subject="release.gate",
     )
     other_a = app.put_memory(
-        "The release gate is not enabled for project v8.",
+        "The release gate is not enabled for project v10.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/b",
         subject="release.gate",
     )
     other_b = app.put_memory(
-        "The release gate remains disabled for project v8 under rollback conditions.",
+        "The release gate remains disabled for project v10 under rollback conditions.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/c",
         subject="release.gate",
@@ -174,14 +174,14 @@ def main() -> int:
         V8RetrievalCase(
             query="release plan checklist",
             scope_type="project",
-            scope_id="V8",
+            scope_id="V10",
             expected_top_id=ids["strong"],
             expected_reason_tags=["v8_evidence_strong", "v8_trust_elevated"],
         ),
         V8RetrievalCase(
             query="deployment runbook",
             scope_type="project",
-            scope_id="V8",
+            scope_id="V10",
             expected_top_id=ids["warm"],
             expected_reason_tags=["v8_usage_reinforced"],
         ),
@@ -194,7 +194,7 @@ def main() -> int:
         V8FeedbackCase(
             query="deployment runbook",
             scope_type="project",
-            scope_id="V8",
+            scope_id="V10",
             selected_memory_ids=[ids["warm"]],
             override_memory_ids=[ids["cold"]],
             success_score=1.0,

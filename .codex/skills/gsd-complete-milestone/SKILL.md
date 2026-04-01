@@ -55,8 +55,8 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 <execution_context>
 **Load these files NOW (before proceeding):**
 
-- @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/complete-milestone.md (main workflow)
-- @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/templates/milestone-archive.md (archive template)
+- @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/complete-milestone.md (main workflow)
+- @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/templates/milestone-archive.md (archive template)
   </execution_context>
 
 <context>

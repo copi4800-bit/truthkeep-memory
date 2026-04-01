@@ -57,12 +57,12 @@ Validation results:
 
 - `SPECIFY_FEATURE=037-correction-first-memory-flow ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/037-correction-first-memory-flow`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/037-correction-first-memory-flow`
   - `AVAILABLE_DOCS=["tasks.md"]`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/memory/test_correction_detector.py tests/memory/test_fact_correction.py tests/hygiene/test_contradiction_resolve.py`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/memory/test_correction_detector.py tests/memory/test_fact_correction.py tests/hygiene/test_contradiction_resolve.py`
   - passed
   - `6 passed`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `107 passed in 2.50s`
 

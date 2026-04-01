@@ -1,14 +1,14 @@
 # V10 Gap Roadmap
 
-This roadmap focuses on the smallest set of changes that would move the runtime from strong behavioral alignment toward stronger formal fidelity with the v8 theory notes.
+This roadmap focuses on the smallest set of changes that would move the runtime from strong behavioral alignment toward stronger formal fidelity with the v10 theory notes.
 
 Reference:
 
-- [V8_SPEC_MAPPING.md](/home/hali/.openclaw/extensions/memory-aegis-v7/docs/V8_SPEC_MAPPING.md)
+- [V8_SPEC_MAPPING.md](/home/hali/.openclaw/extensions/memory-aegis-v10/docs/V8_SPEC_MAPPING.md)
 
 ## Priority 1
 
-### 1. Persist a canonical v8 state contract per memory
+### 1. Persist a canonical v10 state contract per memory
 
 Goal:
 
@@ -42,7 +42,7 @@ Suggested implementation:
 
 - define one canonical serializer/deserializer
 - store under a single metadata key such as `v8_state`
-- migrate current `v8_dynamics` metadata into that contract
+- migrate current `v10_dynamics` metadata into that contract
 
 ### 2. Separate derived signals from persisted state
 
@@ -224,11 +224,11 @@ These would add cost quickly and should wait:
 
 If the team completes the first four items, the runtime would move from:
 
-- behaviorally strong v8
+- behaviorally strong v10
 
 to:
 
-- behaviorally strong v8 with a credible explicit state model
+- behaviorally strong v10 with a credible explicit state model
 
 That is the right threshold before attempting a deeper formalization pass.
 

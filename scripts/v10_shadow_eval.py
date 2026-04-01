@@ -41,7 +41,7 @@ class V9ShadowEvaluator:
         m4 = Memory(id="s2_trusted", type="semantic", content="Project X status is stable.", subject="proj_x", confidence=0.9, source_kind="manual", source_ref="m4", scope_type="agent", scope_id="s2", metadata={"is_winner": True})
         self.manager.store(m3)
         self.manager.store(m4)
-        # Add 3 evidence events for m4 to boost v9 trust
+        # Add 3 evidence events for m4 to boost v10 trust
         for i in range(3):
             self.storage.execute("INSERT INTO evidence_events (id, scope_type, scope_id, memory_id, source_kind, source_ref, raw_content, created_at) VALUES (?, 'agent', 's2', 's2_trusted', 'test', 'ref', 'Confirmed status', ?)", (f"evt_{i}", now))
         
@@ -63,11 +63,11 @@ class V9ShadowEvaluator:
         self.setup_scenarios()
         results = []
         
-        print(f"{'Scenario':<25} | {'Metric':<20} | {'v8 Result':<10} | {'v9 Result':<10} | {'Status'}")
+        print(f"{'Scenario':<25} | {'Metric':<20} | {'v10 Result':<10} | {'v10 Result':<10} | {'Status'}")
         print("-" * 85)
 
         for s in self.scenarios:
-            # Run v8
+            # Run v10
             q_v8 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
             setattr(q_v8, "scoring_mode", "v8_primary")
             
@@ -75,7 +75,7 @@ class V9ShadowEvaluator:
             res_v8 = self.pipeline.search(q_v8)
             lat_v8 = (time.perf_counter() - start_v8) * 1000
 
-            # Run v9
+            # Run v10
             q_v9 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
             setattr(q_v9, "scoring_mode", "v9_primary")
             
@@ -94,7 +94,7 @@ class V9ShadowEvaluator:
                 v9_val = "PASS" if v9_top == s["expected_top"] else "FAIL"
             elif s.get("expected_action") == "suppress":
                 metric = "Suppression"
-                # v9 should penalize/suppress conflict records more heavily (lower score)
+                # v10 should penalize/suppress conflict records more heavily (lower score)
                 v8_score = res_v8[0].score if res_v8 else 0
                 v9_score = res_v9[0].v9_score if res_v9 else 0
                 success = (v9_score < 0) # Should be heavily penalized
@@ -105,7 +105,7 @@ class V9ShadowEvaluator:
             print(f"{s['name']:<25} | {metric:<20} | {v8_val:<10} | {v9_val:<10} | {status_mark}")
             
             if not success:
-                print(f"   [Audit all v9 results]:")
+                print(f"   [Audit all v10 results]:")
                 for r in res_v9:
                     t = r.v9_trace
                     print(f"     - {r.memory.id}: score={r.v9_score:.2f}, base={t.base_score:.2f}, judge={t.judge_delta:+.2f}, factors={ {k:round(v,2) for k,v in t.factors.items() if abs(v)>0.01} }")
@@ -121,7 +121,7 @@ class V9ShadowEvaluator:
         avg_lat_v8 = sum(r["latency_v8"] for r in results) / len(results)
         avg_lat_v9 = sum(r["latency_v9"] for r in results) / len(results)
         print("-" * 85)
-        print(f"Average Latency (ms):      | v8: {avg_lat_v8:.2f}ms | v9: {avg_lat_v9:.2f}ms | Overhead: {((avg_lat_v9/avg_lat_v8)-1)*100:+.1f}%")
+        print(f"Average Latency (ms):      | v10: {avg_lat_v8:.2f}ms | v10: {avg_lat_v9:.2f}ms | Overhead: {((avg_lat_v9/avg_lat_v8)-1)*100:+.1f}%")
         
         # Cleanup
         self.storage.close()
@@ -129,5 +129,5 @@ class V9ShadowEvaluator:
             os.remove(self.db_path)
 
 if __name__ == "__main__":
-    evaluator = V9ShadowEvaluator("/home/hali/.openclaw/extensions/memory-aegis-v7/v9_shadow_eval.db")
+    evaluator = V9ShadowEvaluator("/home/hali/.openclaw/extensions/memory-aegis-v10/v9_shadow_eval.db")
     asyncio.run(evaluator.evaluate())

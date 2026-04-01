@@ -17,7 +17,7 @@
 
 1. If the service is wedged but not crashed, restart it:
    `systemctl --user restart openclaw-gateway.service`
-2. Confirm `memory-aegis-v7 registered` after restart.
+2. Confirm `memory-aegis-v10 registered` after restart.
 3. Send one Telegram sanity-check message.
 4. Confirm offsets move again.
 

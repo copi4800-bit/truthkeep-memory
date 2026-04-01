@@ -12,7 +12,7 @@ async def test_v10_full_governance_gauntlet():
     Scenario: Safety violations and high-severity conflicts.
     v10 must exclude or quarantine records based on the Constitution.
     """
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v7/test_v10_gauntlet.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v10_gauntlet.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     

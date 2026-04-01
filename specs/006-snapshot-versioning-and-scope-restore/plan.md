@@ -1,6 +1,6 @@
 # Implementation Plan: Snapshot Versioning And Scope Restore
 
-**Branch**: `006-snapshot-versioning-and-scope-restore` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/006-snapshot-versioning-and-scope-restore/spec.md)
+**Branch**: `006-snapshot-versioning-and-scope-restore` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/006-snapshot-versioning-and-scope-restore/spec.md)
 **Input**: Feature specification from `/specs/006-snapshot-versioning-and-scope-restore/spec.md`
 
 ## Summary
@@ -66,9 +66,9 @@ Objective: Document the current Python backup/export/restore behavior and the ga
 
 Observed repository evidence on 2026-03-24:
 
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) currently supports snapshot/export backup creation and restore but without manifests, listing, or dry-run preview.
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) exposes backup upload/download but not backup listing or restore preview.
-- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) already routes backup creation and restore through Python.
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) currently supports snapshot/export backup creation and restore but without manifests, listing, or dry-run preview.
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) exposes backup upload/download but not backup listing or restore preview.
+- [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) already routes backup creation and restore through Python.
 
 Planning implication:
 
@@ -106,12 +106,12 @@ Expected outputs:
 
 Observed on 2026-03-24:
 
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now writes manifest files for snapshot and export backups, lists manifest-backed backups, and exposes non-mutating restore preview
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now also supports scope-selective restore preview and scope-selective restore while preserving unrelated scopes
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now exposes `memory_backup_list` and `memory_backup_preview`
-- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) now route backup listing, dry-run restore preview, and selective scope restore through Python-owned paths
-- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py) adds regression coverage for manifests, listing, and non-mutating restore preview
-- [test/integration/python-adapter-plugin.test.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/test/integration/python-adapter-plugin.test.ts) adds host/bootstrap regression coverage for backup list and preview routing
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now writes manifest files for snapshot and export backups, lists manifest-backed backups, and exposes non-mutating restore preview
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now also supports scope-selective restore preview and scope-selective restore while preserving unrelated scopes
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now exposes `memory_backup_list` and `memory_backup_preview`
+- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) now route backup listing, dry-run restore preview, and selective scope restore through Python-owned paths
+- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py) adds regression coverage for manifests, listing, and non-mutating restore preview
+- [test/integration/python-adapter-plugin.test.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/test/integration/python-adapter-plugin.test.ts) adds host/bootstrap regression coverage for backup list and preview routing
 
 Validation results:
 
@@ -119,7 +119,7 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `12` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 /home/hali/.openclaw/extensions/memory-aegis-v10/.venv/bin/pytest -q tests`
   - passed: `65 passed in 1.05s`
 
 Current residual risks:

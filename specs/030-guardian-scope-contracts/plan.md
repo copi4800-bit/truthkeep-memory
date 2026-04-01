@@ -1,6 +1,6 @@
 # Implementation Plan: Guardian Scope Contracts
 
-**Branch**: `030-guardian-scope-contracts` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/030-guardian-scope-contracts/spec.md)
+**Branch**: `030-guardian-scope-contracts` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/030-guardian-scope-contracts/spec.md)
 **Input**: Feature specification from `/specs/030-guardian-scope-contracts/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the first Guardian slice by making scope boundary contracts explicit i
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/retrieval/contract.py`, `aegis_py/retrieval/engine.py`, `aegis_py/app.py`, `aegis_py/surface.py`  
 **Storage**: existing local SQLite scope fields and global-scope fallback behavior  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: preserve existing result ordering, keep payload additions additive, and make scope contracts explicit without adding a new retrieval subsystem  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the first Guardian slice by making scope boundary contracts explicit i
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/030-guardian-scope-contracts`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/030-guardian-scope-contracts`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `1.03s`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `89 passed in 2.80s`
 

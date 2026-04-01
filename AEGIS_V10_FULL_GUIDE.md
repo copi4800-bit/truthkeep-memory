@@ -5,7 +5,7 @@ Welcome to the **Constitutional Edition** of Memory Aegis. Version 10 is not jus
 ## 🚀 What's New in v10
 
 ### 1. Constitutional Governance Engine (Hiến pháp cho Trí nhớ)
-Unlike v9 which relied solely on residual scoring, v10 adds a **hard governance layer** that enforces truth regardless of score:
+Unlike v10 which relied solely on residual scoring, v10 adds a **hard governance layer** that enforces truth regardless of score:
 
 | Priority | Level | Function |
 |---|---|---|
@@ -49,14 +49,14 @@ Q_priority = risk * 0.4 + impact * 0.4 + ambiguity * 0.2
 
 ## 🔧 V10 Core (Still Active)
 
-The v9 Residual Judgment Engine remains the scoring foundation:
+The v10 Residual Judgment Engine remains the scoring foundation:
 ```
 S_final = S_base + Δ_judge + Δ_life + H_constraints
 ```
 
-- `aegis_py/v9/scorer.py`: The mathematical brain with fortress calibration
-- `aegis_py/v9/adapter.py`: Data mapper for raw storage → v9 signals
-- `aegis_py/v9/translator.py`: Faithful human-readable explanations
+- `aegis_py/v10/scorer.py`: The mathematical brain with fortress calibration
+- `aegis_py/v10/adapter.py`: Data mapper for raw storage → v10 signals
+- `aegis_py/v10/translator.py`: Faithful human-readable explanations
 
 ---
 

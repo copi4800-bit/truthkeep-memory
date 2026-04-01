@@ -28,7 +28,7 @@ Build the first bounded admission layer after `063` and `064`: introduce interna
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── memory/

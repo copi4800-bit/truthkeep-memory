@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from .retrieval.v8_dynamics import bundle_energy_snapshot
+from .retrieval.v10_dynamics import bundle_energy_snapshot
 from .storage.manager import DEFAULT_COMPACTION_POLICY
 
 

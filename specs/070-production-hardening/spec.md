@@ -3,7 +3,7 @@
 **Feature Branch**: `070-production-hardening`  
 **Created**: 2026-03-29  
 **Status**: Draft  
-**Input**: User description: "Turn the already-working Aegis v7 runtime into a more production-trustworthy system by locking acceptance coverage, regression coverage, and data-safety invariants for critical flows."
+**Input**: User description: "Turn the already-working Aegis v10 runtime into a more production-trustworthy system by locking acceptance coverage, regression coverage, and data-safety invariants for critical flows."
 
 ## User Scenarios & Testing
 

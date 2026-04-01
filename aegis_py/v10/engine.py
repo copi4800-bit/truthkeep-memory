@@ -4,8 +4,8 @@ from .models import DecisionObject, GovernanceStatus, TruthRole, RetrievableMode
 from .policy import MemoryConstitution
 from .review import ReviewQueueV10
 from .events import EventLogger, GovernanceEvent
-from ..v9.scorer import ResidualScorer
-from ..v9.models import JudgmentTrace
+from ..v10.scorer import ResidualScorer
+from ..v10.models import JudgmentTrace
 
 class GovernanceEngineV10:
     """Aegis v10 Decision Engine for Memory Governance."""
@@ -22,7 +22,7 @@ class GovernanceEngineV10:
         Main entry point for memory governance.
         Transforms soft scores into hard decisions via the Constitution.
         """
-        # 1. Compute soft signals from v9 scorer
+        # 1. Compute soft signals from v10 scorer
         trace = self.scorer.score(memory, query_signals, intent=intent)
         score = trace.factors.get("final_score", 0.0)
         entropy = trace.factors.get("entropy", 0.0)

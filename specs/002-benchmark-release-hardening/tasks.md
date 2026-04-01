@@ -39,8 +39,8 @@ Completed so far:
 
 **Purpose**: Align the new hardening feature with the existing benchmark and documentation baseline.
 
-- [x] T001 [FOUNDATION] Review the release gaps recorded in [specs/001-aegis-vnext-memory-engine/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/001-aegis-vnext-memory-engine/plan.md) and restate the bounded scope in [specs/002-benchmark-release-hardening/spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/spec.md) and [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/plan.md)
-- [x] T002 [P] [FOUNDATION] Inventory current benchmark and regression coverage across [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py), [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py), [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py), and [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py)
+- [x] T001 [FOUNDATION] Review the release gaps recorded in [specs/001-aegis-vnext-memory-engine/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/001-aegis-vnext-memory-engine/plan.md) and restate the bounded scope in [specs/002-benchmark-release-hardening/spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/spec.md) and [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/plan.md)
+- [x] T002 [P] [FOUNDATION] Inventory current benchmark and regression coverage across [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py), [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py), [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py), and [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py)
 
 ---
 
@@ -50,9 +50,9 @@ Completed so far:
 
 **⚠️ CRITICAL**: No user story implementation should proceed until these tasks are complete
 
-- [x] T003 [FOUNDATION] Define the canonical benchmark gate contract and threshold ownership in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py)
-- [x] T004 [P] [FOUNDATION] Add regression assertions that exercise threshold evaluation in [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
-- [x] T005 [P] [FOUNDATION] Align contributor-facing validation references in [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) and [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md) with the active root-level `spec-kit` layout
+- [x] T003 [FOUNDATION] Define the canonical benchmark gate contract and threshold ownership in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py)
+- [x] T004 [P] [FOUNDATION] Add regression assertions that exercise threshold evaluation in [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
+- [x] T005 [P] [FOUNDATION] Align contributor-facing validation references in [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) and [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md) with the active root-level `spec-kit` layout
 
 **Checkpoint**: Benchmark and validation contracts are explicit and stable.
 
@@ -66,13 +66,13 @@ Completed so far:
 
 ### Tests for User Story 1
 
-- [x] T006 [P] [US1] Expand benchmark fixture coverage for scoped retrieval and anti-leak behavior in [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
-- [x] T007 [P] [US1] Add benchmark-adjacent regression tests for punctuation-safe and empty-result retrieval behavior in [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_retrieval.py)
+- [x] T006 [P] [US1] Expand benchmark fixture coverage for scoped retrieval and anti-leak behavior in [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
+- [x] T007 [P] [US1] Add benchmark-adjacent regression tests for punctuation-safe and empty-result retrieval behavior in [tests/test_retrieval.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_retrieval.py)
 
 ### Implementation for User Story 1
 
-- [x] T008 [US1] Broaden seeded benchmark query cases and reporting support in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py)
-- [x] T009 [US1] Ensure benchmark failure output identifies violated metrics in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/benchmark.py) and [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py)
+- [x] T008 [US1] Broaden seeded benchmark query cases and reporting support in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py)
+- [x] T009 [US1] Ensure benchmark failure output identifies violated metrics in [aegis_py/retrieval/benchmark.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/benchmark.py) and [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py)
 
 **Checkpoint**: Retrieval benchmark gating covers the broadened corpus and fails explicitly on regression.
 
@@ -86,12 +86,12 @@ Completed so far:
 
 ### Tests for User Story 2
 
-- [x] T010 [P] [US2] Add documentation regression coverage for the published validation command and benchmark gate references in [tests/test_app_surface.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_app_surface.py) or another appropriate Python doc-facing test module if needed
+- [x] T010 [P] [US2] Add documentation regression coverage for the published validation command and benchmark gate references in [tests/test_app_surface.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_app_surface.py) or another appropriate Python doc-facing test module if needed
 
 ### Implementation for User Story 2
 
-- [x] T011 [US2] Update contributor validation workflow instructions in [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md)
-- [x] T012 [P] [US2] Update architecture and validation contract language in [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md)
+- [x] T011 [US2] Update contributor validation workflow instructions in [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md)
+- [x] T012 [P] [US2] Update architecture and validation contract language in [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md)
 
 **Checkpoint**: Contributors can identify and run the current validation workflow without tribal knowledge.
 
@@ -109,8 +109,8 @@ Completed so far:
 
 ### Implementation for User Story 3
 
-- [x] T014 [US3] Record release-readiness validation results and remaining gaps in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/plan.md)
-- [x] T015 [US3] Run the full local validation workflow and capture the observed output in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/plan.md)
+- [x] T014 [US3] Record release-readiness validation results and remaining gaps in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/plan.md)
+- [x] T015 [US3] Run the full local validation workflow and capture the observed output in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/plan.md)
 
 **Checkpoint**: Benchmark/release hardening is evidenced in the active feature artifacts.
 
@@ -120,8 +120,8 @@ Completed so far:
 
 **Purpose**: Final cleanup across benchmark, docs, and release-readiness artifacts
 
-- [x] T016 [P] [FOUNDATION] Reconcile task completion state and artifact links in [specs/002-benchmark-release-hardening/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/tasks.md)
-- [x] T017 [FOUNDATION] Run the final Python regression suite and note any residual risks in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/002-benchmark-release-hardening/plan.md)
+- [x] T016 [P] [FOUNDATION] Reconcile task completion state and artifact links in [specs/002-benchmark-release-hardening/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/tasks.md)
+- [x] T017 [FOUNDATION] Run the final Python regression suite and note any residual risks in [specs/002-benchmark-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/002-benchmark-release-hardening/plan.md)
 
 ## Dependencies & Execution Order
 

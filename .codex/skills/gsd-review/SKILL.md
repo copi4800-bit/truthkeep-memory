@@ -54,7 +54,7 @@ planning via $gsd-plan-phase --reviews.
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/review.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/review.md
 </execution_context>
 
 <context>
@@ -68,6 +68,6 @@ Phase number: extracted from {{GSD_ARGS}} (required)
 </context>
 
 <process>
-Execute the review workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/review.md end-to-end.
+Execute the review workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/review.md end-to-end.
 </process>
 

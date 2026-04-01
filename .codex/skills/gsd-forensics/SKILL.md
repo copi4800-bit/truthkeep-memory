@@ -53,7 +53,7 @@ Output: Forensic report saved to `.planning/forensics/`, presented inline, with 
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/forensics.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/forensics.md
 </execution_context>
 
 <context>
@@ -70,7 +70,7 @@ Output: Forensic report saved to `.planning/forensics/`, presented inline, with 
 </context>
 
 <process>
-Read and execute the forensics workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/forensics.md end-to-end.
+Read and execute the forensics workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/forensics.md end-to-end.
 </process>
 
 <success_criteria>

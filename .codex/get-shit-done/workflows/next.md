@@ -14,7 +14,7 @@ Read project state to determine current position:
 
 ```bash
 # Get state snapshot
-node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/gsd-tools.cjs" state json 2>/dev/null || echo "{}"
+node "/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/bin/gsd-tools.cjs" state json 2>/dev/null || echo "{}"
 ```
 
 Also read:

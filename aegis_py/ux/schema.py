@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Any
 from .i18n import get_text
 
-# Standard thresholds for v8 signals (from 5.md / 6.md)
+# Standard thresholds for v10 signals (from 5.md / 6.md)
 SIGNAL_THRESHOLDS = {
     "strong": 0.85,
     "good": 0.70,
@@ -38,7 +38,7 @@ def get_conflict_label(score: float, locale: str = "vi") -> str:
 
 def unify_v8_signals(signals: dict[str, Any], locale: str = "vi") -> dict[str, Any]:
     """
-    Translates v8 raw signals into the unified 5.md Data Contract.
+    Translates v10 raw signals into the unified 5.md Data Contract.
     """
     # Base schema mapping
     unified = {

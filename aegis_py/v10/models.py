@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
-from ..v9.models import MemoryRecordV9, JudgmentTrace
+from ..v10.models import MemoryRecordV9, JudgmentTrace
 
 class GovernanceStatus(Enum):
     CANDIDATE = "candidate"

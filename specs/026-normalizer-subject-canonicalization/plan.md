@@ -1,6 +1,6 @@
 # Implementation Plan: Normalizer Subject Canonicalization
 
-**Branch**: `026-normalizer-subject-canonicalization` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/026-normalizer-subject-canonicalization/spec.md)
+**Branch**: `026-normalizer-subject-canonicalization` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/026-normalizer-subject-canonicalization/spec.md)
 **Input**: Feature specification from `/specs/026-normalizer-subject-canonicalization/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the second Tranche A slice by canonicalizing subject keys during inges
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/memory/ingest.py`, Extractor slice from `025`, Python integration tests  
 **Storage**: existing SQLite `memories.subject` field  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep normalization deterministic and local, normalize only non-empty strings, preserve explicit `None` semantics for taxonomy flows  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the second Tranche A slice by canonicalizing subject keys during inges
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/026-normalizer-subject-canonicalization`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/026-normalizer-subject-canonicalization`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `672ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `85 passed in 2.83s`
 

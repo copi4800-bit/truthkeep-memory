@@ -3,7 +3,7 @@
 **Feature Branch**: `065-promotion-gate-primitives`  
 **Created**: 2026-03-28  
 **Status**: Draft  
-**Input**: Open the tranche immediately after `064-internal-evidence-consumption` by introducing bounded promotion-gate primitives that separate extraction from promotion into retrievable memory, without yet landing the full v7 state machine or a retrieval rewrite.
+**Input**: Open the tranche immediately after `064-internal-evidence-consumption` by introducing bounded promotion-gate primitives that separate extraction from promotion into retrievable memory, without yet landing the full v10 state machine or a retrieval rewrite.
 
 ## User Scenarios & Testing
 

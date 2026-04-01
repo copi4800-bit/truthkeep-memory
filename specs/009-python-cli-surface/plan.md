@@ -1,6 +1,6 @@
 # Implementation Plan: Python CLI Surface
 
-**Branch**: `009-python-cli-surface` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/009-python-cli-surface/spec.md)
+**Branch**: `009-python-cli-surface` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/009-python-cli-surface/spec.md)
 **Input**: Feature specification from `/specs/009-python-cli-surface/spec.md`
 
 ## Summary
@@ -74,16 +74,16 @@ Objective: Add CLI access for backup and scope-policy workflows that already exi
 - add CLI integration tests in the Python test suite
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
 Observed on 2026-03-24:
 
-- [aegis_py/cli.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/cli.py) now exposes a standalone Python CLI over the existing Aegis public surface
+- [aegis_py/cli.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/cli.py) now exposes a standalone Python CLI over the existing Aegis public surface
 - the CLI wraps `surface`, `status`, `store`, `search`, `context-pack`, `backup-upload`, `backup-preview`, and `scope-policy` without requiring OpenClaw
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) now documents standalone CLI usage for non-OpenClaw integrations
-- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py) now includes subprocess-driven CLI integration coverage
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) now documents standalone CLI usage for non-OpenClaw integrations
+- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py) now includes subprocess-driven CLI integration coverage
 
 Validation results:
 
@@ -91,6 +91,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `16` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `71 passed in 2.51s`
 

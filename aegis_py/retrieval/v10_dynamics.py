@@ -5,7 +5,7 @@ from dataclasses import dataclass, replace
 from typing import Any
 
 V8_STATE_METADATA_KEY = "v8_state"
-LEGACY_V8_DYNAMICS_METADATA_KEY = "v8_dynamics"
+LEGACY_V8_DYNAMICS_METADATA_KEY = "v10_dynamics"
 PERSISTED_V8_STATE_FIELDS = (
     "belief_score",
     "usage_signal",

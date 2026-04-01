@@ -8,9 +8,9 @@ from ..memory.core import MemoryManager
 from ..storage.manager import StorageManager
 
 # Phase 2: Aegis v10 Core Integration
-from ..v9.adapter import map_to_v9_record
-from ..v9.scorer import ResidualScorer
-from ..v9.query_signals import build_v9_query_signals
+from ..v10.adapter import map_to_v9_record
+from ..v10.scorer import ResidualScorer
+from ..v10.query_signals import build_v9_query_signals
 
 # Phase 3: Aegis v10 Governance Integration
 from ..v10.engine import GovernanceEngineV10
@@ -37,7 +37,7 @@ class SearchPipeline:
         self.v10_registry = TruthRegistryV10(storage)
 
     def search(self, query: SearchQuery) -> List[SearchResult]:
-        # 1. Recall Candidates (v8 logic)
+        # 1. Recall Candidates (v10 logic)
         canonical = run_scoped_search(
             self.storage,
             query.query,
@@ -118,7 +118,7 @@ class SearchPipeline:
             # --- Aegis v10 Governed Judgment Engine ---
             context = {"intent": getattr(query_obj, "intent", "normal_recall") if query_obj else "normal_recall"}
             
-            # For v9 query signals, we need an object-like result
+            # For v10 query signals, we need an object-like result
             # If it's a dict, we might need to wrap it or adapt build_v9_query_signals
             query_signals = build_v9_query_signals(result, query_text, self.storage, context=context)
             v9_record = map_to_v9_record(memory, self.storage)

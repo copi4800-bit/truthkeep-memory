@@ -1,6 +1,6 @@
 # Implementation Plan: Hybrid Sync Protocol Lite
 
-**Branch**: `018-hybrid-sync-protocol-lite` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/018-hybrid-sync-protocol-lite/spec.md)
+**Branch**: `018-hybrid-sync-protocol-lite` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/018-hybrid-sync-protocol-lite/spec.md)
 **Input**: Feature specification from `/specs/018-hybrid-sync-protocol-lite/spec.md`
 
 ## Summary
@@ -28,7 +28,7 @@ Add a file-based sync envelope workflow for `sync_eligible` scopes with export, 
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -46,6 +46,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `17` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `83 passed in 2.88s`
 

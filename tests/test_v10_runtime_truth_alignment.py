@@ -8,7 +8,7 @@ from aegis_py.retrieval.models import SearchQuery
 
 async def test_v9_runtime_truth_alignment():
     # Setup real temporary storage
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v7/test_v9_runtime.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_runtime.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -73,8 +73,8 @@ async def test_v9_runtime_truth_alignment():
     print(f"Top Result Human Reason: {serialized['human_reason']}")
     
     # Assertions
-    assert results[0].memory.id == new_id, "v9 Runtime should have ranked the New Memory (Truth Winner) as #1"
-    assert "được xác nhận là sự thật hiện tại" in serialized["human_reason"], "Explanation should reflect v9 truth alignment"
+    assert results[0].memory.id == new_id, "v10 Runtime should have ranked the New Memory (Truth Winner) as #1"
+    assert "được xác nhận là sự thật hiện tại" in serialized["human_reason"], "Explanation should reflect v10 truth alignment"
     
     # Cleanup
     storage.close()

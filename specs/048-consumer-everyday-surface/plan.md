@@ -30,7 +30,7 @@ Make the default everyday status surface readable for non-technical users withou
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   └── cli.py
@@ -64,7 +64,7 @@ Validation run completed on 2026-03-28 for feature `048-consumer-everyday-surfac
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_user_surface.py tests/test_app_surface.py
 node_modules/.bin/vitest run test/integration/python-adapter-plugin.test.ts
 .venv/bin/python -m pytest -q tests

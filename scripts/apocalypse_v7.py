@@ -569,7 +569,7 @@ def run_apocalypse(
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Apocalypse runtime harness for Aegis v7.")
+    parser = argparse.ArgumentParser(description="Apocalypse runtime harness for Aegis v10.")
     parser.add_argument("--profile", choices=["quick", "apocalypse", "overload"], default="quick")
     parser.add_argument("--workspace-dir", default=str(REPO_ROOT / ".tmp_apocalypse"))
     parser.add_argument("--db-path", default=str(REPO_ROOT / ".tmp_apocalypse" / "apocalypse_v7.db"))

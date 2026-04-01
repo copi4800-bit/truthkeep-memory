@@ -1,6 +1,6 @@
 # Implementation Plan: Classifier Lane Assignment
 
-**Branch**: `027-classifier-lane-assignment` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/027-classifier-lane-assignment/spec.md)
+**Branch**: `027-classifier-lane-assignment` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/027-classifier-lane-assignment/spec.md)
 **Input**: Feature specification from `/specs/027-classifier-lane-assignment/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the third Tranche A slice by inferring conservative memory lanes when 
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/memory/ingest.py`, app/MCP/CLI store surfaces, Tranche A slices from `025` and `026`  
 **Storage**: existing SQLite `memories.type` field  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep inference deterministic and conservative, do not override explicit types, bias weak signals to `episodic`  
 
 ## Constitution Check
@@ -44,7 +44,7 @@ Implement the third Tranche A slice by inferring conservative memory lanes when 
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -58,7 +58,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/027-classifier-lane-assignment`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/027-classifier-lane-assignment`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -66,7 +66,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `615ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `86 passed in 3.04s`
 

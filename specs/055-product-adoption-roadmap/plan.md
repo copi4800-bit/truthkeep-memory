@@ -28,7 +28,7 @@ Create one governing roadmap that turns the “steal the good parts” product s
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── .planning/
 │   ├── AEGIS-ADOPTION-ROADMAP.md
 │   ├── ROADMAP.md

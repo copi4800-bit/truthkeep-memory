@@ -5,7 +5,7 @@
 
 ## Summary
 
-Add the first real v7 migration primitive to Aegis v4: an immutable local evidence log plus stable evidence linkage from memory records, while keeping the current retrieval/runtime interfaces intact.
+Add the first real v10 migration primitive to Aegis v4: an immutable local evidence log plus stable evidence linkage from memory records, while keeping the current retrieval/runtime interfaces intact.
 
 ## Technical Context
 
@@ -13,7 +13,7 @@ Add the first real v7 migration primitive to Aegis v4: an immutable local eviden
 **Primary Dependencies**: `aegis_py/storage/migrations/001_baseline.sql`, `aegis_py/storage/manager.py`, `aegis_py/storage/models.py`, `aegis_py/memory/ingest.py`, `aegis_py/memory/core.py`, integration/storage tests  
 **Storage**: local SQLite, append-only evidence table plus memory-to-evidence linkage  
 **Testing**: `pytest` storage/integration/runtime suite and relevant host contract tests  
-**Target Platform**: current local-first runtime and future v7 migration slices  
+**Target Platform**: current local-first runtime and future v10 migration slices  
 **Constraints**: preserve current public contract; do not introduce promotion gating or retrieval rewrites in this tranche; evidence must remain local-first and SQLite-native  
 **Scale/Scope**: schema extension, ingest persistence changes, model updates, and backward-compatible tests
 
@@ -23,12 +23,12 @@ Add the first real v7 migration primitive to Aegis v4: an immutable local eviden
 - **Brownfield Refactor Over Rewrite**: Pass. This tranche extends the current persistence path.
 - **Explainable Retrieval Is Non-Negotiable**: Pass. Evidence linkage strengthens explainability without changing payload shape.
 - **Safe Memory Mutation By Default**: Pass. Evidence rows are append-only and support safer future validation.
-- **Measured Simplicity**: Pass. This tranche adds one foundational store without attempting the whole v7 state model at once.
+- **Measured Simplicity**: Pass. This tranche adds one foundational store without attempting the whole v10 state model at once.
 
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── memory/
 │   │   ├── core.py
@@ -81,5 +81,5 @@ extensions/memory-aegis-v7/
 
 ## Complexity Tracking
 
-Main risk: leaking the future v7 state/admission design into this foundation slice. Guard against that by keeping this tranche storage-first and compatibility-first.
+Main risk: leaking the future v10 state/admission design into this foundation slice. Guard against that by keeping this tranche storage-first and compatibility-first.
 

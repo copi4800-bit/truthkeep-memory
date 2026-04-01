@@ -1,7 +1,7 @@
 # PHASE 5: EXPLAINABILITY 2.0 (GSD)
 
 ## Objective
-Xây dựng hệ thống giải thích trung thực (Faithful Explanation) dựa trên cấu trúc toán học 3 tầng của v9.
+Xây dựng hệ thống giải thích trung thực (Faithful Explanation) dựa trên cấu trúc toán học 3 tầng của v10.
 
 ## Key Tasks
 1. [ ] Cập nhật `ResidualScorer` để ghi lại chi tiết từng thành phần điểm (Trace factors).

@@ -1,6 +1,6 @@
 # Implementation Plan: Sync Reconcile Conflicts
 
-**Branch**: `019-sync-reconcile-conflicts` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/019-sync-reconcile-conflicts/spec.md)
+**Branch**: `019-sync-reconcile-conflicts` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/019-sync-reconcile-conflicts/spec.md)
 **Input**: Feature specification from `/specs/019-sync-reconcile-conflicts/spec.md`
 
 ## Summary
@@ -28,7 +28,7 @@ Add detailed reconcile diffs for sync envelope preview and richer reconcile stat
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -46,6 +46,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `17` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `83 passed in 2.74s`
 

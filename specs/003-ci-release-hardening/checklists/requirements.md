@@ -2,7 +2,7 @@
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning  
 **Created**: 2026-03-23  
-**Feature**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/003-ci-release-hardening/spec.md)
+**Feature**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/003-ci-release-hardening/spec.md)
 
 ## Content Quality
 

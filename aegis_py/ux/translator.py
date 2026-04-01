@@ -4,7 +4,7 @@ from .i18n import get_text
 
 def generate_human_reason(signals: dict[str, Any], locale: str = "vi") -> str:
     """
-    Translates v8 internal signals (Math) into a human-centric narrative using i18n.
+    Translates v10 internal signals (Math) into a human-centric narrative using i18n.
     """
     reasons: list[str] = []
     

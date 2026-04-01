@@ -1,4 +1,4 @@
-# V4 To V7 Gap Analysis
+# V4 To V10 Gap Analysis
 
 This document converts the architecture proposal in [/home/hali/.openclaw/11.md](/home/hali/.openclaw/11.md) into migration terms against the current Aegis v4 codebase.
 
@@ -16,7 +16,7 @@ These remain mandatory through every tranche:
 
 ## Anti-Goals
 
-The v7 effort must not become:
+The v10 effort must not become:
 
 - a full rewrite of the stable v4 runtime
 - a cloud-first or managed-only pivot
@@ -24,7 +24,7 @@ The v7 effort must not become:
 - a speculative storage split before admission/state discipline exists
 - a product regression on the current OpenClaw integration path
 
-## V7 Block Mapping
+## V10 Block Mapping
 
 ### 1. Input Capture Layer
 
@@ -32,9 +32,9 @@ Status: `partial`
 
 Existing v4 footing:
 
-- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py)
-- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/ingest.py)
-- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py)
+- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py)
+- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/ingest.py)
+- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py)
 
 Current reality:
 
@@ -51,7 +51,7 @@ Status: `missing`
 
 Existing v4 footing:
 
-- memory metadata and provenance fields in [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py)
+- memory metadata and provenance fields in [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py)
 
 Current reality:
 
@@ -70,9 +70,9 @@ Status: `present`
 
 Existing v4 footing:
 
-- [memory/extractor.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/extractor.py)
-- [memory/normalizer.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/normalizer.py)
-- [memory/classifier.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/classifier.py)
+- [memory/extractor.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/extractor.py)
+- [memory/normalizer.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/normalizer.py)
+- [memory/classifier.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/classifier.py)
 
 Current reality:
 
@@ -89,9 +89,9 @@ Status: `partial`
 
 Existing v4 footing:
 
-- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/conflict/core.py)
-- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/policy.py)
-- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/automation.py)
+- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/conflict/core.py)
+- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/policy.py)
+- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/automation.py)
 
 Current reality:
 
@@ -109,8 +109,8 @@ Status: `partial`
 
 Existing v4 footing:
 
-- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py)
-- [hygiene/transitions.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/transitions.py)
+- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py)
+- [hygiene/transitions.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/transitions.py)
 - tests around lifecycle status and archival flows
 
 Current reality:
@@ -128,9 +128,9 @@ Status: `partial`
 
 Existing v4 footing:
 
-- fact records in SQLite memories via [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
-- link graph structures and graph analysis in [graph_analysis.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/graph_analysis.py)
-- retrieval/reranking infrastructure in [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
+- fact records in SQLite memories via [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
+- link graph structures and graph analysis in [graph_analysis.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/graph_analysis.py)
+- retrieval/reranking infrastructure in [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
 
 Current reality:
 
@@ -147,10 +147,10 @@ Status: `partial`
 
 Existing v4 footing:
 
-- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/engine.py)
-- [hygiene/consolidator.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/consolidator.py)
-- [evolve/core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/evolve/core.py)
-- governance modules under [governance/](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance)
+- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/engine.py)
+- [hygiene/consolidator.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/consolidator.py)
+- [evolve/core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/evolve/core.py)
+- governance modules under [governance/](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance)
 
 Current reality:
 
@@ -167,10 +167,10 @@ Status: `present`
 
 Existing v4 footing:
 
-- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
-- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/contract.py)
-- [retrieval/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/models.py)
-- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py)
+- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
+- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/contract.py)
+- [retrieval/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/models.py)
+- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py)
 
 Current reality:
 
@@ -178,7 +178,7 @@ Current reality:
 
 Gap:
 
-- retrieval currently operates over the v4 lifecycle model rather than the richer v7 admission/state model.
+- retrieval currently operates over the v4 lifecycle model rather than the richer v10 admission/state model.
 
 ### 9. Governance Shell
 
@@ -186,10 +186,10 @@ Status: `partial`
 
 Existing v4 footing:
 
-- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/automation.py)
-- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/policy.py)
-- [governance/rollback.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/rollback.py)
-- [observability/metrics.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/observability/metrics.py)
+- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/automation.py)
+- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/policy.py)
+- [governance/rollback.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/rollback.py)
+- [observability/metrics.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/observability/metrics.py)
 
 Current reality:
 

@@ -52,8 +52,8 @@ Routes to the profile-user workflow which orchestrates the full flow: consent ga
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/profile-user.md
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/references/ui-brand.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/profile-user.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/references/ui-brand.md
 </execution_context>
 
 <context>

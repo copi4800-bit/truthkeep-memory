@@ -30,16 +30,16 @@ Observed on 2026-03-24 after reviewing and reconciling feature `038-simple-user-
 
 Validation results:
 
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_user_surface.py`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_user_surface.py`
   - passed
   - `5 passed in 0.33s`
 - `SPECIFY_FEATURE=035-semantic-memory-product-roadmap ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v7/specs/035-semantic-memory-product-roadmap`
+  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v10/specs/035-semantic-memory-product-roadmap`
 - `SPECIFY_FEATURE=038-simple-user-surface ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v7/specs/038-simple-user-surface`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+  - resolved `FEATURE_DIR` to `/home/hali/.openclaw/extensions/memory-aegis-v10/specs/038-simple-user-surface`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `112 passed in 2.76s`
 

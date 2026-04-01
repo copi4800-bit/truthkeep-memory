@@ -7,7 +7,7 @@ from .retrieval.models import SearchResult
 from .tool_registry import TOOL_REGISTRY, operations_for_audience, public_operations
 from .ux.schema import unify_v8_signals
 from .ux.translator import generate_human_reason
-from .v9.translator import FaithfulRenderer
+from .v10.translator import FaithfulRenderer
 
 RETRIEVAL_MODES = {"fast", "explain"}
 
@@ -15,7 +15,7 @@ DEFAULT_OPERATIONS = operations_for_audience("default")
 ADVANCED_OPERATIONS = operations_for_audience("advanced")
 PUBLIC_OPERATIONS = public_operations()
 
-# Global v9 Renderer
+# Global v10 Renderer
 V9_RENDERER = FaithfulRenderer()
 
 
@@ -91,9 +91,9 @@ def build_public_surface(*, runtime_version: str) -> dict[str, Any]:
                 "cli_json_process",
             ],
             "startup_contract": {
-                "service_info_command": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 python -m aegis_py.mcp.server --service-info",
-                "startup_probe_command": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 python -m aegis_py.mcp.server --startup-probe",
-                "tool_invocation_pattern": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 python -m aegis_py.mcp.server --tool <tool-name> --args-json '{...}'",
+                "service_info_command": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 python -m aegis_py.mcp.server --service-info",
+                "startup_probe_command": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 python -m aegis_py.mcp.server --startup-probe",
+                "tool_invocation_pattern": "PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 python -m aegis_py.mcp.server --tool <tool-name> --args-json '{...}'",
             },
             "thin_host_guidance": [
                 "spawn_local_python_process",
@@ -139,7 +139,7 @@ def serialize_search_result(
     # Prioritize fresh v8_core_signals from the current retrieval run
     v8_state = result.v8_core_signals or (result.memory.metadata.get("v8_state", {}) if isinstance(result.memory.metadata, dict) else {})
     
-    # Prioritize v9 human_reason if trace is available
+    # Prioritize v10 human_reason if trace is available
     v9_trace = getattr(result, "v9_trace", None)
     v9_payload = {}
     if v9_trace:
@@ -194,7 +194,7 @@ def serialize_search_result(
         "provenance": result.provenance,
         "conflict_status": result.conflict_status,
         "human_reason": human_reason,
-        "v9_audit": v9_payload, # Audit-friendly v9 trace
+        "v9_audit": v9_payload, # Audit-friendly v10 trace
         "v10_governance": v10_payload, # v10 Governance fields
         "unified_signals": unify_v8_signals(v8_state, locale=locale),
         "suppressed_candidates": result.suppressed_candidates, # Thêm Why-not payload

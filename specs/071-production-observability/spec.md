@@ -3,7 +3,7 @@
 **Feature Branch**: `071-production-observability`  
 **Created**: 2026-03-29  
 **Status**: Draft  
-**Input**: User description: "Make Aegis v7 observable enough that operators can see what happened, where it failed, and whether the runtime is degrading before it becomes dangerous."
+**Input**: User description: "Make Aegis v10 observable enough that operators can see what happened, where it failed, and whether the runtime is degrading before it becomes dangerous."
 
 ## User Scenarios & Testing
 

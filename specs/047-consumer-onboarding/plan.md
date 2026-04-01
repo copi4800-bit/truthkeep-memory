@@ -30,7 +30,7 @@ Implement the first production onboarding flow for non-technical users on top of
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── cli.py
@@ -67,7 +67,7 @@ Validation run completed on 2026-03-28 for feature `047-consumer-onboarding`.
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_user_surface.py tests/test_python_only_runtime_contract.py
 .venv/bin/python -m pytest -q tests
 ```

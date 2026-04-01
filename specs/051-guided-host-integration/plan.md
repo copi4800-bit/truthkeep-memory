@@ -30,7 +30,7 @@ Reduce the final consumer-closure blockers by making the ordinary-user host path
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── openclaw.plugin.json
 ├── README.md
 ├── src/
@@ -60,7 +60,7 @@ Validation run completed on 2026-03-28 for feature `051-guided-host-integration`
 Executed command:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_python_only_runtime_contract.py
 ```
 

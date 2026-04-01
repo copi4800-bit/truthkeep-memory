@@ -23,7 +23,7 @@ Template for `.planning/codebase/INTEGRATIONS.md` - captures external service de
 
 **Email/SMS:**
 - [Service] - [What it's used for: e.g., "transactional emails"]
-  - SDK/Client: [e.g., "sendgrid/mail v8.x"]
+  - SDK/Client: [e.g., "sendgrid/mail v10.x"]
   - Auth: [e.g., "API key in SENDGRID_API_KEY env var"]
   - Templates: [e.g., "managed in SendGrid dashboard"]
 
@@ -142,7 +142,7 @@ Template for `.planning/codebase/INTEGRATIONS.md` - captures external service de
 
 **Email/SMS:**
 - SendGrid - Transactional emails (receipts, password resets)
-  - SDK/Client: @sendgrid/mail v8.1
+  - SDK/Client: @sendgrid/mail v10.1
   - Auth: API key in SENDGRID_API_KEY env var
   - Templates: Managed in SendGrid dashboard (template IDs in code)
 

@@ -20,7 +20,7 @@ def run_extreme_stress():
     if os.path.exists(db_path):
         os.remove(db_path)
     
-    print(f"--- BẮT ĐẦU SIÊU STRESS TEST AEGIS V8: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ---")
+    print(f"--- BẮT ĐẦU SIÊU STRESS TEST AEGIS V10: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ---")
     app = AegisApp(db_path=db_path)
     
     # 1. GIAI ĐOẠN NẠP ĐẠN (SEEDING) - 2,000 RECORDS (Giảm xuống 2k để phù hợp với tài nguyên hiện tại)
@@ -48,7 +48,7 @@ def run_extreme_stress():
     # 2. GIAI ĐOẠN CÀI MÌN (CONFLICTS)
     print("Giai đoạn 2: Đang cài cắm bẫy xung đột trực tiếp...")
     for i in range(50):
-        app.put_memory("The system encryption key is 'AES-256-V8-CORE'.", subject="encryption", scope_id="STRESS_ZONE", type="semantic")
+        app.put_memory("The system encryption key is 'AES-256-V10-CORE'.", subject="encryption", scope_id="STRESS_ZONE", type="semantic")
         app.put_memory("The system encryption key is 'DES-LEGACY-V1'.", subject="encryption", scope_id="STRESS_ZONE", type="semantic")
 
     print(f"Hoàn tất nạp dữ liệu trong {time.time() - start_time:.2f}s.")
@@ -72,7 +72,7 @@ def run_extreme_stress():
         for _ in range(50): 
             q = random.choice(queries)
             t0 = time.perf_counter()
-            # Sử dụng search thay vì recall cho v8
+            # Sử dụng search thay vì recall cho v10
             results = local_app.search(q, scope_id="STRESS_ZONE", scope_type="global")
             latencies.append(time.perf_counter() - t0)
             if results:

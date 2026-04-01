@@ -1,6 +1,6 @@
 # Implementation Plan: Ingest Precision Roadmap
 
-**Branch**: `024-ingest-precision-roadmap` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/024-ingest-precision-roadmap/spec.md)
+**Branch**: `024-ingest-precision-roadmap` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/024-ingest-precision-roadmap/spec.md)
 **Input**: Feature specification from `/specs/024-ingest-precision-roadmap/spec.md`
 
 ## Summary
@@ -53,6 +53,6 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/024-ingest-precision-roadmap`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/024-ingest-precision-roadmap`
   - `AVAILABLE_DOCS=["tasks.md"]`
 

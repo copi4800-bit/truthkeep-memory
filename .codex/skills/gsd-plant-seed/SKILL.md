@@ -55,10 +55,10 @@ Consumed by: $gsd-new-milestone (scans seeds and presents matches)
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/plant-seed.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/plant-seed.md
 </execution_context>
 
 <process>
-Execute the plant-seed workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/plant-seed.md end-to-end.
+Execute the plant-seed workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/plant-seed.md end-to-end.
 </process>
 

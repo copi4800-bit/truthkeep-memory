@@ -1,11 +1,11 @@
 # Implementation Plan: V10 Core Memory Dynamics
 
-**Branch**: `074-v8-core-memory-dynamics` | **Date**: 2026-03-29 | **Spec**: [spec.md](spec.md)
-**Input**: Feature specification from `/specs/074-v8-core-memory-dynamics/spec.md`
+**Branch**: `074-v10-core-memory-dynamics` | **Date**: 2026-03-29 | **Spec**: [spec.md](spec.md)
+**Input**: Feature specification from `/specs/074-v10-core-memory-dynamics/spec.md`
 
 ## Summary
 
-Translate the v8 theory documents into one executable tranche by adding a bounded dynamic signal model, dynamic retrieval shaping, and a minimal hysteresis-aware transition gate on top of the current Python runtime.
+Translate the v10 theory documents into one executable tranche by adding a bounded dynamic signal model, dynamic retrieval shaping, and a minimal hysteresis-aware transition gate on top of the current Python runtime.
 
 ## Technical Context
 
@@ -17,12 +17,12 @@ Translate the v8 theory documents into one executable tranche by adding a bounde
 **Project Type**: Python runtime/library with host integration  
 **Performance Goals**: preserve the current post-hardening retrieval and apocalypse envelopes while adding bounded scoring terms  
 **Constraints**: no simulator-first rewrite; no dependence on unavailable full utility learning; no public payload drift; no scope leakage regression  
-**Scale/Scope**: bounded v8-core signals, bounded retrieval shaping, one minimal transition gate, compatibility-first tests
+**Scale/Scope**: bounded v10-core signals, bounded retrieval shaping, one minimal transition gate, compatibility-first tests
 
 ## Constitution Check
 
 - **Local-First Memory Engine**: Pass. The tranche stays inside the local Python + SQLite runtime.
-- **Brownfield Refactor Over Rewrite**: Pass. It layers v8-core signals onto the existing runtime instead of forking a new engine.
+- **Brownfield Refactor Over Rewrite**: Pass. It layers v10-core signals onto the existing runtime instead of forking a new engine.
 - **Explainable Retrieval Is Non-Negotiable**: Pass. The tranche requires an explainable internal/operator-facing view of trust/readiness terms.
 - **Safe Memory Mutation By Default**: Pass. Transition work is bounded and hysteresis-aware; no broad autonomous mutation wave.
 - **Measured Simplicity**: Pass. Full regret learning, simulator work, and energy optimization are explicitly deferred.
@@ -30,7 +30,7 @@ Translate the v8 theory documents into one executable tranche by adding a bounde
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── retrieval/
@@ -46,7 +46,7 @@ extensions/memory-aegis-v7/
 │   ├── test_user_surface.py
 │   └── test_apocalypse_runtime.py
 └── specs/
-    └── 074-v8-core-memory-dynamics/
+    └── 074-v10-core-memory-dynamics/
         ├── spec.md
         ├── plan.md
         └── tasks.md
@@ -71,7 +71,7 @@ extensions/memory-aegis-v7/
 ## Validation Plan
 
 - Add focused retrieval tests proving dynamic ranking behavior from trust/readiness.
-- Add runtime tests for bounded v8-core signals and hysteresis transition behavior.
+- Add runtime tests for bounded v10-core signals and hysteresis transition behavior.
 - Add focused feedback tests proving bounded usage/regret/decay/belief updates affect retrieval and remain auditable.
 - Add a benchmarked retrieval-feedback case proving bundle credit assignment aligns with selection and that objective regression stays within a bounded tolerance for the seeded case.
 - Re-run:
@@ -80,7 +80,7 @@ extensions/memory-aegis-v7/
 
 ## Expected Evidence
 
-- a bounded v8-core signal helper or module in the Python runtime
+- a bounded v10-core signal helper or module in the Python runtime
 - retrieval internals consuming trust/readiness without public contract drift
 - one minimal hysteresis-aware transition seam for draft/validated decisions
 - one bounded outcome-feedback seam for usage/regret/decay/belief dynamics
@@ -89,5 +89,5 @@ extensions/memory-aegis-v7/
 
 ## Complexity Tracking
 
-Main risk: allowing the v8 theory to sprawl into a simulator rewrite. Guard against that by rejecting any work item that depends on full posterior learning, full regret instrumentation, or a schema-heavy memory-field redesign.
+Main risk: allowing the v10 theory to sprawl into a simulator rewrite. Guard against that by rejecting any work item that depends on full posterior learning, full regret instrumentation, or a schema-heavy memory-field redesign.
 

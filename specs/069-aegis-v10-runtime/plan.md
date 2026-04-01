@@ -1,11 +1,11 @@
-# Implementation Plan: Aegis v7 Runtime
+# Implementation Plan: Aegis v10 Runtime
 
-**Branch**: `069-aegis-v7-runtime` | **Date**: 2026-03-28 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/069-aegis-v7-runtime/spec.md)
-**Input**: Feature specification from `/specs/069-aegis-v7-runtime/spec.md`
+**Branch**: `069-aegis-v10-runtime` | **Date**: 2026-03-28 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/069-aegis-v10-runtime/spec.md)
+**Input**: Feature specification from `/specs/069-aegis-v10-runtime/spec.md`
 
 ## Summary
 
-Upgrade the Python-owned runtime from the current v4-shaped engine to an explicit v7 flow by hardening evidence-first ingest, adding a validation and policy gate, persisting explicit memory states plus transition history, exposing specialized storage facades, introducing a governed background planning layer, and routing retrieval through a retrieval orchestrator.
+Upgrade the Python-owned runtime from the current v4-shaped engine to an explicit v10 flow by hardening evidence-first ingest, adding a validation and policy gate, persisting explicit memory states plus transition history, exposing specialized storage facades, introducing a governed background planning layer, and routing retrieval through a retrieval orchestrator.
 
 ## Technical Context
 
@@ -30,7 +30,7 @@ Upgrade the Python-owned runtime from the current v4-shaped engine to an explici
 ### Documentation (this feature)
 
 ```text
-specs/069-aegis-v7-runtime/
+specs/069-aegis-v10-runtime/
 ├── plan.md
 ├── spec.md
 └── tasks.md
@@ -46,7 +46,7 @@ aegis_py/
 ├── storage/
 ├── hygiene/
 ├── governance/
-└── v7/
+└── v10/
 
 tests/
 ├── test_ingest.py
@@ -54,11 +54,11 @@ tests/
 └── test_v7_runtime.py
 ```
 
-**Structure Decision**: Keep the existing six-module runtime intact and add a focused `aegis_py/v7/` layer that composes new architecture primitives instead of forking the whole engine.
+**Structure Decision**: Keep the existing six-module runtime intact and add a focused `aegis_py/v10/` layer that composes new architecture primitives instead of forking the whole engine.
 
 ## Complexity Tracking
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| Additive `v7` facade layer | Needed to upgrade architecture without destabilizing the repo-wide Python migration | Rewriting the existing modules in place would create higher regression risk in a dirty worktree |
+| Additive `v10` facade layer | Needed to upgrade architecture without destabilizing the repo-wide Python migration | Rewriting the existing modules in place would create higher regression risk in a dirty worktree |
 

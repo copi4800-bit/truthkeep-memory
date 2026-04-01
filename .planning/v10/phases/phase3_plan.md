@@ -6,7 +6,7 @@ Chủ động đo lường và triệt tiêu các sai lệch hệ thống (Bias)
 ## Key Tasks
 1. [ ] Implement `compute_bias_delta` trong Scorer để triệt 4 loại bias chính: Lexical, Recency, Activation, Staleness.
 2. [ ] Thêm `BiasTruthBoost` để thưởng cho những ký ức có Lineage (Phả hệ) sạch sẽ.
-3. [ ] Viết bộ test "Bias Fairness" để so sánh v9 với các hệ thống scoring gộp kiểu cũ.
+3. [ ] Viết bộ test "Bias Fairness" để so sánh v10 với các hệ thống scoring gộp kiểu cũ.
 
 ## Bias Mitigation Targets
 - **Lexical Bias (-lambda_lexb):** Phạt những ký ức có wording giống query bất thường nhưng tín hiệu Truth yếu.

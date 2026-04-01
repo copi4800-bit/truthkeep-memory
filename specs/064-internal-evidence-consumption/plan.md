@@ -28,7 +28,7 @@ Build the narrow runtime seam after `063`: make evidence rows readable and inspe
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── memory/

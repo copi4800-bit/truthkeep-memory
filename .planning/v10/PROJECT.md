@@ -10,13 +10,13 @@ To bring Memory Aegis v10 to 100% technical and product completion by closing ar
 - **Validation**: Data-driven shadow evaluation and full-path integration tests.
 
 ## Key Files
-- `aegis_py/v9/models.py`: Data models.
-- `aegis_py/v9/adapter.py`: Data mapping.
-- `aegis_py/v9/scorer.py`: Residual judgment engine.
-- `aegis_py/v9/query_signals.py`: Input signals.
+- `aegis_py/v10/models.py`: Data models.
+- `aegis_py/v10/adapter.py`: Data mapping.
+- `aegis_py/v10/scorer.py`: Residual judgment engine.
+- `aegis_py/v10/query_signals.py`: Input signals.
 - `aegis_py/retrieval/search.py`: Core pipeline.
 - `aegis_py/surface.py`: Explanation and audit layer.
 
 ## Feature Reference
-- `specs/075-aegis-v9-complete-definition/`
+- `specs/075-aegis-v10-complete-definition/`
 

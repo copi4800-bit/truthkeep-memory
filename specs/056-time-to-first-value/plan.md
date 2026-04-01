@@ -28,7 +28,7 @@ Execute Tranche A from the adoption roadmap by publishing and validating the sho
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── bin/
 │   └── aegis-setup
@@ -71,7 +71,7 @@ Validation run completed on 2026-03-28 for feature `056-time-to-first-value`.
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_python_only_runtime_contract.py -k "quickstart or first_memory"
 .venv/bin/python -m pytest -q tests/test_user_surface.py -k "onboarding_cli or aegis_setup"
 node_modules/.bin/vitest run test/integration/python-adapter-plugin.test.ts

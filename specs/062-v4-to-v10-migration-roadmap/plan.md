@@ -1,11 +1,11 @@
-# Implementation Plan: V4 To V7 Migration Roadmap
+# Implementation Plan: V4 To V10 Migration Roadmap
 
-**Branch**: `062-v4-to-v7-migration-roadmap` | **Date**: 2026-03-28 | **Spec**: [spec.md](spec.md)
-**Input**: Feature specification from `/specs/062-v4-to-v7-migration-roadmap/spec.md`
+**Branch**: `062-v4-to-v10-migration-roadmap` | **Date**: 2026-03-28 | **Spec**: [spec.md](spec.md)
+**Input**: Feature specification from `/specs/062-v4-to-v10-migration-roadmap/spec.md`
 
 ## Summary
 
-Turn `11.md` into an executable architecture roadmap for Aegis by mapping the proposed v7 design to the current v4 codebase, identifying real gaps, and ordering migration tranches that preserve the stable local-first runtime already shipped in OpenClaw.
+Turn `11.md` into an executable architecture roadmap for Aegis by mapping the proposed v10 design to the current v4 codebase, identifying real gaps, and ordering migration tranches that preserve the stable local-first runtime already shipped in OpenClaw.
 
 ## Technical Context
 
@@ -14,7 +14,7 @@ Turn `11.md` into an executable architecture roadmap for Aegis by mapping the pr
 **Storage**: planning/docs only  
 **Testing**: manual artifact review; optional future governance tests if this roadmap later becomes machine-checked  
 **Target Platform**: maintainers and future implementation slices  
-**Constraints**: must avoid rewrite framing; must preserve the current local-first runtime as the production baseline; must distinguish existing v4 subsystems from truly new v7 work  
+**Constraints**: must avoid rewrite framing; must preserve the current local-first runtime as the production baseline; must distinguish existing v4 subsystems from truly new v10 work  
 **Scale/Scope**: one roadmap feature, one tranche model, and GSD state updates
 
 ## Constitution Check
@@ -33,18 +33,18 @@ Primary architecture source:
 
 Key current v4 source areas that the roadmap must map:
 
-- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py)
-- [surface.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/surface.py)
-- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/models.py)
-- [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py)
-- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/memory/ingest.py)
-- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py)
-- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/contract.py)
-- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/conflict/core.py)
-- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/hygiene/engine.py)
-- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/automation.py)
-- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/policy.py)
-- [governance/rollback.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/governance/rollback.py)
+- [app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py)
+- [surface.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/surface.py)
+- [storage/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/models.py)
+- [storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py)
+- [memory/ingest.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/memory/ingest.py)
+- [retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py)
+- [retrieval/contract.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/contract.py)
+- [conflict/core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/conflict/core.py)
+- [hygiene/engine.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/hygiene/engine.py)
+- [governance/automation.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/automation.py)
+- [governance/policy.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/policy.py)
+- [governance/rollback.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/governance/rollback.py)
 
 ## Tranche Hypothesis
 
@@ -58,13 +58,13 @@ The roadmap should validate or refine this likely sequence:
 
 ## Validation Plan
 
-- Create a migration roadmap artifact that maps every major v7 block in `11.md` to concrete v4 modules and gap status.
+- Create a migration roadmap artifact that maps every major v10 block in `11.md` to concrete v4 modules and gap status.
 - Define tranche ordering, dependencies, risks, invariants, and anti-goals.
 - Update `.planning/ROADMAP.md` and `.planning/STATE.md` so this roadmap becomes the next architectural strategy layer after `061`.
 
 ## Expected Evidence
 
-- one Spec Kit feature for the v4-to-v7 roadmap
+- one Spec Kit feature for the v4-to-v10 roadmap
 - tranche ordering tied to real current modules
 - first implementation-ready tranche identified
 - planning layer updated to point future architecture work at this roadmap

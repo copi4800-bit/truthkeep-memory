@@ -1,6 +1,6 @@
 # Implementation Plan: Beast Architecture Mapping
 
-**Branch**: `010-beast-architecture-mapping` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/010-beast-architecture-mapping/spec.md)
+**Branch**: `010-beast-architecture-mapping` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/010-beast-architecture-mapping/spec.md)
 **Input**: Feature specification from `/specs/010-beast-architecture-mapping/spec.md`
 
 ## Summary
@@ -72,15 +72,15 @@ Objective: Update the README and planning state so the repo officially points co
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
 Observed on 2026-03-24:
 
-- [aegis_py/ARCHITECTURE_BEAST_MAP.md](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/ARCHITECTURE_BEAST_MAP.md) now maps all 23 beasts to the practical six-module Python architecture with current/target/deferred ownership notes
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) now explains that beast names are internal taxonomy only and points contributors to the canonical map
-- [.planning/STATE.md](/home/hali/.openclaw/extensions/memory-aegis-v7/.planning/STATE.md) now anchors GSD execution to feature `010-beast-architecture-mapping`
+- [aegis_py/ARCHITECTURE_BEAST_MAP.md](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/ARCHITECTURE_BEAST_MAP.md) now maps all 23 beasts to the practical six-module Python architecture with current/target/deferred ownership notes
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) now explains that beast names are internal taxonomy only and points contributors to the canonical map
+- [.planning/STATE.md](/home/hali/.openclaw/extensions/memory-aegis-v10/.planning/STATE.md) now anchors GSD execution to feature `010-beast-architecture-mapping`
 
 Validation results:
 
@@ -90,6 +90,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `16` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `71 passed in 2.54s`
 

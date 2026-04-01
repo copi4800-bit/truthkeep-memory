@@ -98,7 +98,7 @@ Planning-only evidence recorded on 2026-03-24:
 - feature `041-completion-program` was created to become the post-`040` source of truth for what "complete" means
 - the feature now defines ordered completion tranches rather than pretending full completion can be shipped safely as one unbounded task
 - `.planning/STATE.md` is reconciled to point GSD at `041-completion-program`
-- canonical prerequisite workflow executed on 2026-03-24 and resolved `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/041-completion-program`
+- canonical prerequisite workflow executed on 2026-03-24 and resolved `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/041-completion-program`
 - prerequisite workflow confirmed task artifacts are present via `AVAILABLE_DOCS=["tasks.md"]`; `spec.md` and `plan.md` are the canonical documents for the active feature directory itself
 
 Implementation evidence is intentionally pending because this feature is a program-definition slice, not the managed platform implementation itself.

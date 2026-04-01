@@ -40,7 +40,7 @@ class AegisHealthSurface:
             "compaction_policy": storage_policy,
         }
 
-        # v9 Intelligence Metrics
+        # v10 Intelligence Metrics
         v9_metrics = {
             "truth_alignment_score": 0.95, # Placeholder for actual benchmark result
             "conflict_load_index": min(1.0, conflict_count / 10.0),

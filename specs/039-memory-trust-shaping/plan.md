@@ -34,12 +34,12 @@ Validation results:
 
 - `SPECIFY_FEATURE=039-memory-trust-shaping ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/039-memory-trust-shaping`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/039-memory-trust-shaping`
   - `AVAILABLE_DOCS=["tasks.md"]`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_retrieval.py tests/test_integration.py -k 'trust or explainability or conflict_visibility or mcp_operational_flows_return_consistent_json or context_pack_and_simple_recall_surface_trust_states'`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_retrieval.py tests/test_integration.py -k 'trust or explainability or conflict_visibility or mcp_operational_flows_return_consistent_json or context_pack_and_simple_recall_surface_trust_states'`
   - passed
   - `4 passed`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `114 passed in 2.84s`
 

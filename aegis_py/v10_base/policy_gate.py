@@ -11,7 +11,7 @@ class PolicyGateDecision:
     promotable: bool
     target_state: str
     reasons: list[str] = field(default_factory=list)
-    policy_name: str = "v7-default-policy-gate"
+    policy_name: str = "v10-default-policy-gate"
     confidence_floor: float = 0.6
     activation_floor: float = 0.1
 

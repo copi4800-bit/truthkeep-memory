@@ -28,7 +28,7 @@ Implement the next bounded slice after `044-production-hardening`: make runtime 
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── operations.py
@@ -66,7 +66,7 @@ Validation run completed on 2026-03-28 for feature `045-health-and-degraded-runt
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_app_surface.py tests/test_python_only_runtime_contract.py
 node_modules/.bin/vitest run test/integration/python-adapter-plugin.test.ts
 .venv/bin/python -m pytest -q tests

@@ -1,6 +1,6 @@
 # Implementation Plan: Navigator Stage Budgets
 
-**Branch**: `029-navigator-stage-budgets` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/029-navigator-stage-budgets/spec.md)
+**Branch**: `029-navigator-stage-budgets` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/029-navigator-stage-budgets/spec.md)
 **Input**: Feature specification from `/specs/029-navigator-stage-budgets/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the first Tranche B slice by adding explicit per-stage budgets for ret
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/retrieval/search.py`, `aegis_py/surface.py`, current context-pack contract  
 **Storage**: existing local SQLite retrieval data and explicit link/entity/subject expansion sources  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep navigation lexical-first, enforce small deterministic stage budgets, and avoid adding a broad retrieval orchestration subsystem  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the first Tranche B slice by adding explicit per-stage budgets for ret
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/029-navigator-stage-budgets`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/029-navigator-stage-budgets`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `747ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `88 passed in 2.73s`
 

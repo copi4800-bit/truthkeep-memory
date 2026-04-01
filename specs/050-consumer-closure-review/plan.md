@@ -31,10 +31,10 @@ Perform the final consumer-readiness closure review against `046-consumer-ready-
 
 Primary evidence sources:
 
-- [specs/046-consumer-ready-checklist/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/046-consumer-ready-checklist/plan.md)
-- [specs/047-consumer-onboarding/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/047-consumer-onboarding/plan.md)
-- [specs/048-consumer-everyday-surface/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/048-consumer-everyday-surface/plan.md)
-- [specs/049-consumer-recovery-trust/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/049-consumer-recovery-trust/plan.md)
+- [specs/046-consumer-ready-checklist/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/046-consumer-ready-checklist/plan.md)
+- [specs/047-consumer-onboarding/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/047-consumer-onboarding/plan.md)
+- [specs/048-consumer-everyday-surface/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/048-consumer-everyday-surface/plan.md)
+- [specs/049-consumer-recovery-trust/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/049-consumer-recovery-trust/plan.md)
 - current repo files that still show residual host/legacy complexity, including `src/aegis-manager.ts`, `src/ux/onboarding.ts`, and the broader plugin surface in `index.ts`
 
 ## Review Matrix

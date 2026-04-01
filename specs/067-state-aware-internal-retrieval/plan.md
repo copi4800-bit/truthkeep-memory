@@ -28,7 +28,7 @@ Build the next bounded tranche after `066`: let retrieval and policy internals c
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── retrieval/

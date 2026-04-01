@@ -1,6 +1,6 @@
 # Implementation Plan: Scorer Write-Time Salience
 
-**Branch**: `028-scorer-write-time-salience` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/028-scorer-write-time-salience/spec.md)
+**Branch**: `028-scorer-write-time-salience` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/028-scorer-write-time-salience/spec.md)
 **Input**: Feature specification from `/specs/028-scorer-write-time-salience/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the final Tranche A slice by assigning conservative write-time confide
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/memory/ingest.py`, `aegis_py/memory/factory.py`, existing retrieval ordering on `activation_score`  
 **Storage**: existing SQLite `memories.confidence` and `memories.activation_score` fields  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: keep scoring deterministic and bounded, preserve explicit score values, avoid opaque or overfit heuristics  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the final Tranche A slice by assigning conservative write-time confide
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/028-scorer-write-time-salience`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/028-scorer-write-time-salience`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `789ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `87 passed in 2.83s`
 

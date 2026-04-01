@@ -13,7 +13,7 @@ from aegis_py.retrieval.v8_benchmark import (
     V8RetrievalCase,
     V8TransitionCase,
     evaluate_v8_benchmark,
-    run_v8_dynamics_benchmark,
+    run_v10_dynamics_benchmark,
 )
 
 
@@ -26,7 +26,7 @@ def main() -> int:
         "Release plan evidence-backed checklist for launch.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://strong",
         subject="release.plan.strong",
@@ -35,7 +35,7 @@ def main() -> int:
         "Release plan rumor checklist for launch.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://weak",
         subject="release.plan.weak",
@@ -44,7 +44,7 @@ def main() -> int:
         "Release plan rumor checklist is not approved.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://challenger",
         subject="release.plan.weak",
@@ -53,7 +53,7 @@ def main() -> int:
         "Deployment runbook applies to release automation and rollback.",
         type="procedural",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://runbook",
         subject="deployment.runbook",
@@ -62,7 +62,7 @@ def main() -> int:
         "Deployment runbook applies to release automation.",
         type="procedural",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://runbook-cold",
         subject="deployment.runbook.alt",
@@ -71,7 +71,7 @@ def main() -> int:
 
     app.storage.create_evidence_event(
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         memory_id=strong.id,
         source_kind="manual",
         source_ref="bench://strong/evidence",
@@ -84,7 +84,7 @@ def main() -> int:
         "Validated release policy for launch trains.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://draft",
         subject="release.policy",
@@ -100,7 +100,7 @@ def main() -> int:
     )
     app.storage.create_evidence_event(
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         memory_id=draft.id,
         source_kind="manual",
         source_ref="bench://draft/evidence",
@@ -109,28 +109,28 @@ def main() -> int:
     )
 
     demote = app.put_memory(
-        "The release gate is enabled for project v8.",
+        "The release gate is enabled for project v10.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/a",
         subject="release.gate",
     )
     other_a = app.put_memory(
-        "The release gate is not enabled for project v8.",
+        "The release gate is not enabled for project v10.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/b",
         subject="release.gate",
     )
     other_b = app.put_memory(
-        "The release gate remains disabled for project v8 under rollback conditions.",
+        "The release gate remains disabled for project v10 under rollback conditions.",
         type="semantic",
         scope_type="project",
-        scope_id="V8",
+        scope_id="V10",
         source_kind="manual",
         source_ref="bench://demote/c",
         subject="release.gate",
@@ -157,20 +157,20 @@ def main() -> int:
         override_score=0.8,
     )
 
-    summary = run_v8_dynamics_benchmark(
+    summary = run_v10_dynamics_benchmark(
         app,
         retrieval_cases=[
             V8RetrievalCase(
                 query="release plan checklist",
                 scope_type="project",
-                scope_id="V8",
+                scope_id="V10",
                 expected_top_id=strong.id,
                 expected_reason_tags=["v8_evidence_strong", "v8_trust_elevated"],
             ),
             V8RetrievalCase(
                 query="deployment runbook",
                 scope_type="project",
-                scope_id="V8",
+                scope_id="V10",
                 expected_top_id=warm.id,
                 expected_reason_tags=["v8_usage_reinforced"],
             ),
@@ -183,7 +183,7 @@ def main() -> int:
             V8FeedbackCase(
                 query="deployment runbook",
                 scope_type="project",
-                scope_id="V8",
+                scope_id="V10",
                 selected_memory_ids=[warm.id],
                 override_memory_ids=[cold.id],
                 success_score=1.0,

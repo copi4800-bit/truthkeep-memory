@@ -3,7 +3,7 @@
 This file is a derivative execution note only.
 
 - `.specify/memory/constitution.md` and future `specs/*` artifacts remain the source of truth.
-- Use this note to sequence hardening work for the current Python-owned Aegis v7 runtime.
+- Use this note to sequence hardening work for the current Python-owned Aegis v10 runtime.
 - The target is not "perfect". The governing target is: predictable, observable, recoverable.
 
 ## Current Baseline

@@ -28,7 +28,7 @@ Build the next bounded tranche after `065`: introduce an explicit internal admis
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── app.py
 │   ├── hygiene/

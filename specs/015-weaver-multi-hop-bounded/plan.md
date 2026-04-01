@@ -1,6 +1,6 @@
 # Implementation Plan: Weaver Multi-Hop Bounded
 
-**Branch**: `015-weaver-multi-hop-bounded` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/015-weaver-multi-hop-bounded/spec.md)
+**Branch**: `015-weaver-multi-hop-bounded` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/015-weaver-multi-hop-bounded/spec.md)
 **Input**: Feature specification from `/specs/015-weaver-multi-hop-bounded/spec.md`
 
 ## Summary
@@ -28,7 +28,7 @@ Add one bounded extra explicit-link hop after lexical seed recall so context pac
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -46,6 +46,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `17` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `79 passed in 1.83s`
 

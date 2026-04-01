@@ -28,7 +28,7 @@ Improve the release and published-package story so Aegis ships with the assets a
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── package.json
 ├── scripts/

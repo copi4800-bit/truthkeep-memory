@@ -1,6 +1,6 @@
 # Implementation Plan: Aegis Python CI And Release Packaging Hardening
 
-**Branch**: `003-ci-release-hardening` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/003-ci-release-hardening/spec.md)
+**Branch**: `003-ci-release-hardening` | **Date**: 2026-03-23 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/003-ci-release-hardening/spec.md)
 **Input**: Feature specification from `/specs/003-ci-release-hardening/spec.md`
 
 ## Summary
@@ -77,8 +77,8 @@ Objective: Define and implement the repository workflow that runs the canonical 
 
 Primary Files:
 
-- [.github/workflows/aegis-python-validation.yml](/home/hali/.openclaw/extensions/memory-aegis-v7/.github/workflows/aegis-python-validation.yml)
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md)
+- [.github/workflows/aegis-python-validation.yml](/home/hali/.openclaw/extensions/memory-aegis-v10/.github/workflows/aegis-python-validation.yml)
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md)
 
 Current status on 2026-03-23:
 
@@ -92,9 +92,9 @@ Objective: Document or script the release packaging steps that follow a successf
 
 Primary Files:
 
-- [scripts/release-python-package.sh](/home/hali/.openclaw/extensions/memory-aegis-v7/scripts/release-python-package.sh)
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md)
-- [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v7/AEGIS_PYTHON_SPEC.md)
+- [scripts/release-python-package.sh](/home/hali/.openclaw/extensions/memory-aegis-v10/scripts/release-python-package.sh)
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md)
+- [AEGIS_PYTHON_SPEC.md](/home/hali/.openclaw/extensions/memory-aegis-v10/AEGIS_PYTHON_SPEC.md)
 
 Current status on 2026-03-23:
 
@@ -108,8 +108,8 @@ Objective: Capture what the CI and release workflow validate, and what gaps stil
 
 Primary Files:
 
-- [specs/003-ci-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/003-ci-release-hardening/plan.md)
-- [specs/003-ci-release-hardening/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/003-ci-release-hardening/tasks.md)
+- [specs/003-ci-release-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/003-ci-release-hardening/plan.md)
+- [specs/003-ci-release-hardening/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/003-ci-release-hardening/tasks.md)
 
 ## Complexity Tracking
 
@@ -122,8 +122,8 @@ Validation run completed on 2026-03-23 for feature `003-ci-release-hardening`.
 Executed command:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
-PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
+PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests
 ```
 
 Observed result:

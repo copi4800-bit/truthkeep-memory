@@ -1,13 +1,13 @@
 # Research: Hybrid Memory Core
 
 **Date**: 2026-03-24  
-**Feature**: [007-hybrid-memory-core](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/spec.md)
+**Feature**: [007-hybrid-memory-core](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/007-hybrid-memory-core/spec.md)
 
 ## Input Reviewed
 
 - [1.md](/home/hali/.openclaw/1.md): architectural synthesis of Aegis v4 "23 beasts" grouped into foundations, capture, retrieval, hygiene, structure, and identity systems
-- [aegis_py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py): current Python runtime structure
-- [Aegis Python Constitution](/home/hali/.openclaw/extensions/memory-aegis-v7/.specify/memory/constitution.md)
+- [aegis_py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py): current Python runtime structure
+- [Aegis Python Constitution](/home/hali/.openclaw/extensions/memory-aegis-v10/.specify/memory/constitution.md)
 
 ## Key Findings
 
@@ -34,7 +34,7 @@ The most useful section of [1.md](/home/hali/.openclaw/1.md) is its consolidatio
 
 This maps cleanly to the current repo with one adjustment:
 
-- current [preferences/](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/preferences) is already serving most of the proposed `profiles/` role and should evolve rather than be renamed immediately
+- current [preferences/](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/preferences) is already serving most of the proposed `profiles/` role and should evolve rather than be renamed immediately
 
 Decision:
 
@@ -81,8 +81,8 @@ The note's final grouping places API, CLI, MCP, and host runners into an integra
 
 Decision:
 
-- preserve Python-owned semantics in [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) and [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py)
-- keep [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) as adapters only
+- preserve Python-owned semantics in [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) and [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py)
+- keep [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) as adapters only
 
 ## Applied Recommendations For Feature 007
 

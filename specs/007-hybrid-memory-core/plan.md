@@ -1,6 +1,6 @@
 # Implementation Plan: Hybrid Memory Core
 
-**Branch**: `007-hybrid-memory-core` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/spec.md)
+**Branch**: `007-hybrid-memory-core` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/007-hybrid-memory-core/spec.md)
 **Input**: Feature specification from `/specs/007-hybrid-memory-core/spec.md`
 
 ## Summary
@@ -129,19 +129,19 @@ Implementation-time evidence to capture later:
 
 Observed on 2026-03-24:
 
-- [research.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/research.md) now records how [1.md](/home/hali/.openclaw/1.md) maps into the active feature without replacing the constitution or active spec
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now exposes `public_surface()` as the Python-owned description of the stable memory contract and ownership boundaries
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now also exposes local-first scope sync-policy inspection with safe defaults and explicit `sync_eligible` scaffolding
-- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now exposes `search_context_pack()` for host-ready lexical-first context assembly
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now exposes `memory_surface`
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now exposes `memory_scope_policy`
-- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/mcp/server.py) now exposes `memory_context_pack`
-- [aegis_py/storage/schema.sql](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/schema.sql) and [aegis_py/storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/storage/manager.py) now persist optional scope policy metadata with a `local_only` default
-- [aegis_py/retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/search.py) now keeps `memory_search` lexical-first while adding subject-based relationship expansion only for context-pack flows
-- [aegis_py/retrieval/models.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/retrieval/models.py) and [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v7/aegis_py/app.py) now emit `retrieval_stage` and `relation_via_subject` for explainable expansion
-- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/index.ts) now route `memory_surface`, `memory_scope_policy`, and `memory_context_pack` through the Python-owned contract rather than adding host-only semantics
-- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v7/README.md) and [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v7/openclaw.plugin.json) now document the public boundary and runtime-readable contract surface
-- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_integration.py), [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v7/tests/test_benchmark_core.py), and [test/integration/python-adapter-plugin.test.ts](/home/hali/.openclaw/extensions/memory-aegis-v7/test/integration/python-adapter-plugin.test.ts) now protect public-surface, scope-policy, and Mammoth retrieval behavior
+- [research.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/007-hybrid-memory-core/research.md) now records how [1.md](/home/hali/.openclaw/1.md) maps into the active feature without replacing the constitution or active spec
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now exposes `public_surface()` as the Python-owned description of the stable memory contract and ownership boundaries
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now also exposes local-first scope sync-policy inspection with safe defaults and explicit `sync_eligible` scaffolding
+- [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now exposes `search_context_pack()` for host-ready lexical-first context assembly
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now exposes `memory_surface`
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now exposes `memory_scope_policy`
+- [aegis_py/mcp/server.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/mcp/server.py) now exposes `memory_context_pack`
+- [aegis_py/storage/schema.sql](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/schema.sql) and [aegis_py/storage/manager.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/storage/manager.py) now persist optional scope policy metadata with a `local_only` default
+- [aegis_py/retrieval/search.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/search.py) now keeps `memory_search` lexical-first while adding subject-based relationship expansion only for context-pack flows
+- [aegis_py/retrieval/models.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/retrieval/models.py) and [aegis_py/app.py](/home/hali/.openclaw/extensions/memory-aegis-v10/aegis_py/app.py) now emit `retrieval_stage` and `relation_via_subject` for explainable expansion
+- [src/python-adapter.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/src/python-adapter.ts) and [index.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/index.ts) now route `memory_surface`, `memory_scope_policy`, and `memory_context_pack` through the Python-owned contract rather than adding host-only semantics
+- [README.md](/home/hali/.openclaw/extensions/memory-aegis-v10/README.md) and [openclaw.plugin.json](/home/hali/.openclaw/extensions/memory-aegis-v10/openclaw.plugin.json) now document the public boundary and runtime-readable contract surface
+- [tests/test_integration.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_integration.py), [tests/test_benchmark_core.py](/home/hali/.openclaw/extensions/memory-aegis-v10/tests/test_benchmark_core.py), and [test/integration/python-adapter-plugin.test.ts](/home/hali/.openclaw/extensions/memory-aegis-v10/test/integration/python-adapter-plugin.test.ts) now protect public-surface, scope-policy, and Mammoth retrieval behavior
 
 Validation results:
 
@@ -149,6 +149,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `16` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `69 passed in 2.00s`
 

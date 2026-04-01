@@ -28,7 +28,7 @@
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── aegis_py/
 │   ├── surface.py
@@ -81,7 +81,7 @@ Validation run completed on 2026-03-28 for feature `054-default-surface-consiste
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 python3 -m unittest tests/test_app_surface.py -k test_plugin_manifest_advanced_tools_match_python_public_surface
 python3 -m unittest tests/test_app_surface.py -k test_plugin_manifest_default_tools_match_python_public_surface
 python3 -m unittest tests/test_app_surface.py -k test_public_surface_declares_bounded_health_contract

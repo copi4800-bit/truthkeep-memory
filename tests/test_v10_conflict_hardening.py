@@ -13,7 +13,7 @@ def test_v9_conflict_hardening():
     )
     
     # 2. Conflict Probe (Has unresolved contradiction)
-    # This should be penalized heavily by v9
+    # This should be penalized heavily by v10
     conflict_mem = MemoryRecordV9(
         id="mem_conflict",
         content="The server is in Zone B.",

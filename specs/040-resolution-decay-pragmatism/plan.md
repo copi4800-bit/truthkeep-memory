@@ -80,7 +80,7 @@ Implement the next trust-and-hygiene product slice from [`2.md`](/home/hali/.ope
 ## Validation Plan
 
 - `SPECIFY_FEATURE=040-resolution-decay-pragmatism ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 - targeted regression subsets for conflict, hygiene, retrieval, and integration behavior relevant to this slice
 
 ## Validation Evidence
@@ -92,7 +92,7 @@ Planning-only evidence recorded on 2026-03-24:
 - `.planning/STATE.md` is reconciled to point GSD at this feature as the active derivative coordination slice
 - `SPECIFY_FEATURE=040-resolution-decay-pragmatism ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/040-resolution-decay-pragmatism`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/040-resolution-decay-pragmatism`
   - `AVAILABLE_DOCS=["tasks.md"]`
 
 Implementation evidence is pending until code and tests land.
@@ -108,15 +108,15 @@ Validation results:
 
 - `SPECIFY_FEATURE=040-resolution-decay-pragmatism ./.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/040-resolution-decay-pragmatism`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/040-resolution-decay-pragmatism`
   - `AVAILABLE_DOCS=["tasks.md"]`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_conflict_core.py`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_conflict_core.py`
   - passed
   - `4 passed`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_integration.py -k 'public_surface_describes_python_owned_contract or python_runtime_ops_and_inspection_surfaces'`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_integration.py -k 'public_surface_describes_python_owned_contract or python_runtime_ops_and_inspection_surfaces'`
   - passed
   - `2 passed, 38 deselected`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `116 passed in 3.28s`
 - `npm run test:bootstrap`
@@ -131,13 +131,13 @@ Observed on 2026-03-24 after implementing `US2` for feature `040-resolution-deca
 
 Additional validation results:
 
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_hygiene.py tests/test_hygiene_core.py tests/test_memory_lifecycle.py`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_hygiene.py tests/test_hygiene_core.py tests/test_memory_lifecycle.py`
   - passed
   - `13 passed`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_integration.py -k 'ingest_assigns_write_time_scores_but_preserves_explicit_values or context_pack_enforces_stage_budgets_and_reports_stage_counts'`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_integration.py -k 'ingest_assigns_write_time_scores_but_preserves_explicit_values or context_pack_enforces_stage_budgets_and_reports_stage_counts'`
   - passed
   - `2 passed, 38 deselected`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `118 passed in 3.21s`
 
@@ -149,13 +149,13 @@ Observed on 2026-03-24 after implementing `US3` for feature `040-resolution-deca
 
 Additional validation results:
 
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_integration.py -k 'public_surface_describes_python_owned_contract or weaver_link_store_neighbors_and_visualization'`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_integration.py -k 'public_surface_describes_python_owned_contract or weaver_link_store_neighbors_and_visualization'`
   - passed
   - `2 passed, 38 deselected`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests/test_python_only_runtime_contract.py`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests/test_python_only_runtime_contract.py`
   - passed
   - `3 passed`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `118 passed in 3.38s`
 - `npm run test:bootstrap`

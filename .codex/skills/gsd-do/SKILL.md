@@ -54,8 +54,8 @@ Use when you know what you want but don't know which `/gsd:*` command to run.
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/do.md
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/references/ui-brand.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/do.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/references/ui-brand.md
 </execution_context>
 
 <context>
@@ -63,7 +63,7 @@ Use when you know what you want but don't know which `/gsd:*` command to run.
 </context>
 
 <process>
-Execute the do workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/do.md end-to-end.
+Execute the do workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/do.md end-to-end.
 Route user intent to the best GSD command and invoke it.
 </process>
 

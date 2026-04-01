@@ -22,7 +22,7 @@ class ResidualScorer:
 
     def score(self, memory: MemoryRecordV9, query_signals: Dict[str, float], intent: str = "normal_recall") -> JudgmentTrace:
         """
-        Computes the unified v9 Residual Judgment Score.
+        Computes the unified v10 Residual Judgment Score.
         Formula: S_final = S_base + Δ_judge + Δ_life + H_constraints
         """
         trace = JudgmentTrace()

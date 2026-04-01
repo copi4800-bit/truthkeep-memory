@@ -1,6 +1,6 @@
 # Implementation Plan: Extractor Derived Fields
 
-**Branch**: `025-extractor-derived-fields` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/025-extractor-derived-fields/spec.md)
+**Branch**: `025-extractor-derived-fields` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/025-extractor-derived-fields/spec.md)
 **Input**: Feature specification from `/specs/025-extractor-derived-fields/spec.md`
 
 ## Summary
@@ -12,7 +12,7 @@ Implement the first real Extractor Beast slice by deriving stable fallback `subj
 **Language/Version**: Python 3.13.x  
 **Primary Dependencies**: `aegis_py/memory/ingest.py`, `aegis_py/memory/factory.py`, current Python integration tests  
 **Storage**: existing SQLite `memories` rows with `subject` and `summary` columns  
-**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`  
+**Testing**: canonical prerequisite check, `npm run lint`, `npm run test:bootstrap`, `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`  
 **Constraints**: use deterministic local heuristics only, preserve explicit caller values, keep logic inside the `memory` module  
 
 ## Constitution Check
@@ -43,7 +43,7 @@ Implement the first real Extractor Beast slice by deriving stable fallback `subj
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -57,7 +57,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/025-extractor-derived-fields`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/025-extractor-derived-fields`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -65,7 +65,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `732ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `84 passed in 2.84s`
 

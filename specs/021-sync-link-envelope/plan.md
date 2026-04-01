@@ -1,6 +1,6 @@
 # Implementation Plan: Sync Link Envelope
 
-**Branch**: `021-sync-link-envelope` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/021-sync-link-envelope/spec.md)
+**Branch**: `021-sync-link-envelope` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/021-sync-link-envelope/spec.md)
 **Input**: Feature specification from `/specs/021-sync-link-envelope/spec.md`
 
 ## Summary
@@ -28,7 +28,7 @@ Extend sync envelopes to carry explicit `memory_links`, preview link diffs, and 
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -42,7 +42,7 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/021-sync-link-envelope`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/021-sync-link-envelope`
   - `AVAILABLE_DOCS=["tasks.md"]`
 - `npm run lint`
   - passed
@@ -50,7 +50,7 @@ Validation results:
   - passed
   - `1` file passed, `17` tests passed
   - duration: `332ms`
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed
   - `83 passed in 1.94s`
 

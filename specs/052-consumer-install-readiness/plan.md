@@ -20,7 +20,7 @@ Add a lightweight install preflight ahead of onboarding so new users can tell wh
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   └── install_check.py
 ├── bin/
@@ -46,7 +46,7 @@ Validation run completed on 2026-03-28 for feature `052-consumer-install-readine
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_user_surface.py tests/test_python_only_runtime_contract.py
 npm run test:bootstrap
 .venv/bin/python -m pytest -q tests

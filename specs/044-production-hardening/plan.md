@@ -40,7 +40,7 @@ specs/044-production-hardening/
 ### Source Code
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── aegis_py/
 │   ├── operations/
 │   │   ├── __init__.py

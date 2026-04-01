@@ -18,8 +18,8 @@ def map_to_v9_record(
     query_context: Optional[Dict[str, Any]] = None
 ) -> MemoryRecordV9:
     """
-    Adapter that bridges real Aegis storage data into the v9 Mathematical Model.
-    This is the 'Body' for the v9 'Spirit'.
+    Adapter that bridges real Aegis storage data into the v10 Mathematical Model.
+    This is the 'Body' for the v10 'Spirit'.
     """
     
     # 1. Map Trust Signals
@@ -75,7 +75,7 @@ def map_to_v9_record(
     )
 
     # 4. Map Lifecycle Signals
-    # Map from real storage status to v9 MemoryState enum
+    # Map from real storage status to v10 MemoryState enum
     status_map = {
         "active": MemoryState.VALIDATED,
         "superseded": MemoryState.INVALIDATED,
@@ -101,7 +101,7 @@ def map_to_v9_record(
         memory_state=target_state
     )
 
-    # 5. Build Unified v9 Record
+    # 5. Build Unified v10 Record
     metadata = memory.metadata or {}
     return MemoryRecordV9(
         id=memory.id,

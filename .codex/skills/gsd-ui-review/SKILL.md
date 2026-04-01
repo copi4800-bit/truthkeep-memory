@@ -52,8 +52,8 @@ Output: {phase_num}-UI-REVIEW.md
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/ui-review.md
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/references/ui-brand.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/ui-review.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/references/ui-brand.md
 </execution_context>
 
 <context>
@@ -61,7 +61,7 @@ Phase: {{GSD_ARGS}} — optional, defaults to last completed phase.
 </context>
 
 <process>
-Execute @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/ui-review.md end-to-end.
+Execute @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/ui-review.md end-to-end.
 Preserve all workflow gates.
 </process>
 

@@ -55,11 +55,11 @@ Remove a workspace directory after confirmation. For worktree strategy, runs `gi
 </objective>
 
 <execution_context>
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/remove-workspace.md
-@/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/references/ui-brand.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/remove-workspace.md
+@/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/references/ui-brand.md
 </execution_context>
 
 <process>
-Execute the remove-workspace workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/remove-workspace.md end-to-end.
+Execute the remove-workspace workflow from @/home/hali/.openclaw/extensions/memory-aegis-v10/.codex/get-shit-done/workflows/remove-workspace.md end-to-end.
 </process>
 

@@ -1,6 +1,6 @@
 # Implementation Plan: Weaver Auto Linking
 
-**Branch**: `012-weaver-auto-linking` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/012-weaver-auto-linking/spec.md)
+**Branch**: `012-weaver-auto-linking` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/012-weaver-auto-linking/spec.md)
 **Input**: Feature specification from `/specs/012-weaver-auto-linking/spec.md`
 
 ## Summary
@@ -34,7 +34,7 @@ Add a narrow auto-linking rule for same-subject memories in the same scope, and 
 - run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
 - run `npm run lint`
 - run `npm run test:bootstrap`
-- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- run `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
 
 ## Validation Evidence
 
@@ -52,6 +52,6 @@ Validation results:
   - passed
 - `npm run test:bootstrap`
   - passed: `17` tests
-- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
+- `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v10 .venv/bin/pytest -q tests`
   - passed: `76 passed in 1.71s`
 

@@ -1,6 +1,6 @@
 # Implementation Plan: Beast Depth Tranches
 
-**Branch**: `023-beast-depth-tranches` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/023-beast-depth-tranches/spec.md)
+**Branch**: `023-beast-depth-tranches` | **Date**: 2026-03-24 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/023-beast-depth-tranches/spec.md)
 **Input**: Feature specification from `/specs/023-beast-depth-tranches/spec.md`
 
 ## Summary
@@ -53,6 +53,6 @@ Validation results:
 
 - `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks`
   - passed
-  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v7/specs/023-beast-depth-tranches`
+  - `FEATURE_DIR=/home/hali/.openclaw/extensions/memory-aegis-v10/specs/023-beast-depth-tranches`
   - `AVAILABLE_DOCS=["tasks.md"]`
 

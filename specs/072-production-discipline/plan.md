@@ -1,6 +1,6 @@
 # Implementation Plan: Production Discipline
 
-**Branch**: `072-production-discipline` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/072-production-discipline/spec.md)
+**Branch**: `072-production-discipline` | **Date**: 2026-03-29 | **Spec**: [spec.md](/home/hali/.openclaw/extensions/memory-aegis-v10/specs/072-production-discipline/spec.md)
 **Input**: Feature specification from `/specs/072-production-discipline/spec.md`
 
 ## Summary

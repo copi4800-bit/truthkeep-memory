@@ -12,7 +12,7 @@ async def test_v10_shadow_governance():
     Scenario: Multiple contenders for the same slot.
     v10 must identify exactly one Winner and others as Contenders.
     """
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v7/test_v10_shadow.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v10_shadow.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -68,7 +68,7 @@ async def test_v10_shadow_governance():
     
     for r in results:
         dec = r.v10_decision
-        print(f"ID: {r.memory.id} | v9 Score: {r.v9_score:.2f} | v10 Role: {dec.truth_role.value} | v10 Status: {dec.governance_status.value}")
+        print(f"ID: {r.memory.id} | v10 Score: {r.v9_score:.2f} | v10 Role: {dec.truth_role.value} | v10 Status: {dec.governance_status.value}")
         print(f"   Reasons: {dec.decision_reason}")
 
     # 3. Assertions

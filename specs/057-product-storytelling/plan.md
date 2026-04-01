@@ -28,7 +28,7 @@ Execute the first Tranche B slice by making Aegis easier to understand after one
 ## Source Areas
 
 ```text
-extensions/memory-aegis-v7/
+extensions/memory-aegis-v10/
 ├── README.md
 ├── tests/
 │   └── test_python_only_runtime_contract.py
@@ -66,7 +66,7 @@ Validation run completed on 2026-03-28 for feature `057-product-storytelling`.
 Executed commands:
 
 ```bash
-cd /home/hali/.openclaw/extensions/memory-aegis-v7
+cd /home/hali/.openclaw/extensions/memory-aegis-v10
 .venv/bin/python -m pytest -q tests/test_python_only_runtime_contract.py -k "quickstart or first_memory or storytelling"
 .venv/bin/python -m pytest -q tests
 ```
