@@ -1,0 +1,26 @@
+# 🗑️ Loại bỏ các file rác khi publish lên npm
+.codex/
+.planning/
+.specify/
+specs/
+tests/
+docs/
+.github/
+.antigravity/
+.gemini/
+__pycache__/
+*.db
+*.db-shm
+*.db-wal
+*.log
+v10_gauntlet_test.db
+extreme_v8_recall_stress.db
+facade_demo.db
+final_stress_test.db
+full_stress.db
+level1.db
+level2.db
+verify.db
+scripts/
+# Giữ lại install.sh và package.json để cài đặt
+!scripts/verify_ux.py

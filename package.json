@@ -2,6 +2,16 @@
   "name": "memory-aegis-v10",
   "version": "10.0.0",
   "description": "Aegis v10: Hybrid (Python + Node.js) Memory extension for OpenClaw.",
+  "files": [
+    "aegis_py/",
+    "bin/",
+    "install.sh",
+    "requirements.txt",
+    "pyproject.toml",
+    "README.md",
+    "LICENSE",
+    "openclaw.plugin.json"
+  ],
   "main": "aegis_py/mcp/server.py",
   "scripts": {
     "postinstall": "bash install.sh",
