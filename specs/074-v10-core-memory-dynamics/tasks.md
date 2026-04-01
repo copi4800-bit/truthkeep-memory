@@ -41,5 +41,5 @@
 
 - [x] T017 [CORE] Add a bounded bundle-level energy/objective snapshot for retrieval bundles in `aegis_py/retrieval/v10_dynamics.py` and `aegis_py/app.py`.
 - [x] T018 [TEST] Add retrieval/runtime coverage for bundle snapshots and benchmarked retrieval-feedback alignment in `tests/test_retrieval.py` and `tests/benchmarks/test_v10_dynamics_sli.py`.
-- [x] T019 [TEST] Extend the benchmark harness and script to gate on feedback alignment and bounded objective regression tolerance in `aegis_py/retrieval/v8_benchmark.py` and `scripts/v10_dynamics_benchmark.py`.
+- [x] T019 [TEST] Extend the benchmark harness and script to gate on feedback alignment and bounded objective regression tolerance in `aegis_py/retrieval/v10_benchmark.py` and `scripts/v10_dynamics_benchmark.py`.
 

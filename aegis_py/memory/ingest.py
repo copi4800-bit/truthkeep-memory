@@ -12,8 +12,8 @@ from .weaver import WeaverBeast
 from .correction import CorrectionDetector
 from ..storage.manager import StorageManager
 from ..storage.models import Memory
-from ..v10.policy_gate import ValidationPolicyGate
-from ..v10.state_machine import MemoryStateMachine
+from ..v10_base.policy_gate import ValidationPolicyGate
+from ..v10_base.state_machine import MemoryStateMachine
 
 if TYPE_CHECKING:
     from ..retrieval.search import SearchPipeline

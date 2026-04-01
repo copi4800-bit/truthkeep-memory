@@ -51,7 +51,7 @@ aegis_py/
 tests/
 ├── test_ingest.py
 ├── test_retrieval.py
-└── test_v7_runtime.py
+└── test_v10_runtime.py
 ```
 
 **Structure Decision**: Keep the existing six-module runtime intact and add a focused `aegis_py/v10/` layer that composes new architecture primitives instead of forking the whole engine.

@@ -7,14 +7,14 @@ import uuid
 
 from aegis_py.app import AegisApp
 from aegis_py.conflict.core import ConflictManager
-from aegis_py.retrieval.v8_benchmark import (
-    V8BenchmarkThresholds,
-    V8FeedbackCase,
-    V8RetrievalCase,
-    V8TransitionCase,
-    select_best_v8_profile,
+from aegis_py.retrieval.v10_benchmark import (
+    V10BenchmarkThresholds,
+    V10FeedbackCase,
+    V10RetrievalCase,
+    V10TransitionCase,
+    select_best_v10_profile,
 )
-from aegis_py.retrieval.v10_dynamics import DEFAULT_V8_DYNAMICS_PROFILE, with_profile
+from aegis_py.retrieval.v10_dynamics import DEFAULT_V10_DYNAMICS_PROFILE, with_profile
 
 
 def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
@@ -143,13 +143,13 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
         "UPDATE memories SET access_count = ?, activation_score = ?, confidence = ? WHERE id = ?",
         (0, 1.0, 0.2, demote.id),
     )
-    app.apply_v8_outcome_feedback(
+    app.apply_v10_outcome_feedback(
         warm.id,
         success_score=1.0,
         relevance_score=1.0,
         override_score=0.0,
     )
-    app.apply_v8_outcome_feedback(
+    app.apply_v10_outcome_feedback(
         cold.id,
         success_score=0.2,
         relevance_score=0.2,
@@ -165,33 +165,33 @@ def seed_benchmark_app(db_path: Path) -> tuple[AegisApp, dict[str, str]]:
 
 
 def main() -> int:
-    workspace = Path("/tmp") / f"aegis_v8_profile_tuner_{uuid.uuid4().hex[:8]}"
+    workspace = Path("/tmp") / f"aegis_v10_profile_tuner_{uuid.uuid4().hex[:8]}"
     workspace.mkdir(parents=True, exist_ok=True)
-    db_path = workspace / "v8_profile_selector.db"
+    db_path = workspace / "v10_profile_selector.db"
     _, ids = seed_benchmark_app(db_path)
 
     retrieval_cases = [
-        V8RetrievalCase(
+        V10RetrievalCase(
             query="release plan checklist",
             scope_type="project",
             scope_id="V10",
             expected_top_id=ids["strong"],
-            expected_reason_tags=["v8_evidence_strong", "v8_trust_elevated"],
+            expected_reason_tags=["v10_evidence_strong", "v10_trust_elevated"],
         ),
-        V8RetrievalCase(
+        V10RetrievalCase(
             query="deployment runbook",
             scope_type="project",
             scope_id="V10",
             expected_top_id=ids["warm"],
-            expected_reason_tags=["v8_usage_reinforced"],
+            expected_reason_tags=["v10_usage_reinforced"],
         ),
     ]
     transition_cases = [
-        V8TransitionCase(memory_id=ids["draft"], expected_recommended_state="validated"),
-        V8TransitionCase(memory_id=ids["demote"], expected_recommended_state="hypothesized"),
+        V10TransitionCase(memory_id=ids["draft"], expected_recommended_state="validated"),
+        V10TransitionCase(memory_id=ids["demote"], expected_recommended_state="hypothesized"),
     ]
     feedback_cases = [
-        V8FeedbackCase(
+        V10FeedbackCase(
             query="deployment runbook",
             scope_type="project",
             scope_id="V10",
@@ -201,7 +201,7 @@ def main() -> int:
             limit=5,
         ),
     ]
-    thresholds = V8BenchmarkThresholds(
+    thresholds = V10BenchmarkThresholds(
         retrieval_hit_rate_min=1.0,
         signal_coverage_min=1.0,
         dynamic_reason_coverage_min=1.0,
@@ -213,16 +213,16 @@ def main() -> int:
         latency_p95_ms_max=50.0,
     )
     candidate_profiles = {
-        "baseline": DEFAULT_V8_DYNAMICS_PROFILE,
+        "baseline": DEFAULT_V10_DYNAMICS_PROFILE,
         "underpowered": with_profile(
-            DEFAULT_V8_DYNAMICS_PROFILE,
+            DEFAULT_V10_DYNAMICS_PROFILE,
             trust_evidence_weight=0.15,
             trust_belief_weight=0.15,
             score_bonus_trust_weight=0.01,
             transition_promote_trust=0.95,
         ),
         "overreactive": with_profile(
-            DEFAULT_V8_DYNAMICS_PROFILE,
+            DEFAULT_V10_DYNAMICS_PROFILE,
             trust_conflict_weight=1.45,
             feedback_regret_override_weight=0.6,
             feedback_decay_regret_weight=0.35,
@@ -233,7 +233,7 @@ def main() -> int:
     def app_factory() -> AegisApp:
         return AegisApp(db_path=str(db_path))
 
-    selection = select_best_v8_profile(
+    selection = select_best_v10_profile(
         app_factory=app_factory,
         candidate_profiles=candidate_profiles,
         retrieval_cases=retrieval_cases,

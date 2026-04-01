@@ -13,7 +13,7 @@ As a user, I want Aegis to provide the most accurate and truthful result by cons
 
 **Why this priority**: This is the core value proposition of v10—moving from "search" to "judgment".
 
-**Independent Test**: Use the `tests/test_v9_runtime_full_path.py` (improved) to verify that a correction winner always outranks a superseded record, even with lower lexical overlap.
+**Independent Test**: Use the `tests/test_v10_runtime_full_path.py` (improved) to verify that a correction winner always outranks a superseded record, even with lower lexical overlap.
 
 **Acceptance Scenarios**:
 1. **Given** a corrected fact (e.g., address change), **When** I search for that fact, **Then** the new version is ranked #1 with a "correction winner" explanation.
@@ -27,11 +27,11 @@ As an operator, I want to see the exact reasoning (decisive factors and deltas) 
 
 **Why this priority**: Trust in an AI system requires transparency. v10's "explainable by construction" philosophy must be fully visible.
 
-**Independent Test**: Verify the `v9_audit` payload in `serialize_search_result` contains all deltas (judge, life) and the correct `decisive_factor`.
+**Independent Test**: Verify the `v10_audit` payload in `serialize_search_result` contains all deltas (judge, life) and the correct `decisive_factor`.
 
 **Acceptance Scenarios**:
-1. **Given** a result ranked by trust, **When** I view the explanation, **Then** it explicitly mentions "high trust" and the `v9_audit` shows a high `judge_delta`.
-2. **Given** a result penalized by conflict, **When** I view the deep explanation, **Then** it shows the negative `conflict` factor in the `v9_audit` payload.
+1. **Given** a result ranked by trust, **When** I view the explanation, **Then** it explicitly mentions "high trust" and the `v10_audit` shows a high `judge_delta`.
+2. **Given** a result penalized by conflict, **When** I view the deep explanation, **Then** it shows the negative `conflict` factor in the `v10_audit` payload.
 
 ---
 
@@ -66,10 +66,10 @@ As a maintainer, I want to compare v10 performance against v10 using objective m
 
 - **FR-001**: The system MUST implement the canonical v10 score formula: `S_final = S_base + Δ_judge + Δ_life + H_constraints`.
 - **FR-002**: `adapter.py` MUST support rich signal mapping including `evidence_strength`, `conflict_severity`, and `correction_freshness`.
-- **FR-003**: `build_v9_query_signals` MUST provide normalized signals [0,1] for `semantic_relevance`, `lexical_match`, and `link_support`.
+- **FR-003**: `build_v10_query_signals` MUST provide normalized signals [0,1] for `semantic_relevance`, `lexical_match`, and `link_support`.
 - **FR-004**: The retrieval pipeline MUST allow v10 to act as the primary gatekeeper, reranking candidates before final filtering.
 - **FR-005**: `FaithfulRenderer` MUST support three levels of explanation: compact, standard, and deep.
-- **FR-006**: The system MUST support `v8_primary`, `shadow_v9`, and `v9_primary` modes via configuration.
+- **FR-006**: The system MUST support `v10_primary`, `shadow_v10`, and `v10_primary` modes via configuration.
 - **FR-007**: Fact slot semantics MUST distinguish between `singleton` (overwrite) and `multivalued` (coexist) facts.
 - **FR-008**: Lifecycle mapping MUST be explicit and avoid falling back to `DRAFT` for active, non-draft records.
 

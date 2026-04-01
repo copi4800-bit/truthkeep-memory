@@ -56,15 +56,15 @@ class FaithfulRenderer:
             return get_text("reason_usage_high", locale=locale)
             
         # Specific mappings for v10 scorer factors
-        v9_map = {
+        v10_map = {
             "sem": "khớp ngữ nghĩa mạnh",
             "lex": "trùng khớp từ khóa",
             "life": "có độ tươi mới cao",
             "bias": "phù hợp sở thích của sếp",
             "b_truth": "minh bạch về phả hệ sự thật"
         }
-        if factor in v9_map:
-            return v9_map[factor]
+        if factor in v10_map:
+            return v10_map[factor]
             
         # Fallback to generic i18n or factor name
         return get_text(f"reason_{factor}", locale=locale)

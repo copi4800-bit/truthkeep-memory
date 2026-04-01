@@ -8,9 +8,9 @@ from ..memory.core import MemoryManager
 from ..storage.manager import StorageManager
 
 # Phase 2: Aegis v10 Core Integration
-from ..v10.adapter import map_to_v9_record
-from ..v10.scorer import ResidualScorer
-from ..v10.query_signals import build_v9_query_signals
+from ..v10_scoring.adapter import map_to_v10_record
+from ..v10_scoring.scorer import ResidualScorer
+from ..v10_scoring.query_signals import build_v10_query_signals
 
 # Phase 3: Aegis v10 Governance Integration
 from ..v10.engine import GovernanceEngineV10
@@ -32,8 +32,8 @@ class SearchPipeline:
         self.storage = storage
         self.manager = MemoryManager(storage)
         self.oracle = OracleBeast(storage)
-        self.v9_scorer = ResidualScorer()
-        self.v10_engine = GovernanceEngineV10(storage, scorer=self.v9_scorer)
+        self.v10_scorer = ResidualScorer()
+        self.v10_engine = GovernanceEngineV10(storage, scorer=self.v10_scorer)
         self.v10_registry = TruthRegistryV10(storage)
 
     def search(self, query: SearchQuery) -> List[SearchResult]:
@@ -119,14 +119,14 @@ class SearchPipeline:
             context = {"intent": getattr(query_obj, "intent", "normal_recall") if query_obj else "normal_recall"}
             
             # For v10 query signals, we need an object-like result
-            # If it's a dict, we might need to wrap it or adapt build_v9_query_signals
-            query_signals = build_v9_query_signals(result, query_text, self.storage, context=context)
-            v9_record = map_to_v9_record(memory, self.storage)
+            # If it's a dict, we might need to wrap it or adapt build_v10_query_signals
+            query_signals = build_v10_query_signals(result, query_text, self.storage, context=context)
+            v10_record = map_to_v10_record(memory, self.storage)
             
             # v10 Decide
-            decision = self.v10_engine.govern(v9_record, query_signals, intent=context["intent"])
-            v9_trace = decision.score_trace
-            v9_final_score = v9_trace.factors.get("final_score", 0.0)
+            decision = self.v10_engine.govern(v10_record, query_signals, intent=context["intent"])
+            v10_trace = decision.score_trace
+            v10_final_score = v10_trace.factors.get("final_score", 0.0)
             # --- End v10 Engine ---
 
             sr = SearchResult(
@@ -145,11 +145,11 @@ class SearchPipeline:
                 relation_via_link_type=getattr(result, "relation_via_link_type", None),
                 relation_via_memory_id=getattr(result, "relation_via_memory_id", None),
                 relation_via_hops=getattr(result, "relation_via_hops", None),
-                v8_core_signals=getattr(result, "v8_core_signals", None),
+                v10_core_signals=getattr(result, "v10_core_signals", None),
             )
             # Inject Audit Metadata
-            setattr(sr, "v9_trace", v9_trace)
-            setattr(sr, "v9_score", v9_final_score)
+            setattr(sr, "v10_trace", v10_trace)
+            setattr(sr, "v10_score", v10_final_score)
             setattr(sr, "v10_decision", decision)
             raw_candidates.append(sr)
 
@@ -171,8 +171,8 @@ class SearchPipeline:
 
         # Selection and Sorting
         mode = getattr(query_obj, "scoring_mode", "v10_primary") if query_obj else "v10_primary"
-        if mode in ["v10_primary", "v9_primary"]:
-            final_results.sort(key=lambda x: getattr(x, "v9_score", 0.0), reverse=True)
+        if mode in ["v10_primary", "v10_primary"]:
+            final_results.sort(key=lambda x: getattr(x, "v10_score", 0.0), reverse=True)
             final_results = final_results[:limit]
         else:
             final_results = final_results[:limit]

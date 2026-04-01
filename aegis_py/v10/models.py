@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
-from ..v10.models import MemoryRecordV9, JudgmentTrace
+from ..v10_scoring.models import MemoryRecordV10, JudgmentTrace
 
 class GovernanceStatus(Enum):
     CANDIDATE = "candidate"
@@ -49,7 +49,7 @@ class DecisionObject:
     timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 @dataclass
-class MemoryRecordV10(MemoryRecordV9):
+class MemoryRecordV10(MemoryRecordV10):
     """Rich Memory Record for v10 Governed Runtime."""
     governance: DecisionObject = field(default_factory=lambda: None) # Will be populated by engine
     fact_predicate: Optional[str] = None

@@ -4,8 +4,8 @@ from .models import DecisionObject, GovernanceStatus, TruthRole, RetrievableMode
 from .policy import MemoryConstitution
 from .review import ReviewQueueV10
 from .events import EventLogger, GovernanceEvent
-from ..v10.scorer import ResidualScorer
-from ..v10.models import JudgmentTrace
+from ..v10_scoring.scorer import ResidualScorer
+from ..v10_scoring.models import JudgmentTrace
 
 class GovernanceEngineV10:
     """Aegis v10 Decision Engine for Memory Governance."""

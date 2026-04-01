@@ -14,7 +14,7 @@
 
 ## Phase 2: Foundational
 
-- [x] T003 Add v10 governance-shell migration in `aegis_py/storage/migrations/003_v7_governance_shell.sql`
+- [x] T003 Add v10 governance-shell migration in `aegis_py/storage/migrations/003_v10_governance_shell.sql`
 - [x] T004 Extend storage helpers for governance events and state transitions in `aegis_py/storage/manager.py`
 - [x] T005 [P] Add v10 package scaffolding in `aegis_py/v10/__init__.py`
 
@@ -26,7 +26,7 @@
 
 - [x] T006 [P] [US1] Implement v10 policy gate in `aegis_py/v10/policy_gate.py`
 - [x] T007 [US1] Wire ingest to the v10 policy gate in `aegis_py/memory/ingest.py`
-- [x] T008 [P] [US1] Add tests for admitted and blocked v10 candidates in `tests/test_v7_runtime.py`
+- [x] T008 [P] [US1] Add tests for admitted and blocked v10 candidates in `tests/test_v10_runtime.py`
 
 ## Phase 4: User Story 2 - Explicit Memory State Governance (Priority: P1)
 
@@ -36,7 +36,7 @@
 
 - [x] T009 [P] [US2] Implement v10 state machine in `aegis_py/v10/state_machine.py`
 - [x] T010 [US2] Persist `memory_state` alongside admission metadata in `aegis_py/storage/models.py` and `aegis_py/storage/manager.py`
-- [x] T011 [P] [US2] Add transition audit coverage in `tests/test_v7_runtime.py`
+- [x] T011 [P] [US2] Add transition audit coverage in `tests/test_v10_runtime.py`
 
 ## Phase 5: User Story 3 - Orchestrated Retrieval And Shadow Background Planning (Priority: P2)
 
@@ -48,7 +48,7 @@
 - [x] T013 [P] [US3] Implement governed background planning in `aegis_py/v10/background.py`
 - [x] T014 [P] [US3] Implement retrieval orchestrator in `aegis_py/v10/retrieval_orchestrator.py`
 - [x] T015 [US3] Wire the v10 runtime into `aegis_py/app.py`
-- [x] T016 [P] [US3] Add background-planning coverage in `tests/test_v7_runtime.py`
+- [x] T016 [P] [US3] Add background-planning coverage in `tests/test_v10_runtime.py`
 
 ## Phase 6: Polish
 

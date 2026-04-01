@@ -6,9 +6,9 @@ from aegis_py.retrieval.search import SearchPipeline
 from aegis_py.retrieval.models import SearchQuery
 from aegis_py.surface import serialize_search_result
 
-async def test_v9_runtime_full_path():
+async def test_v10_runtime_full_path():
     # Setup real temporary storage
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_full_path.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v10_full_path.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -63,7 +63,7 @@ async def test_v9_runtime_full_path():
     if results:
         serialized = serialize_search_result(results[0])
         print(f"Top Result: {results[0].memory.content}")
-        print(f"Top Result v10 Score: {results[0].v9_score:.4f}")
+        print(f"Top Result v10 Score: {results[0].v10_score:.4f}")
         print(f"Top Result Human Reason: {serialized['human_reason']}")
         
         # Assertions
@@ -76,7 +76,7 @@ async def test_v9_runtime_full_path():
     storage.close()
     if os.path.exists(db_path):
         os.remove(db_path)
-    print("✅ test_v9_runtime_full_path passed!")
+    print("✅ test_v10_runtime_full_path passed!")
 
 if __name__ == "__main__":
-    asyncio.run(test_v9_runtime_full_path())
+    asyncio.run(test_v10_runtime_full_path())

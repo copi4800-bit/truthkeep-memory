@@ -12,7 +12,7 @@
 
 ## Phase 3: UX & Explanation Completion (GSD Execute)
 1. **Multi-level Explanations**: Upgrade the renderer for compact, standard, and deep narratives.
-2. **Public Audit Metadata**: Expose the full `v9_audit` payload in the surface layer.
+2. **Public Audit Metadata**: Expose the full `v10_audit` payload in the surface layer.
 3. **Memory Health v2**: Integrate v10 metrics into the health reporting surface.
 
 ## Phase 4: Quality & Validation (GSD Verify)

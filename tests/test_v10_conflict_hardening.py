@@ -1,11 +1,11 @@
-from aegis_py.v10_scoring.models import MemoryRecordV9, ConflictSignals, TrustSignals
+from aegis_py.v10_scoring.models import MemoryRecordV10, ConflictSignals, TrustSignals
 from aegis_py.v10_scoring.scorer import ResidualScorer
 
-def test_v9_conflict_hardening():
+def test_v10_conflict_hardening():
     scorer = ResidualScorer()
     
     # 1. Normal Memory (No conflict)
-    normal_mem = MemoryRecordV9(
+    normal_mem = MemoryRecordV10(
         id="mem_normal",
         content="The server is in Zone A.",
         canonical_subject="server_location",
@@ -14,7 +14,7 @@ def test_v9_conflict_hardening():
     
     # 2. Conflict Probe (Has unresolved contradiction)
     # This should be penalized heavily by v10
-    conflict_mem = MemoryRecordV9(
+    conflict_mem = MemoryRecordV10(
         id="mem_conflict",
         content="The server is in Zone B.",
         canonical_subject="server_location",
@@ -30,7 +30,7 @@ def test_v9_conflict_hardening():
     # Assertion: Conflict memory should be penalized
     assert score_conflict < score_normal, f"Conflict memory ({score_conflict}) should be lower than normal ({score_normal})"
     assert score_conflict < 0, f"Unresolved contradictions should lead to negative scores, got {score_conflict}"
-    print("✅ test_v9_conflict_hardening passed!")
+    print("✅ test_v10_conflict_hardening passed!")
 
 if __name__ == "__main__":
-    test_v9_conflict_hardening()
+    test_v10_conflict_hardening()

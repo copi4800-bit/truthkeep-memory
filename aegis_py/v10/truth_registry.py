@@ -23,8 +23,8 @@ class TruthRegistryV10:
         decisions: Dict[str, DecisionObject] = {}
         
         for slot_id, members in slots.items():
-            # Sort by score (v9_score or similar)
-            members.sort(key=lambda x: getattr(x, "v9_score", 0.0), reverse=True)
+            # Sort by score (v10_score or similar)
+            members.sort(key=lambda x: getattr(x, "v10_score", 0.0), reverse=True)
             
             # Implementation of Rule 2: Singleton Truth
             for i, member in enumerate(members):
@@ -35,7 +35,7 @@ class TruthRegistryV10:
                     # Margin check
                     margin = 0.0
                     if len(members) > 1:
-                        margin = members[0].v9_score - members[1].v9_score
+                        margin = members[0].v10_score - members[1].v10_score
                         
                     if margin > 0.2 or intent == "correction_lookup":
                         decision.truth_role = TruthRole.WINNER

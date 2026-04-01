@@ -71,7 +71,7 @@ class JudgmentTrace:
     is_first_write: bool = False
 
 @dataclass
-class MemoryRecordV9:
+class MemoryRecordV10:
     """The unified Aegis v10 Memory Record following Residual Judgment Engine spec."""
     id: str
     content: str

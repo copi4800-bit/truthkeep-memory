@@ -12,12 +12,12 @@ from .retrieval.search import SearchPipeline
 from .retrieval.models import SearchQuery, SearchResult
 from .retrieval.contract import ExplainerBeast
 from .retrieval.v10_dynamics import (
-    LEGACY_V8_DYNAMICS_METADATA_KEY,
-    V8_STATE_METADATA_KEY,
+    LEGACY_V10_DYNAMICS_METADATA_KEY,
+    V10_STATE_METADATA_KEY,
     apply_outcome_feedback,
-    build_persisted_v8_state,
+    build_persisted_v10_state,
     bundle_energy_snapshot,
-    compute_v8_core_signals,
+    compute_v10_core_signals,
 )
 from .hygiene.engine import HygieneEngine
 from .preferences.manager import PreferenceManager
@@ -47,7 +47,7 @@ from .observability import (
     ObservedOperation,
     get_global_runtime_observability,
 )
-from .v10 import (
+from .v10_base import (
     GovernedBackgroundIntelligence,
     MemoryStateMachine,
     RetrievalOrchestrator,
@@ -214,8 +214,8 @@ class AegisApp:
         self.specialized_storage = SpecializedStorageSurfaces(self.storage)
         self.background_intelligence = GovernedBackgroundIntelligence(
             self.storage,
-            signal_provider=self.compute_v8_core_signals,
-            transition_applier=self.apply_v8_transition_gate,
+            signal_provider=self.compute_v10_core_signals,
+            transition_applier=self.apply_v10_transition_gate,
         )
         self.retrieval_orchestrator = RetrievalOrchestrator(self.storage, self.search_pipeline)
         self.observability = get_global_runtime_observability()
@@ -688,18 +688,18 @@ class AegisApp:
             scope_id=scope_id,
         )
 
-    def v8_field_snapshot(
+    def v10_field_snapshot(
         self,
         *,
         scope_type: str | None = None,
         scope_id: str | None = None,
     ) -> Dict[str, Any]:
-        return self.operator_surface.v8_field_snapshot(
+        return self.operator_surface.v10_field_snapshot(
             scope_type=scope_type,
             scope_id=scope_id,
         )
 
-    def compute_v8_core_signals(self, memory_id: str) -> Dict[str, Any]:
+    def compute_v10_core_signals(self, memory_id: str) -> Dict[str, Any]:
         memory = self.storage.get_memory(memory_id)
         if memory is None:
             raise ValueError(f"Memory not found: {memory_id}")
@@ -744,7 +744,7 @@ class AegisApp:
         admission_state = self.storage.get_memory_state(memory_id)
         current_state = admission_state["memory_state"] if admission_state else memory.status
 
-        signals = compute_v8_core_signals(
+        signals = compute_v10_core_signals(
             row={
                 "confidence": memory.confidence,
                 "activation_score": memory.activation_score,
@@ -794,14 +794,14 @@ class AegisApp:
         )
         return [str(row["id"]) for row in rows]
 
-    def v8_core_signals(self, memory_id: str) -> Dict[str, Any]:
-        return self.operator_surface.v8_core_signals(memory_id)
+    def v10_core_signals(self, memory_id: str) -> Dict[str, Any]:
+        return self.operator_surface.v10_core_signals(memory_id)
 
-    def evaluate_v8_transition_operator(self, memory_id: str) -> Dict[str, Any]:
+    def evaluate_v10_transition_operator(self, memory_id: str) -> Dict[str, Any]:
         memory = self.storage.get_memory(memory_id)
         if memory is None:
             raise ValueError(f"Memory not found: {memory_id}")
-        signals = self.compute_v8_core_signals(memory_id)
+        signals = self.compute_v10_core_signals(memory_id)
         gate = signals["transition_gate"]
         current_state = gate["current_state"]
         target_state = gate["recommended_state"]
@@ -837,23 +837,23 @@ class AegisApp:
             "transition_gate": gate,
         }
 
-    def v8_transition_gate(self, memory_id: str) -> Dict[str, Any]:
-        return self.operator_surface.v8_transition_gate(memory_id)
+    def v10_transition_gate(self, memory_id: str) -> Dict[str, Any]:
+        return self.operator_surface.v10_transition_gate(memory_id)
 
-    def apply_v8_outcome_feedback(
+    def apply_v10_outcome_feedback(
         self,
         memory_id: str,
         *,
         success_score: float,
         relevance_score: float | None = None,
         override_score: float = 0.0,
-        actor: str = "v8_feedback",
+        actor: str = "v10_feedback",
     ) -> Dict[str, Any]:
         memory = self.storage.get_memory(memory_id)
         if memory is None:
             raise ValueError(f"Memory not found: {memory_id}")
         relevance = float(success_score if relevance_score is None else relevance_score)
-        signals = self.compute_v8_core_signals(memory_id)
+        signals = self.compute_v10_core_signals(memory_id)
         updated = apply_outcome_feedback(
             row={
                 "confidence": memory.confidence,
@@ -870,12 +870,12 @@ class AegisApp:
         )
         last_feedback_at = self.memory_state_machine._now()
         metadata = dict(memory.metadata)
-        metadata[V8_STATE_METADATA_KEY] = {
-            **metadata.get(V8_STATE_METADATA_KEY, {}),
+        metadata[V10_STATE_METADATA_KEY] = {
+            **metadata.get(V10_STATE_METADATA_KEY, {}),
             **updated,
             "last_feedback_at": last_feedback_at,
         }
-        persisted_signals = compute_v8_core_signals(
+        persisted_signals = compute_v10_core_signals(
             row={
                 "confidence": updated["belief_score"],
                 "activation_score": memory.activation_score,
@@ -888,14 +888,14 @@ class AegisApp:
             conflict_weight=signals["conflict_weight"],
             direct_conflict_open=signals["direct_conflict_open"],
         )
-        persisted_state = build_persisted_v8_state(
+        persisted_state = build_persisted_v10_state(
             signals=persisted_signals,
             feedback_count=updated["feedback_count"],
             belief_delta=updated["belief_delta"],
             last_feedback_at=last_feedback_at,
         )
-        metadata[V8_STATE_METADATA_KEY] = persisted_state
-        metadata[LEGACY_V8_DYNAMICS_METADATA_KEY] = {
+        metadata[V10_STATE_METADATA_KEY] = persisted_state
+        metadata[LEGACY_V10_DYNAMICS_METADATA_KEY] = {
             **updated,
             "last_feedback_at": last_feedback_at,
         }
@@ -909,7 +909,7 @@ class AegisApp:
             ),
         )
         artifact_id = self.storage.record_evidence_artifact(
-            artifact_kind="v8_outcome_feedback",
+            artifact_kind="v10_outcome_feedback",
             scope_type=memory.scope_type,
             scope_id=memory.scope_id,
             memory_id=memory_id,
@@ -922,7 +922,7 @@ class AegisApp:
             },
         )
         self.storage.record_governance_event(
-            event_kind="v8_outcome_feedback_applied",
+            event_kind="v10_outcome_feedback_applied",
             scope_type=memory.scope_type,
             scope_id=memory.scope_id,
             memory_id=memory_id,
@@ -937,10 +937,10 @@ class AegisApp:
             "memory_id": memory_id,
             "artifact_id": artifact_id,
             "updated_dynamics": updated,
-            "signals": self.compute_v8_core_signals(memory_id),
+            "signals": self.compute_v10_core_signals(memory_id),
         }
 
-    def apply_v8_retrieval_feedback(
+    def apply_v10_retrieval_feedback(
         self,
         *,
         query: str,
@@ -951,7 +951,7 @@ class AegisApp:
         override_memory_ids: list[str] | None = None,
         limit: int = 5,
         include_global: bool = True,
-        actor: str = "v8_bundle_feedback",
+        actor: str = "v10_bundle_feedback",
     ) -> Dict[str, Any]:
         results = self.search(
             query,
@@ -961,9 +961,9 @@ class AegisApp:
             include_global=include_global,
         )
         before_snapshot = bundle_energy_snapshot([
-            dict(result.v8_core_signals or {})
+            dict(result.v10_core_signals or {})
             for result in results
-            if result.v8_core_signals is not None
+            if result.v10_core_signals is not None
         ])
         selected = set(selected_memory_ids or [])
         overridden = set(override_memory_ids or [])
@@ -1002,7 +1002,7 @@ class AegisApp:
             elif selected and result.memory.id not in selected:
                 override_score = round(min(0.65, (1.0 - contribution) * 0.45), 6)
             memory_success = round(float(success_score) * contribution, 6)
-            feedback = self.apply_v8_outcome_feedback(
+            feedback = self.apply_v10_outcome_feedback(
                 result.memory.id,
                 success_score=memory_success,
                 relevance_score=relevance_score,
@@ -1022,7 +1022,7 @@ class AegisApp:
             )
 
         artifact_id = self.storage.record_evidence_artifact(
-            artifact_kind="v8_retrieval_feedback_bundle",
+            artifact_kind="v10_retrieval_feedback_bundle",
             scope_type=scope_type,
             scope_id=scope_id,
             payload={
@@ -1035,7 +1035,7 @@ class AegisApp:
             },
         )
         self.storage.record_governance_event(
-            event_kind="v8_retrieval_feedback_applied",
+            event_kind="v10_retrieval_feedback_applied",
             scope_type=scope_type,
             scope_id=scope_id,
             payload={
@@ -1053,9 +1053,9 @@ class AegisApp:
             include_global=include_global,
         )
         after_snapshot = bundle_energy_snapshot([
-            dict(result.v8_core_signals or {})
+            dict(result.v10_core_signals or {})
             for result in updated_results
-            if result.v8_core_signals is not None
+            if result.v10_core_signals is not None
         ])
         return {
             "backend": "python",
@@ -1069,7 +1069,7 @@ class AegisApp:
             "assignments": assignments,
         }
 
-    def v8_bundle_snapshot(
+    def v10_bundle_snapshot(
         self,
         *,
         query: str,
@@ -1086,9 +1086,9 @@ class AegisApp:
             include_global=include_global,
         )
         snapshot = bundle_energy_snapshot([
-            dict(result.v8_core_signals or {})
+            dict(result.v10_core_signals or {})
             for result in results
-            if result.v8_core_signals is not None
+            if result.v10_core_signals is not None
         ])
         return {
             "backend": "python",
@@ -1099,8 +1099,8 @@ class AegisApp:
             "memory_ids": [result.memory.id for result in results],
         }
 
-    def apply_v8_transition_gate(self, memory_id: str, *, actor: str = "v8_core") -> Dict[str, Any]:
-        operator = self.evaluate_v8_transition_operator(memory_id)
+    def apply_v10_transition_gate(self, memory_id: str, *, actor: str = "v10_core") -> Dict[str, Any]:
+        operator = self.evaluate_v10_transition_operator(memory_id)
         signals = operator["signals"]
         gate = operator["transition_gate"]
         current_state = operator["inputs"]["current_state"]
@@ -1121,7 +1121,7 @@ class AegisApp:
         applied = self.memory_state_machine.transition(
             memory_id=memory_id,
             to_state=target_state,
-            reason="v8_core_transition_gate",
+            reason="v10_core_transition_gate",
             actor=actor,
             details={
                 "trust_score": signals["trust_score"],
@@ -1140,8 +1140,8 @@ class AegisApp:
             "from_state": current_state,
             "to_state": target_state,
             "transition_operator": operator,
-            "post_transition_operator": self.evaluate_v8_transition_operator(memory_id),
-            "signals": self.compute_v8_core_signals(memory_id),
+            "post_transition_operator": self.evaluate_v10_transition_operator(memory_id),
+            "signals": self.compute_v10_core_signals(memory_id),
             "transition_gate": gate,
         }
 

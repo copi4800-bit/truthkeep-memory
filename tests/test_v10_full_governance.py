@@ -5,7 +5,7 @@ from aegis_py.memory.core import MemoryManager
 from aegis_py.retrieval.search import SearchPipeline
 from aegis_py.retrieval.models import SearchQuery
 from aegis_py.storage.models import Memory
-from aegis_py.v10.models import TruthRole, GovernanceStatus, RetrievableMode
+from aegis_py.v10_scoring.models import TruthRole, GovernanceStatus, RetrievableMode
 
 async def test_v10_full_governance_gauntlet():
     """

@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from ..storage.models import Memory
 from .models import (
-    MemoryRecordV9, 
+    MemoryRecordV10, 
     TrustSignals, 
     ConflictSignals, 
     CorrectionSignals, 
@@ -12,11 +12,11 @@ from .models import (
     MemoryState
 )
 
-def map_to_v9_record(
+def map_to_v10_record(
     memory: Memory, 
     storage: Any, # StorageManager
     query_context: Optional[Dict[str, Any]] = None
-) -> MemoryRecordV9:
+) -> MemoryRecordV10:
     """
     Adapter that bridges real Aegis storage data into the v10 Mathematical Model.
     This is the 'Body' for the v10 'Spirit'.
@@ -103,7 +103,7 @@ def map_to_v9_record(
 
     # 5. Build Unified v10 Record
     metadata = memory.metadata or {}
-    return MemoryRecordV9(
+    return MemoryRecordV10(
         id=memory.id,
         content=memory.content,
         canonical_subject=memory.subject or "general",

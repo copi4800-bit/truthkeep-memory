@@ -108,14 +108,14 @@ class AegisOperatorSurface:
             "neighbors": self.app.storage.list_memory_neighbors(memory_id=memory_id, limit=limit),
         }
 
-    def v8_field_snapshot(
+    def v10_field_snapshot(
         self,
         *,
         scope_type: str | None = None,
         scope_id: str | None = None,
     ) -> dict[str, Any]:
         memory_ids = self.app._list_field_snapshot_memory_ids(scope_type=scope_type, scope_id=scope_id)
-        signals_list = [self.app.compute_v8_core_signals(memory_id) for memory_id in memory_ids]
+        signals_list = [self.app.compute_v10_core_signals(memory_id) for memory_id in memory_ids]
         counts = {
             "draft": 0,
             "validated": 0,
@@ -154,21 +154,21 @@ class AegisOperatorSurface:
             "energy": bundle_energy_snapshot(signals_list),
         }
 
-    def v8_core_signals(self, memory_id: str) -> dict[str, Any]:
-        signals = self.app.compute_v8_core_signals(memory_id)
+    def v10_core_signals(self, memory_id: str) -> dict[str, Any]:
+        signals = self.app.compute_v10_core_signals(memory_id)
         return {
             "backend": "python",
             "memory_id": memory_id,
-            "observables": self._v8_observables(signals),
+            "observables": self._v10_observables(signals),
             "signals": signals,
         }
 
-    def v8_transition_gate(self, memory_id: str) -> dict[str, Any]:
-        operator = self.app.evaluate_v8_transition_operator(memory_id)
+    def v10_transition_gate(self, memory_id: str) -> dict[str, Any]:
+        operator = self.app.evaluate_v10_transition_operator(memory_id)
         return {
             "backend": "python",
             "memory_id": memory_id,
-            "observables": self._v8_observables(operator["signals"]),
+            "observables": self._v10_observables(operator["signals"]),
             "transition_operator": operator,
             "inputs": operator["inputs"],
             "decision": operator["decision"],
@@ -177,7 +177,7 @@ class AegisOperatorSurface:
             "signals": operator["signals"],
         }
 
-    def _v8_observables(self, signals: dict[str, Any]) -> dict[str, Any]:
+    def _v10_observables(self, signals: dict[str, Any]) -> dict[str, Any]:
         trust_score = float(signals.get("trust_score", 0.0) or 0.0)
         readiness_score = float(signals.get("readiness_score", 0.0) or 0.0)
         if trust_score >= 0.8:
@@ -204,16 +204,16 @@ class AegisOperatorSurface:
             "state": signals.get("admission_state"),
         }
 
-    def apply_v8_outcome_feedback(
+    def apply_v10_outcome_feedback(
         self,
         memory_id: str,
         *,
         success_score: float,
         relevance_score: float | None = None,
         override_score: float = 0.0,
-        actor: str = "v8_feedback",
+        actor: str = "v10_feedback",
     ) -> dict[str, Any]:
-        return self.app.apply_v8_outcome_feedback(
+        return self.app.apply_v10_outcome_feedback(
             memory_id,
             success_score=success_score,
             relevance_score=relevance_score,
@@ -221,7 +221,7 @@ class AegisOperatorSurface:
             actor=actor,
         )
 
-    def apply_v8_retrieval_feedback(
+    def apply_v10_retrieval_feedback(
         self,
         *,
         query: str,
@@ -232,9 +232,9 @@ class AegisOperatorSurface:
         override_memory_ids: list[str] | None = None,
         limit: int = 5,
         include_global: bool = True,
-        actor: str = "v8_bundle_feedback",
+        actor: str = "v10_bundle_feedback",
     ) -> dict[str, Any]:
-        return self.app.apply_v8_retrieval_feedback(
+        return self.app.apply_v10_retrieval_feedback(
             query=query,
             scope_id=scope_id,
             scope_type=scope_type,
@@ -246,7 +246,7 @@ class AegisOperatorSurface:
             actor=actor,
         )
 
-    def v8_bundle_snapshot(
+    def v10_bundle_snapshot(
         self,
         *,
         query: str,
@@ -255,7 +255,7 @@ class AegisOperatorSurface:
         limit: int = 5,
         include_global: bool = True,
     ) -> dict[str, Any]:
-        return self.app.v8_bundle_snapshot(
+        return self.app.v10_bundle_snapshot(
             query=query,
             scope_id=scope_id,
             scope_type=scope_type,
@@ -263,5 +263,5 @@ class AegisOperatorSurface:
             include_global=include_global,
         )
 
-    def apply_v8_transition_gate(self, memory_id: str, *, actor: str = "v8_core") -> dict[str, Any]:
-        return self.app.apply_v8_transition_gate(memory_id, actor=actor)
+    def apply_v10_transition_gate(self, memory_id: str, *, actor: str = "v10_core") -> dict[str, Any]:
+        return self.app.apply_v10_transition_gate(memory_id, actor=actor)

@@ -12,7 +12,7 @@ If any step below fails, do not continue the release. Fix the issue or rollback.
 2. Run the focused validation suite:
    `PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression tests/test_observability_runtime.py tests/replication/test_sync.py`
 3. If runtime code changed, run the higher-confidence supporting suite:
-   `PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_v7_runtime.py tests/test_retrieval.py tests/test_storage.py tests/test_user_surface.py tests/test_workflow_governance.py tests/test_python_only_runtime_contract.py`
+   `PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_v10_runtime.py tests/test_retrieval.py tests/test_storage.py tests/test_user_surface.py tests/test_workflow_governance.py tests/test_python_only_runtime_contract.py`
 4. If host-side OpenClaw code changed, run the host build:
    `npm run build`
 5. Verify the target backup path is writable and a fresh backup can be created if needed.

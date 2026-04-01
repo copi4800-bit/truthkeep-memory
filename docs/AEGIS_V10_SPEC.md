@@ -27,14 +27,14 @@ Aegis v10 follows the **Residual Judgment Engine** design. Every memory record i
 - **Truth Winner**: Mandatory boost (+0.15 to +2.0 depending on intent).
 
 ## 2. Data Contract
-### MemoryRecordV9
+### MemoryRecordV10
 - `fact_kind`: `singleton` (overwrite) or `multivalued` (coexist).
 - `is_slot_winner`: Explicitly determined by `adapter.py` based on status and metadata.
 
 ## 3. Operational Modes
-- `v9_primary`: v10 controls ranking and filtering (Default).
-- `shadow_v9`: v10 controls ranking, v10 metadata attached for audit.
-- `v8_primary`: Bypass v10 entirely.
+- `v10_primary`: v10 controls ranking and filtering (Default).
+- `shadow_v10`: v10 controls ranking, v10 metadata attached for audit.
+- `bypass_v10`: Bypass v10 entirely.
 
 ## 4. Explanation Contract
 - **Compact**: Single sentence decisive factor.

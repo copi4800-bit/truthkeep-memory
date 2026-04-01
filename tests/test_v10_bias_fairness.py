@@ -1,14 +1,14 @@
-from aegis_py.v10_scoring.models import MemoryRecordV9, TrustSignals, CorrectionSignals
+from aegis_py.v10_scoring.models import MemoryRecordV10, TrustSignals, CorrectionSignals
 from aegis_py.v10_scoring.scorer import ResidualScorer
 
-def test_v9_bias_fairness():
+def test_v10_bias_fairness():
     scorer = ResidualScorer()
     
     # Query: "Project X status"
     q = {"semantic_relevance": 0.8, "lexical_match": 0.5, "scope_fit": 1.0}
     
     # 1. Flashy Candidate (High lexical match, but low evidence)
-    flashy = MemoryRecordV9(
+    flashy = MemoryRecordV10(
         id="flashy",
         content="Project X is great!",
         canonical_subject="project_x",
@@ -16,7 +16,7 @@ def test_v9_bias_fairness():
     )
     
     # 2. Truth Candidate (Low lexical match, but high evidence and winner)
-    truth = MemoryRecordV9(
+    truth = MemoryRecordV10(
         id="truth",
         content="Project X is currently in phase 2 with verified milestones.",
         canonical_subject="project_x",
@@ -28,7 +28,7 @@ def test_v9_bias_fairness():
     score_truth = scorer.score(truth, q).factors["final_score"]
     
     assert score_truth > score_flashy, f"Truth ({score_truth}) should be preferred over Flashy ({score_flashy})"
-    print("✅ test_v9_bias_fairness passed!")
+    print("✅ test_v10_bias_fairness passed!")
 
 if __name__ == "__main__":
-    test_v9_bias_fairness()
+    test_v10_bias_fairness()

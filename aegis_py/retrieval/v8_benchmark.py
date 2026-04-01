@@ -8,15 +8,15 @@ from typing import Any
 
 from aegis_py.app import AegisApp
 from aegis_py.retrieval.v10_dynamics import (
-    V8DynamicsProfile,
-    get_active_v8_profile,
-    reset_active_v8_profile,
-    set_active_v8_profile,
+    V10DynamicsProfile,
+    get_active_v10_profile,
+    reset_active_v10_profile,
+    set_active_v10_profile,
 )
 
 
 @dataclass(frozen=True)
-class V8RetrievalCase:
+class V10RetrievalCase:
     query: str
     scope_type: str
     scope_id: str
@@ -28,7 +28,7 @@ class V8RetrievalCase:
 
 
 @dataclass(frozen=True)
-class V8TransitionCase:
+class V10TransitionCase:
     memory_id: str
     expected_recommended_state: str
     expected_signal_mins: dict[str, float] = field(default_factory=dict)
@@ -36,7 +36,7 @@ class V8TransitionCase:
 
 
 @dataclass(frozen=True)
-class V8FeedbackCase:
+class V10FeedbackCase:
     query: str
     scope_type: str
     scope_id: str
@@ -51,7 +51,7 @@ class V8FeedbackCase:
 
 
 @dataclass
-class V8BenchmarkSummary:
+class V10BenchmarkSummary:
     retrieval_hit_rate: float
     signal_coverage: float
     dynamic_reason_coverage: float
@@ -71,7 +71,7 @@ class V8BenchmarkSummary:
 
 
 @dataclass(frozen=True)
-class V8BenchmarkThresholds:
+class V10BenchmarkThresholds:
     retrieval_hit_rate_min: float = 1.0
     signal_coverage_min: float = 1.0
     dynamic_reason_coverage_min: float = 1.0
@@ -87,26 +87,26 @@ class V8BenchmarkThresholds:
 
 
 @dataclass
-class V8BenchmarkGateResult:
+class V10BenchmarkGateResult:
     passed: bool
     failures: list[str] = field(default_factory=list)
 
 
 @dataclass
-class V8ProfileSelection:
+class V10ProfileSelection:
     profile_name: str
-    profile: V8DynamicsProfile
-    summary: V8BenchmarkSummary
-    gate: V8BenchmarkGateResult
+    profile: V10DynamicsProfile
+    summary: V10BenchmarkSummary
+    gate: V10BenchmarkGateResult
 
 
 def run_v10_dynamics_benchmark(
     app: AegisApp,
     *,
-    retrieval_cases: list[V8RetrievalCase],
-    transition_cases: list[V8TransitionCase],
-    feedback_cases: list[V8FeedbackCase] | None = None,
-) -> V8BenchmarkSummary:
+    retrieval_cases: list[V10RetrievalCase],
+    transition_cases: list[V10TransitionCase],
+    feedback_cases: list[V10FeedbackCase] | None = None,
+) -> V10BenchmarkSummary:
     retrieval_payloads: list[dict[str, Any]] = []
     transition_payloads: list[dict[str, Any]] = []
     feedback_payloads: list[dict[str, Any]] = []
@@ -125,8 +125,8 @@ def run_v10_dynamics_benchmark(
         latencies.append(latency_ms)
         top_id = results[0].memory.id if results else None
         top_reasons = results[0].reasons if results else []
-        top_signals = dict(results[0].v8_core_signals or {}) if results and results[0].v8_core_signals is not None else {}
-        snapshot = app.v8_bundle_snapshot(
+        top_signals = dict(results[0].v10_core_signals or {}) if results and results[0].v10_core_signals is not None else {}
+        snapshot = app.v10_bundle_snapshot(
             query=case.query,
             scope_type=case.scope_type,
             scope_id=case.scope_id,
@@ -134,7 +134,7 @@ def run_v10_dynamics_benchmark(
             include_global=True,
         )["snapshot"]
         signal_coverage = (
-            sum(1 for result in results if getattr(result, "v8_core_signals", None) is not None) / len(results)
+            sum(1 for result in results if getattr(result, "v10_core_signals", None) is not None) / len(results)
             if results
             else 0.0
         )
@@ -160,7 +160,7 @@ def run_v10_dynamics_benchmark(
         )
 
     for case in transition_cases:
-        payload = app.v8_transition_gate(case.memory_id)
+        payload = app.v10_transition_gate(case.memory_id)
         transition_payloads.append(
             {
                 "memory_id": case.memory_id,
@@ -178,15 +178,15 @@ def run_v10_dynamics_benchmark(
 
     for case in feedback_cases or []:
         tracked_ids = list(dict.fromkeys(case.selected_memory_ids + case.override_memory_ids))
-        before_signals = {memory_id: app.compute_v8_core_signals(memory_id) for memory_id in tracked_ids}
-        before = app.v8_bundle_snapshot(
+        before_signals = {memory_id: app.compute_v10_core_signals(memory_id) for memory_id in tracked_ids}
+        before = app.v10_bundle_snapshot(
             query=case.query,
             scope_type=case.scope_type,
             scope_id=case.scope_id,
             limit=case.limit,
             include_global=True,
         )["snapshot"]
-        payload = app.apply_v8_retrieval_feedback(
+        payload = app.apply_v10_retrieval_feedback(
             query=case.query,
             scope_type=case.scope_type,
             scope_id=case.scope_id,
@@ -195,7 +195,7 @@ def run_v10_dynamics_benchmark(
             override_memory_ids=case.override_memory_ids,
             limit=case.limit,
             include_global=True,
-            actor="v8_benchmark_bundle_feedback",
+            actor="v10_benchmark_bundle_feedback",
         )
         assignments = {item["memory_id"]: item for item in payload["assignments"]}
         selected_weights = [
@@ -208,7 +208,7 @@ def run_v10_dynamics_benchmark(
             for memory_id in case.override_memory_ids
             if memory_id in assignments
         ]
-        after_signals = {memory_id: app.compute_v8_core_signals(memory_id) for memory_id in tracked_ids}
+        after_signals = {memory_id: app.compute_v10_core_signals(memory_id) for memory_id in tracked_ids}
         feedback_payloads.append(
             {
                 "query": case.query,
@@ -246,7 +246,7 @@ def run_v10_dynamics_benchmark(
 
     latency_p50 = statistics.median(latencies) if latencies else 0.0
     latency_p95 = _percentile(latencies, 95)
-    return V8BenchmarkSummary(
+    return V10BenchmarkSummary(
         retrieval_hit_rate=_avg(item["hit"] for item in retrieval_payloads),
         signal_coverage=_avg(item["signal_coverage"] for item in retrieval_payloads),
         dynamic_reason_coverage=_avg(item["dynamic_reason_hit"] for item in retrieval_payloads),
@@ -266,10 +266,10 @@ def run_v10_dynamics_benchmark(
     )
 
 
-def evaluate_v8_benchmark(
-    summary: V8BenchmarkSummary,
-    thresholds: V8BenchmarkThresholds = V8BenchmarkThresholds(),
-) -> V8BenchmarkGateResult:
+def evaluate_v10_benchmark(
+    summary: V10BenchmarkSummary,
+    thresholds: V10BenchmarkThresholds = V10BenchmarkThresholds(),
+) -> V10BenchmarkGateResult:
     failures: list[str] = []
     if summary.retrieval_hit_rate < thresholds.retrieval_hit_rate_min:
         failures.append(f"retrieval_hit_rate={summary.retrieval_hit_rate:.3f}<{thresholds.retrieval_hit_rate_min}")
@@ -309,10 +309,10 @@ def evaluate_v8_benchmark(
         failures.append(f"bundle_objective_mean={summary.bundle_objective_mean:.3f}>{thresholds.bundle_objective_max}")
     if thresholds.latency_p95_ms_max is not None and summary.latency_p95_ms > thresholds.latency_p95_ms_max:
         failures.append(f"latency_p95_ms={summary.latency_p95_ms:.3f}>{thresholds.latency_p95_ms_max}")
-    return V8BenchmarkGateResult(passed=not failures, failures=failures)
+    return V10BenchmarkGateResult(passed=not failures, failures=failures)
 
 
-def render_v8_benchmark(summary: V8BenchmarkSummary, gate: V8BenchmarkGateResult) -> str:
+def render_v10_benchmark(summary: V10BenchmarkSummary, gate: V10BenchmarkGateResult) -> str:
     payload = {
         "retrieval_hit_rate": round(summary.retrieval_hit_rate, 3),
         "signal_coverage": round(summary.signal_coverage, 3),
@@ -333,20 +333,20 @@ def render_v8_benchmark(summary: V8BenchmarkSummary, gate: V8BenchmarkGateResult
     return json.dumps(payload, indent=2, ensure_ascii=False)
 
 
-def select_best_v8_profile(
+def select_best_v10_profile(
     *,
     app_factory,
-    candidate_profiles: dict[str, V8DynamicsProfile],
-    retrieval_cases: list[V8RetrievalCase],
-    transition_cases: list[V8TransitionCase],
-    feedback_cases: list[V8FeedbackCase] | None = None,
-    thresholds: V8BenchmarkThresholds = V8BenchmarkThresholds(),
-) -> V8ProfileSelection:
-    original = get_active_v8_profile()
-    selections: list[V8ProfileSelection] = []
+    candidate_profiles: dict[str, V10DynamicsProfile],
+    retrieval_cases: list[V10RetrievalCase],
+    transition_cases: list[V10TransitionCase],
+    feedback_cases: list[V10FeedbackCase] | None = None,
+    thresholds: V10BenchmarkThresholds = V10BenchmarkThresholds(),
+) -> V10ProfileSelection:
+    original = get_active_v10_profile()
+    selections: list[V10ProfileSelection] = []
     try:
         for name, profile in candidate_profiles.items():
-            set_active_v8_profile(profile)
+            set_active_v10_profile(profile)
             app = app_factory()
             summary = run_v10_dynamics_benchmark(
                 app,
@@ -354,9 +354,9 @@ def select_best_v8_profile(
                 transition_cases=transition_cases,
                 feedback_cases=feedback_cases,
             )
-            gate = evaluate_v8_benchmark(summary, thresholds)
+            gate = evaluate_v10_benchmark(summary, thresholds)
             selections.append(
-                V8ProfileSelection(
+                V10ProfileSelection(
                     profile_name=name,
                     profile=profile,
                     summary=summary,
@@ -364,7 +364,7 @@ def select_best_v8_profile(
                 )
             )
     finally:
-        set_active_v8_profile(original)
+        set_active_v10_profile(original)
 
     passing = [item for item in selections if item.gate.passed]
     ranked = passing if passing else selections

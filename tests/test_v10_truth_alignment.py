@@ -1,7 +1,7 @@
-from aegis_py.v10_scoring.models import MemoryRecordV9, TrustSignals, CorrectionSignals
+from aegis_py.v10_scoring.models import MemoryRecordV10, TrustSignals, CorrectionSignals
 from aegis_py.v10_scoring.scorer import ResidualScorer
 
-def test_v9_truth_alignment():
+def test_v10_truth_alignment():
     scorer = ResidualScorer()
     
     # CASE: Old memory has perfect lexical overlap, but is superseded.
@@ -13,7 +13,7 @@ def test_v9_truth_alignment():
     }
     
     # 1. Old Memory (Superseded)
-    old_mem = MemoryRecordV9(
+    old_mem = MemoryRecordV10(
         id="mem_old",
         content="My favorite color is blue.",
         canonical_subject="favorite_color",
@@ -22,7 +22,7 @@ def test_v9_truth_alignment():
     
     # 2. New Memory (Winner - Correction)
     # Wording is slightly different, but it's the truth winner.
-    new_mem = MemoryRecordV9(
+    new_mem = MemoryRecordV10(
         id="mem_new",
         content="Actually, I prefer red now.",
         canonical_subject="favorite_color",
@@ -36,7 +36,7 @@ def test_v9_truth_alignment():
     # Assert Truth Winner defeated Lexical Bias
     assert score_new > score_old, f"Expected New Memory ({score_new}) > Old Memory ({score_old})"
     assert score_old < 0, f"Superseded memory should be penalized, but got {score_old}"
-    print("✅ test_v9_truth_alignment passed!")
+    print("✅ test_v10_truth_alignment passed!")
 
 if __name__ == "__main__":
-    test_v9_truth_alignment()
+    test_v10_truth_alignment()

@@ -1,7 +1,7 @@
 from typing import Any, Dict, Optional
-from .models import MemoryRecordV9
+from .models import MemoryRecordV10
 
-def build_v9_query_signals(
+def build_v10_query_signals(
     result: Any, # SearchResult from run_scoped_search
     query: str,
     storage: Any,

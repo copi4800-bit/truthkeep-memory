@@ -27,8 +27,8 @@ class TestFacadeV10(unittest.TestCase):
         self.assertTrue(len(results) > 0)
         reason = results[0].get("human_reason", "")
         # First write should NOT say "bản sửa lỗi"
-        # It can say 'được ghi nhận là sự thật mới' or 'được sếp xác nhận là sự thật hiện tại'
-        is_first_write_wording = any(w in reason for w in ["được ghi nhận là sự thật mới", "được sếp xác nhận là sự thật hiện tại"])
+        # It can say 'được ghi nhận là sự thật mới' or 'được {h_user} xác nhận là sự thật hiện tại'
+        is_first_write_wording = any(w in reason for w in ["được ghi nhận là sự thật mới", "được {h_user} xác nhận là sự thật hiện tại"])
         self.assertTrue(is_first_write_wording, f"Reason did not contain first-write wording: {reason}")
         self.assertNotIn("bản sửa lỗi mới nhất", reason)
 

@@ -36,7 +36,7 @@ def get_conflict_label(score: float, locale: str = "vi") -> str:
     keys = ["conflict_level_v_high", "conflict_level_high", "conflict_level_medium", "conflict_level_low", "conflict_level_none"]
     return get_signal_label(score, keys, locale=locale)
 
-def unify_v8_signals(signals: dict[str, Any], locale: str = "vi") -> dict[str, Any]:
+def unify_v10_signals(signals: dict[str, Any], locale: str = "vi") -> dict[str, Any]:
     """
     Translates v10 raw signals into the unified 5.md Data Contract.
     """

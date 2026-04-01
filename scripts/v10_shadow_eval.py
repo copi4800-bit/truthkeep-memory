@@ -9,7 +9,7 @@ from aegis_py.retrieval.search import SearchPipeline
 from aegis_py.retrieval.models import SearchQuery, SearchResult
 from aegis_py.storage.models import Memory
 
-class V9ShadowEvaluator:
+class V10ShadowEvaluator:
     def __init__(self, db_path: str):
         self.db_path = db_path
         if os.path.exists(db_path):
@@ -68,60 +68,60 @@ class V9ShadowEvaluator:
 
         for s in self.scenarios:
             # Run v10
-            q_v8 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
-            setattr(q_v8, "scoring_mode", "v8_primary")
+            q_v10 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
+            setattr(q_v10, "scoring_mode", "v10_primary")
             
-            start_v8 = time.perf_counter()
-            res_v8 = self.pipeline.search(q_v8)
-            lat_v8 = (time.perf_counter() - start_v8) * 1000
+            start_v10 = time.perf_counter()
+            res_v10 = self.pipeline.search(q_v10)
+            lat_v10 = (time.perf_counter() - start_v10) * 1000
 
             # Run v10
-            q_v9 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
-            setattr(q_v9, "scoring_mode", "v9_primary")
+            q_v10 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
+            setattr(q_v10, "scoring_mode", "v10_primary")
             
-            start_v9 = time.perf_counter()
-            res_v9 = self.pipeline.search(q_v9)
-            lat_v9 = (time.perf_counter() - start_v9) * 1000
+            start_v10 = time.perf_counter()
+            res_v10 = self.pipeline.search(q_v10)
+            lat_v10 = (time.perf_counter() - start_v10) * 1000
 
-            v8_top = res_v8[0].memory.id if res_v8 else "None"
-            v9_top = res_v9[0].memory.id if res_v9 else "None"
+            v10_top = res_v10[0].memory.id if res_v10 else "None"
+            v10_top = res_v10[0].memory.id if res_v10 else "None"
             
             success = False
             metric = "Top-1 Match"
             if "expected_top" in s:
-                success = (v9_top == s["expected_top"])
-                v8_val = "PASS" if v8_top == s["expected_top"] else "FAIL"
-                v9_val = "PASS" if v9_top == s["expected_top"] else "FAIL"
+                success = (v10_top == s["expected_top"])
+                v10_val = "PASS" if v10_top == s["expected_top"] else "FAIL"
+                v10_val = "PASS" if v10_top == s["expected_top"] else "FAIL"
             elif s.get("expected_action") == "suppress":
                 metric = "Suppression"
                 # v10 should penalize/suppress conflict records more heavily (lower score)
-                v8_score = res_v8[0].score if res_v8 else 0
-                v9_score = res_v9[0].v9_score if res_v9 else 0
-                success = (v9_score < 0) # Should be heavily penalized
-                v8_val = f"{v8_score:.2f}"
-                v9_val = f"{v9_score:.2f}"
+                v10_score = res_v10[0].score if res_v10 else 0
+                v10_score = res_v10[0].v10_score if res_v10 else 0
+                success = (v10_score < 0) # Should be heavily penalized
+                v10_val = f"{v10_score:.2f}"
+                v10_val = f"{v10_score:.2f}"
 
             status_mark = "✅" if success else "❌"
-            print(f"{s['name']:<25} | {metric:<20} | {v8_val:<10} | {v9_val:<10} | {status_mark}")
+            print(f"{s['name']:<25} | {metric:<20} | {v10_val:<10} | {v10_val:<10} | {status_mark}")
             
             if not success:
                 print(f"   [Audit all v10 results]:")
-                for r in res_v9:
-                    t = r.v9_trace
-                    print(f"     - {r.memory.id}: score={r.v9_score:.2f}, base={t.base_score:.2f}, judge={t.judge_delta:+.2f}, factors={ {k:round(v,2) for k,v in t.factors.items() if abs(v)>0.01} }")
+                for r in res_v10:
+                    t = r.v10_trace
+                    print(f"     - {r.memory.id}: score={r.v10_score:.2f}, base={t.base_score:.2f}, judge={t.judge_delta:+.2f}, factors={ {k:round(v,2) for k,v in t.factors.items() if abs(v)>0.01} }")
             
             results.append({
                 "scenario": s["name"],
-                "latency_v8": lat_v8,
-                "latency_v9": lat_v9,
+                "latency_v10": lat_v10,
+                "latency_v10": lat_v10,
                 "success": success
             })
 
         # Latency Report
-        avg_lat_v8 = sum(r["latency_v8"] for r in results) / len(results)
-        avg_lat_v9 = sum(r["latency_v9"] for r in results) / len(results)
+        avg_lat_v10 = sum(r["latency_v10"] for r in results) / len(results)
+        avg_lat_v10 = sum(r["latency_v10"] for r in results) / len(results)
         print("-" * 85)
-        print(f"Average Latency (ms):      | v10: {avg_lat_v8:.2f}ms | v10: {avg_lat_v9:.2f}ms | Overhead: {((avg_lat_v9/avg_lat_v8)-1)*100:+.1f}%")
+        print(f"Average Latency (ms):      | v10: {avg_lat_v10:.2f}ms | v10: {avg_lat_v10:.2f}ms | Overhead: {((avg_lat_v10/avg_lat_v10)-1)*100:+.1f}%")
         
         # Cleanup
         self.storage.close()
@@ -129,5 +129,5 @@ class V9ShadowEvaluator:
             os.remove(self.db_path)
 
 if __name__ == "__main__":
-    evaluator = V9ShadowEvaluator("/home/hali/.openclaw/extensions/memory-aegis-v10/v9_shadow_eval.db")
+    evaluator = V10ShadowEvaluator("/home/hali/.openclaw/extensions/memory-aegis-v10/v10_shadow_eval.db")
     asyncio.run(evaluator.evaluate())

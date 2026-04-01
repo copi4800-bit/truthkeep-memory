@@ -23,7 +23,7 @@ class SearchResult:
     relation_via_memory_id: str | None = None
     relation_via_link_metadata: dict[str, object] | None = None
     relation_via_hops: int | None = None
-    v8_core_signals: dict[str, object] | None = None
+    v10_core_signals: dict[str, object] | None = None
     # Danh sách Why-not (Chuẩn 6.md)
     suppressed_candidates: list[dict[str, Any]] = field(default_factory=list)
 

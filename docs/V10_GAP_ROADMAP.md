@@ -4,7 +4,7 @@ This roadmap focuses on the smallest set of changes that would move the runtime 
 
 Reference:
 
-- [V8_SPEC_MAPPING.md](/home/hali/.openclaw/extensions/memory-aegis-v10/docs/V8_SPEC_MAPPING.md)
+- [V10_SPEC_MAPPING.md](/home/hali/.openclaw/extensions/memory-aegis-v10/docs/V10_SPEC_MAPPING.md)
 
 ## Priority 1
 
@@ -28,7 +28,7 @@ Add a normalized per-memory state contract, for example:
   "stability_signal": 0.0,
   "feedback_count": 0.0,
   "belief_delta": 0.0,
-  "last_v8_update_at": "..."
+  "last_v10_update_at": "..."
 }
 ```
 
@@ -41,7 +41,7 @@ Why first:
 Suggested implementation:
 
 - define one canonical serializer/deserializer
-- store under a single metadata key such as `v8_state`
+- store under a single metadata key such as `v10_state`
 - migrate current `v10_dynamics` metadata into that contract
 
 ### 2. Separate derived signals from persisted state
@@ -202,7 +202,7 @@ Why:
 
 ## Recommended order
 
-1. Persist canonical `v8_state`
+1. Persist canonical `v10_state`
 2. Separate persisted state from query-derived signals
 3. Make transition a first-class operator surface
 4. Normalize support/conflict inputs

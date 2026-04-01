@@ -93,7 +93,7 @@ As a maintainer, I want the runtime to capture bounded usage, regret, decay, and
 
 ### Key Entities
 
-- **V8CoreSignals**: Bounded per-memory dynamic terms such as `evidence_signal`, `support_signal`, `conflict_signal`, `usage_signal`, `trust_score`, and `readiness_score`.
+- **V10CoreSignals**: Bounded per-memory dynamic terms such as `evidence_signal`, `support_signal`, `conflict_signal`, `usage_signal`, `trust_score`, and `readiness_score`.
 - **DynamicRetrievalScore**: Internal ranking payload that combines current relevance, trust, readiness, admissibility, and bounded cost.
 - **TransitionGate**: Hysteresis-aware threshold contract that governs promotion/demotion decisions for the first dynamic state boundary.
 

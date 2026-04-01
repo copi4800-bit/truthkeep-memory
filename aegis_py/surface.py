@@ -5,9 +5,9 @@ from typing import Any, Iterable
 
 from .retrieval.models import SearchResult
 from .tool_registry import TOOL_REGISTRY, operations_for_audience, public_operations
-from .ux.schema import unify_v8_signals
+from .ux.schema import unify_v10_signals
 from .ux.translator import generate_human_reason
-from .v10.translator import FaithfulRenderer
+from .v10_scoring.translator import FaithfulRenderer
 
 RETRIEVAL_MODES = {"fast", "explain"}
 
@@ -16,7 +16,7 @@ ADVANCED_OPERATIONS = operations_for_audience("advanced")
 PUBLIC_OPERATIONS = public_operations()
 
 # Global v10 Renderer
-V9_RENDERER = FaithfulRenderer()
+V10_RENDERER = FaithfulRenderer()
 
 
 def normalize_retrieval_mode(retrieval_mode: str | None) -> str:
@@ -136,31 +136,31 @@ def serialize_search_result(
     locale: str = "vi",
 ) -> dict[str, Any]:
     mode = normalize_retrieval_mode(retrieval_mode)
-    # Prioritize fresh v8_core_signals from the current retrieval run
-    v8_state = result.v8_core_signals or (result.memory.metadata.get("v8_state", {}) if isinstance(result.memory.metadata, dict) else {})
+    # Prioritize fresh v10_core_signals from the current retrieval run
+    v10_state = result.v10_core_signals or (result.memory.metadata.get("v10_state", {}) if isinstance(result.memory.metadata, dict) else {})
     
     # Prioritize v10 human_reason if trace is available
-    v9_trace = getattr(result, "v9_trace", None)
-    v9_payload = {}
-    if v9_trace:
+    v10_trace = getattr(result, "v10_trace", None)
+    v10_payload = {}
+    if v10_trace:
         # Determine narrative detail level based on mode (Absolute Beauty Sprint 1 & 3)
         detail_level = "standard"
         if mode == "fast": detail_level = "standard" # User mode
         elif mode == "explain": detail_level = "explain" # Explain mode
         elif mode == "deep": detail_level = "deep" # Audit mode
         
-        human_reason = V9_RENDERER.render(v9_trace, locale=locale, detail=detail_level)
-        v9_payload = {
-            "v9_score": getattr(result, "v9_score", 0.0),
-            "decisive_factor": v9_trace.decisive_factor,
-            "base_score": v9_trace.base_score,
-            "judge_delta": v9_trace.judge_delta,
-            "life_delta": v9_trace.life_delta,
-            "hard_constraints_delta": getattr(v9_trace, "hard_constraints_delta", 0.0),
-            "factors": v9_trace.factors
+        human_reason = V10_RENDERER.render(v10_trace, locale=locale, detail=detail_level)
+        v10_payload = {
+            "v10_score": getattr(result, "v10_score", 0.0),
+            "decisive_factor": v10_trace.decisive_factor,
+            "base_score": v10_trace.base_score,
+            "judge_delta": v10_trace.judge_delta,
+            "life_delta": v10_trace.life_delta,
+            "hard_constraints_delta": getattr(v10_trace, "hard_constraints_delta", 0.0),
+            "factors": v10_trace.factors
         }
     else:
-        human_reason = generate_human_reason(v8_state, locale=locale)
+        human_reason = generate_human_reason(v10_state, locale=locale)
 
     # v10 Governance Extension
     v10_decision = getattr(result, "v10_decision", None)
@@ -194,9 +194,9 @@ def serialize_search_result(
         "provenance": result.provenance,
         "conflict_status": result.conflict_status,
         "human_reason": human_reason,
-        "v9_audit": v9_payload, # Audit-friendly v10 trace
+        "v10_audit": v10_payload, # Audit-friendly v10 trace
         "v10_governance": v10_payload, # v10 Governance fields
-        "unified_signals": unify_v8_signals(v8_state, locale=locale),
+        "unified_signals": unify_v10_signals(v10_state, locale=locale),
         "suppressed_candidates": result.suppressed_candidates, # Thêm Why-not payload
     }
     # Flatten v10 fields into the top-level payload for easy consumption if in v10 mode

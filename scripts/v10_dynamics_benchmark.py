@@ -7,20 +7,20 @@ import uuid
 
 from aegis_py.app import AegisApp
 from aegis_py.conflict.core import ConflictManager
-from aegis_py.retrieval.v8_benchmark import (
-    V8BenchmarkThresholds,
-    V8FeedbackCase,
-    V8RetrievalCase,
-    V8TransitionCase,
-    evaluate_v8_benchmark,
+from aegis_py.retrieval.v10_benchmark import (
+    V10BenchmarkThresholds,
+    V10FeedbackCase,
+    V10RetrievalCase,
+    V10TransitionCase,
+    evaluate_v10_benchmark,
     run_v10_dynamics_benchmark,
 )
 
 
 def main() -> int:
-    workspace = Path("/tmp") / f"aegis_v8_benchmark_{uuid.uuid4().hex[:8]}"
+    workspace = Path("/tmp") / f"aegis_v10_benchmark_{uuid.uuid4().hex[:8]}"
     workspace.mkdir(parents=True, exist_ok=True)
-    app = AegisApp(db_path=str(workspace / "v8_benchmark.db"))
+    app = AegisApp(db_path=str(workspace / "v10_benchmark.db"))
 
     strong = app.put_memory(
         "Release plan evidence-backed checklist for launch.",
@@ -144,13 +144,13 @@ def main() -> int:
         "UPDATE memories SET access_count = ?, activation_score = ?, confidence = ? WHERE id = ?",
         (0, 1.0, 0.2, demote.id),
     )
-    app.apply_v8_outcome_feedback(
+    app.apply_v10_outcome_feedback(
         warm.id,
         success_score=1.0,
         relevance_score=1.0,
         override_score=0.0,
     )
-    app.apply_v8_outcome_feedback(
+    app.apply_v10_outcome_feedback(
         cold.id,
         success_score=0.2,
         relevance_score=0.2,
@@ -160,27 +160,27 @@ def main() -> int:
     summary = run_v10_dynamics_benchmark(
         app,
         retrieval_cases=[
-            V8RetrievalCase(
+            V10RetrievalCase(
                 query="release plan checklist",
                 scope_type="project",
                 scope_id="V10",
                 expected_top_id=strong.id,
-                expected_reason_tags=["v8_evidence_strong", "v8_trust_elevated"],
+                expected_reason_tags=["v10_evidence_strong", "v10_trust_elevated"],
             ),
-            V8RetrievalCase(
+            V10RetrievalCase(
                 query="deployment runbook",
                 scope_type="project",
                 scope_id="V10",
                 expected_top_id=warm.id,
-                expected_reason_tags=["v8_usage_reinforced"],
+                expected_reason_tags=["v10_usage_reinforced"],
             ),
         ],
         transition_cases=[
-            V8TransitionCase(memory_id=draft.id, expected_recommended_state="validated"),
-            V8TransitionCase(memory_id=demote.id, expected_recommended_state="hypothesized"),
+            V10TransitionCase(memory_id=draft.id, expected_recommended_state="validated"),
+            V10TransitionCase(memory_id=demote.id, expected_recommended_state="hypothesized"),
         ],
         feedback_cases=[
-            V8FeedbackCase(
+            V10FeedbackCase(
                 query="deployment runbook",
                 scope_type="project",
                 scope_id="V10",
@@ -191,9 +191,9 @@ def main() -> int:
             ),
         ],
     )
-    gate = evaluate_v8_benchmark(
+    gate = evaluate_v10_benchmark(
         summary,
-        V8BenchmarkThresholds(
+        V10BenchmarkThresholds(
             retrieval_hit_rate_min=1.0,
             signal_coverage_min=1.0,
             dynamic_reason_coverage_min=1.0,

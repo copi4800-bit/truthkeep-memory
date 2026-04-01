@@ -16,7 +16,7 @@ except ImportError as e:
     sys.exit(1)
 
 def run_extreme_stress():
-    db_path = "extreme_v8_recall_stress.db"
+    db_path = "extreme_v10_recall_stress.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -107,10 +107,10 @@ def run_extreme_stress():
     
     for idx, r in enumerate(conflict_payload[:3]):
         # Trong Aegis v10 search results, r là một dict hoặc object
-        # Thường có cấu trúc r['memory'] và r['v8_core_signals']
+        # Thường có cấu trúc r['memory'] và r['v10_core_signals']
         mem = r.get('memory', {})
         content = mem.get('content', 'Unknown')
-        signals = r.get('v8_core_signals', {})
+        signals = r.get('v10_core_signals', {})
         
         print(f"Kết quả {idx+1}: {content[:50]}...")
         print(f"  > Trust Score: {signals.get('trust_score', 'N/A')}")

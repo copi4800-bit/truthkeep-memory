@@ -44,7 +44,7 @@ extensions/memory-aegis-v10/
 │   ├── test_app_surface.py
 │   ├── test_user_surface.py
 │   ├── test_storage_growth_control.py
-│   ├── test_v7_runtime.py
+│   ├── test_v10_runtime.py
 │   ├── test_python_only_runtime_contract.py
 │   └── acceptance/, regression/, replication/
 └── specs/
@@ -137,7 +137,7 @@ For architecture slices in this tranche, keep using the current high-signal comm
 
 ```bash
 PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_app_surface.py tests/test_user_surface.py tests/test_storage_growth_control.py
-PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression tests/test_observability_runtime.py tests/replication/test_sync.py tests/test_python_only_runtime_contract.py tests/test_v7_runtime.py
+PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression tests/test_observability_runtime.py tests/replication/test_sync.py tests/test_python_only_runtime_contract.py tests/test_v10_runtime.py
 npm run build
 npm run test:bootstrap
 ```

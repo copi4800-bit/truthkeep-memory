@@ -12,7 +12,7 @@ sys.path.append(os.getcwd())
 
 from aegis_py.app import AegisApp
 from aegis_py.storage.models import Memory, Conflict
-from aegis_py.v10.models import GovernanceStatus, TruthRole, RetrievableMode
+from aegis_py.v10_scoring.models import GovernanceStatus, TruthRole, RetrievableMode
 
 def quiet_put(app, content, subject=None, scope_type="session", scope_id="default", status="active", metadata=None, m_type="episodic"):
     m = Memory(

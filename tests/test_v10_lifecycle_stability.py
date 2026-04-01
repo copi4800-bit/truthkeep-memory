@@ -1,14 +1,14 @@
-from aegis_py.v10_scoring.models import MemoryRecordV9, LifecycleSignals, TrustSignals
+from aegis_py.v10_scoring.models import MemoryRecordV10, LifecycleSignals, TrustSignals
 from aegis_py.v10_scoring.scorer import ResidualScorer
 
-def test_v9_lifecycle_stability():
+def test_v10_lifecycle_stability():
     scorer = ResidualScorer()
     
     # Query: "Server access instructions"
     q = {"semantic_relevance": 0.8}
     
     # 1. New, unvalidated memory
-    new_mem = MemoryRecordV9(
+    new_mem = MemoryRecordV10(
         id="new",
         content="Instruction A",
         canonical_subject="server_access",
@@ -16,7 +16,7 @@ def test_v9_lifecycle_stability():
     )
     
     # 2. Old, but highly validated and reused memory (Stable)
-    stable_mem = MemoryRecordV9(
+    stable_mem = MemoryRecordV10(
         id="stable",
         content="Instruction B",
         canonical_subject="server_access",
@@ -29,7 +29,7 @@ def test_v9_lifecycle_stability():
     
     # Stable, validated memory should outrank a new, unvalidated one if relevance is equal
     assert score_stable > score_new, f"Stable ({score_stable}) should be preferred over New ({score_new})"
-    print("✅ test_v9_lifecycle_stability passed!")
+    print("✅ test_v10_lifecycle_stability passed!")
 
 if __name__ == "__main__":
-    test_v9_lifecycle_stability()
+    test_v10_lifecycle_stability()

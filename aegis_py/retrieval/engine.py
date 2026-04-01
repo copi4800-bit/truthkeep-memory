@@ -6,7 +6,7 @@ import json
 from typing import Any
 
 from .contract import blend_retrieval_score, build_reason_tags
-from .v10_dynamics import compute_v8_core_signals, dynamic_reason_tags, dynamic_score_bonus
+from .v10_dynamics import compute_v10_core_signals, dynamic_reason_tags, dynamic_score_bonus
 from ..storage.models import RETRIEVABLE_MEMORY_STATUS_SQL
 
 
@@ -42,7 +42,7 @@ class CanonicalSearchResult:
     relation_via_memory_id: str | None = None
     relation_via_link_metadata: dict[str, object] | None = None
     relation_via_hops: int | None = None
-    v8_core_signals: dict[str, Any] | None = None
+    v10_core_signals: dict[str, Any] | None = None
 
 
 def run_scoped_search(
@@ -152,7 +152,7 @@ def run_scoped_search(
         cw_tuple = conflict_map.get(payload["id"], (0.0, False)) if hasattr(db, 'batch_conflict_weight') else _conflict_weight_for_memory(db, payload["id"])
         conflict_weight, direct_conflict_open = cw_tuple
         
-        v8_core_signals = compute_v8_core_signals(
+        v10_core_signals = compute_v10_core_signals(
             row={
                 "confidence": payload["confidence"],
                 "activation_score": payload["activation_score"],
@@ -166,7 +166,7 @@ def run_scoped_search(
             direct_conflict_open=direct_conflict_open,
         )
         score = blend_retrieval_score(float(payload["lexical_score"]), float(payload["activation_score"]), score_profile)
-        score = round(score + dynamic_score_bonus(v8_core_signals), 6)
+        score = round(score + dynamic_score_bonus(v10_core_signals), 6)
         if admission_state == "hypothesized":
             score = round(score * 0.88, 6)
         elif admission_state == "consolidated":
@@ -189,7 +189,7 @@ def run_scoped_search(
             admission_state=admission_state,
             score_profile=score_profile,
         )
-        reasons.extend(dynamic_reason_tags(v8_core_signals))
+        reasons.extend(dynamic_reason_tags(v10_core_signals))
         results.append(
             CanonicalSearchResult(
                 id=payload["id"],
@@ -206,7 +206,7 @@ def run_scoped_search(
                 conflict_status=payload["conflict_status"],
                 admission_state=admission_state,
                 score_profile=score_profile,
-                v8_core_signals=v8_core_signals,
+                v10_core_signals=v10_core_signals,
             )
         )
 

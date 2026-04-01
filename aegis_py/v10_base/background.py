@@ -31,7 +31,7 @@ class GovernedBackgroundIntelligence:
         proposals.extend(self._plan_condensation(scope_type=scope_type, scope_id=scope_id))
         proposals.extend(self._plan_staleness_review(scope_type=scope_type, scope_id=scope_id))
         proposals.extend(self._plan_graph_repair(scope_type=scope_type, scope_id=scope_id))
-        proposals.extend(self._plan_v8_transition_review(scope_type=scope_type, scope_id=scope_id))
+        proposals.extend(self._plan_v10_transition_review(scope_type=scope_type, scope_id=scope_id))
         for proposal in proposals:
             self.storage.record_background_intelligence_run(
                 scope_type=scope_type,
@@ -118,8 +118,8 @@ class GovernedBackgroundIntelligence:
             applied, audit_ids = self._apply_staleness_review(run, proposal)
             result["applied"] = applied
             result["audit_ids"] = audit_ids
-        elif run["worker_kind"] == "v8_transition_review":
-            applied, audit_ids = self._apply_v8_transition_review(run, proposal)
+        elif run["worker_kind"] == "v10_transition_review":
+            applied, audit_ids = self._apply_v10_transition_review(run, proposal)
             result["applied"] = applied
             result["audit_ids"] = audit_ids
         self.storage.update_background_intelligence_run(
@@ -238,7 +238,7 @@ class GovernedBackgroundIntelligence:
             )
         return proposals[:5]
 
-    def _plan_v8_transition_review(self, *, scope_type: str, scope_id: str) -> list[dict[str, Any]]:
+    def _plan_v10_transition_review(self, *, scope_type: str, scope_id: str) -> list[dict[str, Any]]:
         if self.signal_provider is None or self.transition_applier is None:
             return []
         rows = self.storage.fetch_all(
@@ -259,7 +259,7 @@ class GovernedBackgroundIntelligence:
                 continue
             proposals.append(
                 {
-                    "worker_kind": "v8_transition_review",
+                    "worker_kind": "v10_transition_review",
                     "memory_id": row["id"],
                     "subject": row["subject"],
                     "current_state": gate["current_state"],
@@ -301,7 +301,7 @@ class GovernedBackgroundIntelligence:
             return max(0, len(rows) - 1)
         if run["worker_kind"] == "staleness_review":
             return 1 if proposal.get("memory_id") else 0
-        if run["worker_kind"] == "v8_transition_review":
+        if run["worker_kind"] == "v10_transition_review":
             return 1 if proposal.get("memory_id") else 0
         return 0
 
@@ -476,7 +476,7 @@ class GovernedBackgroundIntelligence:
         )
         return True, [audit_id]
 
-    def _apply_v8_transition_review(self, run: dict[str, Any], proposal: dict[str, Any]) -> tuple[bool, list[str]]:
+    def _apply_v10_transition_review(self, run: dict[str, Any], proposal: dict[str, Any]) -> tuple[bool, list[str]]:
         if self.transition_applier is None:
             return False, []
         memory_id = proposal.get("memory_id")
@@ -486,7 +486,7 @@ class GovernedBackgroundIntelligence:
         if row is None:
             return False, []
         previous_state = self._row_to_previous_state(row)
-        payload = self.transition_applier(memory_id, actor="background_v8_transition_review")
+        payload = self.transition_applier(memory_id, actor="background_v10_transition_review")
         if not payload.get("applied"):
             return False, []
         updated = self.storage.fetch_one("SELECT metadata_json, status FROM memories WHERE id = ?", (memory_id,))
@@ -497,7 +497,7 @@ class GovernedBackgroundIntelligence:
             scope_id=run["scope_id"],
             memory_id=memory_id,
             payload={
-                "mutation_kind": "v8_transition_review",
+                "mutation_kind": "v10_transition_review",
                 "before": previous_state,
                 "after": {
                     "status": updated["status"] if updated is not None else None,

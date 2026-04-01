@@ -6,7 +6,7 @@ Build one compatibility-first operator harness instead of broad new runtime sema
 
 ## Work
 
-1. Add `scripts/apocalypse_v7.py` with importable helpers and CLI
+1. Add `scripts/apocalypse_v10.py` with importable helpers and CLI
 2. Reuse current `AegisApp` backup/restore and retrieval paths
 3. Add bounded retries for SQLite busy/locked pressure instead of treating transient locks as hard failure
 4. Add one reduced-profile test under `tests/`
@@ -14,5 +14,5 @@ Build one compatibility-first operator harness instead of broad new runtime sema
 ## Validation
 
 - `PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_apocalypse_runtime.py`
-- Optionally run `PYTHONPATH=. .venv/bin/python scripts/apocalypse_v7.py --profile quick`
+- Optionally run `PYTHONPATH=. .venv/bin/python scripts/apocalypse_v10.py --profile quick`
 

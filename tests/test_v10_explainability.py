@@ -1,11 +1,11 @@
-from aegis_py.v10_scoring.models import MemoryRecordV9, TrustSignals, CorrectionSignals
+from aegis_py.v10_scoring.models import MemoryRecordV10, TrustSignals, CorrectionSignals
 from aegis_py.v10_scoring.scorer import ResidualScorer
 
-def test_v9_explainability():
+def test_v10_explainability():
     scorer = ResidualScorer()
     
     # 1. Correction Winner case
-    mem = MemoryRecordV9(
+    mem = MemoryRecordV10(
         id="mem1",
         content="Winner content",
         canonical_subject="test",
@@ -18,7 +18,7 @@ def test_v9_explainability():
     assert trace.decisive_factor in ["hard_constraint_winner", "corr"]
     
     # 2. Strong Trust case
-    mem2 = MemoryRecordV9(
+    mem2 = MemoryRecordV10(
         id="mem2",
         content="Trusted content",
         canonical_subject="test",
@@ -26,7 +26,7 @@ def test_v9_explainability():
     )
     trace2 = scorer.score(mem2, q)
     assert trace2.decisive_factor == "trust"
-    print("✅ test_v9_explainability passed!")
+    print("✅ test_v10_explainability passed!")
 
 if __name__ == "__main__":
-    test_v9_explainability()
+    test_v10_explainability()

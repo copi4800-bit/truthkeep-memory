@@ -1,7 +1,7 @@
 from __future__ import annotations
 import math
 from typing import List, Dict, Any
-from .models import MemoryRecordV9, JudgmentTrace, MemoryState
+from .models import MemoryRecordV10, JudgmentTrace, MemoryState
 
 class ResidualScorer:
     """
@@ -20,7 +20,7 @@ class ResidualScorer:
             "thresholds": {"slot_winner": 0.15, "conflict_safety": 0.5}
         }
 
-    def score(self, memory: MemoryRecordV9, query_signals: Dict[str, float], intent: str = "normal_recall") -> JudgmentTrace:
+    def score(self, memory: MemoryRecordV10, query_signals: Dict[str, float], intent: str = "normal_recall") -> JudgmentTrace:
         """
         Computes the unified v10 Residual Judgment Score.
         Formula: S_final = S_base + Δ_judge + Δ_life + H_constraints
@@ -66,7 +66,7 @@ class ResidualScorer:
         
         return trace
 
-    def calculate_decision_entropy(self, m: MemoryRecordV9, trace: JudgmentTrace) -> float:
+    def calculate_decision_entropy(self, m: MemoryRecordV10, trace: JudgmentTrace) -> float:
         """
         Computes Decision Entropy (H_slot). 
         High entropy means the system is uncertain about this memory's truth role.
@@ -79,7 +79,7 @@ class ResidualScorer:
         raw_h = (conflict_energy * 0.6 + evidence_gap * 0.4)
         return max(0.0, min(1.0, raw_h))
 
-    def calculate_memory_health_index(self, m: MemoryRecordV9, trace: JudgmentTrace) -> float:
+    def calculate_memory_health_index(self, m: MemoryRecordV10, trace: JudgmentTrace) -> float:
         """
         Computes Memory Health Index (MHI).
         MHI = w1*T + w2*L + w3*V - w4*C - w5*Q
@@ -93,7 +93,7 @@ class ResidualScorer:
         mhi = (0.3 * t + 0.2 * l + 0.3 * v - 0.1 * c - 0.1 * q)
         return max(0.0, min(1.0, mhi))
 
-    def compute_base_score(self, m: MemoryRecordV9, q: Dict[str, float], trace: JudgmentTrace) -> float:
+    def compute_base_score(self, m: MemoryRecordV10, q: Dict[str, float], trace: JudgmentTrace) -> float:
         w = self.config["base"]
         sem = w["sem"] * q.get("semantic_relevance", 0.0)
         lex = w["lex"] * q.get("lexical_match", 0.0)
@@ -104,7 +104,7 @@ class ResidualScorer:
         trace.factors.update({"sem": sem, "lex": lex, "scope": scope, "link": link, "prior": prior})
         return sem + lex + scope + link + prior
 
-    def compute_judge_delta(self, m: MemoryRecordV9, query_signals: Dict[str, float], trace: JudgmentTrace, intent: str = "normal_recall") -> float:
+    def compute_judge_delta(self, m: MemoryRecordV10, query_signals: Dict[str, float], trace: JudgmentTrace, intent: str = "normal_recall") -> float:
         w = self.config["judge"]
         
         # Trust (Hyperbolic Squashing)
@@ -124,7 +124,7 @@ class ResidualScorer:
         trace.factors.update({"trust": d_trust, "conflict": d_conflict, "corr": d_corr, "bias": d_bias})
         return d_trust + d_conflict + d_corr + d_bias
 
-    def compute_bias_delta(self, m: MemoryRecordV9, q: Dict[str, float], trace: JudgmentTrace) -> float:
+    def compute_bias_delta(self, m: MemoryRecordV10, q: Dict[str, float], trace: JudgmentTrace) -> float:
         w = self.config["judge"]
         lex_overlap = q.get("lexical_match", 0.0)
         truth_strength = (m.trust.evidence_strength + (1.0 if m.correction.is_slot_winner else 0.0)) / 2.0
@@ -143,7 +143,7 @@ class ResidualScorer:
         trace.factors.update({"b_lex": -b_lex, "b_rec": -b_rec, "b_act": -b_act, "b_truth": b_truth})
         return b_truth - (b_lex + b_rec + b_act)
 
-    def compute_life_delta(self, m: MemoryRecordV9, trace: JudgmentTrace) -> float:
+    def compute_life_delta(self, m: MemoryRecordV10, trace: JudgmentTrace) -> float:
         w = self.config["life"]
         # Staleness Curve accelerated by 25% (6.25)
         d_decay = -w["decay"] * (1.0 - math.exp(-m.lifecycle.decay_rate * 6.25))
@@ -159,7 +159,7 @@ class ResidualScorer:
         trace.factors.update({"decay": d_decay, "ready": d_ready, "stale": d_stale, "reuse": d_reuse, "archive": d_archive, "life_final": final_d_life})
         return final_d_life
 
-    def apply_hard_constraints(self, m: MemoryRecordV9, score: float, intent: str, trace: JudgmentTrace) -> float:
+    def apply_hard_constraints(self, m: MemoryRecordV10, score: float, intent: str, trace: JudgmentTrace) -> float:
         t = self.config["thresholds"]
         
         # Exclusion constraints

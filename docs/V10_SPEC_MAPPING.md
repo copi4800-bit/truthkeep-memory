@@ -49,7 +49,7 @@ The runtime is not yet a literal transcription of the full formal system. In par
 | Retrieval score `R_i(Q_t, t)` | `/home/hali/.openclaw/11.md` and `/home/hali/.openclaw/12.md` retrieval sections | lexical score blended with activation and v10 dynamic bonus in `aegis_py/retrieval/engine.py` | `Approx` |
 | Retrieval probability / ranking | `/home/hali/.openclaw/12.md` retrieval probability | Ranked retrieval pipeline; not a literal persisted softmax probability contract | `Approx` |
 | Transition operator `Tau` | `/home/hali/.openclaw/12.md` transition section | `_transition_gate()` and the v10 state machine | `Approx` |
-| Outcome feedback and regret update | `/home/hali/.openclaw/11.md` regret and `/home/hali/.openclaw/12.md` feedback sections | `apply_outcome_feedback()` and `AegisApp.apply_v8_outcome_feedback()` | `Exact` |
+| Outcome feedback and regret update | `/home/hali/.openclaw/11.md` regret and `/home/hali/.openclaw/12.md` feedback sections | `apply_outcome_feedback()` and `AegisApp.apply_v10_outcome_feedback()` | `Exact` |
 | Global energy / objective | `/home/hali/.openclaw/7.md` and `/home/hali/.openclaw/12.md` energy/objective sections | `bundle_energy_snapshot()` computes bundle energy and objective losses | `Exact` |
 | Benchmark gates for retrieval, transition, feedback | `/home/hali/.openclaw/7.md` and `/home/hali/.openclaw/12.md` research-to-simulator path | `tests/benchmarks/test_v10_dynamics_sli.py` | `Exact` |
 | Global field state `Xi(t)` | `/home/hali/.openclaw/11.md` | No first-class runtime object for the whole memory field | `Missing` |

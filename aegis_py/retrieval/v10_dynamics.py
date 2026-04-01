@@ -4,9 +4,9 @@ import math
 from dataclasses import dataclass, replace
 from typing import Any
 
-V8_STATE_METADATA_KEY = "v8_state"
-LEGACY_V8_DYNAMICS_METADATA_KEY = "v10_dynamics"
-PERSISTED_V8_STATE_FIELDS = (
+V10_STATE_METADATA_KEY = "v10_state"
+LEGACY_V10_DYNAMICS_METADATA_KEY = "v10_dynamics"
+PERSISTED_V10_STATE_FIELDS = (
     "belief_score",
     "usage_signal",
     "decay_signal",
@@ -16,7 +16,7 @@ PERSISTED_V8_STATE_FIELDS = (
     "feedback_count",
     "belief_delta",
 )
-DERIVED_V8_SIGNAL_FIELDS = (
+DERIVED_V10_SIGNAL_FIELDS = (
     "evidence_signal",
     "support_signal",
     "conflict_signal",
@@ -25,7 +25,7 @@ DERIVED_V8_SIGNAL_FIELDS = (
 
 
 @dataclass(frozen=True)
-class V8DynamicsProfile:
+class V10DynamicsProfile:
     evidence_directness_weight: float = 0.35
     evidence_specificity_weight: float = 0.2
     evidence_reliability_weight: float = 0.3
@@ -88,24 +88,24 @@ class V8DynamicsProfile:
     objective_cost_weight: float = 0.1
 
 
-DEFAULT_V8_DYNAMICS_PROFILE = V8DynamicsProfile()
-_ACTIVE_V8_DYNAMICS_PROFILE = DEFAULT_V8_DYNAMICS_PROFILE
+DEFAULT_V10_DYNAMICS_PROFILE = V10DynamicsProfile()
+_ACTIVE_V10_DYNAMICS_PROFILE = DEFAULT_V10_DYNAMICS_PROFILE
 
 
-def get_active_v8_profile() -> V8DynamicsProfile:
-    return _ACTIVE_V8_DYNAMICS_PROFILE
+def get_active_v10_profile() -> V10DynamicsProfile:
+    return _ACTIVE_V10_DYNAMICS_PROFILE
 
 
-def set_active_v8_profile(profile: V8DynamicsProfile) -> None:
-    global _ACTIVE_V8_DYNAMICS_PROFILE
-    _ACTIVE_V8_DYNAMICS_PROFILE = profile
+def set_active_v10_profile(profile: V10DynamicsProfile) -> None:
+    global _ACTIVE_V10_DYNAMICS_PROFILE
+    _ACTIVE_V10_DYNAMICS_PROFILE = profile
 
 
-def reset_active_v8_profile() -> None:
-    set_active_v8_profile(DEFAULT_V8_DYNAMICS_PROFILE)
+def reset_active_v10_profile() -> None:
+    set_active_v10_profile(DEFAULT_V10_DYNAMICS_PROFILE)
 
 
-def with_profile(profile: V8DynamicsProfile, **updates: float) -> V8DynamicsProfile:
+def with_profile(profile: V10DynamicsProfile, **updates: float) -> V10DynamicsProfile:
     return replace(profile, **updates)
 
 
@@ -132,12 +132,12 @@ def _score_profile(row: dict[str, Any]) -> dict[str, float]:
     return profile if isinstance(profile, dict) else {}
 
 
-def _v8_state(row: dict[str, Any]) -> dict[str, float]:
+def _v10_state(row: dict[str, Any]) -> dict[str, float]:
     metadata = row.get("metadata") if isinstance(row.get("metadata"), dict) else {}
     raw = {}
     if isinstance(metadata, dict):
-        canonical = metadata.get(V8_STATE_METADATA_KEY, {})
-        legacy = metadata.get(LEGACY_V8_DYNAMICS_METADATA_KEY, {})
+        canonical = metadata.get(V10_STATE_METADATA_KEY, {})
+        legacy = metadata.get(LEGACY_V10_DYNAMICS_METADATA_KEY, {})
         if isinstance(canonical, dict) and canonical:
             raw = canonical
         elif isinstance(legacy, dict):
@@ -154,7 +154,7 @@ def _v8_state(row: dict[str, Any]) -> dict[str, float]:
     }
 
 
-def build_persisted_v8_state(
+def build_persisted_v10_state(
     *,
     signals: dict[str, Any],
     feedback_count: float,
@@ -176,17 +176,17 @@ def build_persisted_v8_state(
     return payload
 
 
-def split_v8_signal_views(signals: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+def split_v10_signal_views(signals: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
     persisted_state = {
         key: signals[key]
-        for key in PERSISTED_V8_STATE_FIELDS
+        for key in PERSISTED_V10_STATE_FIELDS
         if key in signals
     }
     if "last_feedback_at" in signals:
         persisted_state["last_feedback_at"] = signals["last_feedback_at"]
     derived_state = {
         key: signals[key]
-        for key in DERIVED_V8_SIGNAL_FIELDS
+        for key in DERIVED_V10_SIGNAL_FIELDS
         if key in signals
     }
     return persisted_state, derived_state
@@ -204,7 +204,7 @@ def _row_access_count(row: dict[str, Any]) -> int:
     return max(0, int(row.get("access_count", 0) or 0))
 
 
-def _evidence_signal(row: dict[str, Any], *, evidence_count: int, profile: V8DynamicsProfile) -> tuple[float, dict[str, float]]:
+def _evidence_signal(row: dict[str, Any], *, evidence_count: int, profile: V10DynamicsProfile) -> tuple[float, dict[str, float]]:
     score_profile = _score_profile(row)
     quality = (
         (float(score_profile.get("directness", 0.0) or 0.0) * profile.evidence_directness_weight)
@@ -220,13 +220,13 @@ def _support_signal(*, support_weight: float) -> float:
     return round(bounded_ratio(support_weight), 6)
 
 
-def _conflict_signal(*, conflict_weight: float, direct_conflict_open: bool, profile: V8DynamicsProfile) -> float:
+def _conflict_signal(*, conflict_weight: float, direct_conflict_open: bool, profile: V10DynamicsProfile) -> float:
     raw = max(conflict_weight, 0.0) + (profile.direct_conflict_open_bonus if direct_conflict_open else 0.0)
     return round(bounded_ratio(raw), 6)
 
 
-def _usage_signal(row: dict[str, Any], profile: V8DynamicsProfile) -> float:
-    dynamic = _v8_state(row)
+def _usage_signal(row: dict[str, Any], profile: V10DynamicsProfile) -> float:
+    dynamic = _v10_state(row)
     if dynamic["feedback_count"] > 0:
         return round(dynamic["usage_signal"], 6)
     access = _row_access_count(row)
@@ -240,8 +240,8 @@ def _usage_signal(row: dict[str, Any], profile: V8DynamicsProfile) -> float:
     )
 
 
-def _stability_signal(row: dict[str, Any], *, direct_conflict_open: bool, profile: V8DynamicsProfile) -> float:
-    dynamic = _v8_state(row)
+def _stability_signal(row: dict[str, Any], *, direct_conflict_open: bool, profile: V10DynamicsProfile) -> float:
+    dynamic = _v10_state(row)
     score_profile = _score_profile(row)
     volatility = (
         float(score_profile.get("conflict_pressure", 0.0) or 0.0) * profile.stability_profile_conflict_weight
@@ -270,7 +270,7 @@ def _trust_score(
     return round(trust, 6)
 
 
-def _decay_signal(*, usage_signal: float, support_signal: float, conflict_signal: float, profile: V8DynamicsProfile) -> float:
+def _decay_signal(*, usage_signal: float, support_signal: float, conflict_signal: float, profile: V10DynamicsProfile) -> float:
     raw = max(
         0.0,
         profile.decay_unused_weight * (1.0 - usage_signal)
@@ -289,7 +289,7 @@ def _belief_score(
     conflict_signal: float,
     regret_signal: float,
     decay_signal: float,
-    profile: V8DynamicsProfile,
+    profile: V10DynamicsProfile,
 ) -> float:
     increased = (
         (1.0 - prior_belief)
@@ -315,7 +315,7 @@ def _readiness_score(
     decay_signal: float,
     conflict_signal: float,
     admission_state: str,
-    profile: V8DynamicsProfile,
+    profile: V10DynamicsProfile,
 ) -> float:
     admissibility = {
         "validated": 1.0,
@@ -335,7 +335,7 @@ def _readiness_score(
     return round(readiness, 6)
 
 
-def _transition_gate(*, trust_score: float, evidence_signal: float, conflict_signal: float, admission_state: str, profile: V8DynamicsProfile) -> dict[str, Any]:
+def _transition_gate(*, trust_score: float, evidence_signal: float, conflict_signal: float, admission_state: str, profile: V10DynamicsProfile) -> dict[str, Any]:
     thresholds = {
         "promote_trust": profile.transition_promote_trust,
         "demote_trust": profile.transition_demote_trust,
@@ -359,7 +359,7 @@ def _transition_gate(*, trust_score: float, evidence_signal: float, conflict_sig
     }
 
 
-def compute_v8_core_signals(
+def compute_v10_core_signals(
     *,
     row: dict[str, Any],
     admission_state: str,
@@ -367,10 +367,10 @@ def compute_v8_core_signals(
     support_weight: float,
     conflict_weight: float,
     direct_conflict_open: bool,
-    profile: V8DynamicsProfile | None = None,
+    profile: V10DynamicsProfile | None = None,
 ) -> dict[str, Any]:
-    active_profile = profile or get_active_v8_profile()
-    dynamic_state = _v8_state(row)
+    active_profile = profile or get_active_v10_profile()
+    dynamic_state = _v10_state(row)
     evidence_signal, score_profile = _evidence_signal(row, evidence_count=evidence_count, profile=active_profile)
     support_signal = _support_signal(support_weight=support_weight)
     conflict_signal = _conflict_signal(conflict_weight=conflict_weight, direct_conflict_open=direct_conflict_open, profile=active_profile)
@@ -447,12 +447,12 @@ def compute_v8_core_signals(
         "profile": {"name": "active"},
         "transition_gate": transition_gate,
     }
-    persisted_state, derived_state = split_v8_signal_views(
+    persisted_state, derived_state = split_v10_signal_views(
         {
             **signals,
             **(
                 {
-                    "last_feedback_at": row.get("metadata", {}).get(V8_STATE_METADATA_KEY, {}).get("last_feedback_at")
+                    "last_feedback_at": row.get("metadata", {}).get(V10_STATE_METADATA_KEY, {}).get("last_feedback_at")
                 }
                 if isinstance(row.get("metadata"), dict)
                 else {}
@@ -473,10 +473,10 @@ def apply_outcome_feedback(
     success_score: float,
     relevance_score: float,
     override_score: float,
-    profile: V8DynamicsProfile | None = None,
+    profile: V10DynamicsProfile | None = None,
 ) -> dict[str, float]:
-    active_profile = profile or get_active_v8_profile()
-    dynamic = _v8_state(row)
+    active_profile = profile or get_active_v10_profile()
+    dynamic = _v10_state(row)
     prior_usage = dynamic["usage_signal"] if dynamic["feedback_count"] > 0 else _usage_signal(row, active_profile)
     prior_decay = dynamic["decay_signal"] if dynamic["feedback_count"] > 0 else _decay_signal(
         usage_signal=prior_usage,
@@ -530,9 +530,9 @@ def apply_outcome_feedback(
 def bundle_energy_snapshot(
     signals_list: list[dict[str, Any]],
     *,
-    profile: V8DynamicsProfile | None = None,
+    profile: V10DynamicsProfile | None = None,
 ) -> dict[str, float]:
-    active_profile = profile or get_active_v8_profile()
+    active_profile = profile or get_active_v10_profile()
     if not signals_list:
         return {
             "bundle_size": 0.0,
@@ -589,7 +589,7 @@ def bundle_energy_snapshot(
 
 
 def dynamic_score_bonus(signals: dict[str, Any]) -> float:
-    active_profile = get_active_v8_profile()
+    active_profile = get_active_v10_profile()
     if signals["admission_state"] == "invalidated":
         return -1.0
     return round(
@@ -604,23 +604,23 @@ def dynamic_score_bonus(signals: dict[str, Any]) -> float:
 def dynamic_reason_tags(signals: dict[str, Any]) -> list[str]:
     reasons: list[str] = []
     if signals["evidence_signal"] >= 0.7:
-        reasons.append("v8_evidence_strong")
+        reasons.append("v10_evidence_strong")
     if signals["support_signal"] >= 0.25:
-        reasons.append("v8_support_present")
+        reasons.append("v10_support_present")
     if signals["conflict_signal"] >= 0.35:
-        reasons.append("v8_conflict_pressure")
+        reasons.append("v10_conflict_pressure")
     if signals["usage_signal"] >= 0.25:
-        reasons.append("v8_usage_reinforced")
+        reasons.append("v10_usage_reinforced")
     if signals["regret_signal"] >= 0.3:
-        reasons.append("v8_regret_pressure")
+        reasons.append("v10_regret_pressure")
     if signals["belief_score"] >= 0.7:
-        reasons.append("v8_belief_elevated")
+        reasons.append("v10_belief_elevated")
     if signals["trust_score"] >= 0.7:
-        reasons.append("v8_trust_elevated")
+        reasons.append("v10_trust_elevated")
     if signals["readiness_score"] >= 0.7:
-        reasons.append("v8_readiness_elevated")
+        reasons.append("v10_readiness_elevated")
     if signals["transition_gate"]["promote_ready"]:
-        reasons.append("v8_promote_ready")
+        reasons.append("v10_promote_ready")
     if signals["transition_gate"]["demote_ready"]:
-        reasons.append("v8_demote_ready")
+        reasons.append("v10_demote_ready")
     return reasons

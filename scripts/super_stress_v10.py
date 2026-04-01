@@ -11,7 +11,7 @@ sys.path.append(os.getcwd())
 
 from aegis_py.app import AegisApp
 from aegis_py.storage.models import Memory, Conflict
-from aegis_py.v10.models import GovernanceStatus, TruthRole, RetrievableMode
+from aegis_py.v10_scoring.models import GovernanceStatus, TruthRole, RetrievableMode
 
 class SuperStressV10:
     def __init__(self, db_path="super_stress_v10.db"):

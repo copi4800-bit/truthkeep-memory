@@ -137,7 +137,7 @@ def ensure_clean_dir(path: Path) -> None:
 
 
 def make_scopes(scope_count: int) -> list[tuple[str, str]]:
-    return [("project", f"V8_STRESS_{index:03d}") for index in range(scope_count)]
+    return [("project", f"V10_STRESS_{index:03d}") for index in range(scope_count)]
 
 
 def canary_value(index: int) -> str:
@@ -225,7 +225,7 @@ def remember_seed_corpus(
                 source_kind="manual",
                 source_ref=f"stress://evidence/{index}",
                 raw_content=f"Independent evidence confirms {canary} for {subject}.",
-                metadata={"capture_stage": "v8_apocalypse_seed"},
+                metadata={"capture_stage": "v10_apocalypse_seed"},
             )
             evidence_events += 1
 
@@ -259,7 +259,7 @@ def remember_seed_corpus(
     }
 
 
-def amplify_v8_state(
+def amplify_v10_state(
     app: AegisApp,
     canaries: list[dict[str, str]],
     *,
@@ -294,22 +294,22 @@ def amplify_v8_state(
             promoted_drafts += 1
 
         if index % 17 == 0:
-            app.apply_v8_outcome_feedback(
+            app.apply_v10_outcome_feedback(
                 case["memory_id"],
                 success_score=1.0,
                 relevance_score=1.0,
                 override_score=0.0,
-                actor="v8_apocalypse_seed_feedback",
+                actor="v10_apocalypse_seed_feedback",
             )
             feedback_events += 1
 
         if index % 19 == 0:
-            app.apply_v8_outcome_feedback(
+            app.apply_v10_outcome_feedback(
                 case["memory_id"],
                 success_score=0.15,
                 relevance_score=0.2,
                 override_score=0.85,
-                actor="v8_apocalypse_seed_penalty",
+                actor="v10_apocalypse_seed_penalty",
             )
             feedback_events += 1
 
@@ -365,11 +365,11 @@ def run_retrieval_storm(
             fallback_to_or=True,
         )
         latencies.append((time.perf_counter() - started) * 1000.0)
-        if results and results[0].v8_core_signals is not None:
+        if results and results[0].v10_core_signals is not None:
             signal_coverage += 1
         if any(result.memory.id == case["memory_id"] for result in results):
             hits += 1
-        if results and any(reason.startswith("v8_") for reason in results[0].reasons):
+        if results and any(reason.startswith("v10_") for reason in results[0].reasons):
             dynamic_reason_hits += 1
 
     return {
@@ -402,7 +402,7 @@ def _read_worker(db_path: str, jobs: list[dict[str, str]]) -> dict[str, Any]:
                 if any(item.memory.id == job["memory_id"] for item in results):
                     hits += 1
                 if index % 17 == 0:
-                    app.v8_bundle_snapshot(
+                    app.v10_bundle_snapshot(
                         query=job["query"],
                         scope_type=job["scope_type"],
                         scope_id=job["scope_id"],
@@ -467,13 +467,13 @@ def run_transition_storm(app: AegisApp, memory_ids: list[str], *, rng: random.Ra
     for memory_id in memory_ids:
         started = time.perf_counter()
         try:
-            gate = app.v8_transition_gate(memory_id)
+            gate = app.v10_transition_gate(memory_id)
             evaluate_latencies.append((time.perf_counter() - started) * 1000.0)
             action = gate["transition_operator"]["decision"]["recommended_action"]
             actions[action] = actions.get(action, 0) + 1
             if action != "hold" or rng.random() < 0.15:
                 started = time.perf_counter()
-                result = app.apply_v8_transition_gate(memory_id, actor="v8_apocalypse_transition")
+                result = app.apply_v10_transition_gate(memory_id, actor="v10_apocalypse_transition")
                 apply_latencies.append((time.perf_counter() - started) * 1000.0)
                 if result.get("applied"):
                     applied += 1
@@ -516,7 +516,7 @@ def run_feedback_storm(
         overrides = [results[-1].memory.id] if len(results) > 1 and index % 2 == 0 else []
         success_score = 1.0 if index % 3 else 0.35
         started = time.perf_counter()
-        payload = app.apply_v8_retrieval_feedback(
+        payload = app.apply_v10_retrieval_feedback(
             query=case["query"],
             scope_type=case["scope_type"],
             scope_id=case["scope_id"],
@@ -525,7 +525,7 @@ def run_feedback_storm(
             success_score=success_score,
             limit=5,
             include_global=True,
-            actor="v8_apocalypse_feedback",
+            actor="v10_apocalypse_feedback",
         )
         latencies.append((time.perf_counter() - started) * 1000.0)
         if payload.get("applied"):
@@ -567,7 +567,7 @@ def run_surface_pressure(
         query = f"stress subject {index % 17}"
 
         started = time.perf_counter()
-        snapshot = app.v8_field_snapshot(scope_type=scope_type, scope_id=scope_id)
+        snapshot = app.v10_field_snapshot(scope_type=scope_type, scope_id=scope_id)
         field_latencies.append((time.perf_counter() - started) * 1000.0)
         energy_samples.append(float(snapshot["energy"]["energy"]))
         objective_samples.append(float(snapshot["energy"]["objective"]))
@@ -715,7 +715,7 @@ def save_report(results_dir: Path, report: dict[str, Any], profile_name: str) ->
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run the heaviest v10 stress test available in this repo.")
     parser.add_argument("--profile", choices=sorted(PROFILES), default="apocalypse")
-    parser.add_argument("--workspace-dir", type=Path, default=Path("/tmp") / f"aegis_v8_superstress_{uuid.uuid4().hex[:8]}")
+    parser.add_argument("--workspace-dir", type=Path, default=Path("/tmp") / f"aegis_v10_superstress_{uuid.uuid4().hex[:8]}")
     parser.add_argument("--results-dir", type=Path, default=REPO_ROOT / "stress-results")
     parser.add_argument("--seed", type=int, default=1337)
     parser.add_argument("--keep-workspace", action="store_true")
@@ -727,7 +727,7 @@ def main() -> int:
     profile = PROFILES[args.profile]
     rng = random.Random(args.seed)
     ensure_clean_dir(args.workspace_dir)
-    db_path = args.workspace_dir / "v8_superstress.db"
+    db_path = args.workspace_dir / "v10_superstress.db"
     app = AegisApp(db_path=str(db_path))
     scopes = make_scopes(profile.scope_count)
 
@@ -739,7 +739,7 @@ def main() -> int:
 
         phases = {
             "seed_corpus": seed_phase,
-            "v8_state_amplification": amplify_v8_state(app, canaries, rng=rng),
+            "v10_state_amplification": amplify_v10_state(app, canaries, rng=rng),
             "retrieval_storm": run_retrieval_storm(app, canaries, profile.retrieval_queries, rng=rng),
             "concurrent_read_pressure": run_concurrent_read_pressure(
                 str(db_path), canaries, profile.read_pressure_queries, profile.reader_threads, rng=rng
@@ -752,7 +752,7 @@ def main() -> int:
         }
 
         final_status = app.status()
-        final_field = app.v8_field_snapshot()
+        final_field = app.v10_field_snapshot()
         footprint = app.storage_footprint()
         report = {
             "profile": args.profile,

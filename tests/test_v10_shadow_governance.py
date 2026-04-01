@@ -5,7 +5,7 @@ from aegis_py.memory.core import MemoryManager
 from aegis_py.retrieval.search import SearchPipeline
 from aegis_py.retrieval.models import SearchQuery
 from aegis_py.storage.models import Memory
-from aegis_py.v10.models import TruthRole, GovernanceStatus
+from aegis_py.v10_scoring.models import TruthRole, GovernanceStatus
 
 async def test_v10_shadow_governance():
     """
@@ -68,7 +68,7 @@ async def test_v10_shadow_governance():
     
     for r in results:
         dec = r.v10_decision
-        print(f"ID: {r.memory.id} | v10 Score: {r.v9_score:.2f} | v10 Role: {dec.truth_role.value} | v10 Status: {dec.governance_status.value}")
+        print(f"ID: {r.memory.id} | v10 Score: {r.v10_score:.2f} | v10 Role: {dec.truth_role.value} | v10 Status: {dec.governance_status.value}")
         print(f"   Reasons: {dec.decision_reason}")
 
     # 3. Assertions

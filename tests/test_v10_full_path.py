@@ -7,12 +7,12 @@ from aegis_py.retrieval.models import SearchQuery
 from aegis_py.storage.models import Memory
 from aegis_py.surface import serialize_search_result
 
-async def test_v9_full_path_integration():
+async def test_v10_full_path_integration():
     """
     Scenario: User corrects an old fact. v10 must rank the new one #1 
     with a 'correction winner' explanation.
     """
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_full_path_gsd.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v10_full_path_gsd.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -68,19 +68,19 @@ async def test_v9_full_path_integration():
     serialized = serialize_search_result(top_result)
     print(f"Top Result ID: {top_result.memory.id}")
     print(f"Top Result Content: {top_result.memory.content}")
-    print(f"Decisive Factor: {serialized['v9_audit']['decisive_factor']}")
+    print(f"Decisive Factor: {serialized['v10_audit']['decisive_factor']}")
     print(f"Human Reason: {serialized['human_reason']}")
     
     # Assertions
     assert top_result.memory.id == "new_fact", "v10 should rank the new fact first"
-    assert serialized["v9_audit"]["decisive_factor"] == "hard_constraint_winner", "Should identify as truth winner"
+    assert serialized["v10_audit"]["decisive_factor"] == "hard_constraint_winner", "Should identify as truth winner"
     assert "được xác nhận là sự thật hiện tại" in serialized["human_reason"]
 
     # Cleanup
     storage.close()
     if os.path.exists(db_path):
         os.remove(db_path)
-    print("✅ test_v9_full_path_integration passed!")
+    print("✅ test_v10_full_path_integration passed!")
 
 if __name__ == "__main__":
-    asyncio.run(test_v9_full_path_integration())
+    asyncio.run(test_v10_full_path_integration())

@@ -43,7 +43,7 @@ tests/
 ├── acceptance/
 ├── regression/
 ├── test_integration.py
-├── test_v7_runtime.py
+├── test_v10_runtime.py
 └── test_storage.py
 
 scripts/
@@ -83,7 +83,7 @@ PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression
 Run the broader supporting confidence checks with:
 
 ```bash
-PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_v7_runtime.py tests/test_retrieval.py tests/test_storage.py tests/test_user_surface.py tests/test_workflow_governance.py tests/test_python_only_runtime_contract.py
+PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_v10_runtime.py tests/test_retrieval.py tests/test_storage.py tests/test_user_surface.py tests/test_workflow_governance.py tests/test_python_only_runtime_contract.py
 PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_integration.py -k 'scope_policy_defaults_local_only_and_lists_explicit_sync_eligible or python_cli_sync_export_preview_import'
 ```
 

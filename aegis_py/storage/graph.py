@@ -5,7 +5,7 @@ from typing import Any
 
 from ..hygiene.transitions import now_iso
 from .models import RETRIEVABLE_MEMORY_STATUS_SQL
-from ..v10.graph_taxonomy import canonical_edge_type
+from ..v10_base.graph_taxonomy import canonical_edge_type
 
 
 class GraphRepository:

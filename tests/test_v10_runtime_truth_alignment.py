@@ -6,9 +6,9 @@ from aegis_py.storage.models import Memory
 from aegis_py.retrieval.search import SearchPipeline
 from aegis_py.retrieval.models import SearchQuery
 
-async def test_v9_runtime_truth_alignment():
+async def test_v10_runtime_truth_alignment():
     # Setup real temporary storage
-    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v9_runtime.db"
+    db_path = "/home/hali/.openclaw/extensions/memory-aegis-v10/test_v10_runtime.db"
     if os.path.exists(db_path):
         os.remove(db_path)
     
@@ -69,7 +69,7 @@ async def test_v9_runtime_truth_alignment():
     from aegis_py.surface import serialize_search_result
     serialized = serialize_search_result(results[0])
     
-    print(f"Top Result Score: {results[0].v9_score:.4f}")
+    print(f"Top Result Score: {results[0].v10_score:.4f}")
     print(f"Top Result Human Reason: {serialized['human_reason']}")
     
     # Assertions
@@ -80,7 +80,7 @@ async def test_v9_runtime_truth_alignment():
     storage.close()
     if os.path.exists(db_path):
         os.remove(db_path)
-    print("✅ test_v9_runtime_truth_alignment passed!")
+    print("✅ test_v10_runtime_truth_alignment passed!")
 
 if __name__ == "__main__":
-    asyncio.run(test_v9_runtime_truth_alignment())
+    asyncio.run(test_v10_runtime_truth_alignment())

@@ -15,13 +15,13 @@ from aegis_py.retrieval.models import SearchQuery, SearchResult
 from aegis_py.storage.models import Memory
 from aegis_py.surface import serialize_search_result
 
-class V9ExtremeGauntlet:
-    def __init__(self, db_path: str, noise_count: int, scope_count: int, conflict_count: int, compare_v8: bool):
+class V10ExtremeGauntlet:
+    def __init__(self, db_path: str, noise_count: int, scope_count: int, conflict_count: int, compare_v10: bool):
         self.db_path = db_path
         self.noise_count = noise_count
         self.scope_count = scope_count
         self.conflict_count = conflict_count
-        self.compare_v8 = compare_v8
+        self.compare_v10 = compare_v10
         
         if os.path.exists(db_path):
             os.remove(db_path)
@@ -30,7 +30,7 @@ class V9ExtremeGauntlet:
         self.manager = MemoryManager(self.storage)
         self.pipeline = SearchPipeline(self.storage)
         self.scenarios = []
-        self.stats = {"pass": 0, "fail": 0, "v9_latencies": [], "v8_latencies": []}
+        self.stats = {"pass": 0, "fail": 0, "v10_latencies": [], "v10_latencies": []}
 
     def log(self, msg: str):
         print(f"[*] {msg}")
@@ -119,56 +119,56 @@ class V9ExtremeGauntlet:
 
         for s in self.scenarios:
             # 1. Run v10
-            q_v9 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
-            setattr(q_v9, "scoring_mode", "v9_primary")
+            q_v10 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
+            setattr(q_v10, "scoring_mode", "v10_primary")
             
             t0 = time.perf_counter()
-            res_v9 = self.pipeline.search(q_v9)
-            lat_v9 = (time.perf_counter() - t0) * 1000
-            self.stats["v9_latencies"].append(lat_v9)
+            res_v10 = self.pipeline.search(q_v10)
+            lat_v10 = (time.perf_counter() - t0) * 1000
+            self.stats["v10_latencies"].append(lat_v10)
 
             # 2. Run v10 (if requested)
-            lat_v8 = 0
-            v8_top = "N/A"
-            if self.compare_v8:
-                q_v8 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
-                setattr(q_v8, "scoring_mode", "v8_primary")
+            lat_v10 = 0
+            v10_top = "N/A"
+            if self.compare_v10:
+                q_v10 = SearchQuery(query=s["query"], scope_type=s["scope"][0], scope_id=s["scope"][1], min_score=-10.0)
+                setattr(q_v10, "scoring_mode", "v10_primary")
                 t0 = time.perf_counter()
-                res_v8 = self.pipeline.search(q_v8)
-                lat_v8 = (time.perf_counter() - t0) * 1000
-                self.stats["v8_latencies"].append(lat_v8)
-                v8_top = res_v8[0].memory.id if res_v8 else "None"
+                res_v10 = self.pipeline.search(q_v10)
+                lat_v10 = (time.perf_counter() - t0) * 1000
+                self.stats["v10_latencies"].append(lat_v10)
+                v10_top = res_v10[0].memory.id if res_v10 else "None"
 
-            v9_top = res_v9[0].memory.id if res_v9 else "None"
-            v9_score = res_v9[0].v9_score if res_v9 else 0
+            v10_top = res_v10[0].memory.id if res_v10 else "None"
+            v10_score = res_v10[0].v10_score if res_v10 else 0
             
             success = False
             if s["check"] == "id":
-                success = (v9_top == s["expected_top"])
+                success = (v10_top == s["expected_top"])
             elif s["check"] == "suppression":
                 # High-severity conflicts should be pushed down (negative or low score)
-                success = (v9_score < 0)
+                success = (v10_score < 0)
 
             status_mark = "✅ PASS" if success else "❌ FAIL"
-            print(f"{s['name']:<25} | {v8_top:<10} | {v9_top:<10} | {v9_score:<8.2f} | {status_mark}")
+            print(f"{s['name']:<25} | {v10_top:<10} | {v10_top:<10} | {v10_score:<8.2f} | {status_mark}")
             
             if success: self.stats["pass"] += 1
             else: self.stats["fail"] += 1
             
-            if not success and res_v9:
-                ser = serialize_search_result(res_v9[0])
+            if not success and res_v10:
+                ser = serialize_search_result(res_v10[0])
                 print(f"   [!] Audit: {ser['human_reason']}")
-                print(f"   [!] Trace: {ser['v9_audit']['factors']}")
+                print(f"   [!] Trace: {ser['v10_audit']['factors']}")
 
             report.append({
-                "name": s["name"], "success": success, "v9_top": v9_top, "v8_top": v8_top,
-                "v9_score": v9_score, "lat_v9": lat_v9, "lat_v8": lat_v8
+                "name": s["name"], "success": success, "v10_top": v10_top, "v10_top": v10_top,
+                "v10_score": v10_score, "lat_v10": lat_v10, "lat_v10": lat_v10
             })
 
         # Summary
         print("-" * 85)
         print(f"TOTAL: {self.stats['pass']} PASS, {self.stats['fail']} FAIL")
-        p50 = sorted(self.stats["v9_latencies"])[len(self.stats["v9_latencies"])//2]
+        p50 = sorted(self.stats["v10_latencies"])[len(self.stats["v10_latencies"])//2]
         print(f"Latency p50: {p50:.2f}ms")
         
         return report
@@ -182,9 +182,9 @@ if __name__ == "__main__":
     parser.add_argument("--json-out", type=str, default=None)
     args = parser.parse_args()
 
-    gauntlet = V9ExtremeGauntlet(
+    gauntlet = V10ExtremeGauntlet(
         "/home/hali/.openclaw/extensions/memory-aegis-v10/extreme_gauntlet.db",
-        args.noise_memories, args.scopes, args.conflict_pairs, args.compare_v8
+        args.noise_memories, args.scopes, args.conflict_pairs, args.compare_v10
     )
     
     results = asyncio.run(gauntlet.run())

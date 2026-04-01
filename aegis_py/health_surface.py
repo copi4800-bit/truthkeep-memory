@@ -41,7 +41,7 @@ class AegisHealthSurface:
         }
 
         # v10 Intelligence Metrics
-        v9_metrics = {
+        v10_metrics = {
             "truth_alignment_score": 0.95, # Placeholder for actual benchmark result
             "conflict_load_index": min(1.0, conflict_count / 10.0),
             "correction_churn": self.app._safe_count("SELECT COUNT(*) FROM memories WHERE status = 'superseded' AND updated_at > datetime('now', '-7 days')"),
@@ -61,7 +61,7 @@ class AegisHealthSurface:
             "status": health["state"].lower(),
             "health": health,
             "health_state": health["state"],
-            "v9_intelligence": v9_metrics,
+            "v10_intelligence": v10_metrics,
             "v10_governance": v10_governance,
             "workspace": {"path": str(effective_workspace), "writable": health["workspace_writable"]},
             "database": {"path": self.app.db_path, "exists": health["database_exists"]},
