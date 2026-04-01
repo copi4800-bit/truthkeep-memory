@@ -80,3 +80,4 @@ As a maintainer, I want advanced scope, sync, backup, and doctor functionality t
 - **SC-002**: The plugin-facing `memory_stats` content becomes plain-language first while retaining structured details.
 - **SC-003**: Tests prove degraded local usability is explained as usable rather than broken.
 - **SC-004**: This feature improves `CRC-003` in `046-consumer-ready-checklist` from `PARTIAL` toward a consumer-safe default status path.
+

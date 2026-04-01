@@ -24,3 +24,4 @@
 - **V2-VECTOR**: Vector DB as default path.
 - **V2-AUTO**: Broad hard auto-resolution for ambiguous conflicts.
 - **V2-Cognition**: Full agent orchestration.
+

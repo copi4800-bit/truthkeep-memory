@@ -39,3 +39,4 @@ As an integrator, I want `memory_remember`, `memory_recall`, `memory_search`, an
 - **SC-001**: Canonical ingest no longer relies only on implicit “extract then trust” behavior internally.
 - **SC-002**: Promotion decisions can be explained in terms of evidence presence and bounded admission signals.
 - **SC-003**: The later state-machine tranche can build on a real promotion boundary instead of mixing promotion into storage and retrieval code paths.
+

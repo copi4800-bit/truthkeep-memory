@@ -31,3 +31,4 @@ As a maintainer, I want sync import to report how many records were inserted, re
 
 - **SC-001**: Sync preview exposes actionable diff categories before import.
 - **SC-002**: Sync import returns auditable reconcile outcomes instead of only a raw count.
+

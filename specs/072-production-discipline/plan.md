@@ -38,3 +38,4 @@ PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression tes
 ## Remaining Gap After This Tranche
 
 - Real confidence after this point comes from actually running the soak and rollback drills on staging or production-shaped environments, not from opening more spec slices.
+

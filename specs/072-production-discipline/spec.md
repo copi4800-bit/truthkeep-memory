@@ -65,3 +65,4 @@ As a system owner, I want soak-test and rollback drills defined so reliability i
 - **SC-001**: A maintainer can perform the full release gate from a single checklist.
 - **SC-002**: A maintainer can find a runbook for each selected high-signal failure mode.
 - **SC-003**: Soak-test and rollback drills are explicit enough to execute without code archaeology.
+

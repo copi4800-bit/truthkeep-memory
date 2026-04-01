@@ -168,3 +168,4 @@ Completed so far:
 - Keep this feature bounded to benchmark and release hardening
 - Do not reopen core engine semantics already stabilized in feature `001`
 - Prefer explicit validation evidence over narrative-only closeout text
+

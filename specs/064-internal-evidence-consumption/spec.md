@@ -39,3 +39,4 @@ As an integrator, I want the current `memory_remember`, `memory_recall`, `memory
 - **SC-001**: Internal runtime code can look up evidence events for stored memories through stable helpers rather than ad hoc queries.
 - **SC-002**: Evidence coverage can be inspected or reported for memory records without changing public retrieval contracts.
 - **SC-003**: The next promotion-focused tranche can assume both evidence storage and evidence lookup primitives already exist.
+

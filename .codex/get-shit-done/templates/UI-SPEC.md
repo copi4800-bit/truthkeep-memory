@@ -98,3 +98,4 @@ Accent reserved for: {explicit list — never "all interactive elements"}
 - [ ] Dimension 6 Registry Safety: PASS
 
 **Approval:** {pending / approved YYYY-MM-DD}
+

@@ -175,3 +175,4 @@ Confirm: "Committed: docs: start work on todo - [title]"
 - [ ] STATE.md updated if todo count changed
 - [ ] Changes committed to git (if todo moved to done/)
 </success_criteria>
+

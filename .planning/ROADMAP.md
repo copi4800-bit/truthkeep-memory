@@ -82,3 +82,4 @@ The current local-first completion wave is closed.
 - The next active architecture tranche after `067` was `068-state-aware-governed-operations`, which is now implemented and validated and lets governance and background-operation internals consume state, promotion, and evidence together before any broader autonomy redesign.
 - Post-capability work should now prefer production-excellence slices over new feature breadth: correctness, observability, and recovery discipline should outrank speculative new tools.
 - The next executable theory-derived slice is `074-v8-core-memory-dynamics`, which lands bounded evidence/support/conflict/trust/readiness scoring and one minimal hysteresis gate without reopening schema-heavy simulator work.
+

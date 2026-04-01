@@ -15,3 +15,4 @@ Build one compatibility-first operator harness instead of broad new runtime sema
 
 - `PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_apocalypse_runtime.py`
 - Optionally run `PYTHONPATH=. .venv/bin/python scripts/apocalypse_v7.py --profile quick`
+

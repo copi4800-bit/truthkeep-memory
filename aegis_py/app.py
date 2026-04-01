@@ -64,7 +64,7 @@ DEFAULT_CONSUMER_SOURCE_KIND = "conversation"
 DEFAULT_CONSUMER_SOURCE_REF = "consumer://default"
 
 class AegisApp:
-    """Unified orchestrator for the Aegis v8 Python runtime."""
+    """Unified orchestrator for the Aegis v10 Python runtime."""
     
     def __init__(self, db_path: Optional[str] = None, locale: str = "vi"):
         self.db_path = db_path or os.environ.get("AEGIS_DB_PATH") or os.path.expanduser("~/.openclaw/aegis_v4.db")

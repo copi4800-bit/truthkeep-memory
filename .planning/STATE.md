@@ -71,3 +71,4 @@
 - Use `.planning/PRODUCTION-EXCELLENCE-ROADMAP.md` to sequence the next reliability work after `068`, starting with acceptance/regression hardening before observability and release-discipline work.
 - Treat `074-v8-core-memory-dynamics` as the next executable architecture slice when opening the v8 theory documents: bounded evidence/support/conflict/trust/readiness scoring and one hysteresis gate are in scope; simulator-first work is not.
 - Treat future work as net-new scope beyond the current local-first consumer-complete milestone rather than unfinished baseline completion work.
+

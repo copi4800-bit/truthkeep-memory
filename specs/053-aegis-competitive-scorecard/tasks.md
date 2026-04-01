@@ -17,3 +17,4 @@
 
 - [x] T005 [DOCS] Add a GSD phase artifact so the scorecard exists inside project planning, not only under `specs/`.
 - [x] T006 [DOCS] Update roadmap/state references so future work can point back to the scorecard.
+

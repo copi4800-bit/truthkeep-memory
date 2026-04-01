@@ -59,3 +59,4 @@ Provides situational awareness before continuing work.
 Execute the progress workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/progress.md end-to-end.
 Preserve all routing logic (Routes A through F) and edge case handling.
 </process>
+

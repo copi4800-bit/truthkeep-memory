@@ -690,3 +690,4 @@ return <div>No messages</div>  // Always shows "no messages"
 - [ ] Results returned to orchestrator (NOT committed)
 </success_criteria>
 '''
+

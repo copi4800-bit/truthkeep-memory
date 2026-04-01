@@ -81,3 +81,4 @@ As a maintainer, I want setup to use the Python-owned production runtime rather 
 - **SC-002**: The setup wrapper uses the Python-owned onboarding path rather than the legacy TS engine or a raw server self-test.
 - **SC-003**: At least one onboarding test proves failures or degraded states are explained clearly enough to distinguish usable from broken.
 - **SC-004**: This feature improves `CRC-004` in `046-consumer-ready-checklist` from `PARTIAL` toward an active production onboarding path.
+

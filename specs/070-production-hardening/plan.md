@@ -93,3 +93,4 @@ PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_integration.py -k 'scope_p
 - Restore has contract coverage, but not yet a timed operational drill against a larger, production-shaped dataset.
 - Sync coverage is strong for local envelopes, but not yet multi-node or adversarial import scenarios.
 - This tranche improves trust; it does not replace staging, canary rollout, or runtime metrics/alerts.
+

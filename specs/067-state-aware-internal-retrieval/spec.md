@@ -39,3 +39,4 @@ As an integrator, I want current public retrieval/runtime payloads to remain sta
 - **SC-001**: Retrieval and policy internals can consume explicit admission states directly.
 - **SC-002**: State-aware filtering or shaping lands without public payload drift.
 - **SC-003**: Later retrieval work can build on real state-aware internals rather than metadata reconstruction hacks.
+

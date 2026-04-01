@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/033-decay-type-aware-retention/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/033-decay-type-aware-retention/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/033-decay-type-aware-retention/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/033-decay-type-aware-retention/tasks.md)
+

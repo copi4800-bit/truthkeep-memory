@@ -76,3 +76,4 @@ Required YAML frontmatter:
 - The `<next_action>` should be actionable without reading anything else
 - This file gets DELETED after resume - it's not permanent storage
 </guidelines>
+

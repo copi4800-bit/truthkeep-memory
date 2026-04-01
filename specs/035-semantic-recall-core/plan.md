@@ -69,3 +69,4 @@ aegis_py/retrieval/
 1. Add unit tests for `OracleBeast`.
 2. Add integration tests for `search_with_expansion` with the semantic flag.
 3. Verify that `lexical` results still take precedence or are blended fairly.
+

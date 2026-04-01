@@ -103,3 +103,4 @@ No next-step suggestions. No workflow routing. Just done.
 - [ ] STATE.md updated if it exists
 - [ ] Total operation under 2 minutes wall time
 </success_criteria>
+

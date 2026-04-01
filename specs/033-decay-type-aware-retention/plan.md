@@ -53,3 +53,4 @@ Implement the first Tranche C slice by applying type-aware decay half-lives duri
 - `npm run lint`: pass
 - `npm run test:bootstrap`: pass, 17 tests
 - `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`: pass, 93 passed in 1.99s
+

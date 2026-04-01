@@ -21,3 +21,4 @@
 
 - [x] T006 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/019-sync-reconcile-conflicts/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/019-sync-reconcile-conflicts/plan.md)
 - [x] T007 [FOUNDATION] Reconcile completion state in [specs/019-sync-reconcile-conflicts/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/019-sync-reconcile-conflicts/tasks.md)
+

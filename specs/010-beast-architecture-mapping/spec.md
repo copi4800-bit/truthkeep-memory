@@ -80,3 +80,4 @@ As a maintainer, I want feature artifacts and planning state updated for the bea
 - **SC-001**: All 23 beasts are mapped in a repo-tracked internal architecture document.
 - **SC-002**: Repo docs clearly state that the beast model is an internal taxonomy and that the runtime remains organized around the six-module model.
 - **SC-003**: The active feature check resolves to `010-beast-architecture-mapping` with its `tasks.md` artifact present.
+

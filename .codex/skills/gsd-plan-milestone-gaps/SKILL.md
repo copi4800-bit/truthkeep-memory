@@ -68,3 +68,4 @@ Original intent and current planning state are loaded on demand inside the workf
 Execute the plan-milestone-gaps workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/plan-milestone-gaps.md end-to-end.
 Preserve all workflow gates (audit loading, prioritization, phase grouping, user confirmation, roadmap updates).
 </process>
+

@@ -22,3 +22,4 @@
 
 - [x] T007 [DOCS] Update `.planning/ROADMAP.md` for the grounding-story slice.
 - [x] T008 [DOCS] Update `.planning/STATE.md` so this slice is recorded as the tranche-closing trust step.
+

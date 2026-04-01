@@ -50,3 +50,4 @@
 
 - [x] T010 [FOUNDATION] Run the Python-first validation workflow and record evidence in [specs/006-snapshot-versioning-and-scope-restore/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/006-snapshot-versioning-and-scope-restore/plan.md)
 - [x] T011 [FOUNDATION] Reconcile completion state in [specs/006-snapshot-versioning-and-scope-restore/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/006-snapshot-versioning-and-scope-restore/tasks.md)
+

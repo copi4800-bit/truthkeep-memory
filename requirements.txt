@@ -1,3 +1,4 @@
+# Memory Aegis v10 - Dependencies
 pydantic>=2.0.0
 pytest
 aiosqlite

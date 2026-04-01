@@ -32,3 +32,4 @@ As a maintainer, I want sync preview and import to report local and incoming sco
 
 - **SC-001**: Sync envelopes carry portable revision stamps.
 - **SC-002**: Preview/import results expose local versus incoming scope revision clearly.
+

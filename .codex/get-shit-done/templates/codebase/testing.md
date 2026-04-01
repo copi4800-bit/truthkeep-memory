@@ -478,3 +478,4 @@ it('mocks file system', () => {
 - Note any test types (unit, integration, e2e)
 - Document commands for running tests
 </guidelines>
+

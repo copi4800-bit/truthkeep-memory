@@ -94,3 +94,4 @@ As a maintainer, I want graph capability to stay SQLite-first so Aegis can suppo
 - **SC-003**: Practical decay tests show at least one volatile memory cooling faster than one durable memory of equal age while preserving archive-first behavior.
 - **SC-004**: The active feature passes the canonical prerequisite check with `spec.md`, `plan.md`, and `tasks.md` present.
 - **SC-005**: Validation evidence for this feature demonstrates Python regression coverage for the new conflict, decay, and graph-boundary behavior.
+

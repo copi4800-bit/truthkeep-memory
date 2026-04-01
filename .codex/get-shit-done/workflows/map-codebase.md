@@ -368,3 +368,4 @@ End workflow.
 - Clear completion summary with line counts
 - User offered clear next steps in GSD style
 </success_criteria>
+

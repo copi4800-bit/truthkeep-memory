@@ -76,3 +76,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 Main risk: accidentally turning “internal evidence consumption” into an early promotion gate. Guard against that by keeping this slice read-oriented and compatibility-first.
+

@@ -31,3 +31,4 @@ As a host integrator, I want context-pack to use shared entity tags as a bounded
 
 - **SC-001**: New memories contain lightweight entity tags in metadata.
 - **SC-002**: Context-pack can surface bounded `entity_expansion` results when a lexical seed shares entity tags with nearby memories.
+

@@ -76,3 +76,4 @@ As an implementation maintainer, I want the closure review to say whether anothe
 - **SC-001**: A maintainer can read one feature artifact and determine whether Aegis may truthfully be called consumer-complete.
 - **SC-002**: Every remaining blocker is named explicitly and tied to active checklist evidence.
 - **SC-003**: The review ends with a concrete next-step decision rather than an ambiguous summary.
+

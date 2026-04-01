@@ -33,3 +33,4 @@
 - [x] T014 [FOUNDATION] Run the canonical prerequisite workflow and record evidence in [specs/040-resolution-decay-pragmatism/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/040-resolution-decay-pragmatism/plan.md)
 - [x] T015 [FOUNDATION] Run the canonical Python regression workflow and append evidence to [specs/040-resolution-decay-pragmatism/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/040-resolution-decay-pragmatism/plan.md)
 - [x] T016 [FOUNDATION] Reconcile completion state in [specs/040-resolution-decay-pragmatism/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/040-resolution-decay-pragmatism/tasks.md)
+

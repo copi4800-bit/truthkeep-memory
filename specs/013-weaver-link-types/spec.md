@@ -51,3 +51,4 @@ As a contributor, I want the docs to explain typed auto-link rules so the behavi
 
 - **SC-001**: Procedural and semantic memories with the same subject auto-link with an explicit typed relation.
 - **SC-002**: Rebuild restores missing typed relations for older data.
+

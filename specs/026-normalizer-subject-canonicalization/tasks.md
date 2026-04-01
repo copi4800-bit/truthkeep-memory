@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/026-normalizer-subject-canonicalization/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/026-normalizer-subject-canonicalization/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/026-normalizer-subject-canonicalization/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/026-normalizer-subject-canonicalization/tasks.md)
+

@@ -82,3 +82,4 @@ As an implementation maintainer, I want the remaining work grouped into reviewab
 - **SC-002**: Every checklist item has an explicit current-state judgment and at least one repo evidence reference.
 - **SC-003**: The assessment concludes with a defensible overall judgment on whether Aegis v4 is currently suitable for non-technical users.
 - **SC-004**: The follow-up work is reduced to a finite set of reviewable tranches that can each become future features under `specs/*`.
+

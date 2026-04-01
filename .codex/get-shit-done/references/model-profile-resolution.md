@@ -34,3 +34,4 @@ If `model_profile` is `"inherit"`, all agents resolve to `"inherit"` (useful for
 2. Store the profile value
 3. Look up each agent's model from the table when spawning
 4. Pass model parameter to each Task call (values: `"inherit"`, `"sonnet"`, `"haiku"`)
+

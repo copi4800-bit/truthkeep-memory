@@ -11,3 +11,4 @@
 - **OpenClaw**: host environment; may still require a JS bootstrap entry
 - **MCP (Model Context Protocol)**: local tool exposure for agents
 - **FileSystem**: local SQLite DB and release packaging assets
+

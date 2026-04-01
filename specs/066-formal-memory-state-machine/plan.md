@@ -78,3 +78,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 Main risk: mixing the state-model tranche with retrieval behavior changes. Guard against that by keeping the state work internal and compatibility-first.
+

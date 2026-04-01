@@ -90,3 +90,4 @@ Remaining gaps after this slice:
 
 - degraded mode is currently bounded to sync-adjacent state rather than a broader taxonomy of optional-service failures
 - adapter parity is validated at the tool-shell contract level, not through a live end-to-end host session
+

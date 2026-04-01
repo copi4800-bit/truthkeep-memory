@@ -70,3 +70,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this pr
 - **SC-001**: The roadmap defines 5-7 ordered slices after `034`.
 - **SC-002**: Each slice ties internal beast/module work to a user-facing outcome and an opening gate.
 - **SC-003**: The prerequisite check resolves to `035-semantic-memory-product-roadmap` with its `tasks.md` artifact present.
+

@@ -77,3 +77,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 Main risk: accidentally jumping from bounded promotion primitives straight into the full state-machine tranche. Guard against that by keeping decision outputs narrow and by not introducing the richer state taxonomy yet.
+

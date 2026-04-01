@@ -60,3 +60,4 @@ As a maintainer, I want the scorecard to define pass thresholds and a decision r
 - **SC-001**: Maintainers can read one document and understand how Aegis currently scores on all seven product-critical dimensions.
 - **SC-002**: The scorecard includes a clear threshold for what counts as genuinely strong versus merely usable.
 - **SC-003**: The scorecard can be reused in future milestone reviews without redefining the evaluation framework.
+

@@ -247,3 +247,4 @@ $gsd-plan-phase 3
 ```
 
 Fenced blocks inside templates create nesting ambiguity. Use inline backticks instead.
+

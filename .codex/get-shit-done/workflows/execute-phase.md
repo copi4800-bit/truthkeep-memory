@@ -836,3 +836,4 @@ Re-run `$gsd-execute-phase {phase}` → discover_plans finds completed SUMMARYs 
 
 STATE.md tracks: last completed plan, current wave, pending checkpoints.
 </resumption>
+

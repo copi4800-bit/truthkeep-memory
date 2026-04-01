@@ -212,3 +212,4 @@ Additional validation observed on 2026-03-24:
 - `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 /home/hali/.openclaw/extensions/memory-aegis-v7/.venv/bin/pytest -q tests`
   - passed: `114 passed in 3.92s`
   - includes runtime coverage for doctor, taxonomy cleanup, rebuild, scan, and visualize
+

@@ -21,3 +21,4 @@
 
 - [x] T006 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/018-hybrid-sync-protocol-lite/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/018-hybrid-sync-protocol-lite/plan.md)
 - [x] T007 [FOUNDATION] Reconcile completion state in [specs/018-hybrid-sync-protocol-lite/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/018-hybrid-sync-protocol-lite/tasks.md)
+

@@ -53,3 +53,4 @@ Harden the Python rebuild flow so it regenerates missing derived `subject` and `
 - `npm run lint`: pass
 - `npm run test:bootstrap`: pass, 17 tests
 - `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`: pass, 94 passed in 2.96s
+

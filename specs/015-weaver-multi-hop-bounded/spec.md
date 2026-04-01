@@ -31,3 +31,4 @@ As a maintainer, I want multi-hop expansion to stay behind lexical seed recall a
 
 - **SC-001**: Context-pack can include bounded multi-hop link results with explicit explanation payloads.
 - **SC-002**: Lexical-first behavior remains intact and test-covered.
+

@@ -38,3 +38,4 @@ As a maintainer, I want tests to lock the default consumer operations list, so f
 - **SC-001**: The governed consumer surface appears in the same role across source contract files, manifest metadata, host-facing adapter code, and published artifacts.
 - **SC-002**: Targeted runtime and contract verification demonstrates that `memory_setup` is callable as a first-class default operation and that advanced sync operations are published consistently.
 - **SC-003**: The ordinary-user surface becomes more explicit without adding host-only semantics beyond the governed Python consumer path.
+

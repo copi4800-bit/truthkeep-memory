@@ -37,3 +37,4 @@ As a maintainer, I want the feature to define evidence for “time to first valu
 - **SC-001**: A new user can understand the shortest useful Aegis path without reading advanced-tool docs first.
 - **SC-002**: The repo has one explicit first-success flow that demonstrates setup, memory write, and memory recall.
 - **SC-003**: Future beginner-facing work can cite this feature as the governing first-value bar.
+

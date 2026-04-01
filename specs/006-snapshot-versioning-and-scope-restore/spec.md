@@ -86,3 +86,4 @@ As a maintainer, I want to list and inspect prior snapshots so that I can reason
 - **SC-002**: Users can list available backups from the Python runtime without manually inspecting directories.
 - **SC-003**: Dry-run restore returns a structured impact report and does not mutate the active DB.
 - **SC-004**: The canonical Python validation workflow includes regression coverage for manifests, listing, and dry-run restore.
+

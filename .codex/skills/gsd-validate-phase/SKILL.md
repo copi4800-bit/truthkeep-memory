@@ -66,3 +66,4 @@ Phase: {{GSD_ARGS}} — optional, defaults to last completed phase.
 Execute @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/validate-phase.md.
 Preserve all workflow gates.
 </process>
+

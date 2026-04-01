@@ -80,3 +80,4 @@ As a future maintainer, I want release-readiness and packaging evidence recorded
 - **SC-001**: A repository change can trigger the CI workflow that runs the canonical Python validation command without manual intervention.
 - **SC-002**: The release workflow documentation is specific enough that a maintainer can identify the required validation and packaging steps from the repo alone.
 - **SC-003**: The active feature artifacts record the executed CI/release validation steps and explicit deferred gaps for follow-up work.
+

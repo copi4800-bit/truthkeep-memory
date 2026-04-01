@@ -1,4 +1,4 @@
-"""Aegis v8 runtime surfaces.
+"""Aegis v10 runtime surfaces.
 
 Keep package import side effects minimal so storage modules can import
 `aegis_py.v7.<submodule>` without triggering runtime cycles.

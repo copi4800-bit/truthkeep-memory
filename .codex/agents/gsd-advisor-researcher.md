@@ -107,3 +107,4 @@ Keep research focused on the single gray area. Do not explore tangential topics.
 - Do NOT invent filler options to pad the table -- only genuinely viable approaches
 - Do NOT produce extended analysis paragraphs beyond the single rationale paragraph
 </anti_patterns>
+

@@ -21,3 +21,4 @@
 
 ## Commits
 - Typically follows atomic commit patterns (feat, fix, refactor).
+

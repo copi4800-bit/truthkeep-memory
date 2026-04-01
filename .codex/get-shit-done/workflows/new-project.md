@@ -1224,3 +1224,4 @@ $gsd-discuss-phase 1 — gather context and clarify approach
 **Atomic commits:** Each phase commits its artifacts immediately. If context is lost, artifacts persist.
 
 </success_criteria>
+

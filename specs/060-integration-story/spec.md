@@ -38,3 +38,4 @@ As a package consumer, I want the integration demo to ship in the published pack
 - **SC-001**: An integrator can understand the boundary by running one script.
 - **SC-002**: The README exposes a concise, copy-pasteable host integration path.
 - **SC-003**: The integration story stays grounded in the shipped Python-owned contract.
+

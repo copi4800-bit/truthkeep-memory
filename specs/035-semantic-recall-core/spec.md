@@ -82,3 +82,4 @@ As a maintainer, I want semantic recall to stay within the `retrieval` module bo
 - **SC-002**: Search API supports a `semantic` boolean flag.
 - **SC-003**: Latency for semantic search is documented and within acceptable bounds for the chosen implementation (e.g., < 2s for LLM-based expansion).
 - **SC-004**: Regression tests verify that existing lexical and graph expansion continue to work correctly.
+

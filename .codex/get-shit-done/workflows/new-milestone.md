@@ -467,3 +467,4 @@ Also: `$gsd-plan-phase [N] ${GSD_WS}` — skip discussion, plan directly
 
 **Atomic commits:** Each phase commits its artifacts immediately.
 </success_criteria>
+

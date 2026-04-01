@@ -505,3 +505,4 @@ Ready to plan the next milestone.
 - [ ] User confirms before any action
 - [ ] Seamless handoff to appropriate gsd command
       </success_criteria>
+

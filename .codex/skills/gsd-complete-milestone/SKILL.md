@@ -170,3 +170,4 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 - **Context efficiency:** Archive keeps ROADMAP.md and REQUIREMENTS.md constant size per milestone
 - **Fresh requirements:** Next milestone starts with `$gsd-new-milestone` which includes requirements definition
   </critical_rules>
+

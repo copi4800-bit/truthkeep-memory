@@ -144,3 +144,4 @@
 | Medium Confidence | {{medium_confidence_count}} |
 | Low Confidence | {{low_confidence_count}} |
 | Sensitive Content Excluded | {{sensitive_excluded_summary}} |
+

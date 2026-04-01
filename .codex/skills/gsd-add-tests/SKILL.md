@@ -68,3 +68,4 @@ Phase: {{GSD_ARGS}}
 Execute the add-tests workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/add-tests.md end-to-end.
 Preserve all workflow gates (classification approval, test plan approval, RED-GREEN verification, gap reporting).
 </process>
+

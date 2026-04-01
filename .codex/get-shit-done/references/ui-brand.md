@@ -158,3 +158,4 @@ Always at end of major completions.
 - Missing Next Up block after completions
 
 </ui_patterns>
+

@@ -35,3 +35,4 @@ As a contributor, I want docs and workflow artifacts updated so the richer expla
 
 - **SC-001**: Host models can inspect which explicit link caused a link expansion.
 - **SC-002**: Python-owned serialized payloads remain stable and more informative.
+

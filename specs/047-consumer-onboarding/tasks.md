@@ -23,3 +23,4 @@
 
 - [x] T008 [TEST] Re-run targeted onboarding tests and the full Python suite.
 - [x] T009 [DOCS] Record validation evidence for `047-consumer-onboarding` in `plan.md`.
+

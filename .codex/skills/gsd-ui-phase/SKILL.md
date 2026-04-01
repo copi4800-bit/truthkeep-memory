@@ -64,3 +64,4 @@ Phase number: {{GSD_ARGS}} — optional, auto-detects next unplanned phase if om
 Execute @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/ui-phase.md end-to-end.
 Preserve all workflow gates.
 </process>
+

@@ -76,3 +76,4 @@ As an external host or operator, I want MCP, CLI, and TypeScript adapter access 
 - **SC-001**: A contributor can create and inspect explicit memory links through the Python runtime without editing the database manually.
 - **SC-002**: `memory_context_pack` can surface explicit linked neighbors while keeping lexical-first ordering.
 - **SC-003**: MCP/CLI/TS paths expose link creation and neighbor inspection without diverging from Python-owned semantics.
+

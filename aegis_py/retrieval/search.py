@@ -7,7 +7,7 @@ from .oracle import OracleBeast
 from ..memory.core import MemoryManager
 from ..storage.manager import StorageManager
 
-# Phase 2: Aegis v9 Core Integration
+# Phase 2: Aegis v10 Core Integration
 from ..v9.adapter import map_to_v9_record
 from ..v9.scorer import ResidualScorer
 from ..v9.query_signals import build_v9_query_signals

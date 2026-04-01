@@ -38,3 +38,4 @@ As an integrator, I want the published npm package file list to preserve the Pyt
 - **SC-001**: A release tarball feels like something a newcomer can unpack and try immediately.
 - **SC-002**: A maintainer can explain what ships in one short README section.
 - **SC-003**: Packaging reinforces the Python-first product story instead of hiding it behind source-tree assumptions.
+

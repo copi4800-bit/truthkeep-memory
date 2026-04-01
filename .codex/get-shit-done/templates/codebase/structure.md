@@ -283,3 +283,4 @@ root/
 - Finding where specific logic lives
 - Following existing conventions
 </guidelines>
+

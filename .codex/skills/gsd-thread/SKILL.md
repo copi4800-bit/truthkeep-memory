@@ -162,3 +162,4 @@ Create a new thread:
   $gsd-add-phase or $gsd-add-backlog with context from the thread
 - Thread files live in .planning/threads/ — no collision with phases or other GSD structures
 </notes>
+

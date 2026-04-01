@@ -65,3 +65,4 @@ Validated additions in this feature:
 - `aegis_py.install_check` now separates core runtime prerequisites from plugin/bootstrap prerequisites
 - `aegis-setup` now tells new users whether the Python runtime is ready and whether the plugin/bootstrap path is also ready
 - `README.md` now publishes a short “use both” quickstart for the Python runtime plus the current plugin/bootstrap path
+

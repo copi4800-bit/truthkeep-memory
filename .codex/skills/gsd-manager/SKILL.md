@@ -72,3 +72,4 @@ Project context, phase list, dependencies, and recommendations are resolved insi
 Execute the manager workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/manager.md end-to-end.
 Maintain the dashboard refresh loop until the user exits or all phases complete.
 </process>
+

@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical prerequisite workflow and record evidence in [specs/022-beast-execution-roadmap/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/022-beast-execution-roadmap/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/022-beast-execution-roadmap/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/022-beast-execution-roadmap/tasks.md)
+

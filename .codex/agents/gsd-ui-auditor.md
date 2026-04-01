@@ -436,3 +436,4 @@ Quality indicators:
 - **Proportional:** More detail on low-scoring pillars, brief on passing ones
 
 </success_criteria>
+

@@ -246,3 +246,4 @@ The one-liner should tell someone what actually shipped.
 
 **After creation:** STATE.md updated with position, decisions, issues.
 </guidelines>
+

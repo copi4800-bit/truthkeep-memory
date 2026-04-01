@@ -21,3 +21,4 @@
 
 - [x] T006 [TEST] Re-run the contract test suite for this feature.
 - [x] T007 [DOCS] Record validation evidence for `051-guided-host-integration` in `plan.md`.
+

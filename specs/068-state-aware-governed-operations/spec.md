@@ -87,3 +87,4 @@ As a future maintainer, I want one explicit contract registry and smaller runtim
 - **SC-002**: The plan identifies at least three executable refactor slices that reduce architecture drag without broad rewrite scope.
 - **SC-003**: The plan explicitly preserves the Python-owned runtime boundary and current validation command set.
 - **SC-004**: The plan gives future tranche work a clear place to add governed behavior without increasing surface duplication.
+

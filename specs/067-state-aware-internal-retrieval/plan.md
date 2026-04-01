@@ -75,3 +75,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 Main risk: turning “state-aware internal retrieval” into a broad retrieval rewrite. Guard against that by constraining changes to bounded internal shaping and compatibility-first tests.
+

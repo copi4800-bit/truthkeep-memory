@@ -104,3 +104,4 @@ As a maintainer, I want the legacy TypeScript runtime surface either removed or 
 - **SC-002**: The canonical validation workflow passes using Python-first checks, and any remaining TypeScript checks are non-runtime or removed.
 - **SC-003**: Core user-facing memory flows remain operational after the migration and preserve explanation, provenance, and scope behavior.
 - **SC-004**: The repository clearly documents whether zero-TypeScript runtime was achieved or whether a host-mandated bootstrap remains, with no ambiguity about ownership.
+

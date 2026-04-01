@@ -80,3 +80,4 @@ As a future adopter, I want the README and feature artifacts to describe the Pyt
 - **SC-001**: A new user can invoke core Aegis memory commands from Python without OpenClaw.
 - **SC-002**: CLI payloads remain aligned with the existing Python public surface and pass regression tests.
 - **SC-003**: Repo docs describe standalone CLI usage clearly enough for a host integrator to script it.
+

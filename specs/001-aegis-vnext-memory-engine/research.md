@@ -114,3 +114,4 @@ Proceed next with retrieval unification:
 1. choose one canonical search implementation for both benchmark and app usage
 2. adapt the other path into a thin adapter or retire it
 3. expand explainability and conflict-visibility regression coverage
+

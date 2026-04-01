@@ -4,3 +4,4 @@
 - [x] T002 Add JSON evaluation output with explicit checks
 - [x] T003 Add bounded reduced-profile runtime test
 - [x] T004 Validate the bounded apocalypse profile locally
+

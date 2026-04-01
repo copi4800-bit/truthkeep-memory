@@ -10,3 +10,4 @@
 
 ## Scope Leakage
 - Ensuring cross-project or cross-session memory remains strictly isolated (a core goal for v4).
+

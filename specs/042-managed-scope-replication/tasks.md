@@ -32,3 +32,4 @@
 
 - [x] T011 [GSD] Update `.planning/STATE.md` to reflect ongoing work on `042-managed-scope-replication`.
 - [ ] T012 [DOCS] Draft migration notes for operators updating to the distributed schema.
+

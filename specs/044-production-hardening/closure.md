@@ -60,3 +60,4 @@ For the current codebase and current feature contract, `044-production-hardening
 - the adapter shell remains in parity
 - migration and backup flows are no longer only aspirational
 - benchmark and trust-visibility gates exist in code, not only in prose
+

@@ -20,7 +20,7 @@ def run_ux_verification():
     
     app = AegisApp(db_path=db_path)
     
-    print(f"--- BẮT ĐẦU KIỂM TRA TOÀN DIỆN AEGIS V8 (DONE 100%): {datetime.now().strftime('%H:%M:%S')} ---")
+    print(f"--- BẮT ĐẦU KIỂM TRA TOÀN DIỆN AEGIS V10 (DONE 100%): {datetime.now().strftime('%H:%M:%S')} ---")
     
     # 1. Kịch bản Why-not: Sếp đổi ý
     print("\n[Bước 1] Sếp dặn: 'Sếp thích uống trà xanh.'")
@@ -35,7 +35,7 @@ def run_ux_verification():
     
     if results:
         serialized = app._serialize_search_result(results[0], retrieval_mode="explain")
-        print(f"\n[Aegis v8 chọn]: {serialized['memory']['content']}")
+        print(f"\n[Aegis v10 chọn]: {serialized['memory']['content']}")
         print(f"[Lý do nhân hóa]: {serialized['human_reason']}")
         
         if serialized.get("suppressed_candidates"):

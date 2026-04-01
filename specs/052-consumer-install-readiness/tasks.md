@@ -17,3 +17,4 @@
 - [x] T004 [TEST] Add install-readiness coverage in `tests/test_user_surface.py`.
 - [x] T005 [TEST] Update `tests/test_python_only_runtime_contract.py` for the install/quickstart contract.
 - [x] T006 [TEST] Re-run targeted tests and the full Python suite.
+

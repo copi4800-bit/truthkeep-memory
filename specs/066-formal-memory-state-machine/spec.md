@@ -39,3 +39,4 @@ As a maintainer, I want the new state model to be queryable through stable inter
 - **SC-001**: Admission decisions from `065` are represented as explicit internal states.
 - **SC-002**: Existing runtime behavior remains green while the richer state model lands internally.
 - **SC-003**: Later retrieval work can depend on a real state model instead of reconstructing admission intent from metadata.
+

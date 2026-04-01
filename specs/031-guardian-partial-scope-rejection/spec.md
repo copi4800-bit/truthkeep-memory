@@ -70,3 +70,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this Gu
 - **SC-001**: Tested partial-scope retrieval requests fail with clear validation errors.
 - **SC-002**: Tested valid scope-pair and no-scope retrieval requests continue to work.
 - **SC-003**: The prerequisite check resolves to `031-guardian-partial-scope-rejection` with its `tasks.md` artifact present.
+

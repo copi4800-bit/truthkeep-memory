@@ -75,3 +75,4 @@ As a maintainer, I want the README and manifest to align on the default user pat
 - **SC-001**: The plugin manifest exposes an explicit consumer/default tool set.
 - **SC-002**: The TS onboarding module no longer appears to be an active production path.
 - **SC-003**: The closure blockers `CRC-005` and `CRC-007` are reduced by explicit artifact and code evidence.
+

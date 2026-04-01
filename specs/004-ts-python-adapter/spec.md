@@ -81,3 +81,4 @@ As a maintainer, I want the migration strategy recorded in active artifacts so t
 - **SC-001**: Maintainers can identify which current TypeScript plugin surfaces are safe to route to Python in the first migration wave.
 - **SC-002**: The active feature artifacts clearly separate Python-backed tools from TS-only tools.
 - **SC-003**: The migration strategy is staged and reviewable, rather than depending on a one-step TypeScript removal.
+

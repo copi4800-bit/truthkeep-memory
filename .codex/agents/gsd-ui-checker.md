@@ -303,3 +303,4 @@ Quality indicators:
 - **Context-aware:** Respects CONTEXT.md locked decisions (don't flag user's explicit choices)
 
 </success_criteria>
+

@@ -38,3 +38,4 @@ As a newcomer or integrator, I want the README to move from product story to beg
 - **SC-001**: A newcomer can read the README top section and understand Aegis as a product before reading technical details.
 - **SC-002**: A maintainer can point to one concise narrative for what Aegis is and why it matters.
 - **SC-003**: The README flows from product story to first value to technical reference in a clearer order.
+

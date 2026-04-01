@@ -77,3 +77,4 @@ extensions/memory-aegis-v7/
 - Test the migration manager by bootstrapping an empty DB and a supported legacy DB, ensuring all scripts run in order and update `PRAGMA user_version`.
 - Write tests that force the health state to `DEGRADED_SYNC` and assert that local SQLite writes still succeed instantly.
 - Establish a benchmark and retrieval regression gate that fails on semantic/trust regressions as well as latency regressions.
+

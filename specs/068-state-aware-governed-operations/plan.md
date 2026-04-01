@@ -178,3 +178,4 @@ PYTHONPATH=. .venv/bin/python -m pytest -q tests/test_user_surface.py -k "storag
 - `StorageManager` now has a real storage-hygiene slice, but memory, evidence, and governance repositories are still concentrated in one compatibility facade.
 - The Python runtime now owns operation groups and metadata through `aegis_py.tool_registry`, but TypeScript/plugin layers still consume derived copies rather than generated artifacts.
 - `AegisApp` is materially slimmer for health, operator, backup, sync, and governed-background paths, but it still holds a large amount of user-flow and helper logic that could be decomposed later only if runtime evidence justifies it.
+

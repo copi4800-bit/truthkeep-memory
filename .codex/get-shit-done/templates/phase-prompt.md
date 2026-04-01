@@ -608,3 +608,4 @@ Task completion ≠ Goal achievement. A task "create chat component" can complet
 6. All must_haves pass → phase complete
 
 See `/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/verify-phase.md` for verification logic.
+

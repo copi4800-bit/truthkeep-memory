@@ -58,3 +58,4 @@ If no `.planning/` directory exists, inform the user to run `$gsd-new-project` f
 - [ ] Results formatted clearly
 - [ ] Displayed to user
 </success_criteria>
+

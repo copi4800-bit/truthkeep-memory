@@ -88,3 +88,4 @@ As a maintainer preparing the next Aegis Python baseline, I want an explicit rel
 - **SC-002**: The benchmark-oriented Python suite covers at least scoped retrieval, anti-leak retrieval, conflict-visible retrieval, punctuation-safe retrieval, and empty-result behavior.
 - **SC-003**: A contributor can follow the documented validation workflow and run the intended local regression command set without needing undocumented steps.
 - **SC-004**: The active feature artifacts contain a release-readiness summary with the executed validation command, observed result, and explicit remaining gaps for the next feature wave.
+

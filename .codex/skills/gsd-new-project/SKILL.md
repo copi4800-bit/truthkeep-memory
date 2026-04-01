@@ -76,3 +76,4 @@ Initialize a new project through unified flow: questioning → research (optiona
 Execute the new-project workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/new-project.md end-to-end.
 Preserve all workflow gates (validation, approvals, commits, routing).
 </process>
+

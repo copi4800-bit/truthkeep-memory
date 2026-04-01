@@ -174,3 +174,4 @@ Do NOT return markdown commentary, explanations, or caveats outside the `<analys
 - Deprioritize log pastes, session context dumps, and large code blocks when selecting evidence
 - When evidence is genuinely insufficient, report UNSCORED with "insufficient data" -- do not guess
 </constraints>
+

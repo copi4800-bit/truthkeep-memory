@@ -82,3 +82,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 Main risk: leaking the future v7 state/admission design into this foundation slice. Guard against that by keeping this tranche storage-first and compatibility-first.
+

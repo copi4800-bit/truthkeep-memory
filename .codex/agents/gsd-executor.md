@@ -505,3 +505,4 @@ Plan execution complete when:
 - [ ] Final metadata commit made (includes SUMMARY.md, STATE.md, ROADMAP.md)
 - [ ] Completion format returned to orchestrator
 </success_criteria>
+

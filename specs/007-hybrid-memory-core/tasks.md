@@ -56,3 +56,4 @@
 - [x] T015 [FOUNDATION] Run the canonical validation workflow and benchmark checks required by the implemented slices, then record evidence in [specs/007-hybrid-memory-core/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/plan.md)
 - [x] T016 [FOUNDATION] Reconcile completion state in [specs/007-hybrid-memory-core/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/tasks.md)
 - [x] T017 [FOUNDATION] Capture the architectural findings from [1.md](/home/hali/.openclaw/1.md) into [specs/007-hybrid-memory-core/research.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/007-hybrid-memory-core/research.md) and align them with the active spec and constitution
+

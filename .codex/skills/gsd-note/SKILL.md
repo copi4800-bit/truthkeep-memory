@@ -69,3 +69,4 @@ Runs inline — no Task, no AskUserQuestion, no Bash.
 Execute the note workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/note.md end-to-end.
 Capture the note, list notes, or promote to todo — depending on arguments.
 </process>
+

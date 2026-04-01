@@ -34,7 +34,7 @@ def main() -> int:
     env["AEGIS_DB_PATH"] = db_path
 
     print("================================================")
-    print("   Welcome to Memory Aegis v4 — Quick Setup   ")
+    print("   Welcome to Memory Aegis v10 — Quick Setup   ")
     print("================================================")
     print()
     print(f"- Workspace detected: {workspace_dir}")
@@ -94,3 +94,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

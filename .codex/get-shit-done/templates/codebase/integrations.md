@@ -278,3 +278,4 @@ Template for `.planning/codebase/INTEGRATIONS.md` - captures external service de
 **Security note:**
 Document WHERE secrets live (env vars, Vercel dashboard, 1Password), never WHAT the secrets are.
 </guidelines>
+

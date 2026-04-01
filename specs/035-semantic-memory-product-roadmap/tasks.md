@@ -16,3 +16,4 @@
 
 - [x] T004 [FOUNDATION] Run the canonical prerequisite workflow and record evidence in [specs/035-semantic-memory-product-roadmap/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/035-semantic-memory-product-roadmap/plan.md)
 - [x] T005 [FOUNDATION] Reconcile completion state in [specs/035-semantic-memory-product-roadmap/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/035-semantic-memory-product-roadmap/tasks.md)
+

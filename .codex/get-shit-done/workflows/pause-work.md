@@ -174,3 +174,4 @@ To resume: $gsd-resume-work
 - [ ] Committed as WIP
 - [ ] User knows location and how to resume
 </success_criteria>
+

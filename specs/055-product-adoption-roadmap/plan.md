@@ -55,3 +55,4 @@ extensions/memory-aegis-v7/
 ## Complexity Tracking
 
 No constitution violations currently require exception handling.
+

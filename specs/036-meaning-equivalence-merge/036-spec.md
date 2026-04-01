@@ -80,3 +80,4 @@ As a user, I want to see why two memories were considered the same, so that I ca
 - **SC-001**: 90% of paraphrased duplicates are caught during ingestion in controlled test cases.
 - **SC-002**: Maintenance pass reduces total active memory count by merging detected clusters.
 - **SC-003**: Merged records include a `merged_from` list in their `metadata_json`.
+

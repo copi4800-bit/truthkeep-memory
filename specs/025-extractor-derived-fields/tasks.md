@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/025-extractor-derived-fields/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/025-extractor-derived-fields/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/025-extractor-derived-fields/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/025-extractor-derived-fields/tasks.md)
+

@@ -80,3 +80,4 @@ As a maintainer, I want the structured recovery and diagnostics payloads preserv
 - **SC-002**: Restore preview tells the user whether the action is full or scope-limited and what the main impact will be.
 - **SC-003**: Plugin-facing `memory_doctor` content becomes summary-first while preserving structured `details`.
 - **SC-004**: This feature improves `CRC-006` in `046-consumer-ready-checklist` from `PARTIAL` toward a consumer-safe recovery/trust surface.
+

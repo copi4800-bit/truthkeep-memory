@@ -25,3 +25,4 @@
 - sync failure persists after one clean retry
 - preview output contradicts the expected scope contents
 - import changes the wrong scope or shows leakage risk
+

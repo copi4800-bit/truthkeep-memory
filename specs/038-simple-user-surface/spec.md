@@ -30,3 +30,4 @@ As a user, I want a direct way to correct a mistaken or outdated memory.
 
 - **SC-001**: Users can perform all 4 actions via CLI and MCP with minimal arguments.
 - **SC-002**: Integration tests pass for the new surface.
+

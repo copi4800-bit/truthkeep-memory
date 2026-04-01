@@ -68,3 +68,4 @@ Validation results:
 - `PYTHONPATH=/home/hali/.openclaw/extensions/memory-aegis-v7 .venv/bin/pytest -q tests`
   - passed
   - `89 passed in 2.80s`
+

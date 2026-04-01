@@ -179,3 +179,4 @@ fi
 
 Report as info diagnostic: `I002 | info | Stale subagent task directories found | Yes (--repair removes them)`
 </stale_task_cleanup>
+

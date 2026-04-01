@@ -121,3 +121,4 @@ This order is mandatory for the completion program because distributed correctne
 - **SC-002**: The program identifies one explicit next implementation tranche that can be opened immediately as a normal feature.
 - **SC-003**: The prerequisite check resolves to `041-completion-program` with `spec.md`, `plan.md`, and `tasks.md` present.
 - **SC-004**: The repo state points GSD at `041-completion-program` as the active post-`040` source of truth.
+

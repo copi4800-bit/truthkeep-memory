@@ -61,3 +61,4 @@ extensions/memory-aegis-v7/
 - Implement integration tests mimicking two nodes syncing with interrupted/duplicated payloads to verify replay safety.
 - Write tests asserting that conflicting concurrent mutations yield a `reconcile-required` state.
 - Confirm backwards compatibility for existing SQLite instances via migration script tests.
+

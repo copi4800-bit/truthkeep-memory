@@ -34,3 +34,4 @@ As a user of the simple recall surface, I want trust expressed in plain language
 - **SC-001**: Search and context-pack payloads expose trust metadata for every returned result.
 - **SC-002**: Integration tests cover at least one `strong`, one `uncertain`, and one `conflicting` retrieval case.
 - **SC-003**: The simple recall surface exposes trust cues without surfacing raw implementation jargon.
+

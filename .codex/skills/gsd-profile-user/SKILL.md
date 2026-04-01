@@ -77,3 +77,4 @@ The workflow handles all logic including:
 9. Sequential artifact generation
 10. Summary with refresh diff (if applicable)
 </process>
+

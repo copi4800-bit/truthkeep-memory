@@ -36,3 +36,4 @@ node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/g
 - `commit_docs: false` in config
 - `.planning/` is gitignored
 - No changes to commit (check with `git status --porcelain .planning/`)
+

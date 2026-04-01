@@ -90,3 +90,4 @@ All repair actions must appear in SUMMARY.md under "## Deviations from Plan":
 - DECOMPOSE sub-tasks must be more specific than the original, not synonymous rewrites.
 - If config.json `workflow.node_repair` is `false`, skip directly to verification_failure_gate (user retains original behavior).
 </constraints>
+

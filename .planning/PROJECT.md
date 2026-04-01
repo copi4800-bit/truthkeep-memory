@@ -25,3 +25,4 @@ Aegis Python is a local-first memory engine for OpenClaw and MCP-based agents. I
 - Any remaining TypeScript is transitional host/bootstrap code only.
 - `.planning/` is derivative and must be kept aligned with active feature specs.
 - Legacy implementation detail belongs in `specs/*` or code, not in `.planning/*`.
+

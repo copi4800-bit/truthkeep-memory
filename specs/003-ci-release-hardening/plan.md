@@ -141,3 +141,4 @@ Remaining gaps after this hardening wave:
 - the Python CI workflow has not been executed on GitHub yet because the repo has not been pushed there
 - release packaging is still a local source bundle workflow, not a package registry publishing pipeline
 - branch/tag release discipline still needs a separate feature if it becomes part of the release bar
+

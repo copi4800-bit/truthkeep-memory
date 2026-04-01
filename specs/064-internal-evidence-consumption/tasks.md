@@ -18,3 +18,4 @@
 
 - [x] T006 [DOCS] Update `.planning/ROADMAP.md` so `064` becomes the active architecture tranche after `063`.
 - [x] T007 [DOCS] Update `.planning/STATE.md` so the next architecture focus points at internal evidence consumption rather than full promotion gating.
+

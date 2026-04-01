@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/030-guardian-scope-contracts/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/030-guardian-scope-contracts/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/030-guardian-scope-contracts/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/030-guardian-scope-contracts/tasks.md)
+

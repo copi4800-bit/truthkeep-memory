@@ -281,3 +281,4 @@ Quick commands:
 - [ ] User offered to save as global defaults (~/.gsd/defaults.json)
 - [ ] Changes confirmed to user
 </success_criteria>
+

@@ -81,3 +81,4 @@ As a maintainer, I want the new ownership boundary documented in feature artifac
 - **SC-001**: `aegis_py/app.py` is materially smaller after extraction while preserving the same public behavior.
 - **SC-002**: Python and bootstrap integration suites continue to pass without payload regressions.
 - **SC-003**: The resulting module boundary clearly separates orchestration from public contract assembly and operational workflows.
+

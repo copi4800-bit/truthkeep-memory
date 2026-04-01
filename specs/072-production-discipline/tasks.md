@@ -29,3 +29,4 @@
 
 - [x] T011 Validate the referenced focused command set still runs green
 - [x] T012 Record the stop condition: no further tranche should open unless runtime evidence reveals a new distinct risk class
+

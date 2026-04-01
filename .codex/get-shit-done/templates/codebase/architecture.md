@@ -253,3 +253,4 @@ Include file paths as concrete examples of abstractions. Use backtick formatting
 - Identifying where to add code (which layer handles X?)
 - Understanding dependencies between components
 </guidelines>
+

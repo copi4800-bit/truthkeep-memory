@@ -31,3 +31,4 @@ As a maintainer, I want typed links such as `procedural_supports_semantic` to sc
 
 - **SC-001**: Link reranking is more intentional and test-covered.
 - **SC-002**: Context packs prioritize stronger and nearer link relationships.
+

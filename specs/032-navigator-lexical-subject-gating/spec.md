@@ -68,3 +68,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this na
 - **SC-001**: Tested non-lexical expansion subjects do not trigger subject-expansion cascades.
 - **SC-002**: Tested lexical same-subject expansion still works.
 - **SC-003**: The prerequisite check resolves to `032-navigator-lexical-subject-gating` with its `tasks.md` artifact present.
+

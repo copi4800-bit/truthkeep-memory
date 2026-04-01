@@ -18,3 +18,4 @@
 
 - [x] T006 [DOCS] Update `.planning/ROADMAP.md` so `056-time-to-first-value` is the next product-facing execution slice.
 - [x] T007 [DOCS] Update `.planning/STATE.md` so the active next tranche after the adoption roadmap is clearly Tranche A.
+

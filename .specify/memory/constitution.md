@@ -83,3 +83,4 @@ This constitution overrides ad hoc preferences, README prose, and convenience sh
 - When roadmap material, `.planning/`, specs, and current code disagree, the active spec and this constitution govern the next change set.
 
 **Version**: 1.0.0 | **Ratified**: 2026-03-23 | **Last Amended**: 2026-03-23
+

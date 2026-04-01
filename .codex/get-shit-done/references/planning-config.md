@@ -200,3 +200,4 @@ Squash merge is recommended — keeps main branch history clean while preserving
 </branching_strategy_behavior>
 
 </planning_config>
+

@@ -89,3 +89,4 @@ Context files are resolved inside the workflow via `gsd-tools init execute-phase
 Execute the execute-phase workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/execute-phase.md end-to-end.
 Preserve all workflow gates (wave execution, checkpoint handling, verification, state updates, routing).
 </process>
+

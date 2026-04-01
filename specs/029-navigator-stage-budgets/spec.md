@@ -69,3 +69,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this na
 - **SC-001**: Tested context packs show bounded per-stage expansion counts.
 - **SC-002**: Context packs surface stage counts for lexical and expansion stages.
 - **SC-003**: The prerequisite check resolves to `029-navigator-stage-budgets` with its `tasks.md` artifact present.
+

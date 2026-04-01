@@ -74,3 +74,4 @@ The workflow handles all logic including:
 4. Git commit
 5. Confirmation with resume instructions
 </process>
+

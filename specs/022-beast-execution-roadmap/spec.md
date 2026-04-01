@@ -70,3 +70,4 @@ As a maintainer, I want the GSD + Spec Kit artifacts updated for this roadmap fe
 - **SC-001**: Contributors can point to one repo-tracked document that explains how all 23 beasts should be implemented without inflating the runtime structure.
 - **SC-002**: The roadmap explicitly identifies the near-term moat beasts and the bounded or optional beasts.
 - **SC-003**: The prerequisite check resolves to `022-beast-execution-roadmap` with its `tasks.md` artifact present.
+

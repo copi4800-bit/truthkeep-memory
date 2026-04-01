@@ -218,3 +218,4 @@ Agents only diagnose—plan-phase --gaps handles fixes (no fix application).
 - [ ] Debug sessions saved to ${DEBUG_DIR}/
 - [ ] Hand off to verify-work for automatic planning
 </success_criteria>
+

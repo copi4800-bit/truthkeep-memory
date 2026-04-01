@@ -31,3 +31,4 @@ As a maintainer, I want to preview and import a sync envelope so I can reconcile
 
 - **SC-001**: A sync-eligible scope can be exported as a portable envelope file.
 - **SC-002**: Another local runtime can preview and import that envelope safely.
+

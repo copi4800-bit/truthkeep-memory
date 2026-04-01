@@ -70,3 +70,4 @@ Context files are resolved inside the workflow (`init verify-work`) and delegate
 Execute the verify-work workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/verify-work.md end-to-end.
 Preserve all workflow gates (session management, test presentation, diagnosis, fix planning, routing).
 </process>
+

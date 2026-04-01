@@ -49,3 +49,4 @@
 
 - [x] T015 [DOCS] Keep `.planning/STATE.md` and `.planning/ROADMAP.md` aligned only if tranche `068` execution materially changes coordination status
 - [x] T016 [DOCS] Summarize residual architecture debt discovered during execution so later production-excellence slices build on real seams instead of ad hoc cleanup
+

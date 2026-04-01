@@ -45,3 +45,4 @@ As a maintainer, I want the new evidence layer to be explicitly append-only and 
 - **SC-001**: A new memory can be traced back to immutable raw evidence stored locally.
 - **SC-002**: Existing v4 retrieval and integration surfaces remain green after the evidence layer lands.
 - **SC-003**: A follow-on tranche for promotion gating can assume that raw evidence already exists as a first-class store.
+

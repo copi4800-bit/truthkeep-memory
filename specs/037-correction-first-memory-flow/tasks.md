@@ -42,3 +42,4 @@
 - [x] T015 [US2] Integration test for implicit contradiction resolution in `tests/hygiene/test_contradiction_resolve.py`.
 
 **Checkpoint**: Slice 037 is validated.
+

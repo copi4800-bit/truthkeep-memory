@@ -66,3 +66,4 @@ Use when you know what you want but don't know which `/gsd:*` command to run.
 Execute the do workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/do.md end-to-end.
 Route user intent to the best GSD command and invoke it.
 </process>
+

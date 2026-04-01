@@ -26,3 +26,4 @@
 
 - [x] T008 [TEST] Re-run targeted tests and the full Python suite.
 - [x] T009 [DOCS] Record validation evidence for `049-consumer-recovery-trust` in `plan.md`.
+

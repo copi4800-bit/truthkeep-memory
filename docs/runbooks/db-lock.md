@@ -25,3 +25,4 @@
 - the lock returns after restart
 - restore or import leaves the DB in a partial-looking state
 - multiple operator actions compete for the same DB repeatedly
+

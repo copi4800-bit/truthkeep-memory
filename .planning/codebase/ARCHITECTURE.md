@@ -13,3 +13,4 @@
 - **Scopes**: explicit `scope_type` + `scope_id`
 - **Provenance**: `source_kind`, `source_ref`, explanation payloads
 - **Hooks**: OpenClaw lifecycle points bridged to Python where still needed
+

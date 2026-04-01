@@ -70,3 +70,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this ne
 - **SC-001**: All remaining partial beasts are assigned to concrete execution tranches.
 - **SC-002**: Each tranche lists explicit gates for when it should begin.
 - **SC-003**: The prerequisite check resolves to `023-beast-depth-tranches` with its `tasks.md` artifact present.
+

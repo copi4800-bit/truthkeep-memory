@@ -17,3 +17,4 @@
 
 - [x] T005 [PLAN] Identify the minimum next feature area if the closure decision is `NO-GO`.
 - [x] T006 [DOCS] Publish the closure review under `specs/050-consumer-closure-review/` as the governing decision for this claim.
+

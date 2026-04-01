@@ -108,3 +108,4 @@ As a developer integrating Aegis into OpenClaw or an MCP workflow, I want a comp
 - **SC-005**: Session lifecycle handling correctly transitions working memories in automated tests, with expected archival or expiration outcomes for benchmarked scenarios.
 - **SC-006**: Retrieval responses for benchmark fixtures include explanation payloads judged complete by the test harness for source, scope, and ranking rationale.
 - **SC-007**: Schema, retrieval, lifecycle, and integration-critical changes are covered by automated tests that fail on behavioral regressions before release.
+

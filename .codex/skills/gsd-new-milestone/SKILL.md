@@ -78,3 +78,4 @@ Project and milestone context files are resolved inside the workflow (`init new-
 Execute the new-milestone workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/new-milestone.md end-to-end.
 Preserve all workflow gates (validation, questioning, research, requirements, roadmap approval, commits).
 </process>
+

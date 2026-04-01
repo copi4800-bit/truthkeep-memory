@@ -17,3 +17,4 @@
 
 - [x] T005 [DOCS] Update `.planning/ROADMAP.md` so `067` becomes the active architecture tranche after `066`.
 - [x] T006 [DOCS] Update `.planning/STATE.md` so the next architecture focus points at state-aware internal retrieval rather than broad retrieval rewrite.
+

@@ -23,3 +23,4 @@
 
 - [x] T008 [CORE] Extract canonical consumer operation lists in `aegis_py/surface.py` so tests reuse one Python-owned source.
 - [x] T009 [CORE] Derive host runtime `toolNames` from the registered tool list instead of maintaining a second manual allowlist in `index.ts` and `dist/index.js`.
+

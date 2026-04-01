@@ -81,3 +81,4 @@ config_file = "agents/gsd-verifier.toml"
 [[hooks]]
 event = "SessionStart"
 command = "node /home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/hooks/gsd-update-check.js"
+

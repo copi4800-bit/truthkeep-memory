@@ -72,3 +72,4 @@ Write to: .planning/phases/${PHASE}-{slug}/${PHASE}-RESEARCH.md
 - `## RESEARCH INCONCLUSIVE` — Show attempts, offer: Add context/Try different mode/Manual
 
 </process>
+

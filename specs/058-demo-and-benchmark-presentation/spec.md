@@ -38,3 +38,4 @@ As a maintainer, I want the demo and benchmark presentation to stay tied to real
 - **SC-001**: A newcomer can run one script and see a short Aegis success story.
 - **SC-002**: A maintainer can point to one benchmark summary that explains what current retrieval gates mean in practice.
 - **SC-003**: The repo feels more demoable without exaggerating current capabilities.
+

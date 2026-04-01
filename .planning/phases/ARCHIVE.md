@@ -16,3 +16,4 @@ Use these sources instead:
 - `specs/*/tasks.md`
 
 If a new execution phase summary is needed, it should be written as a short derivative note that references the active feature spec explicitly.
+

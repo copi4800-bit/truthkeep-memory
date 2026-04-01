@@ -38,3 +38,4 @@ As a maintainer, I want GSD and Spec Kit planning to point at one governing adop
 - **SC-001**: A maintainer can read one roadmap and understand the twelve things Aegis should copy tactically, the core traits it must keep strategically, and the order of execution.
 - **SC-002**: The roadmap makes it obvious that Aegis should become easier to use, easier to love, and better productized without weakening correctness, trust, or local-first discipline.
 - **SC-003**: Future features can cite the roadmap as the reason a product-facing change exists.
+

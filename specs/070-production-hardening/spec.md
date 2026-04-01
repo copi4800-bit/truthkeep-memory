@@ -87,3 +87,4 @@ As a system owner, I want the runtime to prove core data-safety invariants so I 
 - **SC-003**: Dry-run and preview paths are verified to leave durable state unchanged.
 - **SC-004**: Restore and rollback paths are verified on separate test databases without manual inspection.
 
+

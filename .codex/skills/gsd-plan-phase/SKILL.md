@@ -77,3 +77,4 @@ Normalize phase input in step 2 before any directory lookups.
 Execute the plan-phase workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/plan-phase.md end-to-end.
 Preserve all workflow gates (validation, research, planning, verification loop, routing).
 </process>
+

@@ -65,3 +65,4 @@ As a system owner, I want the highest-signal flows instrumented first so observa
 - **SC-001**: Operators can inspect a stable snapshot after exercising core flows and see counts plus recent events without reading SQLite directly.
 - **SC-002**: Observability-focused tests run green locally.
 - **SC-003**: The runtime emits structured events for the targeted flows in this tranche.
+

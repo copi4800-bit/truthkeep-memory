@@ -18,3 +18,4 @@
 
 - [x] T006 [DOCS] Update `.planning/ROADMAP.md` so `065` becomes the active architecture tranche after `064`.
 - [x] T007 [DOCS] Update `.planning/STATE.md` so the next architecture focus points at promotion-gate primitives rather than the full state-machine slice.
+

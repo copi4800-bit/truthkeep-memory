@@ -88,3 +88,4 @@ As a product designer, I want a documented retrieval strategy that combines exac
 - **SC-002**: The feature artifacts define local-only baseline behavior and optional sync behavior without any requirement that baseline operations depend on a remote service.
 - **SC-003**: The retrieval strategy in the feature artifacts explicitly documents lexical recall, relationship expansion, provenance, and conflict visibility as separate explainable steps.
 - **SC-004**: The implementation plan and task list split the work into independently deliverable slices for public boundary cleanup, sync policy scaffolding, and retrieval evolution.
+

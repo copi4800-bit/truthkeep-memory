@@ -69,3 +69,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this sc
 - **SC-001**: Tested omitted-score inputs persist deterministic bounded score values.
 - **SC-002**: Explicit caller-provided score values remain unchanged after ingest.
 - **SC-003**: The prerequisite check resolves to `028-scorer-write-time-salience` with its `tasks.md` artifact present.
+

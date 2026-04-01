@@ -350,3 +350,4 @@ The output should answer: "What does the researcher need to investigate? What ch
 - Inline mentions like "see ADR-019" scattered in decisions are useless to downstream agents — they need full paths and section references in a dedicated section they can find
 - If no external specs exist, say so explicitly — don't silently omit the section
 </guidelines>
+

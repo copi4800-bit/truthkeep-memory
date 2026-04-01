@@ -59,3 +59,4 @@ Use `find-phase` for directory lookup:
 ```bash
 PHASE_DIR=$(node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/gsd-tools.cjs" find-phase "${PHASE}" --raw)
 ```
+

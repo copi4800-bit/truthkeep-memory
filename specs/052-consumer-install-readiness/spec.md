@@ -39,3 +39,4 @@ As a maintainer, I want the README to show one short quickstart for users who ne
 - **SC-001**: Running `aegis-setup` shows a plain-language install preflight before onboarding.
 - **SC-002**: Missing Node or npm does not look like a broken Python runtime; it is reported as a plugin/bootstrap gap instead.
 - **SC-003**: The README contains a short quickstart for users who need both Python runtime and plugin/bootstrap path.
+

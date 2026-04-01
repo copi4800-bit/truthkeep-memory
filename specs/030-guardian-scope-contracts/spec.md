@@ -68,3 +68,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this gu
 - **SC-001**: Tested global fallback results include explicit guardian-style reasoning.
 - **SC-002**: Tested context packs surface a boundary contract block.
 - **SC-003**: The prerequisite check resolves to `030-guardian-scope-contracts` with its `tasks.md` artifact present.
+

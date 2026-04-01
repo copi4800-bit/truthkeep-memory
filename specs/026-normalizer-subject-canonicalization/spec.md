@@ -69,3 +69,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this no
 - **SC-001**: Persisted subject strings use a canonical dotted lowercase form for tested variant inputs.
 - **SC-002**: Explicit `subject=None` remains unlabeled after ingest.
 - **SC-003**: The prerequisite check resolves to `026-normalizer-subject-canonicalization` with its `tasks.md` artifact present.
+

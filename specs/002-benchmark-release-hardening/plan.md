@@ -167,3 +167,4 @@ Remaining gaps after this hardening wave:
 - benchmark breadth is still fixture-driven and not yet sourced from a larger external corpus
 - validation remains local and manual; CI wiring was not added in this feature
 - release packaging and publishing workflow still need a separate feature if they become part of the product bar
+

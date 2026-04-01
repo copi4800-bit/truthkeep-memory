@@ -129,7 +129,7 @@ python3 scripts/v10_gauntlet_test.py
 # V10 Super Stress
 python3 scripts/super_stress_v10.py
 
-# V9 Extreme Gauntlet (5000+ noise memories)
+# V10 Extreme Gauntlet (5000+ noise memories)
 python3 scripts/v9_extreme_gauntlet.py
 ```
 

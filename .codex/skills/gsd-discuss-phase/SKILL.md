@@ -93,3 +93,4 @@ If `DISCUSS_MODE` is `"discuss"` (or unset, or any other value): Read and execut
 - CONTEXT.md captures decisions, not vague vision
 - User knows next steps
 </success_criteria>
+

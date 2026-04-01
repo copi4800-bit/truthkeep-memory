@@ -70,3 +70,4 @@ As a maintainer, I want rebuild hardening to avoid overwriting explicit metadata
 - **SC-001**: Running rebuild on legacy rows fills missing derived `subject` and `summary` fields.
 - **SC-002**: Running rebuild after derived-field hardening restores same-subject links for eligible legacy rows.
 - **SC-003**: The prerequisite check resolves to `034-axolotl-derived-rebuild-hardening` with its `tasks.md` artifact present.
+

@@ -17,3 +17,4 @@
 
 - [x] T005 [DOCS] Update `.planning/ROADMAP.md` to point future product-facing work at the adoption roadmap.
 - [x] T006 [DOCS] Update `.planning/STATE.md` to record the adoption roadmap as the next product strategy layer after the consumer-complete baseline.
+

@@ -55,3 +55,4 @@ PYTHONPATH=. .venv/bin/python -m pytest -q tests/acceptance tests/regression tes
 ## Remaining Gaps
 
 - This tranche keeps metrics process-local only; it does not yet add persistence, alert thresholds, or export to an external monitoring backend.
+

@@ -288,3 +288,4 @@ node "/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/bin/g
 - [ ] UI-SPEC.md committed (if commit_docs enabled)
 - [ ] State updated
 </success_criteria>
+

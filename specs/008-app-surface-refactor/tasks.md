@@ -45,3 +45,4 @@
 
 - [x] T010 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/008-app-surface-refactor/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/008-app-surface-refactor/plan.md)
 - [x] T011 [FOUNDATION] Reconcile completion state in [specs/008-app-surface-refactor/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/008-app-surface-refactor/tasks.md)
+

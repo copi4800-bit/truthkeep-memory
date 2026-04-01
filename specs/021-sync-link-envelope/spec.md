@@ -31,3 +31,4 @@ As a maintainer, I want sync preview/import to report link diffs and import link
 
 - **SC-001**: Scope envelopes carry both memory rows and link rows.
 - **SC-002**: Importing an envelope restores syncable Weaver structure, not just text memories.
+

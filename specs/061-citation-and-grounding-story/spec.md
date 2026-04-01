@@ -38,3 +38,4 @@ As a package consumer, I want the grounding demo to ship in the package and rele
 - **SC-001**: A maintainer can demo why Aegis is grounded with one script.
 - **SC-002**: The README makes the trust story understandable without overclaiming.
 - **SC-003**: The current productization tranche can be closed after this slice without an obvious trust-story gap.
+

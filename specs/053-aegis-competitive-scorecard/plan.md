@@ -56,3 +56,4 @@ extensions/memory-aegis-v7/specs/053-aegis-competitive-scorecard/
 ## Complexity Tracking
 
 No constitution violations currently require exception handling.
+

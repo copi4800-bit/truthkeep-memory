@@ -97,3 +97,4 @@ As a maintainer, I want README, plugin metadata, Python runtime surfaces, and th
 - **SC-002**: Local write/read tests continue to pass while degraded states are simulated.
 - **SC-003**: Broken local-storage scenarios are distinguished from degraded optional-service scenarios in tests.
 - **SC-004**: The public surfaces that expose health/status remain aligned after the feature lands.
+

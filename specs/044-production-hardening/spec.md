@@ -110,3 +110,4 @@ As a developer, I want an automated performance and semantic regression test sui
 - **SC-004**: 100% of offline writes succeed within <50ms even when sync endpoints are completely unreachable.
 - **SC-005**: Migration from an empty database and a supported legacy database to the current schema executes cleanly using the versioned migration runner.
 - **SC-006**: A defined set of latency, semantic, and trust-visibility SLIs are implemented and integrated into the test runner.
+

@@ -39,3 +39,4 @@ completed: YYYY-MM-DD
 
 ## Next Phase Readiness
 [Ready for next phase]
+

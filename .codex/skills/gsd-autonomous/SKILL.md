@@ -73,3 +73,4 @@ Project context, phase list, and state are resolved inside the workflow using in
 Execute the autonomous workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/autonomous.md end-to-end.
 Preserve all workflow gates (phase discovery, per-phase execution, blocker handling, progress display).
 </process>
+

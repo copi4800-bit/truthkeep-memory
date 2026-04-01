@@ -210,3 +210,4 @@ Observed on 2026-03-24:
 ## Complexity Tracking
 
 No constitution violations currently require exception handling.
+

@@ -102,3 +102,4 @@ Planning-only evidence recorded on 2026-03-24:
 - prerequisite workflow confirmed task artifacts are present via `AVAILABLE_DOCS=["tasks.md"]`; `spec.md` and `plan.md` are the canonical documents for the active feature directory itself
 
 Implementation evidence is intentionally pending because this feature is a program-definition slice, not the managed platform implementation itself.
+

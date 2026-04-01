@@ -69,3 +69,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this ex
 - **SC-001**: Memories ingested without explicit `subject` and `summary` persist non-empty derived values.
 - **SC-002**: Explicit caller-provided `subject` and `summary` remain unchanged after ingest.
 - **SC-003**: The prerequisite check resolves to `025-extractor-derived-fields` with its `tasks.md` artifact present.
+

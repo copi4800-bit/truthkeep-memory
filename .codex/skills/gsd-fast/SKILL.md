@@ -62,3 +62,4 @@ you could describe in one sentence and execute in under 2 minutes.
 <process>
 Execute the fast workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/fast.md end-to-end.
 </process>
+

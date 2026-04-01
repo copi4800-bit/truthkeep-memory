@@ -271,3 +271,4 @@ becomes:
 - [ ] Changes committed (includes REQUIREMENTS.md)
 - [ ] User knows to run `$gsd-plan-phase` next
 </success_criteria>
+

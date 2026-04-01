@@ -17,3 +17,4 @@
 
 - [x] T005 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/028-scorer-write-time-salience/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/028-scorer-write-time-salience/plan.md)
 - [x] T006 [FOUNDATION] Reconcile completion state in [specs/028-scorer-write-time-salience/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/028-scorer-write-time-salience/tasks.md)
+

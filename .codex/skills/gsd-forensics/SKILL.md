@@ -88,3 +88,4 @@ Read and execute the forensics workflow from @/home/hali/.openclaw/extensions/me
 - **Ground findings in evidence:** Every anomaly must cite specific commits, files, or state data.
 - **No speculation without evidence:** If data is insufficient, say so — do not fabricate root causes.
 </critical_rules>
+

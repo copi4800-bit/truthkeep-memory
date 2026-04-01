@@ -126,3 +126,4 @@ Current residual risks:
 
 - scope-selective restore currently restores scope-owned `memories` rows plus snapshot-backed `style_signals` and `style_profiles`; conflict/link state is still not replayed selectively and export backups still do not carry auxiliary scope metadata
 - backup validity still relies on local filesystem trust and manifest consistency; checksums and signed manifests are not yet implemented
+

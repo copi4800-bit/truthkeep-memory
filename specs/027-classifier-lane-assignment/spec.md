@@ -70,3 +70,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this cl
 - **SC-001**: Tested omitted-type inputs persist deterministic inferred lanes.
 - **SC-002**: Explicit caller-provided lanes remain unchanged after ingest.
 - **SC-003**: The prerequisite check resolves to `027-classifier-lane-assignment` with its `tasks.md` artifact present.
+

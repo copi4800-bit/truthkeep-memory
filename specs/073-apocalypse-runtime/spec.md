@@ -37,3 +37,4 @@ Add one apocalypse-grade runtime harness that tests three production-danger seam
 - `quick`: write p95 <= 150ms, search p95 <= 100ms, context p95 <= 100ms, retries <= 5
 - `apocalypse`: write p95 <= 800ms, search p95 <= 250ms, context p95 <= 300ms, retries <= 10
 - `overload`: write p95 <= 1100ms, search p95 <= 300ms, context p95 <= 350ms, retries <= 20
+

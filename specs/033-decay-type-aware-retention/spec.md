@@ -69,3 +69,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this de
 - **SC-001**: Tested memory types decay at different default rates.
 - **SC-002**: Tested explicit maintenance override still applies uniformly.
 - **SC-003**: The prerequisite check resolves to `033-decay-type-aware-retention` with its `tasks.md` artifact present.
+

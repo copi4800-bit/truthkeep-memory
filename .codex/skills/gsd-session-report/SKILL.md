@@ -56,3 +56,4 @@ Generate a structured SESSION_REPORT.md document capturing session outcomes, wor
 <process>
 Execute the session-report workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/session-report.md end-to-end.
 </process>
+

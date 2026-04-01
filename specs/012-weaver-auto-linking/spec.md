@@ -69,3 +69,4 @@ As a contributor, I want the docs and feature artifacts to explain the auto-link
 - **SC-001**: Ingesting same-subject memories in one scope produces usable explicit links without manual relation creation.
 - **SC-002**: Running rebuild backfills missing same-subject links for existing local data.
 - **SC-003**: The rule remains narrow, bounded, and documented.
+

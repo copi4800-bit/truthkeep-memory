@@ -32,3 +32,4 @@
 ## Notes
 
 - This feature is intentionally an adapter migration wave, not a full TypeScript removal.
+

@@ -54,3 +54,4 @@ For each workspace, show:
 - **GSD Project** — whether `.planning/PROJECT.md` exists (Yes/No)
 
 </process>
+

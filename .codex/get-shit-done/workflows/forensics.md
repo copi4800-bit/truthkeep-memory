@@ -263,3 +263,4 @@ gsd-tools.cjs state record-session \
   --stopped-at "Forensic investigation complete" \
   --resume-file ".planning/forensics/report-{timestamp}.md"
 ```
+

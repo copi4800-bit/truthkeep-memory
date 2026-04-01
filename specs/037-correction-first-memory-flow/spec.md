@@ -78,3 +78,4 @@ As a user, I want to be able to see the history of corrections so that I can tra
 - **SC-001**: 80% of explicit corrections result in automatic status transition of the old memory.
 - **SC-002**: `SearchPipeline` returns only the corrected version for common "state change" queries.
 - **SC-003**: Metadata trace `corrected_from` is present in 100% of detected correction events.
+

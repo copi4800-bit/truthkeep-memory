@@ -56,3 +56,4 @@ Closes the plan → execute → verify → ship loop.
 </execution_context>
 
 Execute the ship workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/ship.md end-to-end.
+

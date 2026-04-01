@@ -184,3 +184,4 @@ Template for `.planning/codebase/STACK.md` - captures the technology foundation.
 - Choosing implementation approach (must work with existing stack)
 - Understanding build requirements
 </guidelines>
+

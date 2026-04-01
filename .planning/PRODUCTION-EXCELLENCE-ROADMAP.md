@@ -160,3 +160,4 @@ The runtime may be called highly trustworthy for its current deployment class wh
 - failures are visible in logs/metrics without manual DB inspection
 - recovery paths are rehearsed and fast
 - no single operator mistake silently destroys memory integrity
+

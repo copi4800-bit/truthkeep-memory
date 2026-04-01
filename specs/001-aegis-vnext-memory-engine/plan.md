@@ -280,3 +280,4 @@ Remaining gaps to track after this feature baseline:
 - benchmark fixture breadth is still small and should grow before release hardening
 - contributor-facing release workflow is documented, but no dedicated CI wiring is captured in this feature
 - TypeScript brownfield surfaces remain reference-only and are not part of the Python validation gate
+

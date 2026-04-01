@@ -23,3 +23,4 @@
 
 - [x] T008 [TEST] Re-run targeted Python and adapter tests plus the full Python suite.
 - [x] T009 [DOCS] Record validation evidence for `048-consumer-everyday-surface` in `plan.md`.
+

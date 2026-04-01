@@ -70,3 +70,4 @@ As a maintainer, I want the repo state and Spec Kit artifacts aligned to this in
 - **SC-001**: All four Tranche A beasts are sequenced in a clear execution order.
 - **SC-002**: Each beast has explicit deliverables and entry gates.
 - **SC-003**: The prerequisite check resolves to `024-ingest-precision-roadmap` with its `tasks.md` artifact present.
+

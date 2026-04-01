@@ -846,3 +846,4 @@ $gsd-plan-phase N --skip-research
 - [ ] User sees status between agent spawns
 - [ ] User knows next steps
 </success_criteria>
+

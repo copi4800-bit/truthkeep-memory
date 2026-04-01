@@ -57,3 +57,4 @@ Scan `~/gsd-workspaces/` for workspace directories containing `WORKSPACE.md` man
 <process>
 Execute the list-workspaces workflow from @/home/hali/.openclaw/extensions/memory-aegis-v7/.codex/get-shit-done/workflows/list-workspaces.md end-to-end.
 </process>
+

@@ -26,3 +26,4 @@
 
 - [x] T008 [FOUNDATION] Run the canonical prerequisite workflow and record evidence in [specs/041-completion-program/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/041-completion-program/plan.md)
 - [x] T009 [FOUNDATION] Reconcile completion state in [specs/041-completion-program/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/041-completion-program/tasks.md)
+

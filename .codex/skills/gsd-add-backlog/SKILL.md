@@ -111,3 +111,4 @@ the normal phase sequence and accumulate context over time.
 - No `Depends on:` field — backlog items are unsequenced by definition
 - Sparse numbering is fine (999.1, 999.3) — always uses next-decimal
 </notes>
+

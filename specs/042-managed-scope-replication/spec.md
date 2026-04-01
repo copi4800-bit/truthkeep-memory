@@ -97,3 +97,4 @@ As an operator, I want to see sync health, lag, and failure reporting so I can m
 - **SC-002**: 100% of concurrent edits to the same entity result in a visible conflict state rather than silent data loss.
 - **SC-003**: Sync failure states are logged within 1 second of operation failure.
 - **SC-004**: Existing local-only instances can migrate to the multi-node schema with 100% data preservation.
+

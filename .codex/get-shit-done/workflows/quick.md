@@ -730,3 +730,4 @@ Ready for next task: $gsd-quick ${GSD_WS}
 - [ ] STATE.md updated with quick task row (Status column when --full)
 - [ ] Artifacts committed
 </success_criteria>
+

@@ -16,3 +16,4 @@
 
 - [x] T004 [FOUNDATION] Run the canonical validation workflow and record evidence in [specs/034-axolotl-derived-rebuild-hardening/plan.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/034-axolotl-derived-rebuild-hardening/plan.md)
 - [x] T005 [FOUNDATION] Reconcile completion state in [specs/034-axolotl-derived-rebuild-hardening/tasks.md](/home/hali/.openclaw/extensions/memory-aegis-v7/specs/034-axolotl-derived-rebuild-hardening/tasks.md)
+
