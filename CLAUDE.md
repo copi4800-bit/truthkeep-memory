@@ -1,11 +1,30 @@
-# Memory Aegis v9 (The Fortress Edition)
+# Memory Aegis v10 (The Constitutional Memory Engine)
 
-Mathematical truth-alignment and judgment engine for AI agents.
+Mathematical truth-alignment, governance, and judgment engine for AI agents.
 
 ## Build & Run
-- Setup: `pip install -r requirements.txt`
-- Run MCP: `export PYTHONPATH=$PYTHONPATH:. && python3 aegis_py/mcp/server.py`
-- Test: `export PYTHONPATH=$PYTHONPATH:. && python3 -m pytest tests/` (To be implemented)
+
+### Quick Install
+```bash
+npm install          # Auto-installs Python deps + creates .venv
+# OR
+bash install.sh      # Manual install script
+# OR
+pip install -e .     # Python developer mode
+```
+
+### Run MCP Server
+```bash
+export PYTHONPATH=$PYTHONPATH:.
+python3 aegis_py/mcp/server.py
+```
+
+### Run Tests
+```bash
+export PYTHONPATH=$PYTHONPATH:.
+python3 -m pytest tests/
+python3 scripts/v10_gauntlet_test.py  # Governance stress test
+```
 
 ## Workflow Contract
 - Feature truth: `specs/*`
@@ -24,10 +43,18 @@ Mathematical truth-alignment and judgment engine for AI agents.
 ## Tech Stack
 - Python 3.11+
 - SQLite + FTS5
-- MCP Python SDK
+- MCP Python SDK (fastmcp)
 
 ## Coding Conventions
 - Standard Library first (Zero-dependency goal)
 - Type hints for all functions
 - Dataclasses for memory models
-- SQL migrations in `aegis_py/storage/schema.sql`
+- SQL migrations in `aegis_py/storage/migrations/`
+
+## V10 Architecture
+- `v10/engine.py`: Constitutional Governance Engine (C0-C4 policy pipeline)
+- `v10/policy.py`: MemoryConstitution with 5-tier precedence enforcement
+- `v10/truth_registry.py`: Margin-aware Winner/Contender/Loser slot management
+- `v10/review.py`: Priority-based review queue for high-entropy memories
+- `v10/events.py`: Full audit trail for every governance decision
+- `facade.py`: Zero-config API (remember/recall/correct/status)

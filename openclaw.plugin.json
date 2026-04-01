@@ -1,9 +1,9 @@
 {
-  "id": "memory-aegis-v9",
-  "name": "Memory Aegis v9",
-  "description": "Mathematical truth-alignment and judgment engine for AI agents. Features Residual Judgment Engine and Zero-Trust Fortress.",
+  "id": "memory-aegis-v10",
+  "name": "Memory Aegis v10",
+  "description": "Constitutional Governance Memory Engine for AI agents. Features 5-tier policy pipeline (C0-C4), Truth Registry, Zero-Locking Identity, and Residual Judgment scoring.",
   "kind": "memory",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "healthContract": {
     "states": ["HEALTHY", "DEGRADED_SYNC", "BROKEN"],
     "capabilities": ["local_store", "local_search", "local_status", "backup_restore", "optional_sync"],

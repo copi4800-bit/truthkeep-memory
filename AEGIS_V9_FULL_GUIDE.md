@@ -1,56 +1,92 @@
-# Memory Aegis v9: The Residual Judgment Engine
+# Memory Aegis v10: The Constitutional Memory Engine
 
-Welcome to the **Fortress Edition** of Memory Aegis. Version 9 is not just a search engine; it is a mathematical truth-alignment system designed to eliminate noise, resolve conflicts, and guarantee the integrity of AI memory.
+Welcome to the **Constitutional Edition** of Memory Aegis. Version 10 is not just a search engine or a scorer; it is a **Governance-First Truth & Policy Engine** with a 5-tier Constitutional policy pipeline that sits above the mathematical scoring layer.
 
-## 🚀 Top-Tier Features
+## 🚀 What's New in v10
 
-### 1. Residual Judgment Engine (Toán học hóa sự thật)
-Unlike traditional search engines that rely solely on keyword matching, Aegis v9 uses a four-tier residual scoring formula:
-`S_final = S_base + Δ_judge + Δ_life + H_constraints`
-*   **Base (5%)**: Initial semantic/lexical recall.
-*   **Judge (Adaptive)**: Truth alignment, evidence strength, and conflict penalties.
-*   **Life (Decay)**: Automatic staleness detection and habit-based readiness.
-*   **Constraints**: Hard floors for superseded/archived records.
+### 1. Constitutional Governance Engine (Hiến pháp cho Trí nhớ)
+Unlike v9 which relied solely on residual scoring, v10 adds a **hard governance layer** that enforces truth regardless of score:
 
-### 2. Zero-Trust Fortress (Pháo đài Tuyệt đối)
-*   **Nuclear Penalty**: Any record with a `trust_score < 0.4` (insufficient evidence) is automatically demoted by **-15.0 points**, effectively neutralizing "flashy" low-quality results.
-*   **Lexical Bias Defeat**: Keyword stuffing is penalized x4, ensuring that "loud" noise never outranks "quiet" truth.
+| Priority | Level | Function |
+|---|---|---|
+| 0 | `C0 SYSTEM_SAFETY` | Block illegal/harmful content |
+| 1 | `C1 USER_OVERRIDE` | User corrections always win |
+| 2 | `C2 CANONICAL_TRUTH` | Superseded facts are hard-excluded |
+| 3 | `C3 GOVERNANCE_RISK` | Quarantine high-conflict memories |
+| 4 | `C4 SOFT_JUDGMENT` | Filter low-relevance results |
 
-### 3. Faithful Renderer (Giải thích Trung thực)
-v9 doesn't just give results; it justifies them.
-*   **Human-Centric Narratives**: Explains the *Decisive Factor* (e.g., "Confirmed as current truth", "Latest correction winner").
-*   **Deep Audit Mode**: Provides full transparency into the math behind the curtain (`base`, `judge`, `life` deltas).
+### 2. Truth Registry (Sổ Đăng ký Sự thật)
+Every "fact slot" (identified by subject) has exactly one **Winner** and zero or more **Contenders**:
+- **Winner**: Always returned in normal recall. Protected by `C2_SLOT_WINNER_PROTECTION`.
+- **Contender**: Pending review. Only surfaces in audit/explain mode.
+- **Loser/Superseded**: Hard-excluded. Can never be returned in normal recall.
+- **Margin-aware selection**: Winners must have a score margin > 0.2 to be auto-confirmed.
 
-### 4. Extreme Stress Gauntlet
-A built-in trauma-test script that can:
-*   Inject 5,000+ noise memories.
-*   Simulate 10-layer correction chains.
-*   Run complex conflict storms.
-*   Verify sub-millisecond latency under load.
+### 3. Zero-Locking Identity System
+No hardcoded pronouns or verb lists. The system learns persona exclusively from explicit user commands:
+- `"Gọi [X] là [Y]"` → Sets user honorific
+- `"Xưng là [Z]"` → Sets assistant honorific
+- Default: Neutral, professional tone
+
+### 4. Zero-Config Facade API
+```python
+from aegis_py.facade import Aegis
+
+aegis = Aegis.auto()
+aegis.remember("Python là ngôn ngữ phổ biến nhất 2026")
+results = aegis.recall("ngôn ngữ lập trình")
+aegis.correct("Thực ra Rust mới là phổ biến nhất 2026")
+print(aegis.status())
+```
+
+### 5. Review Queue with Priority Scoring
+High-entropy or high-risk memories are automatically escalated:
+```
+Q_priority = risk * 0.4 + impact * 0.4 + ambiguity * 0.2
+```
+
+---
+
+## 🔧 V9 Core (Still Active)
+
+The v9 Residual Judgment Engine remains the scoring foundation:
+```
+S_final = S_base + Δ_judge + Δ_life + H_constraints
+```
+
+- `aegis_py/v9/scorer.py`: The mathematical brain with fortress calibration
+- `aegis_py/v9/adapter.py`: Data mapper for raw storage → v9 signals
+- `aegis_py/v9/translator.py`: Faithful human-readable explanations
 
 ---
 
 ## 🛠 Technical Implementation
 
-### Core Components
-*   `aegis_py/v9/scorer.py`: The mathematical brain implementing the fortress calibration.
-*   `aegis_py/v9/adapter.py`: Advanced data mapper converting raw storage to v9 signals.
-*   `aegis_py/v9/query_signals.py`: Granular signal builder with intent awareness.
-*   `aegis_py/retrieval/search.py`: Now features a **Rerank-before-filter** pipeline for maximum precision.
+### V10 Core Components
+- `aegis_py/v10/engine.py`: Main `govern()` pipeline
+- `aegis_py/v10/policy.py`: `MemoryConstitution` with C0-C4 enforcement
+- `aegis_py/v10/truth_registry.py`: `resolve_slot_ownership()` with margin checks
+- `aegis_py/v10/review.py`: `ReviewQueueV10` with priority scoring
+- `aegis_py/v10/events.py`: `EventLogger` for full audit trail
+- `aegis_py/v10/models.py`: `DecisionObject`, `GovernanceStatus`, `TruthRole`, `RetrievableMode`
 
-### How to Run Gauntlet Stress
+### Integration Point (app.py)
+V10 governance is wired into `search_payload()`:
+```python
+for r in results:
+    decision = self.v10_engine.govern(r.memory, query_signals, intent)
+    r.v10_decision = decision
+    if decision.admissible and decision.retrievable_mode == NORMAL:
+        governed_results.append(r)
+```
+
+### How to Run V10 Gauntlet
 ```bash
 export PYTHONPATH=.
-python3 scripts/v9_extreme_gauntlet.py --noise-memories 1000 --conflict-pairs 50
+python3 scripts/v10_gauntlet_test.py
+python3 scripts/super_stress_v10.py
 ```
 
 ---
 
-## ⚙️ Operational Modes
-You can toggle v9 behavior via `scoring_mode` in the `SearchQuery`:
-1.  `v9_primary` (Default): v9 controls ranking and filtering.
-2.  `shadow_v9`: v8 ranks, v9 audits in the background.
-3.  `v8_primary`: Original v8 logic.
-
----
-*Memory Aegis v9: Because in the world of AI, Truth is the only Currency.*
+*Memory Aegis v10: Because in the world of AI, Governance over Score is the only path to Truth.* 🛡️

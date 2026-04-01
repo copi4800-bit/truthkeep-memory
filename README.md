@@ -1,35 +1,161 @@
-# Memory Aegis v9 (The Fortress Edition)
+# Memory Aegis v10 — The Constitutional Memory Engine 🛡️
 
-**Bộ não AI biết phân tích đúng sai & Bảo vệ sự thật tuyệt đối.**
+**A Governance-First memory engine for AI agents. Truth over Score. Policy over Guesswork.**
 
-## Aegis v9 là gì?
-Aegis v9 không chỉ là một công cụ tìm kiếm dữ liệu. Nó là một **"Hệ thống thẩm định sự thật"** dành cho các trợ lý AI. v9 giúp AI của bạn thoát khỏi tình trạng "ảo giác", biết phân biệt giữa thông tin cũ và mới, giữa tin rác và bằng chứng xác thực.
-
-## 🚀 Những tính năng "đỉnh cao" trên bản v9:
-
-*   **🧠 Bộ não thẩm định thông minh**: Không còn dựa vào việc đếm từ khóa. v9 sử dụng lõi toán học để tính toán độ tin cậy, giúp ưu tiên sự thật lên hàng đầu.
-*   **🛡️ Pháo đài diệt tin rác**: Tự động phát hiện và trừng phạt nặng các thông tin "nổ" hoặc không có bằng chứng. Những dữ liệu kém chất lượng sẽ bị loại bỏ ngay lập tức để bảo vệ trí nhớ của bạn.
-*   **🗣️ AI biết giải trình**: Mỗi kết quả trả về đều kèm theo lời giải thích "có tâm": *"Em chọn cái này vì đây là bản sửa lỗi mới nhất của sếp"* hoặc *"Thông tin này đáng tin vì có bằng chứng xác thực"*.
-*   **🔄 Luôn nhớ bản mới nhất**: Bạn sửa thông tin nhiều lần? v9 sẽ luôn tự động chọn bản cập nhật cuối cùng và ẩn đi đống dữ liệu cũ lỗi thời.
-*   **⚠️ Cảnh báo mâu thuẫn**: Khi có hai nguồn tin trái ngược nhau, Aegis sẽ không đoán mò gây họa mà sẽ báo cáo ngay cho bạn để xử lý, đảm bảo an toàn tuyệt đối cho công việc.
-
-## 🛠 Cài đặt nhanh
-### Yêu cầu:
-*   Python 3.10+
-*   SQLite
-
-### Các bước:
-1.  Tải mã nguồn về.
-2.  Chạy `pip install -r requirements.txt`.
-3.  Thử sức mạnh của v9 bằng lệnh "Tra tấn dữ liệu":
-    `python3 scripts/v9_extreme_gauntlet.py`
-
-## 🧱 Cấu trúc hệ thống
-v9 được chia thành các bộ phận chuyên trách:
-*   **Scorer**: Bộ não tính toán điểm số sự thật.
-*   **Adapter**: Bộ chuyển đổi dữ liệu thô sang tín hiệu v9.
-*   **Retrieval**: Hệ thống tìm kiếm và xếp hạng thông minh.
-*   **Surface**: Lớp giao tiếp và giải thích cho người dùng.
+Aegis v10 is a long-term memory system that enforces truth through a **5-tier Constitutional Policy pipeline (C0-C4)**. Every memory must pass through hard governance rules before it can be returned to the user, ensuring absolute accuracy and zero hallucination leakage.
 
 ---
-*Được xây dựng cho sự tin cậy tuyệt đối. Aegis v9 — Người gác cổng trí nhớ cho AI của bạn.*
+
+## 🚀 Key Features
+
+### ⚖️ Constitutional Governance (C0-C4)
+Every retrieval result is filtered through 5 precedence layers:
+
+| Level | Name | Function |
+|---|---|---|
+| **C0** | System Safety | Block harmful or illegal content |
+| **C1** | User Override | User corrections always take priority |
+| **C2** | Canonical Truth | Hard-exclude superseded facts, protect slot winners |
+| **C3** | Governance Risk | Quarantine high-conflict memories, budget pressure escalation |
+| **C4** | Soft Judgment | Filter low-relevance results |
+
+### 🧠 Residual Judgment Engine
+Mathematical scoring core with a four-tier residual formula:
+```
+S_final = S_base + Δ_judge + Δ_life + H_constraints
+```
+- **Base**: Initial semantic/lexical recall signal
+- **Judge**: Truth alignment, evidence strength, conflict penalties
+- **Life**: Temporal decay and habit-based readiness
+- **Constraints**: Hard floors for superseded/archived records
+
+### 🔐 Truth Registry
+Manages fact ownership with margin-aware winner selection:
+- **Winner**: The current truth. Always returned. Protected by `C2_SLOT_WINNER_PROTECTION`.
+- **Contender**: Competing fact pending review. Surfaces only in audit mode.
+- **Superseded**: Old truth. Hard-excluded from normal recall.
+
+### 🗣️ Zero-Locking Identity
+No hardcoded pronouns or persona labels. The system learns persona exclusively from explicit user commands and adapts immediately.
+
+### 🩺 Health Diagnostics
+Built-in memory health monitoring with 4 severity levels, conflict detection, staleness tracking, and actionable remediation guidance.
+
+### 📝 Explainable Results
+Every result includes a human-readable reason, policy trace, trust state, and suppressed candidates with "why-not" explanations for full transparency.
+
+---
+
+## 🛠 Installation
+
+### Requirements
+- Python 3.11+
+- SQLite with FTS5
+
+### Option 1: NPM (recommended for OpenClaw)
+```bash
+git clone https://github.com/copi4800-bit/Memory-aegis.git
+cd Memory-aegis
+npm install
+```
+
+### Option 2: Shell Script
+```bash
+git clone https://github.com/copi4800-bit/Memory-aegis.git
+cd Memory-aegis
+bash install.sh
+```
+
+### Option 3: Pip (for developers)
+```bash
+git clone https://github.com/copi4800-bit/Memory-aegis.git
+cd Memory-aegis
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e .
+```
+
+---
+
+## 🔌 OpenClaw Integration
+
+Add to your `config.json`:
+```json
+{
+  "mcpServers": {
+    "aegis": {
+      "command": "/path/to/Memory-aegis/.venv/bin/python",
+      "args": ["/path/to/Memory-aegis/aegis_py/mcp/server.py"],
+      "env": { "PYTHONPATH": "/path/to/Memory-aegis" }
+    }
+  }
+}
+```
+
+---
+
+## 🧱 Architecture
+
+```
+aegis_py/
+├── v10/                    # Constitutional Governance Engine
+│   ├── engine.py           # govern(): Score → Rules → Constitution → Review
+│   ├── policy.py           # MemoryConstitution (C0-C4)
+│   ├── truth_registry.py   # Winner/Contender/Loser slot management
+│   ├── review.py           # Priority-based review queue
+│   ├── events.py           # Governance audit trail
+│   └── models.py           # DecisionObject, GovernanceStatus, TruthRole
+├── v9/                     # Residual Judgment Engine (math scoring core)
+├── facade.py               # Zero-config API: remember/recall/correct/status
+├── app.py                  # Main orchestrator (2500+ lines)
+├── preferences/            # Zero-Locking identity extractor
+├── ux/                     # i18n, Health diagnostics
+├── storage/                # SQLite + FTS5 + Evidence + Graph
+├── mcp/                    # 40+ MCP Tools
+├── retrieval/              # Search pipeline + Spreading activation
+├── conflict/               # Conflict detection & resolution
+└── hygiene/                # Maintenance & state machine
+```
+
+---
+
+## 🧪 Stress Testing
+
+```bash
+export PYTHONPATH=.
+
+# V10 Constitutional Gauntlet
+python3 scripts/v10_gauntlet_test.py
+
+# V10 Super Stress
+python3 scripts/super_stress_v10.py
+
+# V9 Extreme Gauntlet (5000+ noise memories)
+python3 scripts/v9_extreme_gauntlet.py
+```
+
+---
+
+## 📋 MCP Tools (40+)
+
+### Consumer Tools
+| Tool | Description |
+|---|---|
+| `memory_remember` | Store information into long-term memory |
+| `memory_recall` | Retrieve memories related to a query |
+| `memory_correct` | Correct or update existing information |
+| `memory_forget` | Remove information from memory |
+| `memory_stats` | View memory status and health |
+| `memory_profile` | See what Aegis remembers about you |
+
+### Advanced Tools
+`memory_governance`, `memory_doctor`, `memory_scan`, `memory_visualize`, `memory_backup_*`, `memory_sync_*`, `memory_background_*`, `memory_vector_inspect`, `memory_evidence_artifacts`, `memory_storage_*`, and more.
+
+---
+
+## 📜 License
+
+MIT
+
+---
+
+*Built for absolute trust. Aegis v10 — The Constitution for AI Memory.* 🛡️
