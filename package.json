@@ -1,7 +1,7 @@
 {
-  "name": "memory-aegis-v10",
+  "name": "truthkeep-memory",
   "version": "10.0.0",
-  "description": "Aegis v10: Hybrid (Python + Node.js) Memory extension for OpenClaw.",
+  "description": "TruthKeep Memory: truth-aware memory extension for OpenClaw.",
   "files": [
     "aegis_py/",
     "bin/",
@@ -21,7 +21,7 @@
   },
   "keywords": [
     "memory",
-    "aegis",
+    "truthkeep",
     "governance",
     "mcp",
     "openclaw"

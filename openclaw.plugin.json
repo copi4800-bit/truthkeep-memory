@@ -1,6 +1,6 @@
 {
-  "id": "memory-aegis-v10",
-  "name": "Memory Aegis v10",
+  "id": "truthkeep-memory",
+  "name": "TruthKeep Memory",
   "description": "Constitutional Governance Memory Engine for AI agents. Features 5-tier policy pipeline (C0-C4), Truth Registry, Zero-Locking Identity, and Residual Judgment scoring.",
   "kind": "memory",
   "version": "10.0.0",

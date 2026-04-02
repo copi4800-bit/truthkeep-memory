@@ -1,8 +1,8 @@
-# Why Aegis Core Wins
+# Why TruthKeep Memory Wins
 
-This page is about one specific Aegis advantage:
+This page is about one specific TruthKeep Memory advantage:
 
-**Aegis does not only retrieve memory. It judges which memory is still true.**
+**TruthKeep Memory does not only retrieve memory. It judges which memory is still true.**
 
 That matters most when:
 
@@ -12,7 +12,7 @@ That matters most when:
 
 ## The Core Claim
 
-The Aegis core combines:
+The TruthKeep Memory core combines:
 
 - retrieval
 - residual judgment scoring
@@ -62,11 +62,11 @@ What it measures:
 - `superseded_visibility_rate`
 - `suppressed_visibility_rate`
 
-These are not generic memory metrics. They are the metrics that show whether Aegis is succeeding at truth-aware memory selection.
+These are not generic memory metrics. They are the metrics that show whether TruthKeep Memory is succeeding at truth-aware memory selection.
 
 ## Runtime Surface
 
-Aegis now exposes the same story through a spotlight surface:
+TruthKeep Memory now exposes the same story through a spotlight surface:
 
 - Python runtime: `AegisApp.spotlight(...)`
 - MCP/runtime tool: `memory_spotlight`
@@ -86,7 +86,7 @@ When the spotlight output shows:
 - `governance_status = active`
 - a superseded older fact under `why_not`
 
-it means Aegis did the job it was built to do:
+it means TruthKeep Memory did the job it was built to do:
 
 it kept the current truth in front and made the losing memory legible instead of silently mixing both.
 
@@ -94,7 +94,7 @@ it kept the current truth in front and made the losing memory legible instead of
 
 Many memory systems help an agent remember more.
 
-Aegis is strongest when the problem is:
+TruthKeep Memory is strongest when the problem is:
 
 **Which memory should still be believed right now?**
 

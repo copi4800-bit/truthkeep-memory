@@ -30,7 +30,7 @@ If any step below fails, do not continue the release. Fix the issue or rollback.
 11. Verify post-restart health:
    `systemctl --user status openclaw-gateway.service`
 12. Verify live runtime signal:
-   - `memory-aegis-v10 registered` appears in service logs
+   - `truthkeep-memory registered` appears in service logs
    - no fresh `plugins.allow is empty` warning appears
    - one Telegram message round-trip succeeds
 

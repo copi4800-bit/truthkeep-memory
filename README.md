@@ -1,8 +1,8 @@
-# Memory Aegis
+# TruthKeep Memory
 
 Truth-aware memory for AI agents.
 
-Memory Aegis is a local-first memory engine that does more than store and retrieve notes. It keeps track of which fact is current, which fact was superseded, why a result was selected, and why competing memories were suppressed.
+TruthKeep Memory is a local-first memory engine that does more than store and retrieve notes. It keeps track of which fact is current, which fact was superseded, why a result was selected, and why competing memories were suppressed.
 
 The core idea is simple:
 
@@ -14,7 +14,7 @@ The core idea is simple:
 
 Most memory systems stop at search and ranking.
 
-Memory Aegis adds a governed decision layer on top:
+TruthKeep Memory adds a governed decision layer on top:
 
 - `winner / contender / superseded` truth handling
 - correction-first recall
