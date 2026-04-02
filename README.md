@@ -2,7 +2,9 @@
 
 Truth-aware memory for AI agents.
 
-TruthKeep Memory is a local-first memory engine that does more than store and retrieve notes. It keeps track of which fact is current, which fact was superseded, why a result was selected, and why competing memories were suppressed.
+TruthKeep Memory is a local-first AI memory engine for agents, MCP hosts, and long-running assistant systems. It does more than store and retrieve notes. It keeps track of which fact is current, which fact was superseded, why a result was selected, and why competing memories were suppressed.
+
+If you are looking for an explainable memory layer for AI agents, a truth-aware retrieval engine, or a governed long-term memory system that can survive corrections over time, this is what TruthKeep Memory is built for.
 
 The core idea is simple:
 
@@ -32,6 +34,14 @@ This makes it useful for agent systems that need memory to stay correct over tim
 - Surface the selected truth with explanation and suppressed candidates
 - Run spotlight, benchmark, gate, and gauntlet flows
 - Simulate long-horizon survival and DB hygiene behavior
+
+## Use Cases
+
+- Agent memory with correction-safe recall
+- Local-first memory for MCP tools and OpenClaw-style hosts
+- Long-term memory for assistants that need explainability
+- Memory systems where stale facts must not leak back into answers
+- Governance-first memory experiments and evaluations
 
 ## Quick Start
 
