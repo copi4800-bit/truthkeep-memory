@@ -21,7 +21,9 @@ dependencies = [
 [project.scripts]
 aegis-mcp = "aegis_py.mcp.server:main"
 aegis-check = "aegis_py.install_check:main"
+truthkeep = "aegis_py.cli:main"
+truthkeep-memory = "aegis_py.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["aegis_py*"]
+include = ["aegis_py*", "truthkeep*"]

@@ -6,11 +6,14 @@ from typing import Any
 
 V10_STATE_METADATA_KEY = "v10_state"
 LEGACY_V10_DYNAMICS_METADATA_KEY = "v10_dynamics"
+V10_STATE_VERSION = 1
 PERSISTED_V10_STATE_FIELDS = (
     "belief_score",
     "usage_signal",
     "decay_signal",
+    "conflict_signal",
     "regret_signal",
+    "stability_signal",
     "trust_score",
     "readiness_score",
     "feedback_count",
@@ -19,8 +22,6 @@ PERSISTED_V10_STATE_FIELDS = (
 DERIVED_V10_SIGNAL_FIELDS = (
     "evidence_signal",
     "support_signal",
-    "conflict_signal",
-    "stability_signal",
 )
 
 
@@ -132,25 +133,36 @@ def _score_profile(row: dict[str, Any]) -> dict[str, float]:
     return profile if isinstance(profile, dict) else {}
 
 
-def _v10_state(row: dict[str, Any]) -> dict[str, float]:
+def extract_v10_state_payload(metadata: dict[str, Any] | None) -> tuple[dict[str, Any], str]:
+    if not isinstance(metadata, dict):
+        return {}, "synthesized"
+    canonical = metadata.get(V10_STATE_METADATA_KEY, {})
+    if isinstance(canonical, dict) and canonical:
+        return canonical, "canonical"
+    legacy = metadata.get(LEGACY_V10_DYNAMICS_METADATA_KEY, {})
+    if isinstance(legacy, dict) and legacy:
+        return legacy, "legacy_migrated"
+    return {}, "synthesized"
+
+
+def _v10_state(row: dict[str, Any]) -> dict[str, float | str | None]:
     metadata = row.get("metadata") if isinstance(row.get("metadata"), dict) else {}
-    raw = {}
-    if isinstance(metadata, dict):
-        canonical = metadata.get(V10_STATE_METADATA_KEY, {})
-        legacy = metadata.get(LEGACY_V10_DYNAMICS_METADATA_KEY, {})
-        if isinstance(canonical, dict) and canonical:
-            raw = canonical
-        elif isinstance(legacy, dict):
-            raw = legacy
-    if not isinstance(raw, dict):
-        raw = {}
+    raw, origin = extract_v10_state_payload(metadata)
     return {
         "usage_signal": clamp01(raw.get("usage_signal", 0.0)),
         "decay_signal": clamp01(raw.get("decay_signal", 0.0)),
+        "conflict_signal": clamp01(raw.get("conflict_signal", 0.0)),
         "regret_signal": clamp01(raw.get("regret_signal", 0.0)),
+        "stability_signal": clamp01(raw.get("stability_signal", 0.0)),
         "belief_score": clamp01(raw.get("belief_score", _row_confidence(row))),
+        "trust_score": clamp01(raw.get("trust_score", 0.0)),
+        "readiness_score": clamp01(raw.get("readiness_score", 0.0)),
         "feedback_count": max(0.0, float(raw.get("feedback_count", 0.0) or 0.0)),
         "belief_delta": abs(float(raw.get("belief_delta", 0.0) or 0.0)),
+        "last_feedback_at": raw.get("last_feedback_at"),
+        "last_v10_update_at": raw.get("last_v10_update_at"),
+        "state_version": int(raw.get("state_version", V10_STATE_VERSION) or V10_STATE_VERSION),
+        "state_origin": origin,
     }
 
 
@@ -160,12 +172,16 @@ def build_persisted_v10_state(
     feedback_count: float,
     belief_delta: float,
     last_feedback_at: str | None = None,
+    last_v10_update_at: str | None = None,
 ) -> dict[str, float | str]:
     payload: dict[str, float | str] = {
+        "state_version": V10_STATE_VERSION,
         "belief_score": round(float(signals.get("belief_score", 0.0) or 0.0), 6),
         "usage_signal": round(float(signals.get("usage_signal", 0.0) or 0.0), 6),
         "decay_signal": round(float(signals.get("decay_signal", 0.0) or 0.0), 6),
+        "conflict_signal": round(float(signals.get("conflict_signal", 0.0) or 0.0), 6),
         "regret_signal": round(float(signals.get("regret_signal", 0.0) or 0.0), 6),
+        "stability_signal": round(float(signals.get("stability_signal", 0.0) or 0.0), 6),
         "trust_score": round(float(signals.get("trust_score", 0.0) or 0.0), 6),
         "readiness_score": round(float(signals.get("readiness_score", 0.0) or 0.0), 6),
         "feedback_count": round(float(feedback_count or 0.0), 6),
@@ -173,6 +189,8 @@ def build_persisted_v10_state(
     }
     if last_feedback_at:
         payload["last_feedback_at"] = last_feedback_at
+    if last_v10_update_at:
+        payload["last_v10_update_at"] = last_v10_update_at
     return payload
 
 
@@ -184,6 +202,10 @@ def split_v10_signal_views(signals: dict[str, Any]) -> tuple[dict[str, Any], dic
     }
     if "last_feedback_at" in signals:
         persisted_state["last_feedback_at"] = signals["last_feedback_at"]
+    if "last_v10_update_at" in signals:
+        persisted_state["last_v10_update_at"] = signals["last_v10_update_at"]
+    if "state_version" in signals:
+        persisted_state["state_version"] = signals["state_version"]
     derived_state = {
         key: signals[key]
         for key in DERIVED_V10_SIGNAL_FIELDS
@@ -373,10 +395,20 @@ def compute_v10_core_signals(
     dynamic_state = _v10_state(row)
     evidence_signal, score_profile = _evidence_signal(row, evidence_count=evidence_count, profile=active_profile)
     support_signal = _support_signal(support_weight=support_weight)
-    conflict_signal = _conflict_signal(conflict_weight=conflict_weight, direct_conflict_open=direct_conflict_open, profile=active_profile)
+    derived_conflict_signal = _conflict_signal(conflict_weight=conflict_weight, direct_conflict_open=direct_conflict_open, profile=active_profile)
     usage_signal = _usage_signal(row, active_profile)
     regret_signal = round(dynamic_state["regret_signal"], 6)
-    stability_signal = _stability_signal(row, direct_conflict_open=direct_conflict_open, profile=active_profile)
+    derived_stability_signal = _stability_signal(row, direct_conflict_open=direct_conflict_open, profile=active_profile)
+    conflict_signal = (
+        round(dynamic_state["conflict_signal"], 6)
+        if dynamic_state["state_origin"] != "synthesized"
+        else derived_conflict_signal
+    )
+    stability_signal = (
+        round(dynamic_state["stability_signal"], 6)
+        if dynamic_state["state_origin"] != "synthesized"
+        else derived_stability_signal
+    )
     derived_decay_signal = _decay_signal(
         usage_signal=usage_signal,
         support_signal=support_signal,
@@ -401,24 +433,36 @@ def compute_v10_core_signals(
             decay_signal=decay_signal,
             profile=active_profile,
         )
-    trust_score = sigmoid(
-        (evidence_signal * active_profile.trust_evidence_weight)
-        + (support_signal * active_profile.trust_support_weight)
-        + (usage_signal * active_profile.trust_usage_weight)
-        + (stability_signal * active_profile.trust_stability_weight)
-        + (belief_score * active_profile.trust_belief_weight)
-        - (conflict_signal * active_profile.trust_conflict_weight)
-        - (regret_signal * active_profile.trust_regret_weight)
-        - (decay_signal * active_profile.trust_decay_weight)
+    derived_trust_score = round(
+        sigmoid(
+            (evidence_signal * active_profile.trust_evidence_weight)
+            + (support_signal * active_profile.trust_support_weight)
+            + (usage_signal * active_profile.trust_usage_weight)
+            + (stability_signal * active_profile.trust_stability_weight)
+            + (belief_score * active_profile.trust_belief_weight)
+            - (conflict_signal * active_profile.trust_conflict_weight)
+            - (regret_signal * active_profile.trust_regret_weight)
+            - (decay_signal * active_profile.trust_decay_weight)
+        ),
+        6,
     )
-    trust_score = round(trust_score, 6)
-    readiness_score = _readiness_score(
+    trust_score = (
+        round(dynamic_state["trust_score"], 6)
+        if dynamic_state["state_origin"] != "synthesized" and dynamic_state["trust_score"] > 0.0
+        else derived_trust_score
+    )
+    derived_readiness_score = _readiness_score(
         trust_score=trust_score,
         usage_signal=usage_signal,
         decay_signal=decay_signal,
         conflict_signal=conflict_signal,
         admission_state=admission_state,
         profile=active_profile,
+    )
+    readiness_score = (
+        round(dynamic_state["readiness_score"], 6)
+        if dynamic_state["state_origin"] != "synthesized" and dynamic_state["readiness_score"] > 0.0
+        else derived_readiness_score
     )
     transition_gate = _transition_gate(
         trust_score=trust_score,
@@ -446,13 +490,16 @@ def compute_v10_core_signals(
         "score_profile": score_profile,
         "profile": {"name": "active"},
         "transition_gate": transition_gate,
+        "state_origin": dynamic_state["state_origin"],
     }
     persisted_state, derived_state = split_v10_signal_views(
         {
             **signals,
             **(
                 {
-                    "last_feedback_at": row.get("metadata", {}).get(V10_STATE_METADATA_KEY, {}).get("last_feedback_at")
+                    "last_feedback_at": dynamic_state.get("last_feedback_at"),
+                    "last_v10_update_at": dynamic_state.get("last_v10_update_at"),
+                    "state_version": dynamic_state.get("state_version", V10_STATE_VERSION),
                 }
                 if isinstance(row.get("metadata"), dict)
                 else {}

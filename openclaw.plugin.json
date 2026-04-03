@@ -49,6 +49,7 @@
       "memory_background_rollback",
       "memory_vector_inspect",
       "memory_evidence_artifacts",
+      "memory_v10_field_snapshot",
       "memory_storage_footprint",
       "memory_compressed_tier_status",
       "memory_storage_compact",
@@ -692,6 +693,17 @@
     {
       "name": "memory_compressed_tier_status",
       "description": "[Advanced] Inspect software-level compressed tier coverage, benchmark readiness, and scoped compressed status.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "scopeType": { "type": "string" },
+          "scopeId": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "memory_v10_field_snapshot",
+      "description": "[Advanced] Inspect the whole-system V10 field snapshot Xi(t): counts, averages, state coverage, and bundle-energy proxies.",
       "parameters": {
         "type": "object",
         "properties": {

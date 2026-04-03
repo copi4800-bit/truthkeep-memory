@@ -848,6 +848,142 @@ class AegisApp:
     def v10_core_signals(self, memory_id: str) -> Dict[str, Any]:
         return self.operator_surface.v10_core_signals(memory_id)
 
+    def refresh_v10_state(
+        self,
+        memory_id: str,
+        *,
+        actor: str = "v10_state_refresh",
+    ) -> Dict[str, Any]:
+        memory = self.storage.get_memory(memory_id)
+        if memory is None:
+            raise ValueError(f"Memory not found: {memory_id}")
+        signals = self.compute_v10_core_signals(memory_id)
+        updated_at = self.memory_state_machine._now()
+        current_state = str(signals.get("admission_state") or memory.status)
+        existing_state = memory.metadata.get(V10_STATE_METADATA_KEY, {})
+        feedback_count = float(existing_state.get("feedback_count", 0.0) or 0.0)
+        belief_delta = float(existing_state.get("belief_delta", 0.0) or 0.0)
+        last_feedback_at = existing_state.get("last_feedback_at")
+        persisted_state = build_persisted_v10_state(
+            signals=signals,
+            feedback_count=feedback_count,
+            belief_delta=belief_delta,
+            last_feedback_at=last_feedback_at,
+            last_v10_update_at=updated_at,
+        )
+        metadata = dict(memory.metadata)
+        metadata[V10_STATE_METADATA_KEY] = persisted_state
+        metadata[LEGACY_V10_DYNAMICS_METADATA_KEY] = {
+            key: persisted_state[key]
+            for key in (
+                "belief_score",
+                "usage_signal",
+                "decay_signal",
+                "conflict_signal",
+                "regret_signal",
+                "stability_signal",
+                "trust_score",
+                "readiness_score",
+                "feedback_count",
+                "belief_delta",
+                "state_version",
+                "last_feedback_at",
+                "last_v10_update_at",
+            )
+            if key in persisted_state
+        }
+        self.storage.execute(
+            "UPDATE memories SET metadata_json = ?, updated_at = ? WHERE id = ?",
+            (
+                json.dumps(metadata, ensure_ascii=True),
+                updated_at,
+                memory_id,
+            ),
+        )
+        artifact_id = self.storage.record_evidence_artifact(
+            artifact_kind="v10_state_refresh",
+            scope_type=memory.scope_type,
+            scope_id=memory.scope_id,
+            memory_id=memory_id,
+            payload={
+                "actor": actor,
+                "state_version": persisted_state.get("state_version"),
+                "admission_state": current_state,
+                "state_origin_before": signals.get("state_origin"),
+            },
+        )
+        self.storage.record_governance_event(
+            event_kind="v10_state_refreshed",
+            scope_type=memory.scope_type,
+            scope_id=memory.scope_id,
+            memory_id=memory_id,
+            payload={
+                "actor": actor,
+                "artifact_id": artifact_id,
+                "state_version": persisted_state.get("state_version"),
+            },
+        )
+        return {
+            "backend": "python",
+            "memory_id": memory_id,
+            "artifact_id": artifact_id,
+            "state": persisted_state,
+            "signals": self.compute_v10_core_signals(memory_id),
+        }
+
+    def backfill_v10_state(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+        force: bool = False,
+        actor: str = "v10_state_backfill",
+    ) -> Dict[str, Any]:
+        memory_ids = self._list_field_snapshot_memory_ids(scope_type=scope_type, scope_id=scope_id)
+        refreshed = 0
+        skipped = 0
+        touched_ids: list[str] = []
+        for memory_id in memory_ids:
+            memory = self.storage.get_memory(memory_id)
+            if memory is None:
+                continue
+            state = memory.metadata.get(V10_STATE_METADATA_KEY, {})
+            complete_state = isinstance(state, dict) and all(
+                key in state
+                for key in (
+                    "state_version",
+                    "belief_score",
+                    "usage_signal",
+                    "decay_signal",
+                    "conflict_signal",
+                    "regret_signal",
+                    "stability_signal",
+                    "trust_score",
+                    "readiness_score",
+                    "feedback_count",
+                    "belief_delta",
+                    "last_v10_update_at",
+                )
+            )
+            if complete_state and not force:
+                skipped += 1
+                continue
+            self.refresh_v10_state(memory_id, actor=actor)
+            refreshed += 1
+            touched_ids.append(memory_id)
+        return {
+            "backend": "python",
+            "scope": {
+                "scope_type": scope_type,
+                "scope_id": scope_id,
+            },
+            "force": force,
+            "memory_count": len(memory_ids),
+            "refreshed": refreshed,
+            "skipped": skipped,
+            "memory_ids": touched_ids,
+        }
+
     def evaluate_v10_transition_operator(self, memory_id: str) -> Dict[str, Any]:
         memory = self.storage.get_memory(memory_id)
         if memory is None:
@@ -944,11 +1080,27 @@ class AegisApp:
             feedback_count=updated["feedback_count"],
             belief_delta=updated["belief_delta"],
             last_feedback_at=last_feedback_at,
+            last_v10_update_at=last_feedback_at,
         )
         metadata[V10_STATE_METADATA_KEY] = persisted_state
         metadata[LEGACY_V10_DYNAMICS_METADATA_KEY] = {
-            **updated,
-            "last_feedback_at": last_feedback_at,
+            key: persisted_state[key]
+            for key in (
+                "belief_score",
+                "usage_signal",
+                "decay_signal",
+                "conflict_signal",
+                "regret_signal",
+                "stability_signal",
+                "trust_score",
+                "readiness_score",
+                "feedback_count",
+                "belief_delta",
+                "state_version",
+                "last_feedback_at",
+                "last_v10_update_at",
+            )
+            if key in persisted_state
         }
         self.storage.execute(
             "UPDATE memories SET metadata_json = ?, confidence = ?, updated_at = ? WHERE id = ?",

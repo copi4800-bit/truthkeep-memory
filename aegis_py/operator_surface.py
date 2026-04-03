@@ -183,6 +183,15 @@ class AegisOperatorSurface:
         for signals in signals_list:
             state = str(signals.get("admission_state") or "validated")
             counts[state] = counts.get(state, 0) + 1
+        state_coverage = {
+            "memory_count": len(signals_list),
+            "canonical": 0,
+            "legacy_migrated": 0,
+            "synthesized": 0,
+        }
+        for signals in signals_list:
+            origin = str(signals.get("state_origin") or "synthesized")
+            state_coverage[origin] = state_coverage.get(origin, 0) + 1
 
         def _avg(key: str) -> float:
             if not signals_list:
@@ -191,6 +200,7 @@ class AegisOperatorSurface:
                 sum(float(item.get(key, 0.0) or 0.0) for item in signals_list) / len(signals_list),
                 6,
             )
+        energy = bundle_energy_snapshot(signals_list)
 
         return {
             "backend": "python",
@@ -200,14 +210,22 @@ class AegisOperatorSurface:
             },
             "memory_ids": memory_ids,
             "counts": counts,
+            "state_coverage": state_coverage,
             "averages": {
                 "belief_score": _avg("belief_score"),
                 "trust_score": _avg("trust_score"),
                 "readiness_score": _avg("readiness_score"),
+                "usage_signal": _avg("usage_signal"),
                 "conflict_signal": _avg("conflict_signal"),
                 "decay_signal": _avg("decay_signal"),
+                "regret_signal": _avg("regret_signal"),
+                "stability_signal": _avg("stability_signal"),
             },
-            "energy": bundle_energy_snapshot(signals_list),
+            "energy": {
+                **energy,
+                "bundle_energy_proxy": energy["energy"],
+                "objective_proxy": energy["objective"],
+            },
         }
 
     def v10_core_signals(self, memory_id: str) -> dict[str, Any]:

@@ -46,22 +46,28 @@ This makes it useful for agent systems that need memory to stay correct over tim
 ## Quick Start
 
 ```bash
-npm install
+pip install -e .
 ```
 
-Or:
+Then:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e .
+truthkeep remember "The release owner is Bao."
+truthkeep recall "Who is the release owner?"
+truthkeep field-snapshot
+truthkeep prove-it
+```
+
+Full walkthrough:
+
+```bash
+cat QUICKSTART.md
 ```
 
 Run the MCP server:
 
 ```bash
-export PYTHONPATH=$PYTHONPATH:.
-python3 aegis_py/mcp/server.py
+aegis-mcp
 ```
 
 Run the test suite:
@@ -126,6 +132,12 @@ python3 scripts/render_core_showcase_html.py
 ```
 
 ## Validation
+
+Fast proof flow:
+
+```bash
+python3 scripts/prove_it.py
+```
 
 Truth spotlight benchmark:
 

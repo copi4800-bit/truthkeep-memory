@@ -14,6 +14,12 @@ from ..hygiene.bowerbird import BowerbirdBeast
 from ..storage.manager import StorageManager
 from ..storage.models import Memory
 from ..retrieval.compressed_tier import build_compressed_tier_payload
+from ..retrieval.v10_dynamics import (
+    LEGACY_V10_DYNAMICS_METADATA_KEY,
+    V10_STATE_METADATA_KEY,
+    build_persisted_v10_state,
+    compute_v10_core_signals,
+)
 from ..v10_base.policy_gate import ValidationPolicyGate
 from ..v10_base.state_machine import MemoryStateMachine
 
@@ -314,6 +320,49 @@ class IngestEngine:
             "target_state": decision.target_state,
             "policy_name": decision.policy_name,
             "reasons": decision.reasons,
+        }
+        captured_at = str(
+            memory.metadata.get("evidence", {}).get("captured_at")
+            or memory.metadata.get("timestamp")
+            or "ingest"
+        )
+        initial_v10_signals = compute_v10_core_signals(
+            row={
+                "confidence": memory.confidence,
+                "activation_score": memory.activation_score,
+                "access_count": memory.access_count,
+                "metadata": memory.metadata,
+            },
+            admission_state=admission_state,
+            evidence_count=1 if candidate.has_evidence else 0,
+            support_weight=0.0,
+            conflict_weight=0.0,
+            direct_conflict_open=False,
+        )
+        persisted_v10_state = build_persisted_v10_state(
+            signals=initial_v10_signals,
+            feedback_count=0.0,
+            belief_delta=0.0,
+            last_v10_update_at=captured_at,
+        )
+        memory.metadata[V10_STATE_METADATA_KEY] = persisted_v10_state
+        memory.metadata[LEGACY_V10_DYNAMICS_METADATA_KEY] = {
+            key: persisted_v10_state[key]
+            for key in (
+                "belief_score",
+                "usage_signal",
+                "decay_signal",
+                "conflict_signal",
+                "regret_signal",
+                "stability_signal",
+                "trust_score",
+                "readiness_score",
+                "feedback_count",
+                "belief_delta",
+                "state_version",
+                "last_v10_update_at",
+            )
+            if key in persisted_v10_state
         }
         if not decision.promotable:
             self.storage.record_governance_event(

@@ -504,6 +504,13 @@ class AegisMCPServer:
     ) -> str:
         return self._to_json(self.app.compressed_tier_status(scope_type=scope_type, scope_id=scope_id))
 
+    def memory_v10_field_snapshot(
+        self,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+    ) -> str:
+        return self._to_json(self.app.v10_field_snapshot(scope_type=scope_type, scope_id=scope_id))
+
     def memory_storage_compact(
         self,
         *,
@@ -553,6 +560,7 @@ class AegisMCPServer:
             "memory_experience_brief": ("query",),
             "memory_consumer_shell": (),
             "memory_dashboard_shell": (),
+            "memory_v10_field_snapshot": (),
             "memory_sync_preview": ("envelope_path",),
             "memory_sync_import": ("envelope_path",),
             "memory_vector_inspect": ("query",),
@@ -571,7 +579,7 @@ class AegisMCPServer:
             "scope_type", "scope_id", "include_global", "limit", "semantic", "semantic_model",
             "intent", "retrieval_mode", "type", "content", "subject", "source_kind", "source_ref",
             "summary", "session_id", "memory_id", "workspace_dir", "lines", "from", "rel_path",
-            "snapshot_path", "format", "text", "query", "mode", "sync_policy",
+            "snapshot_path", "format", "text", "query", "mode", "sync_policy", "scopeType", "scopeId",
         }
         unexpected_args = sorted(
             key for key in provided_args if key not in set(required_args) | known_optional
@@ -838,6 +846,11 @@ class AegisMCPServer:
             return self.memory_storage_footprint()
         if tool_name == "memory_compressed_tier_status":
             return self.memory_compressed_tier_status(
+                scope_type=args.get("scope_type") or args.get("scopeType"),
+                scope_id=args.get("scope_id") or args.get("scopeId"),
+            )
+        if tool_name == "memory_v10_field_snapshot":
+            return self.memory_v10_field_snapshot(
                 scope_type=args.get("scope_type") or args.get("scopeType"),
                 scope_id=args.get("scope_id") or args.get("scopeId"),
             )
