@@ -24,6 +24,7 @@ ORDINARY_OPERATIONS = [
 ]
 
 OPERATOR_OPERATIONS = [
+    "memory_command_center_shell",
     "memory_workflow_shell",
     "memory_truth_transition_timeline",
     "memory_spotlight",

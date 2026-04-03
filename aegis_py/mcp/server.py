@@ -393,6 +393,33 @@ class AegisMCPServer:
             )
         )
 
+    def memory_command_center_shell(
+        self,
+        query: str | None = None,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+        workspace_dir: str | None = None,
+        limit: int = 3,
+        include_global: bool = False,
+        semantic: bool = False,
+        semantic_model: str | None = None,
+        intent: str | None = None,
+    ) -> str:
+        return self._to_json(
+            self.app.command_center_shell(
+                query,
+                scope_type=scope_type,
+                scope_id=scope_id,
+                workspace_dir=workspace_dir,
+                limit=limit,
+                include_global=include_global,
+                semantic=semantic,
+                semantic_model=semantic_model,
+                intent=intent,
+            )
+        )
+
     def memory_registry(self) -> str:
         return self._to_json({"backend": "python", "tools": TOOL_REGISTRY})
 
@@ -613,6 +640,7 @@ class AegisMCPServer:
             "memory_consumer_shell": (),
             "memory_dashboard_shell": (),
             "memory_workflow_shell": (),
+            "memory_command_center_shell": (),
             "memory_truth_transition_timeline": (),
             "memory_v10_field_snapshot": (),
             "memory_sync_preview": ("envelope_path",),
@@ -840,6 +868,18 @@ class AegisMCPServer:
             )
         if tool_name == "memory_workflow_shell":
             return self.memory_workflow_shell(
+                args.get("query"),
+                scope_type=args.get("scope_type"),
+                scope_id=args.get("scope_id"),
+                workspace_dir=args.get("workspace_dir"),
+                limit=args.get("limit", 3),
+                include_global=args.get("include_global", False),
+                semantic=args.get("semantic", False),
+                semantic_model=args.get("semantic_model"),
+                intent=args.get("intent"),
+            )
+        if tool_name == "memory_command_center_shell":
+            return self.memory_command_center_shell(
                 args.get("query"),
                 scope_type=args.get("scope_type"),
                 scope_id=args.get("scope_id"),

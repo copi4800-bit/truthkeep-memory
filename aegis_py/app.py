@@ -50,6 +50,7 @@ from .consumer_shell_surface import build_consumer_shell_payload
 from .dashboard_shell_surface import build_dashboard_shell_payload
 from .workflow_shell_surface import build_workflow_shell_payload
 from .truth_transition_timeline_surface import build_truth_transition_timeline_payload
+from .command_center_shell_surface import build_command_center_shell_payload
 from .hygiene.transitions import transition_memory
 from .memory.weaver import WeaverBeast
 from .retrieval.compressed_tier import build_compressed_tier_payload
@@ -2690,6 +2691,97 @@ class AegisApp:
             experience_brief=experience_brief,
             core_showcase=core_showcase,
             truth_transition_timeline=truth_timeline,
+        )
+
+    def command_center_shell(
+        self,
+        query: str | None = None,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+        workspace_dir: str | None = None,
+        limit: int = 3,
+        include_global: bool = False,
+        semantic: bool = False,
+        semantic_model: str | None = None,
+        intent: str | None = None,
+    ) -> dict[str, Any]:
+        st = scope_type or DEFAULT_CONSUMER_SCOPE_TYPE
+        sid = scope_id or DEFAULT_CONSUMER_SCOPE_ID
+        effective_query = query or "What does TruthKeep believe, what changed, and what should happen next?"
+        consumer_shell = self.consumer_shell(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            workspace_dir=workspace_dir,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        dashboard_shell = self.dashboard_shell(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            workspace_dir=workspace_dir,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        workflow_shell = self.workflow_shell(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            workspace_dir=workspace_dir,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        truth_timeline = self.truth_transition_timeline(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        experience_brief = self.experience_brief(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        core_showcase = self.core_showcase(
+            effective_query,
+            scope_type=st,
+            scope_id=sid,
+            limit=limit,
+            include_global=include_global,
+            semantic=semantic,
+            semantic_model=semantic_model,
+            intent=intent,
+        )
+        return build_command_center_shell_payload(
+            query=effective_query,
+            scope_type=st,
+            scope_id=sid,
+            consumer_shell=consumer_shell,
+            dashboard_shell=dashboard_shell,
+            workflow_shell=workflow_shell,
+            truth_transition_timeline=truth_timeline,
+            experience_brief=experience_brief,
+            core_showcase=core_showcase,
         )
 
     def _resolve_memory_reference(self, rel_path: str):

@@ -27,6 +27,7 @@
         "memory_consumer_shell",
         "memory_dashboard_shell",
         "memory_workflow_shell",
+        "memory_command_center_shell",
         "memory_truth_transition_timeline",
         "memory_context_pack",
       "memory_conflict_prompt",
@@ -233,6 +234,24 @@
     {
         "name": "memory_workflow_shell",
         "description": "[Advanced] Render a workflow-first TruthKeep shell for remember, inspect, correct, and verify loops.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": { "type": "string" },
+            "scopeType": { "type": "string" },
+            "scopeId": { "type": "string" },
+            "workspaceDir": { "type": "string" },
+            "limit": { "type": "number" },
+            "includeGlobal": { "type": "boolean" },
+            "semantic": { "type": "boolean" },
+            "semanticModel": { "type": "string" },
+            "intent": { "type": "string" }
+          }
+        }
+    },
+    {
+        "name": "memory_command_center_shell",
+        "description": "[Advanced] Render one dominant TruthKeep command center that combines current truth, daily workflow, transition history, deep inspection, and operator escape hatches.",
         "parameters": {
           "type": "object",
           "properties": {

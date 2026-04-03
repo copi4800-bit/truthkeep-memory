@@ -205,3 +205,13 @@ Plans:
 - [ ] TBD (run /gsd:plan-phase 2 to break down)
 
 - 130-truth-transition-timeline-ux: add a real truth transition timeline using winner/superseded state changes and governance pulse, then preview it inside workflow and dashboard shells.
+
+### Phase 3: single command center UX shell
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 2
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 3 to break down)
