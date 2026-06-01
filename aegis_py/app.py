@@ -2164,17 +2164,32 @@ class AegisApp:
     def memory_forget(self, query: str) -> str:
         """Simplified action to archive a memory matching the query."""
         observation = ObservedOperation(self.observability, tool="memory_forget")
-        results = []
-        for scope_type, scope_id in self._consumer_scope_candidates():
-            results = self.search(query, scope_id=scope_id, scope_type=scope_type, limit=1)
-            if results:
-                break
-        if not results:
+        target_memory = None
+        scope_type = None
+        scope_id = None
+
+        # Direct ID lookup: if query looks like a memory ID, fetch it directly
+        if query.startswith("mem_"):
+            direct_mem = self.storage.get_memory(query)
+            if direct_mem and direct_mem.status != "archived":
+                target_memory = direct_mem
+                scope_type = direct_mem.scope_type
+                scope_id = direct_mem.scope_id
+
+        # Fallback to consumer scope search
+        if target_memory is None:
+            for scope_type, scope_id in self._consumer_scope_candidates():
+                results = self.search(query, scope_id=scope_id, scope_type=scope_type, limit=1)
+                if results:
+                    target_memory = results[0].memory
+                    break
+
+        if target_memory is None:
             observation.finish(result="empty", details={"query": query, "result_count": 0})
             h = self._get_honorifics()
             return get_text("action_not_forgotten", locale=self.locale).format(query=query, **h)
         
-        mem_id = results[0].memory.id
+        mem_id = target_memory.id
         transition_memory(
             self.storage,
             mem_id,
@@ -2182,7 +2197,7 @@ class AegisApp:
             event="forgotten_by_user_action",
             details={"query": query},
         )
-        self._run_guided_hygiene_cycle(subject=results[0].memory.subject, aggressive=True)
+        self._run_guided_hygiene_cycle(subject=target_memory.subject, aggressive=True)
         observation.finish(
             result="success",
             scope_type=scope_type,
