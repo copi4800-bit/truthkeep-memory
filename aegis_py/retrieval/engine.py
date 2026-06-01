@@ -136,6 +136,34 @@ def _poincare_tda_match(*, query: str, content: str | None, summary: str | None,
     return boost, reasons
 
 
+def _recency_boost(created_at_raw: str | None) -> tuple[float, list[str]]:
+    """Boost recently created memories to compensate for cold-start activation_score.
+
+    Memories created within the last 5 minutes get a decaying boost (max 0.15)
+    so that the first query after store returns correct ranking immediately,
+    instead of requiring a prior access to warm up activation_score.
+    """
+    if not created_at_raw:
+        return 0.0, []
+    try:
+        created_at = datetime.fromisoformat(str(created_at_raw).replace("Z", "+00:00"))
+        if created_at.tzinfo is None:
+            created_at = created_at.replace(tzinfo=timezone.utc)
+        age_seconds = (datetime.now(timezone.utc) - created_at).total_seconds()
+    except (ValueError, TypeError):
+        return 0.0, []
+    # 5-minute window (300s). Linear decay from 0.15 → 0.0
+    RECENCY_WINDOW = 300.0
+    MAX_BOOST = 0.15
+    if age_seconds < 0:
+        age_seconds = 0
+    if age_seconds >= RECENCY_WINDOW:
+        return 0.0, []
+    boost = round(MAX_BOOST * (1.0 - age_seconds / RECENCY_WINDOW), 6)
+    reasons = [f"recency_boost:{round(boost, 3)}"]
+    return boost, reasons
+
+
 def _merge_result(results_by_id: dict[str, CanonicalSearchResult], candidate: CanonicalSearchResult) -> None:
     existing = results_by_id.get(candidate.id)
     if existing is None:
@@ -429,7 +457,11 @@ def run_scoped_search(
         # Thưởng đặc biệt cho attractor hội tụ của Modern Hopfield Network
         if payload["id"] == hopfield_attractor_id:
             score += 0.05
-            
+
+        # --- Recency Boost: compensate cold-start activation_score for fresh memories ---
+        recency_b, recency_reasons = _recency_boost(payload.get("created_at"))
+        score += recency_b
+
         score = round(score + dynamic_score_bonus(v10_core_signals), 6)
         if admission_state == "hypothesized":
             score = round(score * 0.88, 6)
@@ -463,6 +495,7 @@ def run_scoped_search(
         reasons.extend(dynamic_reason_tags(v10_core_signals))
         reasons.extend(hilbert_reasons)
         reasons.extend(tda_reasons)
+        reasons.extend(recency_reasons)
         if payload["id"] == hopfield_attractor_id:
             reasons.append("modern_hopfield_attractor:true")
         retrieval_stage = "semantic_recall" if payload["id"] in semantic_ids and payload["id"] not in lexical_ids else "lexical"
