@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "truthkeep-memory": {
+      "path": "truthkeep.mcp",
+      "db_path": "/path/to/truthkeep-memory/memory_aegis.db",
+      "pythonpath": "/path/to/truthkeep-memory"
+    }
+  }
+}

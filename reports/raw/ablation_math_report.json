@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-05-27 17:49:32",
+  "environment": {
+    "system": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "python_version": "3.12.10"
+  },
+  "config": {
+    "seed": 42,
+    "cases": 300
+  },
+  "results": {
+    "TruthKeep Full": {
+      "read_latency_ms": 37.055,
+      "write_latency_ms": 8106.792,
+      "ingest_rate_sec": 148.39,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11556.0,
+      "ram_usage_mb": 33.62
+    },
+    "Without Fourier": {
+      "read_latency_ms": 36.724,
+      "write_latency_ms": 8389.172,
+      "ingest_rate_sec": 143.4,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11552.0,
+      "ram_usage_mb": 34.47
+    },
+    "Without Bayes": {
+      "read_latency_ms": 36.452,
+      "write_latency_ms": 9232.395,
+      "ingest_rate_sec": 130.3,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11576.0,
+      "ram_usage_mb": 34.97
+    },
+    "Without Bellman": {
+      "read_latency_ms": 37.781,
+      "write_latency_ms": 9667.515,
+      "ingest_rate_sec": 124.44,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 0.0,
+      "db_size_kb": 15432.0,
+      "ram_usage_mb": 35.67
+    },
+    "Without Backprop": {
+      "read_latency_ms": 37.021,
+      "write_latency_ms": 9771.912,
+      "ingest_rate_sec": 123.11,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.0,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11552.0,
+      "ram_usage_mb": 34.87
+    },
+    "Without TDA": {
+      "read_latency_ms": 36.904,
+      "write_latency_ms": 9688.215,
+      "ingest_rate_sec": 124.17,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 0.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11596.0,
+      "ram_usage_mb": 35.54
+    },
+    "Without Compressed Tier": {
+      "read_latency_ms": 29.9,
+      "write_latency_ms": 9961.687,
+      "ingest_rate_sec": 120.76,
+      "correction_top1_rate": 1.0,
+      "superseded_suppression_rate": 1.0,
+      "why_not_visibility_rate": 0.85,
+      "tda_similarity_detected": 1.0,
+      "backprop_demotion_impact": 0.003,
+      "bellman_retention_protection": 1.0,
+      "db_size_kb": 11556.0,
+      "ram_usage_mb": 35.71
+    }
+  }
+}

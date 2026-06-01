@@ -1,0 +1,91 @@
+{
+  "name": "truthkeep-memory",
+  "version": "11.0.0-alpha",
+  "description": "TruthKeep Memory: local-first correctness memory for OpenClaw and MCP agents.",
+  "files": [
+    "aegis_py/",
+    "!aegis_py/**/__pycache__/**",
+    "!aegis_py/**/*.pyc",
+    "!aegis_py/**/*.pyc.*",
+    "!aegis_py/.agents/**",
+    "!aegis_py/.specify/**",
+    "!aegis_py/specs/**",
+    "truthkeep/",
+    "!truthkeep/**/__pycache__/**",
+    "!truthkeep/**/*.pyc",
+    "!truthkeep/**/*.pyc.*",
+    "openclaw/",
+    "bin/",
+    "install.sh",
+    "requirements.txt",
+    "pyproject.toml",
+    "README.md",
+    "LICENSE",
+    "openclaw.plugin.json",
+    "START_HERE.md",
+    "RUN_TRUTHKEEP_WINDOWS.cmd",
+    "RUN_TRUTHKEEP_WINDOWS.ps1",
+    "RUN_TRUTHKEEP_MAC_LINUX.sh",
+    "docs/",
+    "examples/",
+    "installers/",
+    "openclaw.plugin.advanced.json",
+    "INSTALL_TRUTHKEEP_WINDOWS.cmd",
+    "INSTALL_TRUTHKEEP_WINDOWS.ps1",
+    "INSTALL_TRUTHKEEP_MAC_LINUX.sh",
+    "docs/ENTERPRISE_INSTALLER_GUIDE.md",
+    "docs/SIGNING_AND_NOTARIZATION.md",
+    "docs/IT_ADMIN_DEPLOYMENT.md",
+    "docs/USER_ONE_CLICK_GUIDE.md",
+    "docs/ENTERPRISE_RELEASE_CHECKLIST.md",
+    "docs/ENTERPRISE_LIMITATIONS.md"
+  ],
+  "main": "./openclaw/truthkeep-memory.native.cjs",
+  "scripts": {
+    "postinstall": "bash install.sh",
+    "setup": "bash install.sh",
+    "test": "pytest tests/",
+    "check": "python -m truthkeep.install_check",
+    "easy": "python -m truthkeep.cli easy install",
+    "doctor": "python -m truthkeep.cli openclaw doctor",
+    "easy:gui": "python -m truthkeep.cli easy gui",
+    "openclaw:install": "python -m truthkeep.cli openclaw install",
+    "openclaw:doctor": "python -m truthkeep.cli openclaw doctor",
+    "enterprise:verify": "python scripts/verify_enterprise_release.py",
+    "enterprise:manifest": "python scripts/make_enterprise_release_manifest.py --root . --out ENTERPRISE_RELEASE_MANIFEST.json"
+  },
+  "keywords": [
+    "memory",
+    "truthkeep",
+    "governance",
+    "mcp",
+    "openclaw"
+  ],
+  "author": "antigravity",
+  "license": "MIT",
+  "bin": {
+    "truthkeep-setup": "./bin/truthkeep-setup",
+    "truthkeep-check": "./bin/truthkeep-check",
+    "truthkeep-mcp": "./bin/truthkeep-mcp",
+    "aegis-setup": "./bin/aegis-setup",
+    "aegis-check": "./bin/aegis-check",
+    "aegis-mcp": "./bin/aegis-mcp"
+  },
+  "openclaw": {
+    "extensions": [
+      "./openclaw/truthkeep-memory.native.cjs"
+    ],
+    "setupEntry": "./openclaw/truthkeep-memory.native.cjs"
+  },
+  "truthkeepEnterprise": {
+    "releaseChannel": "v11-alpha-enterprise-installer-ready",
+    "signedInstallerReady": true,
+    "trustedSignatureRequiresExternalCertificate": true,
+    "securityModel": {
+      "transport": "mcp-stdio",
+      "openPorts": false,
+      "httpDaemon": false,
+      "cloudDefault": false
+    }
+  }
+}

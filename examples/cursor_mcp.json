@@ -1,0 +1,9 @@
+{
+  "name": "truthkeep-memory",
+  "type": "command",
+  "command": "python -m truthkeep.mcp",
+  "env": {
+    "PYTHONPATH": "/path/to/truthkeep-memory",
+    "AEGIS_DB_PATH": "/path/to/truthkeep-memory/memory_aegis.db"
+  }
+}

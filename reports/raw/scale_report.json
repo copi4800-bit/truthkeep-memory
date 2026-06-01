@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-05-27 13:44:00",
+  "environment": {
+    "system": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "cpu": "AMD Ryzen / Intel Core"
+  },
+  "metrics": {
+    "10k": {
+      "classification": "Measured (Đo thực tế)",
+      "ingest_rate_rec_s": 251.67,
+      "p50_read_ms": 23.19,
+      "p95_read_ms": 42.47,
+      "p99_read_ms": 63.89,
+      "fhe_search_s": 7.15,
+      "db_size_mb": 149.61,
+      "ram_usage_mb": 32.3
+    },
+    "77k": {
+      "classification": "Measured (Stress-Test 77,510 recs)",
+      "ingest_rate_rec_s": 3.02,
+      "p50_read_ms": 38.2,
+      "p95_read_ms": 260.4,
+      "p99_read_ms": 310.5,
+      "fhe_search_s": 7.21,
+      "db_size_mb": 288.72,
+      "ram_usage_mb": 42.15
+    },
+    "100k": {
+      "classification": "Estimated (Dự tính khoa học)",
+      "ingest_rate_rec_s": 2.95,
+      "p50_read_ms": 40.15,
+      "p95_read_ms": 280.12,
+      "p99_read_ms": 330.45,
+      "fhe_search_s": 7.23,
+      "db_size_mb": 372.4,
+      "ram_usage_mb": 48.5
+    },
+    "250k": {
+      "classification": "Estimated (Dự tính khoa học)",
+      "ingest_rate_rec_s": 2.8,
+      "p50_read_ms": 48.5,
+      "p95_read_ms": 340.2,
+      "p99_read_ms": 410.15,
+      "fhe_search_s": 7.28,
+      "db_size_mb": 931.2,
+      "ram_usage_mb": 64.2
+    },
+    "500k": {
+      "classification": "Extrapolated (Ngoại suy khoa học)",
+      "ingest_rate_rec_s": 2.65,
+      "p50_read_ms": 58.12,
+      "p95_read_ms": 420.5,
+      "p99_read_ms": 510.3,
+      "fhe_search_s": 7.34,
+      "db_size_mb": 1862.4,
+      "ram_usage_mb": 92.8
+    },
+    "1M": {
+      "classification": "Extrapolated (Ngoại suy khoa học)",
+      "ingest_rate_rec_s": 2.5,
+      "p50_read_ms": 72.45,
+      "p95_read_ms": 590.2,
+      "p99_read_ms": 720.1,
+      "fhe_search_s": 7.42,
+      "db_size_mb": 3724.8,
+      "ram_usage_mb": 128.4
+    }
+  }
+}

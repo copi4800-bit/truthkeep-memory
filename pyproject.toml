@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "truthkeep-memory"
+version = "11.0.0a0"
+description = "TruthKeep Memory: The truth-aware memory engine"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "antigravity", email = "antigravity@google.com"}
+]
+dependencies = [
+    "pydantic>=2.0.0",
+    "aiosqlite",
+    "fastmcp"
+]
+
+[project.scripts]
+aegis-mcp = "aegis_py.mcp.server:main"
+aegis-check = "aegis_py.install_check:main"
+aegis-setup = "truthkeep.setup:main"
+truthkeep = "truthkeep.cli:main"
+truthkeep-memory = "truthkeep.cli:main"
+truthkeep-mcp = "truthkeep.mcp:main"
+truthkeep-check = "truthkeep.install_check:main"
+truthkeep-setup = "truthkeep.setup:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aegis_py*", "truthkeep*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["scripts"]
+

@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+def resolve_repo_root() -> Path:
+    here = Path(__file__).resolve().parent
+    for candidate in (here.parent, here.parent.parent):
+        if (candidate / "truthkeep" / "cli.py").exists():
+            return candidate
+    raise RuntimeError("Unable to locate the TruthKeep repository root.")
+
+
+def main() -> int:
+    repo_root = resolve_repo_root()
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+    from truthkeep.cli import main as cli_main
+    return cli_main(sys.argv[1:] + ["easy", "install"])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

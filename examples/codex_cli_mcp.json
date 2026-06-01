@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "truthkeep-memory": {
+      "command": "python",
+      "args": [
+        "-m",
+        "truthkeep.mcp"
+      ],
+      "env": {
+        "PYTHONPATH": "/path/to/truthkeep-memory",
+        "AEGIS_DB_PATH": "/path/to/truthkeep-memory/memory_aegis.db"
+      },
+      "description": "TruthKeep cognitive memory plugin for Codex CLI developers"
+    }
+  }
+}

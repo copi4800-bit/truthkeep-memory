@@ -1,0 +1,136 @@
+{
+  "id": "truthkeep-memory",
+  "name": "TruthKeep Memory — Easy Mode",
+  "description": "Local-first AI memory focused on remembering what is still true. Easy Mode exposes only the five safest tools for non-technical users.",
+  "kind": "memory",
+  "version": "11.0.0-alpha",
+  "healthContract": {
+    "states": [
+      "HEALTHY",
+      "DEGRADED_SYNC",
+      "BROKEN"
+    ],
+    "capabilities": [
+      "local_store",
+      "local_search",
+      "local_status",
+      "backup_restore",
+      "optional_sync"
+    ],
+    "tools": [
+      "memory_stats",
+      "memory_doctor",
+      "memory_surface"
+    ]
+  },
+  "easyMode": true,
+  "securityModel": {
+    "transport": "mcp-stdio",
+    "openPorts": false,
+    "localOnly": true,
+    "httpDaemon": false,
+    "cloudDefault": false
+  },
+  "consumerSurface": {
+    "defaultTools": [
+      "memory_remember",
+      "memory_recall",
+      "memory_correct",
+      "memory_status",
+      "memory_profile"
+    ],
+    "advancedToolsHiddenByDefault": true,
+    "advancedManifest": "openclaw.plugin.advanced.json",
+    "onboardingCommand": "truthkeep-setup",
+    "doctorCommand": "truthkeep openclaw doctor"
+  },
+  "openclaw": {
+    "extensions": [
+      "./openclaw/truthkeep-memory.native.cjs"
+    ]
+  },
+  "mcp": {
+    "command": "truthkeep-mcp",
+    "mode": "stdio"
+  },
+  "tools": [
+    {
+      "name": "memory_remember",
+      "description": "[Basic] Store a piece of information into memory using natural language.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The information to remember."
+          }
+        },
+        "required": [
+          "content"
+        ]
+      }
+    },
+    {
+      "name": "memory_recall",
+      "description": "[Basic] Retrieve memories related to a query using natural language.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "What to recall from memory."
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "memory_correct",
+      "description": "[Basic] Correct or update an existing piece of information in memory.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The corrected information."
+          }
+        },
+        "required": [
+          "content"
+        ]
+      }
+    },
+    {
+      "name": "memory_status",
+      "description": "[Basic] Check TruthKeep memory health, local storage status, and readiness.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "memory_profile",
+      "description": "[Basic] Show what TruthKeep remembers about you: identity, preferences, projects, and recent facts.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "Remember current truth",
+      "description": "Store important facts that should remain true until corrected."
+    },
+    {
+      "name": "Recall current truth",
+      "description": "Recall the latest valid facts and avoid superseded facts."
+    },
+    {
+      "name": "Correct memory",
+      "description": "Update wrong or outdated memory while preserving why-not history."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "node_count": 1000,
+  "edge_count": 6310,
+  "seed": 42,
+  "p50_latency_ms": 0.004,
+  "p95_latency_ms": 0.006,
+  "loop_rejection_rate": 0.0,
+  "perturbation_recovery_rate": 0.878
+}

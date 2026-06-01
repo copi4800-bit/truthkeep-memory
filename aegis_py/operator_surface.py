@@ -1,0 +1,341 @@
+from __future__ import annotations
+
+from typing import Any
+
+from .hygiene.librarian import LibrarianBeast
+from .hygiene.nutcracker import NutcrackerBeast
+from .retrieval.compressed_tier import build_compressed_tier_coverage, build_compressed_tier_status
+from .retrieval.v10_dynamics import bundle_energy_snapshot
+from .storage.manager import DEFAULT_COMPACTION_POLICY
+
+
+class AegisOperatorSurface:
+    """Operator-oriented storage, governance, and evidence facade."""
+
+    def __init__(self, app: Any):
+        self.app = app
+
+    def inspect_governance(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+        memory_id: str | None = None,
+        limit: int = 50,
+    ) -> dict[str, Any]:
+        events = self.app.storage.list_governance_events(
+            scope_type=scope_type,
+            scope_id=scope_id,
+            memory_id=memory_id,
+            limit=limit,
+        )
+        transitions = self.app.storage.list_memory_state_transitions(memory_id) if memory_id else []
+        return {
+            "backend": "python",
+            "events": events,
+            "transitions": transitions,
+        }
+
+    def evidence_artifacts(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+        memory_id: str | None = None,
+        limit: int = 50,
+    ) -> dict[str, Any]:
+        return {
+            "backend": "python",
+            "artifacts": self.app.storage.list_evidence_artifacts(
+                scope_type=scope_type,
+                scope_id=scope_id,
+                memory_id=memory_id,
+                limit=limit,
+            ),
+        }
+
+    def storage_footprint(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+    ) -> dict[str, Any]:
+        footprint = self.app.storage.storage_footprint()
+        deinosuchus = NutcrackerBeast(self.app.storage).check_db_health()
+        footprint["prehistoric_storage"] = {
+            "deinosuchus_compaction_pressure": deinosuchus.deinosuchus_compaction_pressure,
+            "orphaned_links": deinosuchus.orphaned_links,
+            "active_memories": deinosuchus.active_memories,
+            "total_memories": deinosuchus.total_memories,
+        }
+        memory_rows = [
+            {
+                "id": row["id"],
+                "metadata_json": self.app.storage._coerce_metadata(row["metadata_json"]),
+            }
+            for row in self.app.storage.fetch_all("SELECT id, metadata_json FROM memories")
+        ]
+        footprint["compressed_tier"] = build_compressed_tier_coverage(memory_rows)
+        if scope_type and scope_id:
+            footprint["prehistoric_storage"]["titanoboa_index_locality"] = (
+                LibrarianBeast(self.app.storage).build_index_locality_report(scope_type, scope_id)
+            )
+        return footprint
+
+    def compressed_tier_status(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+    ) -> dict[str, Any]:
+        query = "SELECT id, metadata_json FROM memories"
+        params: tuple[Any, ...] = ()
+        if scope_type and scope_id:
+            query += " WHERE scope_type = ? AND scope_id = ?"
+            params = (scope_type, scope_id)
+        rows = [
+            {
+                "id": row["id"],
+                "metadata_json": self.app.storage._coerce_metadata(row["metadata_json"]),
+            }
+            for row in self.app.storage.fetch_all(query, params)
+        ]
+        status = build_compressed_tier_status(
+            rows=rows,
+            scope_type=scope_type,
+            scope_id=scope_id,
+        )
+        return {
+            "backend": "python",
+            "compressed_tier": status,
+        }
+
+    def storage_compaction_policy(self) -> dict[str, int]:
+        return dict(DEFAULT_COMPACTION_POLICY)
+
+    def compact_storage(
+        self,
+        *,
+        archived_memory_days: int = 30,
+        superseded_memory_days: int = 14,
+        evidence_days: int = 30,
+        governance_days: int = 30,
+        replication_days: int = 14,
+        background_days: int = 14,
+        vacuum: bool = True,
+    ) -> dict[str, Any]:
+        return self.app.storage.compact_storage(
+            archived_memory_days=archived_memory_days,
+            superseded_memory_days=superseded_memory_days,
+            evidence_days=evidence_days,
+            governance_days=governance_days,
+            replication_days=replication_days,
+            background_days=background_days,
+            vacuum=vacuum,
+        )
+
+    def get_memory_evidence(self, memory_id: str) -> list[dict[str, Any]]:
+        events = self.app.storage.get_linked_evidence_for_memory(memory_id)
+        return [
+            {
+                "id": event.id,
+                "scope_type": event.scope_type,
+                "scope_id": event.scope_id,
+                "session_id": event.session_id,
+                "memory_id": event.memory_id,
+                "source_kind": event.source_kind,
+                "source_ref": event.source_ref,
+                "raw_content": event.raw_content,
+                "metadata": event.metadata,
+                "created_at": event.created_at.isoformat(),
+            }
+            for event in events
+        ]
+
+    def memory_neighbors(self, memory_id: str, *, limit: int = 10) -> dict[str, Any]:
+        memory = self.app.storage.get_memory(memory_id)
+        if memory is None:
+            raise ValueError(f"Memory not found: {memory_id}")
+        return {
+            "backend": "python",
+            "memory_id": memory_id,
+            "scope_type": memory.scope_type,
+            "scope_id": memory.scope_id,
+            "neighbors": self.app.storage.list_memory_neighbors(memory_id=memory_id, limit=limit),
+        }
+
+    def v10_field_snapshot(
+        self,
+        *,
+        scope_type: str | None = None,
+        scope_id: str | None = None,
+    ) -> dict[str, Any]:
+        memory_ids = self.app._list_field_snapshot_memory_ids(scope_type=scope_type, scope_id=scope_id)
+        signals_list = [self.app.compute_v10_core_signals(memory_id) for memory_id in memory_ids]
+        counts = {
+            "draft": 0,
+            "validated": 0,
+            "consolidated": 0,
+            "hypothesized": 0,
+            "invalidated": 0,
+            "archived": 0,
+        }
+        for signals in signals_list:
+            state = str(signals.get("admission_state") or "validated")
+            counts[state] = counts.get(state, 0) + 1
+        state_coverage = {
+            "memory_count": len(signals_list),
+            "canonical": 0,
+            "legacy_migrated": 0,
+            "synthesized": 0,
+        }
+        for signals in signals_list:
+            origin = str(signals.get("state_origin") or "synthesized")
+            state_coverage[origin] = state_coverage.get(origin, 0) + 1
+
+        def _avg(key: str) -> float:
+            if not signals_list:
+                return 0.0
+            return round(
+                sum(float(item.get(key, 0.0) or 0.0) for item in signals_list) / len(signals_list),
+                6,
+            )
+        energy = bundle_energy_snapshot(signals_list)
+
+        return {
+            "backend": "python",
+            "scope": {
+                "scope_type": scope_type,
+                "scope_id": scope_id,
+            },
+            "memory_ids": memory_ids,
+            "counts": counts,
+            "state_coverage": state_coverage,
+            "averages": {
+                "belief_score": _avg("belief_score"),
+                "trust_score": _avg("trust_score"),
+                "readiness_score": _avg("readiness_score"),
+                "usage_signal": _avg("usage_signal"),
+                "conflict_signal": _avg("conflict_signal"),
+                "decay_signal": _avg("decay_signal"),
+                "regret_signal": _avg("regret_signal"),
+                "stability_signal": _avg("stability_signal"),
+            },
+            "energy": {
+                **energy,
+                "bundle_energy_proxy": energy["energy"],
+                "objective_proxy": energy["objective"],
+            },
+        }
+
+    def v10_core_signals(self, memory_id: str) -> dict[str, Any]:
+        signals = self.app.compute_v10_core_signals(memory_id)
+        return {
+            "backend": "python",
+            "memory_id": memory_id,
+            "observables": self._v10_observables(signals),
+            "signals": signals,
+        }
+
+    def v10_transition_gate(self, memory_id: str) -> dict[str, Any]:
+        operator = self.app.evaluate_v10_transition_operator(memory_id)
+        return {
+            "backend": "python",
+            "memory_id": memory_id,
+            "observables": self._v10_observables(operator["signals"]),
+            "transition_operator": operator,
+            "inputs": operator["inputs"],
+            "decision": operator["decision"],
+            "thresholds": operator["thresholds"],
+            "transition_gate": operator["transition_gate"],
+            "signals": operator["signals"],
+        }
+
+    def _v10_observables(self, signals: dict[str, Any]) -> dict[str, Any]:
+        trust_score = float(signals.get("trust_score", 0.0) or 0.0)
+        readiness_score = float(signals.get("readiness_score", 0.0) or 0.0)
+        if trust_score >= 0.8:
+            trust_level = "high"
+        elif trust_score >= 0.6:
+            trust_level = "medium"
+        else:
+            trust_level = "low"
+        if readiness_score >= 0.8:
+            readiness_level = "ready"
+        elif readiness_score >= 0.5:
+            readiness_level = "warming"
+        else:
+            readiness_level = "cold"
+        return {
+            "trust": {
+                "score": round(trust_score, 6),
+                "level": trust_level,
+            },
+            "readiness": {
+                "score": round(readiness_score, 6),
+                "level": readiness_level,
+            },
+            "state": signals.get("admission_state"),
+        }
+
+    def apply_v10_outcome_feedback(
+        self,
+        memory_id: str,
+        *,
+        success_score: float,
+        relevance_score: float | None = None,
+        override_score: float = 0.0,
+        actor: str = "v10_feedback",
+    ) -> dict[str, Any]:
+        return self.app.apply_v10_outcome_feedback(
+            memory_id,
+            success_score=success_score,
+            relevance_score=relevance_score,
+            override_score=override_score,
+            actor=actor,
+        )
+
+    def apply_v10_retrieval_feedback(
+        self,
+        *,
+        query: str,
+        scope_id: str,
+        scope_type: str = "session",
+        success_score: float,
+        selected_memory_ids: list[str] | None = None,
+        override_memory_ids: list[str] | None = None,
+        limit: int = 5,
+        include_global: bool = True,
+        actor: str = "v10_bundle_feedback",
+    ) -> dict[str, Any]:
+        return self.app.apply_v10_retrieval_feedback(
+            query=query,
+            scope_id=scope_id,
+            scope_type=scope_type,
+            success_score=success_score,
+            selected_memory_ids=selected_memory_ids,
+            override_memory_ids=override_memory_ids,
+            limit=limit,
+            include_global=include_global,
+            actor=actor,
+        )
+
+    def v10_bundle_snapshot(
+        self,
+        *,
+        query: str,
+        scope_id: str,
+        scope_type: str = "session",
+        limit: int = 5,
+        include_global: bool = True,
+    ) -> dict[str, Any]:
+        return self.app.v10_bundle_snapshot(
+            query=query,
+            scope_id=scope_id,
+            scope_type=scope_type,
+            limit=limit,
+            include_global=include_global,
+        )
+
+    def apply_v10_transition_gate(self, memory_id: str, *, actor: str = "v10_core") -> dict[str, Any]:
+        return self.app.apply_v10_transition_gate(memory_id, actor=actor)
