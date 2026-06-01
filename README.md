@@ -43,6 +43,13 @@ pip install -e .
 truthkeep-mcp
 ```
 
+**Connect to any MCP host:**
+```bash
+truthkeep mcp install claude     # Claude Desktop
+truthkeep mcp install cursor     # Cursor
+truthkeep mcp install generic    # Any MCP host
+```
+
 ---
 
 ## What Makes TruthKeep Different
@@ -130,6 +137,44 @@ TruthKeep embeds 20+ mathematical engines — not as gimmicks, but as core scori
 Truth & governance · conflict resolution · graph links · evidence artifacts · health diagnostics · storage compaction · sync envelopes · encrypted backup · background operations · workflow shells · visualization
 
 See [`openclaw.plugin.advanced.json`](openclaw.plugin.advanced.json) for the full catalog.
+
+---
+
+## MCP Host Compatibility
+
+TruthKeep works with any MCP host out of the box. One command to install, auto-detect config paths:
+
+| Host | Status | Install |
+|---|---|---|
+| **OpenClaw** | ✅ Native | `truthkeep mcp install openclaw` |
+| **Claude Desktop** | ✅ Ready | `truthkeep mcp install claude` |
+| **Cursor** | ✅ Ready | `truthkeep mcp install cursor` |
+| **Cline** | ✅ Ready | `truthkeep mcp install cline` |
+| **Roo Code** | ✅ Ready | `truthkeep mcp install roo` |
+| **Continue** | ✅ Ready | `truthkeep mcp install continue` |
+| **VS Code** | ✅ Ready | `truthkeep mcp install vscode` |
+| **Generic** | ✅ Portable | `truthkeep mcp install generic` |
+
+Config snippets: [`examples/mcp/`](examples/mcp/)
+
+---
+
+## Runtime Profiles
+
+Choose a performance profile based on your use case. Core DNA (governance, corrections, invariants) is **always enforced** — profiles only control optional heavy engines:
+
+| Profile | Use Case | Heavy Engines |
+|---|---|---|
+| **`demo`** | Quick testing | Off — fastest startup |
+| **`local`** | Daily MCP use (default) | Off — fast hot path |
+| **`hardened`** | Strict privacy/security | On — FHE, PQC, TDA, strict privacy |
+| **`enterprise`** | Multi-agent throughput | Off — DB sharding enabled |
+
+```bash
+truthkeep profile set local       # set profile
+truthkeep profile show            # view current profile
+TK_RUNTIME_PROFILE=hardened truthkeep-mcp   # env override
+```
 
 ---
 
