@@ -1,11 +1,27 @@
 from __future__ import annotations
 
 import json
+from unittest.mock import patch
 
 from aegis_py.mcp.server import AegisMCPServer
 
+# Synthetic benchmark artifact so compressed-tier gate passes even
+# when the real .planning/benchmarks/ file is absent (e.g. on CI).
+_FAKE_BENCHMARK_ARTIFACT = {
+    "summary": {
+        "compressed_candidate_yield_rate": 1.0,
+        "governed_top1_preservation_rate": 1.0,
+        "persistent_coverage_rate": 1.0,
+        "rebuild_backfill_rate": 1.0,
+    }
+}
 
-def test_experience_brief_tool_returns_product_facing_story(tmp_path):
+
+@patch(
+    "aegis_py.retrieval.compressed_tier.load_compressed_tier_artifact",
+    return_value=_FAKE_BENCHMARK_ARTIFACT,
+)
+def test_experience_brief_tool_returns_product_facing_story(_mock_artifact, tmp_path):
     db_path = tmp_path / "experience_brief_tool.db"
     server = AegisMCPServer(db_path=str(db_path))
     try:
@@ -60,3 +76,4 @@ def test_experience_brief_tool_returns_product_facing_story(tmp_path):
         assert "[Next Actions]" in payload["brief_text"]
     finally:
         server.close()
+
