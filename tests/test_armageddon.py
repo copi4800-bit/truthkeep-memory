@@ -68,7 +68,7 @@ class TestFuzzPutMemory:
         content=st.text(min_size=1, max_size=1000),
         scope_id=st.text(min_size=1, max_size=100).filter(lambda s: s.strip()),
     )
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow], deadline=30000)
+    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow, HealthCheck.function_scoped_fixture], deadline=30000)
     def test_put_memory_never_crashes(self, content, scope_id, tmp_path):
         """put_memory must never crash regardless of input."""
         app = _app(tmp_path, f"fuzz_{abs(hash(content + scope_id)) % 99999}")
@@ -86,7 +86,7 @@ class TestFuzzPutMemory:
                 pass
 
     @given(query=st.text(min_size=1, max_size=500))
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow], deadline=30000)
+    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow, HealthCheck.function_scoped_fixture], deadline=30000)
     def test_search_never_crashes(self, query, tmp_path):
         """search must never crash regardless of query."""
         app = _app(tmp_path, f"sfuzz_{abs(hash(query)) % 99999}")
@@ -393,7 +393,7 @@ class TestFuzzMetadata:
             st.none(),
         ),
     )
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow], deadline=30000)
+    @settings(max_examples=100, suppress_health_check=[HealthCheck.too_slow, HealthCheck.function_scoped_fixture], deadline=30000)
     def test_metadata_keys_values_never_crash(self, key, value, tmp_path):
         """Random metadata keys and values must not crash put_memory."""
         app = _app(tmp_path, f"meta_{abs(hash(key)) % 99999}")
