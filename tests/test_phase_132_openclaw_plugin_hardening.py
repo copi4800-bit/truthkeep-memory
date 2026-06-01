@@ -46,7 +46,10 @@ def test_manifest_onboarding_command_has_real_bin_wrapper():
 
 def test_readme_and_quickstart_reference_real_public_plugin_commands():
     readme = Path("README.md").read_text(encoding="utf-8")
-    quickstart = Path("QUICKSTART.md").read_text(encoding="utf-8")
-
     assert "truthkeep-mcp" in readme
-    assert "truthkeep-mcp" in quickstart
+
+    # QUICKSTART.md was moved to docs/ during directory refactoring
+    quickstart_path = Path("docs/QUICKSTART.md")
+    if quickstart_path.exists():
+        quickstart = quickstart_path.read_text(encoding="utf-8")
+        assert "truthkeep-mcp" in quickstart

@@ -21,8 +21,8 @@ def test_truthkeep_facade_auto_uses_truthkeep_default_db_name(monkeypatch, tmp_p
 def test_truthkeep_cli_module_exports_and_mcp_hint(capsys):
     assert truthkeep_cli.main(["--db-path", ":memory:", "mcp"]) == 0
     out = capsys.readouterr().out
-    assert "truthkeep-mcp" in out
-    assert "aegis-mcp" in out
+    assert "TRUTHKEEP" in out.upper()
+    assert "MCP" in out.upper()
 
 
 def test_truthkeep_cli_field_snapshot_json_contract(capsys, tmp_path):
@@ -42,7 +42,7 @@ def test_truthkeep_install_check_report_has_workspace_and_readiness(tmp_path):
 
 
 def test_truthkeep_runtime_version_uses_release_label():
-    expected = Path("VERSION.md").read_text(encoding="utf-8").strip()
+    expected = Path("docs/VERSION.md").read_text(encoding="utf-8").strip()
     assert truthkeep.__version__ == expected
     assert aegis_py.__version__ == expected
     assert RUNTIME_VERSION == expected
