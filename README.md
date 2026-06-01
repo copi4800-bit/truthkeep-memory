@@ -1,122 +1,306 @@
-# TruthKeep Memory v11
+<![CDATA[<div align="center">
 
-TruthKeep is a local-first memory engine for AI agents and MCP hosts. It focuses on one hard problem: remembering what is still true after facts change.
+# 🧠 TruthKeep Memory
 
-This repository is the v11 alpha enterprise-installer-ready package. It includes the core memory engine, OpenClaw Easy Mode, installer launchers, release verification scripts, and signing helpers.
+### The Memory Engine That Knows What's Still True
 
-## What It Does
+[![CI/CD](https://github.com/copi4800-bit/truthkeep-memory/actions/workflows/ci.yml/badge.svg)](https://github.com/copi4800-bit/truthkeep-memory/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v11.0--alpha-orange.svg)](docs/VERSION.md)
 
-- Stores memories in local SQLite.
-- Keeps corrected facts ahead of outdated facts.
-- Marks old facts as superseded instead of letting them leak back into recall.
-- Explains why one memory was selected and why another was suppressed.
-- Runs through MCP stdio with no HTTP daemon and no open ports by default.
-- Provides an Easy Mode OpenClaw manifest with only five user-facing tools.
+**TruthKeep is a local-first, governed memory engine for AI agents and MCP hosts.**
+<br>It doesn't just store facts — it tracks which facts are *still true*, explains *why*, and proves *how it decided*.
 
-## Quick Start
+</div>
+
+---
+
+## Why TruthKeep?
+
+Most AI memory systems are glorified key-value stores. They remember everything, forget nothing, and when facts change, old information silently leaks back into context — causing hallucinations.
+
+**TruthKeep solves this with truth governance:**
+
+| Problem | TruthKeep's Answer |
+|---|---|
+| Old facts leak back | Superseded memories are **quarantined**, never returned silently |
+| No audit trail | Every decision has a **full provenance chain** — who changed what, when, and why |
+| "Why did it say that?" | **Explainable retrieval** — every result comes with why-this and why-not reasoning |
+| Conflicting facts | **Constitutional Memory** — 5-level precedence hierarchy resolves disputes automatically |
+| Privacy & security | **Zero-dependency crypto stack** — AES-256-GCM, ZKP, post-quantum, FHE, differential privacy |
+| Single-node only | **CRDT-ready** — VectorClock, LWW-Register, OR-Set for eventual consistency |
+
+---
+
+## ⚡ Quick Start
 
 ### Windows
-
-Double-click:
 
 ```text
 installers/INSTALL_TRUTHKEEP_WINDOWS.cmd
 ```
 
-Then restart OpenClaw and use `memory_status`.
-
 ### macOS / Linux
-
-Run:
 
 ```bash
 chmod +x ./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
-Then restart OpenClaw and use `memory_status`.
-
-## Easy Mode Tools
-
-The default OpenClaw manifest exposes only:
-
-- `memory_remember`
-- `memory_recall`
-- `memory_correct`
-- `memory_status`
-- `memory_profile`
-
-Advanced graph and developer tools are included separately in `openclaw.plugin.advanced.json`.
-
-## Developer Setup
-
-Install locally:
-
-```bash
-pip install -e .
-```
-
-Run checks:
-
-```bash
-python -m pytest tests -q
-python scripts/verify_enterprise_release.py
-```
-
-Run the MCP server:
-
-```bash
-truthkeep-mcp
-```
-
-## Python API Example
+### Python API
 
 ```python
 from truthkeep import TruthKeep
 
 tk = TruthKeep.auto()
+
+# Store a fact
 tk.remember("Mimi's favorite drink is Bubble Tea.", subject="mimi.drink")
+
+# Correct it — old fact becomes superseded, not deleted
 tk.correct("Correction: Mimi's favorite drink is Peach Tea.", subject="mimi.drink")
 
+# Recall returns ONLY the current truth
 results = tk.recall("What is Mimi's favorite drink?")
 print(results[0]["memory"]["content"])
+# → "Correction: Mimi's favorite drink is Peach Tea."
 ```
 
-## Enterprise Release Path
+### MCP Server
+
+```bash
+pip install -e .
+truthkeep-mcp
+```
+
+---
+
+## 🏛️ Architecture
+
+### Constitutional Memory (V10 Governance)
+
+Every memory decision is governed by a 5-level Constitution — inspired by legal systems, not heuristics:
+
+```
+C0: SYSTEM_SAFETY     — ZKP auth + content safety + tamper detection
+C1: USER_OVERRIDE      — Explicit user corrections always honored
+C2: CANONICAL_TRUTH    — Superseded exclusion + Winner Invariant
+C3: GOVERNANCE_RISK    — High-conflict quarantine + ambiguity escalation
+C4: SOFT_JUDGMENT      — Low relevance suppression
+```
+
+Each memory has a **governance status** (candidate → active → disputed → superseded → archived) and a **truth role** (winner / contender / loser). Only one winner per fact-slot per scope.
+
+### 23-Beast Architecture
+
+TruthKeep's internals are organized as 23 specialized "beasts" — each responsible for a single concern:
+
+| Beast | Domain | What It Does |
+|---|---|---|
+| 🦎 **Axolotl** | Schema | Soft repair, FTS rebuild, orphan cleanup |
+| 📚 **Librarian** | Consolidation | Merge equivalent memories, index locality reports |
+| 🔩 **Nutcracker** | Storage | VACUUM, compaction pressure, DB health |
+| 🐦 **Bowerbird** | Taxonomy | Subject normalization, drift detection |
+| 🦷 **Smilodon** | Decay | Type-specific half-lives, Fibonacci decay, crystallization |
+| 🐒 **Meerkat** | Conflicts | Contradiction detection, quarantine escalation |
+| 🕵️ **Explainer** | Trust | Trust shapes (strong/weak/uncertain), provenance |
+| 🛡️ **Guardian** | Security | Boundary protection, scope isolation |
+| ... | ... | *23 total, compressed into 6 lean runtime modules* |
+
+### 10-Signal Dynamics Engine
+
+Every memory carries 10 real-time signals, updated on every interaction:
+
+```
+evidence · support · conflict · usage · regret
+stability · decay · belief · trust · readiness
+```
+
+- **Bayesian Belief Update**: Blends Bayesian posterior (70%) with legacy model (30%)
+- **Trust Score**: Sigmoid aggregation across all signals
+- **Transition Gates**: Auto-promote (draft → validated) or demote based on signal thresholds
+- **Outcome Feedback Loop**: Success/relevance scores propagate back to improve future retrieval
+
+---
+
+## 🔐 Security Stack
+
+All cryptography is **pure Python — zero external dependencies**:
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Encryption** | AES-256-GCM | Encrypted backup/restore with PBKDF2 key derivation |
+| **Access Control** | Schnorr/PLONK ZKP | Zero-knowledge proof gates — memory-level access without revealing keys |
+| **Post-Quantum** | ML-KEM (Kyber) + ML-DSA (Dilithium) | Lattice-based crypto, quantum-resistant |
+| **Homomorphic** | Ring-LWE FHE + Paillier | Compute similarity scores on encrypted data |
+| **Privacy** | Bayesian DP + Rényi DP | Membership inference detection, Laplace noise, budget tracking |
+| **Audit** | HMAC-SHA256 Chain | Append-only hash-chained audit log, tamper detection |
+| **Integrity** | Luoshu Magic Square | Weight tamper detection via matrix ratio consistency |
+| **Poison Detection** | Shannon Entropy | Prompt injection detection via entropy analysis |
+
+---
+
+## 📐 Mathematical Engines
+
+TruthKeep embeds **20+ mathematical engines** for retrieval, scoring, and integrity:
+
+<details>
+<summary><b>Ancient Mathematics</b></summary>
+
+- **I-Ching State Encoder** — 64 hexagram states (6-bit binary) encoding memory kind + truth state + trust level. Changing Lines (Hào Động) detection for state transitions
+- **Luoshu Integrity Validator** — Magic square tamper detection via matrix invariants
+- **Platonic Quantizer** — Icosahedron vertex projection for vector quantization
+- **Fibonacci Decay Engine** — Golden ratio non-linear decay (φ^(-t/24))
+
+</details>
+
+<details>
+<summary><b>Modern Mathematics</b></summary>
+
+- **Hilbert Space Engine** — N-gram hashing → 64-dim vector + cosine similarity
+- **Nash Embedding Preserver** — Johnson-Lindenstrauss random projection, distortion monitoring
+- **Erdős Index Grid** — 8×8 grid cell assignment for O(N/K²) search
+- **Poincaré TDA Engine** — Topological data analysis via Betti numbers (β₀, β₁, β₂)
+- **Euler-Cayley Graph Engine** — Degree + betweenness centrality, hub detection
+- **Bayesian Belief Engine** — Sequential belief update with evidence accumulation
+- **Fourier Compressor** — DFT character frequency fingerprinting
+- **Backpropagation Engine** — Gradient propagation through memory graph on corrections
+- **Bellman Value Engine** — Strategic value for procedural memories, retirement protection
+- **Hopfield Attractor Engine** — Lyapunov attractor dynamics for recall
+- **Spectral Graph Engine** — Eigenvalue-based graph analysis
+- **Hyperbolic Graph Engine** — Poincaré disk embeddings
+- **Category Theory Functor Engine** — Compositional memory transformations
+- *...and more*
+
+</details>
+
+---
+
+## 🖥️ Desktop GUI
+
+Premium dark-theme desktop application built with **PySide6 (Qt6)**:
+
+- **Dashboard** — Real-time stats: total memories, active, conflicts, invariants, security mode
+- **Memory Browser** — Search, filter by scope/status, inspect with why-not analysis
+- **Correction History** — Full timeline of superseded facts with change reasons
+- **Backup & Security** — AES-256-GCM encrypted backup/restore with passphrase
+
+Zero network ports. Connects directly to the local SQLite database.
+
+---
+
+## 🔧 MCP Tools
+
+### Easy Mode (5 tools — default)
+
+| Tool | Purpose |
+|---|---|
+| `memory_remember` | Store a new memory |
+| `memory_recall` | Search with governed truth filtering |
+| `memory_correct` | Correct an outdated fact |
+| `memory_status` | System health at a glance |
+| `memory_profile` | User interaction profile |
+
+### Advanced Mode (40+ tools)
+
+<details>
+<summary><b>Full tool catalog</b></summary>
+
+**Truth & Governance:**
+`memory_core_showcase` · `memory_experience_brief` · `memory_spotlight` · `memory_context_pack` · `memory_governance` · `memory_v10_field_snapshot`
+
+**Conflict Resolution:**
+`memory_conflict_prompt` · `memory_conflict_resolve`
+
+**Graph & Links:**
+`memory_link_store` · `memory_link_neighbors` · `memory_evidence_artifacts` · `memory_visualize`
+
+**Health & Maintenance:**
+`memory_doctor` · `memory_clean` · `memory_rebuild` · `memory_scan` · `memory_taxonomy_clean`
+
+**Storage & Sync:**
+`memory_storage_compact` · `memory_storage_footprint` · `memory_compressed_tier_status` · `memory_sync_export` · `memory_sync_preview` · `memory_sync_import`
+
+**Backup & Restore:**
+`memory_backup_upload` · `memory_backup_list` · `memory_backup_preview` · `memory_backup_download`
+
+**Background Operations:**
+`memory_background_plan` · `memory_background_shadow` · `memory_background_apply` · `memory_background_rollback`
+
+**Shells & Workflows:**
+`memory_consumer_shell` · `memory_workflow_shell` · `memory_dashboard_shell` · `memory_command_center_shell` · `memory_truth_transition_timeline`
+
+</details>
+
+---
+
+## 🛡️ Runtime Invariants
+
+TruthKeep enforces **5 database invariants** on every operation — violations are detected and reported automatically:
+
+1. **Unique Winner** — At most 1 active memory per fact-slot per scope
+2. **No Superseded Leakage** — Superseded memories never appear as active truth
+3. **Archived Isolation** — Archived memories never resurface
+4. **Why-Not Provenance** — Every suppressed memory has a documented reason
+5. **Scope Isolation** — Links never cross scope boundaries
+
+---
+
+## 🏗️ Developer Setup
+
+```bash
+# Install
+pip install -e .
+
+# Run tests (350+ tests)
+python -m pytest tests -q
+
+# Verify enterprise release
+python scripts/verify_enterprise_release.py
+
+# Start MCP server
+truthkeep-mcp
+```
+
+---
+
+## 📦 Enterprise Release
 
 This package includes:
 
-- Windows, macOS, and Linux installer launchers.
-- Windows Authenticode, macOS notarization, and Linux signing helper scripts.
-- `ENTERPRISE_RELEASE_MANIFEST.json` with file size and SHA256 metadata.
-- `scripts/verify_enterprise_release.py` for release hygiene and manifest integrity checks.
+- One-click installer launchers for Windows, macOS, and Linux
+- Platform signing scripts (Authenticode, notarization, GPG)
+- `ENTERPRISE_RELEASE_MANIFEST.json` with SHA256 integrity metadata
+- Release verification gate (`scripts/verify_enterprise_release.py`)
 
-Build and signing documentation:
+📖 **Docs:** [Enterprise Guide](docs/ENTERPRISE_INSTALLER_GUIDE.md) · [Signing](docs/SIGNING_AND_NOTARIZATION.md) · [IT Admin](docs/IT_ADMIN_DEPLOYMENT.md) · [Limitations](docs/ENTERPRISE_LIMITATIONS.md)
 
-- `docs/ENTERPRISE_INSTALLER_GUIDE.md`
-- `docs/SIGNING_AND_NOTARIZATION.md`
-- `docs/IT_ADMIN_DEPLOYMENT.md`
-- `docs/ENTERPRISE_LIMITATIONS.md`
+---
 
-## Security Posture
+## 🔒 Security Posture
 
-TruthKeep v11 alpha is:
+TruthKeep v11 is:
 
-- local-first
-- MCP stdio based
-- no HTTP daemon by default
-- no open TCP/UDP ports by default
-- not cloud-backed by default
+- ✅ **Local-first** — SQLite, no cloud
+- ✅ **MCP stdio** — no HTTP daemon
+- ✅ **Zero open ports** — no TCP/UDP listeners
+- ✅ **Encrypted at rest** — AES-256-GCM backup
+- ✅ **Post-quantum ready** — ML-KEM + ML-DSA
+- ✅ **Differentially private** — Bayesian DP + Rényi budget
+- ⚠️ **Not externally audited** — enterprise-installer-ready, not audit-certified
 
-Important limitation: this package is enterprise-installer-ready, but not externally audited and not trusted-signed unless you sign platform artifacts with your own certificate or key.
+---
 
-## Version
+## 📄 License
 
-- Runtime label: `v11.0-secure-mcp-stdio-alpha`
-- Python package: `11.0.0a0`
-- npm package: `11.0.0-alpha`
-- Release channel: `v11-alpha-enterprise-installer-ready`
+[MIT License](LICENSE)
 
-## License
+<div align="center">
 
-MIT License.
+---
+
+*TruthKeep doesn't try to remember more. It tries to remember correctly.*
+
+</div>
+]]>
