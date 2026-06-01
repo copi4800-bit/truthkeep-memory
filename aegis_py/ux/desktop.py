@@ -1122,12 +1122,14 @@ class TruthKeepMainWindow(QMainWindow):
                 f.write(final_bytes)
                 
             # Reload lại kết nối core
+            from aegis_py.app import AegisApp
             self.app = AegisApp(self.db_path)
             
             QMessageBox.information(
                 self, "Sao Lưu Thành Công", f"Đã tạo bản sao lưu mã hóa kiên cố tại:\n{file_path}"
             )
         except Exception as e:
+            from aegis_py.app import AegisApp  # noqa: F811
             self.app = AegisApp(self.db_path) # Reload fallback
             QMessageBox.critical(self, "Sao Lưu Thất Bại", f"Không thể sao lưu dữ liệu:\n{e}")
 
@@ -1185,6 +1187,7 @@ class TruthKeepMainWindow(QMainWindow):
             os.remove(temp_zip)
             
             # Khởi động lại
+            from aegis_py.app import AegisApp
             self.app = AegisApp(self.db_path)
             self.refresh_all()
             
@@ -1192,6 +1195,7 @@ class TruthKeepMainWindow(QMainWindow):
                 self, "Khôi Phục Thành Công", "Đã khôi phục cơ sở dữ liệu và xác thực invariants thành công!"
             )
         except Exception as e:
+            from aegis_py.app import AegisApp  # noqa: F811
             self.app = AegisApp(self.db_path)
             QMessageBox.critical(self, "Khôi Phục Thất Bại", f"Lỗi khôi phục cơ sở dữ liệu:\n{e}")
 
