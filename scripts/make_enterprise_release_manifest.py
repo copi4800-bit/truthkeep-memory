@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create SHA256 manifest for a clean TruthKeep enterprise release tree."""
 from __future__ import annotations
-import argparse, hashlib, json, os, platform, sys, time
+import argparse, hashlib, json, platform, sys, time
 from pathlib import Path
 
 EXCLUDE_DIRS = {'.git','__pycache__','.pytest_cache','dist-enterprise','.venv','node_modules'}
@@ -15,8 +15,12 @@ def sha256(path: Path) -> str:
             h.update(chunk)
     return h.hexdigest()
 
-def iter_files(root: Path):
+def iter_files(root: Path, excluded_paths: set[Path] | None = None):
+    excluded_paths = excluded_paths or set()
     for p in sorted(root.rglob('*')):
+        resolved = p.resolve()
+        if resolved in excluded_paths:
+            continue
         rel_parts = p.relative_to(root).parts
         if any(part in EXCLUDE_DIRS for part in rel_parts):
             continue
@@ -29,8 +33,12 @@ def main() -> int:
     ap.add_argument('--out', default='ENTERPRISE_RELEASE_MANIFEST.json')
     ns = ap.parse_args()
     root = Path(ns.root).resolve()
+    out = Path(ns.out)
+    if not out.is_absolute():
+        out = root / out
+    out = out.resolve()
     files = []
-    for p in iter_files(root):
+    for p in iter_files(root, excluded_paths={out}):
         files.append({
             'path': p.relative_to(root).as_posix(),
             'size': p.stat().st_size,
@@ -53,7 +61,6 @@ def main() -> int:
         'file_count': len(files),
         'files': files,
     }
-    out = Path(ns.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding='utf-8')
     print(f'[OK] Manifest written: {out} ({len(files)} files)')

@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Enterprise release gate for TruthKeep packages."""
 from __future__ import annotations
-import json, sys
+import hashlib, json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BAD_DIRS = {'__pycache__','.pytest_cache','.git'}
 BAD_SUFFIXES = {'.pyc','.pyo'}
 BAD_NAMES = {'memory_aegis.db','memory_aegis.db-wal','memory_aegis.db-shm','truthkeep.log'}
+MANIFEST_PATH = ROOT / 'ENTERPRISE_RELEASE_MANIFEST.json'
 REQUIRED = [
+    'ENTERPRISE_RELEASE_MANIFEST.json',
     'INSTALL_TRUTHKEEP_WINDOWS.cmd',
     'INSTALL_TRUTHKEEP_WINDOWS.ps1',
     'INSTALL_TRUTHKEEP_MAC_LINUX.sh',
@@ -22,17 +24,67 @@ REQUIRED = [
     'installers/linux/sign_linux_artifacts.sh',
 ]
 
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open('rb') as f:
+        for chunk in iter(lambda: f.read(1024*1024), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+def iter_release_files():
+    for p in sorted(ROOT.rglob('*')):
+        rel_parts = p.relative_to(ROOT).parts
+        if any(part in BAD_DIRS for part in rel_parts):
+            continue
+        if p == MANIFEST_PATH:
+            continue
+        if p.is_file() and p.name not in BAD_NAMES and p.suffix not in BAD_SUFFIXES:
+            yield p
+
+def verify_enterprise_manifest(failures: list[str]) -> None:
+    if not MANIFEST_PATH.exists():
+        failures.append('missing required enterprise file: ENTERPRISE_RELEASE_MANIFEST.json')
+        return
+    try:
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf-8'))
+    except Exception as exc:
+        failures.append(f'cannot parse ENTERPRISE_RELEASE_MANIFEST.json: {exc}')
+        return
+    entries = manifest.get('files')
+    if not isinstance(entries, list):
+        failures.append('ENTERPRISE_RELEASE_MANIFEST.json must contain a files list')
+        return
+    expected = {item.get('path'): item for item in entries if isinstance(item, dict)}
+    actual = {p.relative_to(ROOT).as_posix(): p for p in iter_release_files()}
+    if manifest.get('file_count') != len(entries):
+        failures.append('enterprise manifest file_count does not match files list length')
+    missing = sorted(set(expected) - set(actual))
+    extra = sorted(set(actual) - set(expected))
+    if missing:
+        failures.append(f'enterprise manifest lists missing file(s): {", ".join(missing[:5])}')
+    if extra:
+        failures.append(f'enterprise manifest omits file(s): {", ".join(extra[:5])}')
+    for rel in sorted(set(expected) & set(actual)):
+        entry = expected[rel]
+        path = actual[rel]
+        if entry.get('size') != path.stat().st_size:
+            failures.append(f'enterprise manifest size mismatch: {rel}')
+            continue
+        if entry.get('sha256') != sha256(path):
+            failures.append(f'enterprise manifest hash mismatch: {rel}')
+
 def main() -> int:
     failures = []
     for p in ROOT.rglob('*'):
         rel = p.relative_to(ROOT).as_posix()
         if any(part in BAD_DIRS for part in p.relative_to(ROOT).parts):
-            failures.append(f'forbidden directory/file: {rel}')
+            continue
         if p.is_file() and (p.suffix in BAD_SUFFIXES or p.name in BAD_NAMES):
             failures.append(f'forbidden runtime artifact: {rel}')
     for rel in REQUIRED:
         if not (ROOT / rel).exists():
             failures.append(f'missing required enterprise file: {rel}')
+    verify_enterprise_manifest(failures)
     manifest = ROOT / 'openclaw.plugin.json'
     try:
         data = json.loads(manifest.read_text(encoding='utf-8'))

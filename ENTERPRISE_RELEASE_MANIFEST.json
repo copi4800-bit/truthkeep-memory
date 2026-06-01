@@ -1,9 +1,9 @@
 {
   "name": "TruthKeep Memory",
   "release": "v11.0.0-alpha-enterprise-installer-ready",
-  "generated_at_unix": 1780282517,
-  "python": "3.13.5",
-  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "generated_at_unix": 1780285841,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
   "signing_status": "unsigned_source_manifest; sign platform installers with your own certificate/private key",
   "security_model": {
     "transport": "mcp-stdio",
@@ -40,6 +40,11 @@
       "sha256": "bebf078093f0b688ba52ec9543c0c453a0432584dffe14c2281e8e520f4254de"
     },
     {
+      "path": ".planning/benchmarks/compressed_candidate_tier_summary.json",
+      "size": 517,
+      "sha256": "b0d14667424240ecf0a3b04eb4cd40c339b37ae3c47d75de7db48ea31d597bee"
+    },
+    {
       "path": ".planning/ROADMAP.md",
       "size": 22807,
       "sha256": "a0a533013df2438026cd35d9fd6137ac4db832efb28bf8bcdfb881f98454b82d"
@@ -48,131 +53,6 @@
       "path": ".planning/STATE.md",
       "size": 27171,
       "sha256": "4d12e2442a3e97ed68559b62f281d836719429f03a69d971b421e479b450ebb1"
-    },
-    {
-      "path": ".planning/benchmarks/compressed_candidate_tier_summary.json",
-      "size": 517,
-      "sha256": "b0d14667424240ecf0a3b04eb4cd40c339b37ae3c47d75de7db48ea31d597bee"
-    },
-    {
-      "path": "AUDIT_PREP.md",
-      "size": 6695,
-      "sha256": "25587d38d768924fa169fc303bfcdbc377c3d000711e5b5a6a9572a1ba291b92"
-    },
-    {
-      "path": "BACKUP_RESTORE.md",
-      "size": 4884,
-      "sha256": "5aab978d67b13185830d29925bc32ea127166f4b6641dc856ed23e1eb89bb751"
-    },
-    {
-      "path": "CHANGELOG.md",
-      "size": 8384,
-      "sha256": "08d8d4b9e1eb3c7985a3216eeb724e4e9fa231c483338ddc8e18c13b8da9a47d"
-    },
-    {
-      "path": "CONTRIBUTING.md",
-      "size": 4665,
-      "sha256": "2ca7cff87ba05deee3e14d9f5c6a92724fdf27eec05084384517d4c59ffe5e83"
-    },
-    {
-      "path": "DATA_RETENTION.md",
-      "size": 5482,
-      "sha256": "447308017ebd3f94f4d5fef997743135559ed268dc78abdcbd79be453c08fb7b"
-    },
-    {
-      "path": "ENTERPRISE_RELEASE_MANIFEST.json",
-      "size": 81324,
-      "sha256": "bab49729e7d777d4eccd82f22153e9abc849083269640ac6320840278940fbb7"
-    },
-    {
-      "path": "INSTALL.md",
-      "size": 2366,
-      "sha256": "49e4aa3d7326113303c34f38669dc9d0f6b2b5cb880f7d22e3a148c59bdb7d05"
-    },
-    {
-      "path": "INSTALL_TRUTHKEEP_MAC_LINUX.sh",
-      "size": 1036,
-      "sha256": "2328feb76f39f32d98f09156c208d6ddf16b4c2fb9f57692866c1ced0bfe95bb"
-    },
-    {
-      "path": "INSTALL_TRUTHKEEP_WINDOWS.cmd",
-      "size": 1672,
-      "sha256": "ef5c734fc57aebc45527e838c0410a9583dbd3caa56a0867b28658f08d6810f9"
-    },
-    {
-      "path": "INSTALL_TRUTHKEEP_WINDOWS.ps1",
-      "size": 1669,
-      "sha256": "6c8ed125261a52540c6eb45834a9e660180fa74620113b9ce3c75b29c6ed7f6f"
-    },
-    {
-      "path": "LICENSE",
-      "size": 1084,
-      "sha256": "30db6202a2d925b36deed480f76eb776e57734db0aa1568316ed0fd9bf4dd9f9"
-    },
-    {
-      "path": "MIGRATION_NOTES.md",
-      "size": 2888,
-      "sha256": "38bd5901efe9ff9cb5f58c85a67f11e49b02fa99b40771b43022017e3050853e"
-    },
-    {
-      "path": "PRIVACY.md",
-      "size": 5762,
-      "sha256": "47e20cc0d5e66fc853d06d4a2bb7d8c395d7b28c7cf6262136e3b141300c4816"
-    },
-    {
-      "path": "QUICKSTART.md",
-      "size": 2207,
-      "sha256": "0cfe605238b788b9cc836c98b87ab2b2ee19097a7398136248af2f347832a209"
-    },
-    {
-      "path": "QUICKSTART_5_MINUTES.md",
-      "size": 2735,
-      "sha256": "e4b617bfc052f672f9c6428f4d258f73b969488462da25feb77366b10a14f3e6"
-    },
-    {
-      "path": "README.md",
-      "size": 12190,
-      "sha256": "b8a8b282c15a42e9c3cd2a214784b7935c8a5e8678b04b6b9b7958fc491615f9"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_MAC_LINUX.sh",
-      "size": 92,
-      "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_WINDOWS.cmd",
-      "size": 75,
-      "sha256": "a2e1f10d7721a710e1e92f440a5041519364cffa3c8e35fb2c395bc339f9c9a3"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_WINDOWS.ps1",
-      "size": 113,
-      "sha256": "640392cca698b9eb49c1d02b4978aa84cd1dff22996f1dd36491517ba966368e"
-    },
-    {
-      "path": "SECURITY.md",
-      "size": 8594,
-      "sha256": "e63b21c963e487ea61a1f326743b162e0057bec39a89eb7c47909209712337c1"
-    },
-    {
-      "path": "SECURITY_LIMITATIONS.md",
-      "size": 6262,
-      "sha256": "99594b29f6b4108b2e9e2b245df68932d868fa97750cfeee74e0f05a5fa7a2e8"
-    },
-    {
-      "path": "SECURITY_THREAT_MODEL.md",
-      "size": 10107,
-      "sha256": "4780e08358ed661f5a8476adb0d6e183a372603ffa30d4e410cfb2b3ba20822e"
-    },
-    {
-      "path": "START_HERE.md",
-      "size": 1648,
-      "sha256": "fb24d49b15861835daaeb3301cc3fdabd7e638a6816e83886cb6b77b84cfa290"
-    },
-    {
-      "path": "VERSION.md",
-      "size": 29,
-      "sha256": "fcb2d189135f698c0e4ed22afc6e5b69dd2d418293109aab1c4968fb2370aa4d"
     },
     {
       "path": "aegis_py/.agents/skills/speckit-analyze/SKILL.md",
@@ -285,26 +165,6 @@
       "sha256": "b01e10f0393b94a880f611bea908d97e3cbbd3ba5cb8bd34470a6ab42bc1f112"
     },
     {
-      "path": "aegis_py/ARCHITECTURE_BEAST_MAP.md",
-      "size": 18405,
-      "sha256": "0c1539930b346196505d05794955210969864deb4335244cc30a19e9ae9f1bf7"
-    },
-    {
-      "path": "aegis_py/PREHISTORIC_CORE_SYSTEM.md",
-      "size": 3492,
-      "sha256": "0d1f3b8ea8f8870fa525609f51d6f763cc5dfef3d21fa297cfd0f1830ca8513e"
-    },
-    {
-      "path": "aegis_py/PREHISTORIC_DEPTH_MAP.md",
-      "size": 4577,
-      "sha256": "cb2b7c290e6bf0fe0080ef4e95d1a72a2331360f292f109d29b750b705070f2a"
-    },
-    {
-      "path": "aegis_py/PREHISTORIC_EXECUTION_PRIORITIES.md",
-      "size": 4017,
-      "sha256": "96a928e5d9e1cc4bd580b6f8b4fa5a658d158634cf0e8bf029eca34285c1b76a"
-    },
-    {
       "path": "aegis_py/__init__.py",
       "size": 129,
       "sha256": "735524b83be89e0beeb8d9f901da578056897ba44be367f8faa38bbc27dbc390"
@@ -318,6 +178,11 @@
       "path": "aegis_py/app.py",
       "size": 131739,
       "sha256": "e5f9f3699d9dc24f1e71e223f61acb63e4fe6222ed11228e21aac62ae8935985"
+    },
+    {
+      "path": "aegis_py/ARCHITECTURE_BEAST_MAP.md",
+      "size": 18405,
+      "sha256": "0c1539930b346196505d05794955210969864deb4335244cc30a19e9ae9f1bf7"
     },
     {
       "path": "aegis_py/backup_surface.py",
@@ -678,6 +543,21 @@
       "path": "aegis_py/prehistoric_completion.py",
       "size": 4123,
       "sha256": "d014a27c014adc4a940982a056fcd9994719d378ba9dcb37b1a87b2a699c2470"
+    },
+    {
+      "path": "aegis_py/PREHISTORIC_CORE_SYSTEM.md",
+      "size": 3492,
+      "sha256": "0d1f3b8ea8f8870fa525609f51d6f763cc5dfef3d21fa297cfd0f1830ca8513e"
+    },
+    {
+      "path": "aegis_py/PREHISTORIC_DEPTH_MAP.md",
+      "size": 4577,
+      "sha256": "cb2b7c290e6bf0fe0080ef4e95d1a72a2331360f292f109d29b750b705070f2a"
+    },
+    {
+      "path": "aegis_py/PREHISTORIC_EXECUTION_PRIORITIES.md",
+      "size": 4017,
+      "sha256": "96a928e5d9e1cc4bd580b6f8b4fa5a658d158634cf0e8bf029eca34285c1b76a"
     },
     {
       "path": "aegis_py/replication/__init__.py",
@@ -1160,6 +1040,16 @@
       "sha256": "b6496c2e3bd216c5b2110e3bc551c896f0cbe9ed7ffd2642f32fa3cc6f94c6bc"
     },
     {
+      "path": "AUDIT_PREP.md",
+      "size": 6695,
+      "sha256": "25587d38d768924fa169fc303bfcdbc377c3d000711e5b5a6a9572a1ba291b92"
+    },
+    {
+      "path": "BACKUP_RESTORE.md",
+      "size": 4884,
+      "sha256": "5aab978d67b13185830d29925bc32ea127166f4b6641dc856ed23e1eb89bb751"
+    },
+    {
       "path": "benchmarks/ablation/runner.py",
       "size": 21159,
       "sha256": "9036ad4db6bfda640269d9097b93fd8ea57e486582a34942f14d4edc2f1c92c4"
@@ -1220,6 +1110,21 @@
       "sha256": "0955fa4fe80826a4d79644ab37fc175b7bf5abc15c6bb59244b3f60db95a79df"
     },
     {
+      "path": "CHANGELOG.md",
+      "size": 8384,
+      "sha256": "08d8d4b9e1eb3c7985a3216eeb724e4e9fa231c483338ddc8e18c13b8da9a47d"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 4665,
+      "sha256": "2ca7cff87ba05deee3e14d9f5c6a92724fdf27eec05084384517d4c59ffe5e83"
+    },
+    {
+      "path": "DATA_RETENTION.md",
+      "size": 5482,
+      "sha256": "447308017ebd3f94f4d5fef997743135559ed268dc78abdcbd79be453c08fb7b"
+    },
+    {
       "path": "docs/AEGIS_V10_SPEC.md",
       "size": 1876,
       "sha256": "d11ce24946b12e6db7d04288d3a2fe53b8547816edc91546c8a6d1197aa43e28"
@@ -1245,19 +1150,24 @@
       "sha256": "c35ad68fdbd33390baaa179b8092044c44aa8a49955497ab9c232d76c9693658"
     },
     {
+      "path": "docs/implementation_plan.md.resolved",
+      "size": 1727,
+      "sha256": "45406877f3cca21fc1ac4ecb0c43b6af165c3630805b6ea405dd0ff6a9913f3c"
+    },
+    {
       "path": "docs/IT_ADMIN_DEPLOYMENT.md",
       "size": 1478,
       "sha256": "7f2e1c7fbe1b656291946222e60bec9c389923c32593a7519e4d812df78ed888"
     },
     {
-      "path": "docs/MATHEMATICAL_MEMORY_SUBSTRATE.md",
-      "size": 23415,
-      "sha256": "6b93bf42ecec3ac815ac68c823306e78ce4b762cd7758319bde232a28739204a"
-    },
-    {
       "path": "docs/MATH_ARCHITECTURE.md",
       "size": 17588,
       "sha256": "a0d445bef0113f29c8190d1358c7edfe7e9454e53a89833db4368e052dbf4a56"
+    },
+    {
+      "path": "docs/MATHEMATICAL_MEMORY_SUBSTRATE.md",
+      "size": 23415,
+      "sha256": "6b93bf42ecec3ac815ac68c823306e78ce4b762cd7758319bde232a28739204a"
     },
     {
       "path": "docs/NO_CODE_USER_GUIDE.md",
@@ -1300,6 +1210,31 @@
       "sha256": "76f30441437d6a2e9840fb74b3da239cac35c5f9c3763a24cfc76f327f47dcf9"
     },
     {
+      "path": "docs/runbooks/db-lock.md",
+      "size": 793,
+      "sha256": "05cbae530a2cca49d936020117c29e6985f80656ce063314404fd1406cbcc6b0"
+    },
+    {
+      "path": "docs/runbooks/duplicate-reply.md",
+      "size": 1069,
+      "sha256": "5027210b31c2094e93f0871091de4c2a48a3b6f2c49ff3e5c94987a952b6b236"
+    },
+    {
+      "path": "docs/runbooks/polling-stall.md",
+      "size": 811,
+      "sha256": "16177d3a4500dddd940223e1a301675d64ae3fbf5984ed235399c61c90df6c0a"
+    },
+    {
+      "path": "docs/runbooks/restore-mismatch.md",
+      "size": 808,
+      "sha256": "5fa79644c194f22afe77e840eef9f1eb3cfb358d9728aa8cf98ab70df156bee1"
+    },
+    {
+      "path": "docs/runbooks/sync-failure.md",
+      "size": 891,
+      "sha256": "11d811bab8f235488dd2007a4f652a0d36baf4955d5494aaa7afb232092c1742"
+    },
+    {
       "path": "docs/SECURE_MEMORY_MATH_RESEARCH.md",
       "size": 10072,
       "sha256": "a7954976430ac9358c035b1e000eb50489b5478a5252d90cf9f7b446c9812190"
@@ -1338,36 +1273,6 @@
       "path": "docs/WHY_AEGIS_CORE_WINS.md",
       "size": 2446,
       "sha256": "30d9c176050aa2293ae0fece2e2fb8d11fe73bb0204f9436ae10b68f33e9c84e"
-    },
-    {
-      "path": "docs/implementation_plan.md.resolved",
-      "size": 1727,
-      "sha256": "45406877f3cca21fc1ac4ecb0c43b6af165c3630805b6ea405dd0ff6a9913f3c"
-    },
-    {
-      "path": "docs/runbooks/db-lock.md",
-      "size": 793,
-      "sha256": "05cbae530a2cca49d936020117c29e6985f80656ce063314404fd1406cbcc6b0"
-    },
-    {
-      "path": "docs/runbooks/duplicate-reply.md",
-      "size": 1069,
-      "sha256": "5027210b31c2094e93f0871091de4c2a48a3b6f2c49ff3e5c94987a952b6b236"
-    },
-    {
-      "path": "docs/runbooks/polling-stall.md",
-      "size": 811,
-      "sha256": "16177d3a4500dddd940223e1a301675d64ae3fbf5984ed235399c61c90df6c0a"
-    },
-    {
-      "path": "docs/runbooks/restore-mismatch.md",
-      "size": 808,
-      "sha256": "5fa79644c194f22afe77e840eef9f1eb3cfb358d9728aa8cf98ab70df156bee1"
-    },
-    {
-      "path": "docs/runbooks/sync-failure.md",
-      "size": 891,
-      "sha256": "11d811bab8f235488dd2007a4f652a0d36baf4955d5494aaa7afb232092c1742"
     },
     {
       "path": "examples/antigravity_mcp.json",
@@ -1415,14 +1320,29 @@
       "sha256": "402c3ae54c165751e60f99729b06ed31a916fabd50d57a7e8233444ff1b03d76"
     },
     {
+      "path": "INSTALL.md",
+      "size": 2366,
+      "sha256": "49e4aa3d7326113303c34f38669dc9d0f6b2b5cb880f7d22e3a148c59bdb7d05"
+    },
+    {
       "path": "install.sh",
       "size": 92,
       "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
     },
     {
-      "path": "installers/README.md",
-      "size": 983,
-      "sha256": "8db05d6304aa5fd8bcaad059ff9d11fd1a305d0366de17e184b47e3f8a65e893"
+      "path": "INSTALL_TRUTHKEEP_MAC_LINUX.sh",
+      "size": 1036,
+      "sha256": "2328feb76f39f32d98f09156c208d6ddf16b4c2fb9f57692866c1ced0bfe95bb"
+    },
+    {
+      "path": "INSTALL_TRUTHKEEP_WINDOWS.cmd",
+      "size": 1672,
+      "sha256": "ef5c734fc57aebc45527e838c0410a9583dbd3caa56a0867b28658f08d6810f9"
+    },
+    {
+      "path": "INSTALL_TRUTHKEEP_WINDOWS.ps1",
+      "size": 1669,
+      "sha256": "6c8ed125261a52540c6eb45834a9e660180fa74620113b9ce3c75b29c6ed7f6f"
     },
     {
       "path": "installers/linux/build_deb.sh",
@@ -1445,9 +1365,9 @@
       "sha256": "ffec99a5db770cae607d2de1b02e78a53a92cf3d344a27b99d4b315e2ff35e67"
     },
     {
-      "path": "installers/windows/TruthKeepSetup.iss",
-      "size": 1122,
-      "sha256": "7cd8287393a4e179297f4ec37ea8584030d85e3efc40fe538afda2eb3f6158a3"
+      "path": "installers/README.md",
+      "size": 983,
+      "sha256": "8db05d6304aa5fd8bcaad059ff9d11fd1a305d0366de17e184b47e3f8a65e893"
     },
     {
       "path": "installers/windows/build_installer.ps1",
@@ -1458,6 +1378,21 @@
       "path": "installers/windows/sign_installer.ps1",
       "size": 1008,
       "sha256": "59fd12ed75def566202385c0b91498be6c3d774e2ca4596590c34599514f7a51"
+    },
+    {
+      "path": "installers/windows/TruthKeepSetup.iss",
+      "size": 1122,
+      "sha256": "7cd8287393a4e179297f4ec37ea8584030d85e3efc40fe538afda2eb3f6158a3"
+    },
+    {
+      "path": "LICENSE",
+      "size": 1084,
+      "sha256": "30db6202a2d925b36deed480f76eb776e57734db0aa1568316ed0fd9bf4dd9f9"
+    },
+    {
+      "path": "MIGRATION_NOTES.md",
+      "size": 2888,
+      "sha256": "38bd5901efe9ff9cb5f58c85a67f11e49b02fa99b40771b43022017e3050853e"
     },
     {
       "path": "openclaw/truthkeep-memory.native.cjs",
@@ -1485,9 +1420,29 @@
       "sha256": "12e8246e086079c8c97b7b9b74c5b99492229e8df6b0e8d279a95bb66b1c0b7e"
     },
     {
+      "path": "PRIVACY.md",
+      "size": 5762,
+      "sha256": "47e20cc0d5e66fc853d06d4a2bb7d8c395d7b28c7cf6262136e3b141300c4816"
+    },
+    {
       "path": "pyproject.toml",
       "size": 969,
       "sha256": "5a52f4a7b153d972b82a198808f3ae91cf2a24e0b03c7b65fd80f8a1d7b48105"
+    },
+    {
+      "path": "QUICKSTART.md",
+      "size": 2207,
+      "sha256": "0cfe605238b788b9cc836c98b87ab2b2ee19097a7398136248af2f347832a209"
+    },
+    {
+      "path": "QUICKSTART_5_MINUTES.md",
+      "size": 2735,
+      "sha256": "e4b617bfc052f672f9c6428f4d258f73b969488462da25feb77366b10a14f3e6"
+    },
+    {
+      "path": "README.md",
+      "size": 12190,
+      "sha256": "b8a8b282c15a42e9c3cd2a214784b7935c8a5e8678b04b6b9b7958fc491615f9"
     },
     {
       "path": "reports/ablation_math_report.md",
@@ -1553,6 +1508,21 @@
       "path": "requirements.txt",
       "size": 80,
       "sha256": "d6a6c70314e13328851c88fad90a12ff54d713a3f90ca948a486d38ce8f42adb"
+    },
+    {
+      "path": "RUN_TRUTHKEEP_MAC_LINUX.sh",
+      "size": 92,
+      "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
+    },
+    {
+      "path": "RUN_TRUTHKEEP_WINDOWS.cmd",
+      "size": 75,
+      "sha256": "a2e1f10d7721a710e1e92f440a5041519364cffa3c8e35fb2c395bc339f9c9a3"
+    },
+    {
+      "path": "RUN_TRUTHKEEP_WINDOWS.ps1",
+      "size": 113,
+      "sha256": "640392cca698b9eb49c1d02b4978aa84cd1dff22996f1dd36491517ba966368e"
     },
     {
       "path": "scratch/benchmark_debug.py",
@@ -1731,8 +1701,8 @@
     },
     {
       "path": "scripts/make_enterprise_release_manifest.py",
-      "size": 2319,
-      "sha256": "0e7efcf19d64cc1fff9cd8d1de12041e44a9a68ce1bce11e38378a5e5c43e56f"
+      "size": 2593,
+      "sha256": "364f5f68da902311e3540ad63a64181c98358c273e412603851603e094967d74"
     },
     {
       "path": "scripts/migrate_042_managed_scope_replication.py",
@@ -1841,8 +1811,8 @@
     },
     {
       "path": "scripts/verify_enterprise_release.py",
-      "size": 2152,
-      "sha256": "274240108903feafe2bda5d438365b152d05dcb6a5e1b577cbb6734d2118bad6"
+      "size": 4384,
+      "sha256": "c7989100789b97c348fca622e908f2be29663bfbb463dd7701befd1f836a3914"
     },
     {
       "path": "scripts/verify_polished_release.py",
@@ -1853,6 +1823,21 @@
       "path": "scripts/verify_ux.py",
       "size": 2623,
       "sha256": "15c974e85466058b620f67d0651e8a709f190f95507fae9407a969ef3615d520"
+    },
+    {
+      "path": "SECURITY.md",
+      "size": 8594,
+      "sha256": "e63b21c963e487ea61a1f326743b162e0057bec39a89eb7c47909209712337c1"
+    },
+    {
+      "path": "SECURITY_LIMITATIONS.md",
+      "size": 6262,
+      "sha256": "99594b29f6b4108b2e9e2b245df68932d868fa97750cfeee74e0f05a5fa7a2e8"
+    },
+    {
+      "path": "SECURITY_THREAT_MODEL.md",
+      "size": 10107,
+      "sha256": "4780e08358ed661f5a8476adb0d6e183a372603ffa30d4e410cfb2b3ba20822e"
     },
     {
       "path": "specs/130-truth-transition-timeline-ux/plan.md",
@@ -1915,11 +1900,6 @@
       "sha256": "eb7dbab3c5c833ab01973d0b0ba5b9d6ba87a7eda5404a6741dbd6abbd8fcfcb"
     },
     {
-      "path": "specs/README.md",
-      "size": 11055,
-      "sha256": "108f15b5e75ed5482b6b53a97202d12ecc0adef4751c66f8b16cc138fa197685"
-    },
-    {
       "path": "specs/dafny/crt_math.dfy",
       "size": 11693,
       "sha256": "2d95165cff33b3d813169eb2c8d1003288ebbd9af3f92537cbc7902f444e1534"
@@ -1945,6 +1925,11 @@
       "sha256": "0dc5539943f768ed9d59077abeb85bfcc435b3b471915ce7e70244aad9b1e3f9"
     },
     {
+      "path": "specs/README.md",
+      "size": 11055,
+      "sha256": "108f15b5e75ed5482b6b53a97202d12ecc0adef4751c66f8b16cc138fa197685"
+    },
+    {
       "path": "specs/tla/TruthKeepMemory.cfg",
       "size": 864,
       "sha256": "c9e562713cb0d1d94ed4bbc766433e549c05fa57a0a2bf0487215df736e439e9"
@@ -1958,6 +1943,11 @@
       "path": "specs/tla/verify_invariants.py",
       "size": 17074,
       "sha256": "68f87af1752ead66a6dfd867e9fb022226320b5cf8d1081db0ca5f9dda5afa7d"
+    },
+    {
+      "path": "START_HERE.md",
+      "size": 1648,
+      "sha256": "fb24d49b15861835daaeb3301cc3fdabd7e638a6816e83886cb6b77b84cfa290"
     },
     {
       "path": "tests/conftest.py",
@@ -2033,6 +2023,11 @@
       "path": "tests/test_decade_endurance.py",
       "size": 38784,
       "sha256": "f965df2a38937eefb2c4451e3b5ff8a3017f48158de76f2f705d1e32fddaf98b"
+    },
+    {
+      "path": "tests/test_enterprise_release_manifest.py",
+      "size": 908,
+      "sha256": "16c475d6a963ae12fcc15d128c792ca1ca8ec5b23012db7f11201e43624c0b7e"
     },
     {
       "path": "tests/test_experience_brief_report.py",
@@ -2425,16 +2420,6 @@
       "sha256": "cf6fcabd84869d6713f824d132960cf3979d7f4663082f9fd70693b9737884a4"
     },
     {
-      "path": "truthkeep_memory.egg-info/PKG-INFO",
-      "size": 12152,
-      "sha256": "f77e17e3926b2831c25037586d04557a6df09ac492177f1d7d1d3bbb675568bd"
-    },
-    {
-      "path": "truthkeep_memory.egg-info/SOURCES.txt",
-      "size": 8177,
-      "sha256": "83ceced672c067398a2a7dae717b35c748696b827ab2df4ed4224cb6cb2237e6"
-    },
-    {
       "path": "truthkeep_memory.egg-info/dependency_links.txt",
       "size": 1,
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
@@ -2445,14 +2430,29 @@
       "sha256": "0b37087ef25c31d1b088bdf27eed1bab303c03a626a43acfbc0934d2fc5a360f"
     },
     {
+      "path": "truthkeep_memory.egg-info/PKG-INFO",
+      "size": 12152,
+      "sha256": "f77e17e3926b2831c25037586d04557a6df09ac492177f1d7d1d3bbb675568bd"
+    },
+    {
       "path": "truthkeep_memory.egg-info/requires.txt",
       "size": 34,
       "sha256": "e08d7967e44a423e312a4a61c8b65a7fec44ba3b925014d8057e2835059617f6"
     },
     {
+      "path": "truthkeep_memory.egg-info/SOURCES.txt",
+      "size": 8177,
+      "sha256": "83ceced672c067398a2a7dae717b35c748696b827ab2df4ed4224cb6cb2237e6"
+    },
+    {
       "path": "truthkeep_memory.egg-info/top_level.txt",
       "size": 19,
       "sha256": "96496c7bb88c4ed78f5187bebd97212dee90ed7d799a4f9a3a3151eb71373f96"
+    },
+    {
+      "path": "VERSION.md",
+      "size": 29,
+      "sha256": "fcb2d189135f698c0e4ed22afc6e5b69dd2d418293109aab1c4968fb2370aa4d"
     }
   ]
 }
