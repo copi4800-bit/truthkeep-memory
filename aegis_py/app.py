@@ -246,6 +246,8 @@ class AegisApp:
 
     def put_memory(self, content: str, type: str | None = None, scope_type: str = "session", scope_id: str = "default", session_id: Optional[str] = None, **kwargs):
         """Ingests a memory and extracts style signals."""
+        if getattr(self, '_closed', False):
+            raise RuntimeError("Cannot put_memory on a closed AegisApp")
         observation = ObservedOperation(
             self.observability,
             tool="put_memory",
@@ -2352,6 +2354,7 @@ class AegisApp:
         return snapshot
 
     def close(self) -> None:
+        self._closed = True
         self.storage.close()
 
     def serialize_search_results(

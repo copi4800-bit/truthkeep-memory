@@ -34,9 +34,16 @@ def _now_iso() -> str:
 
 
 def _sanitize_fts_query(query: str) -> str:
+    # Strip control characters (U+0000–U+001F, U+007F)
+    sanitized = "".join(ch for ch in query if ch >= " " and ch != "\x7f")
+    # Strip punctuation that FTS5 interprets as syntax
     chars_to_strip = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
-    sanitized = query.translate(str.maketrans({char: " " for char in chars_to_strip}))
-    return " ".join(sanitized.split())
+    sanitized = sanitized.translate(str.maketrans({char: " " for char in chars_to_strip}))
+    # Strip FTS5 boolean operators that cause syntax errors
+    _FTS5_OPERATORS = {"AND", "OR", "NOT", "NEAR"}
+    tokens = sanitized.split()
+    tokens = [t for t in tokens if t.upper() not in _FTS5_OPERATORS]
+    return " ".join(tokens)
 
 
 @dataclass
