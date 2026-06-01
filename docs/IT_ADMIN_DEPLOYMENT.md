@@ -27,13 +27,13 @@ Advanced tools are in `openclaw.plugin.advanced.json` and should not be deployed
 TruthKeep currently uses a script-based installer. For a managed environment, wrap it with your software deployment tool:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File INSTALL_TRUTHKEEP_WINDOWS.ps1
+powershell -ExecutionPolicy Bypass -File installers/INSTALL_TRUTHKEEP_WINDOWS.ps1
 ```
 
 ## macOS/Linux deployment
 
 ```bash
-./INSTALL_TRUTHKEEP_MAC_LINUX.sh
+./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
 ## Health checks

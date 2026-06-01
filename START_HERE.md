@@ -9,7 +9,7 @@ TruthKeep is a local-first memory engine for AI agents. It focuses on rememberin
 Double-click:
 
 ```text
-INSTALL_TRUTHKEEP_WINDOWS.cmd
+installers/INSTALL_TRUTHKEEP_WINDOWS.cmd
 ```
 
 Then restart OpenClaw and use:
@@ -23,7 +23,7 @@ memory_status
 Run:
 
 ```bash
-./INSTALL_TRUTHKEEP_MAC_LINUX.sh
+./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
 Then restart OpenClaw and use `memory_status`.
@@ -64,9 +64,9 @@ It launches the same Easy Mode setup.
 
 For the easiest install, use the root installer launchers:
 
-- `INSTALL_TRUTHKEEP_WINDOWS.cmd`
-- `INSTALL_TRUTHKEEP_WINDOWS.ps1`
-- `INSTALL_TRUTHKEEP_MAC_LINUX.sh`
+- `installers/INSTALL_TRUTHKEEP_WINDOWS.cmd`
+- `installers/INSTALL_TRUTHKEEP_WINDOWS.ps1`
+- `installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh`
 
 For IT admins and signed installer builds, read:
 

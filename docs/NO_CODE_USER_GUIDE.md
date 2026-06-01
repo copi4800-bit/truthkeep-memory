@@ -8,9 +8,9 @@ Open TruthKeep, connect it to OpenClaw, and use memory safely.
 
 ## Install
 
-Windows: double-click `RUN_TRUTHKEEP_WINDOWS.cmd`.
+Windows: double-click `installers/RUN_TRUTHKEEP_WINDOWS.cmd`.
 
-macOS/Linux: run `./RUN_TRUTHKEEP_MAC_LINUX.sh`.
+macOS/Linux: run `./installers/RUN_TRUTHKEEP_MAC_LINUX.sh`.
 
 ## Daily use
 

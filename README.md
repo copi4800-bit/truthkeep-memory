@@ -20,7 +20,7 @@ This repository is the v11 alpha enterprise-installer-ready package. It includes
 Double-click:
 
 ```text
-INSTALL_TRUTHKEEP_WINDOWS.cmd
+installers/INSTALL_TRUTHKEEP_WINDOWS.cmd
 ```
 
 Then restart OpenClaw and use `memory_status`.
@@ -30,8 +30,8 @@ Then restart OpenClaw and use `memory_status`.
 Run:
 
 ```bash
-chmod +x ./INSTALL_TRUTHKEEP_MAC_LINUX.sh
-./INSTALL_TRUTHKEEP_MAC_LINUX.sh
+chmod +x ./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
+./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
 Then restart OpenClaw and use `memory_status`.

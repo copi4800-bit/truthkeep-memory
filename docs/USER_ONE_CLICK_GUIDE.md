@@ -3,7 +3,7 @@
 ## Windows
 
 1. Unzip TruthKeep.
-2. Double-click `INSTALL_TRUTHKEEP_WINDOWS.cmd`.
+2. Double-click `installers/INSTALL_TRUTHKEEP_WINDOWS.cmd`.
 3. Wait until you see `[OK] TruthKeep is installed and OpenClaw Easy Mode is ready.`
 4. Restart OpenClaw.
 5. Use `memory_status` to check it.
@@ -15,7 +15,7 @@
 3. Run:
 
 ```bash
-./INSTALL_TRUTHKEEP_MAC_LINUX.sh
+./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
 4. Restart OpenClaw.

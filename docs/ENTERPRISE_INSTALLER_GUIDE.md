@@ -28,20 +28,20 @@ It cannot create a trusted signed installer by itself. Trusted signing requires 
 Double-click:
 
 ```text
-INSTALL_TRUTHKEEP_WINDOWS.cmd
+installers/INSTALL_TRUTHKEEP_WINDOWS.cmd
 ```
 
 or run PowerShell:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\INSTALL_TRUTHKEEP_WINDOWS.ps1
+powershell -ExecutionPolicy Bypass -File .\installers\INSTALL_TRUTHKEEP_WINDOWS.ps1
 ```
 
 ### macOS/Linux
 
 ```bash
-chmod +x ./INSTALL_TRUTHKEEP_MAC_LINUX.sh
-./INSTALL_TRUTHKEEP_MAC_LINUX.sh
+chmod +x ./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
+./installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh
 ```
 
 ## IT packaging path

@@ -11,9 +11,9 @@ BAD_NAMES = {'memory_aegis.db','memory_aegis.db-wal','memory_aegis.db-shm','trut
 MANIFEST_PATH = ROOT / 'ENTERPRISE_RELEASE_MANIFEST.json'
 REQUIRED = [
     'ENTERPRISE_RELEASE_MANIFEST.json',
-    'INSTALL_TRUTHKEEP_WINDOWS.cmd',
-    'INSTALL_TRUTHKEEP_WINDOWS.ps1',
-    'INSTALL_TRUTHKEEP_MAC_LINUX.sh',
+    'installers/INSTALL_TRUTHKEEP_WINDOWS.cmd',
+    'installers/INSTALL_TRUTHKEEP_WINDOWS.ps1',
+    'installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh',
     'openclaw.plugin.json',
     'openclaw.plugin.advanced.json',
     'docs/ENTERPRISE_INSTALLER_GUIDE.md',

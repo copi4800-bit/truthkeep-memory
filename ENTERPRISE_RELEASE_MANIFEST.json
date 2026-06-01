@@ -1,7 +1,7 @@
 {
   "name": "TruthKeep Memory",
   "release": "v11.0.0-alpha-enterprise-installer-ready",
-  "generated_at_unix": 1780286541,
+  "generated_at_unix": 1780301882,
   "python": "3.12.10",
   "platform": "Windows-11-10.0.26200-SP0",
   "signing_status": "unsigned_source_manifest; sign platform installers with your own certificate/private key",
@@ -26,8 +26,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "size": 1428,
-      "sha256": "895b84b32389cb6de636a5d127b786b256efa54708c0feb745f7400884cc84d7"
+      "size": 1435,
+      "sha256": "e2358d2f7b3341ec03b2a1ec6aedcd3ad36d2d2c68c7e06458520712b68e56d0"
     },
     {
       "path": ".gitignore",
@@ -891,8 +891,8 @@
     },
     {
       "path": "aegis_py/ux/desktop.py",
-      "size": 47897,
-      "sha256": "28c1dc51e68ade19668b95e2a5a83eb4592dad8ec24e4af2d9781a849de33628"
+      "size": 48109,
+      "sha256": "5a6f7486429679546552403b8a32c79329ccabcedb9b472901a73ea57b6ba3cc"
     },
     {
       "path": "aegis_py/ux/health.py",
@@ -1040,16 +1040,6 @@
       "sha256": "b6496c2e3bd216c5b2110e3bc551c896f0cbe9ed7ffd2642f32fa3cc6f94c6bc"
     },
     {
-      "path": "AUDIT_PREP.md",
-      "size": 6695,
-      "sha256": "25587d38d768924fa169fc303bfcdbc377c3d000711e5b5a6a9572a1ba291b92"
-    },
-    {
-      "path": "BACKUP_RESTORE.md",
-      "size": 4884,
-      "sha256": "5aab978d67b13185830d29925bc32ea127166f4b6641dc856ed23e1eb89bb751"
-    },
-    {
       "path": "benchmarks/ablation/runner.py",
       "size": 21159,
       "sha256": "9036ad4db6bfda640269d9097b93fd8ea57e486582a34942f14d4edc2f1c92c4"
@@ -1110,24 +1100,34 @@
       "sha256": "0955fa4fe80826a4d79644ab37fc175b7bf5abc15c6bb59244b3f60db95a79df"
     },
     {
-      "path": "CHANGELOG.md",
+      "path": "docs/AEGIS_V10_SPEC.md",
+      "size": 1876,
+      "sha256": "d11ce24946b12e6db7d04288d3a2fe53b8547816edc91546c8a6d1197aa43e28"
+    },
+    {
+      "path": "docs/AUDIT_PREP.md",
+      "size": 6695,
+      "sha256": "25587d38d768924fa169fc303bfcdbc377c3d000711e5b5a6a9572a1ba291b92"
+    },
+    {
+      "path": "docs/BACKUP_RESTORE.md",
+      "size": 4884,
+      "sha256": "5aab978d67b13185830d29925bc32ea127166f4b6641dc856ed23e1eb89bb751"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
       "size": 8384,
       "sha256": "08d8d4b9e1eb3c7985a3216eeb724e4e9fa231c483338ddc8e18c13b8da9a47d"
     },
     {
-      "path": "CONTRIBUTING.md",
+      "path": "docs/CONTRIBUTING.md",
       "size": 4665,
       "sha256": "2ca7cff87ba05deee3e14d9f5c6a92724fdf27eec05084384517d4c59ffe5e83"
     },
     {
-      "path": "DATA_RETENTION.md",
+      "path": "docs/DATA_RETENTION.md",
       "size": 5482,
       "sha256": "447308017ebd3f94f4d5fef997743135559ed268dc78abdcbd79be453c08fb7b"
-    },
-    {
-      "path": "docs/AEGIS_V10_SPEC.md",
-      "size": 1876,
-      "sha256": "d11ce24946b12e6db7d04288d3a2fe53b8547816edc91546c8a6d1197aa43e28"
     },
     {
       "path": "docs/EASY_MODE.md",
@@ -1136,8 +1136,8 @@
     },
     {
       "path": "docs/ENTERPRISE_INSTALLER_GUIDE.md",
-      "size": 2398,
-      "sha256": "c1d53c718485e1c03272b57777a3d5534bb2fbbe2e5b27370f9157a674e07151"
+      "size": 2442,
+      "sha256": "af3cb3fa5172bbab71d7ef11090f21572773a796895be7883f07d24d80bd016e"
     },
     {
       "path": "docs/ENTERPRISE_LIMITATIONS.md",
@@ -1155,9 +1155,14 @@
       "sha256": "45406877f3cca21fc1ac4ecb0c43b6af165c3630805b6ea405dd0ff6a9913f3c"
     },
     {
+      "path": "docs/INSTALL.md",
+      "size": 2366,
+      "sha256": "49e4aa3d7326113303c34f38669dc9d0f6b2b5cb880f7d22e3a148c59bdb7d05"
+    },
+    {
       "path": "docs/IT_ADMIN_DEPLOYMENT.md",
-      "size": 1478,
-      "sha256": "7f2e1c7fbe1b656291946222e60bec9c389923c32593a7519e4d812df78ed888"
+      "size": 1500,
+      "sha256": "4a70371a124daa831270d8e7e4e1c56285bc6e30d3aa95abed6ce48c07fdeba3"
     },
     {
       "path": "docs/MATH_ARCHITECTURE.md",
@@ -1170,9 +1175,14 @@
       "sha256": "6b93bf42ecec3ac815ac68c823306e78ce4b762cd7758319bde232a28739204a"
     },
     {
+      "path": "docs/MIGRATION_NOTES.md",
+      "size": 2888,
+      "sha256": "38bd5901efe9ff9cb5f58c85a67f11e49b02fa99b40771b43022017e3050853e"
+    },
+    {
       "path": "docs/NO_CODE_USER_GUIDE.md",
-      "size": 828,
-      "sha256": "ead2bb6bbaa19b01b7d9e884ecae57150c7d0b97fc9a05cf9f659e15b642d84c"
+      "size": 850,
+      "sha256": "926b3b7987621da31eee82df54cff3826ab8a3427cb130751dfdc29b47b5b2d9"
     },
     {
       "path": "docs/OPENCLAW_EASY_SETUP.md",
@@ -1185,9 +1195,24 @@
       "sha256": "27e3b2f3c25c3f6e6ab7d37ad8a16dd4691a0d516b9e7176166d78cf273b80c4"
     },
     {
+      "path": "docs/PRIVACY.md",
+      "size": 5762,
+      "sha256": "47e20cc0d5e66fc853d06d4a2bb7d8c395d7b28c7cf6262136e3b141300c4816"
+    },
+    {
       "path": "docs/PROOF_HUB.md",
       "size": 1178,
       "sha256": "d8700fd2f3983cecbe7dfce6d01ca50d2dba5a8d262c1ac9f300361be7d0bb7c"
+    },
+    {
+      "path": "docs/QUICKSTART.md",
+      "size": 2207,
+      "sha256": "0cfe605238b788b9cc836c98b87ab2b2ee19097a7398136248af2f347832a209"
+    },
+    {
+      "path": "docs/QUICKSTART_5_MINUTES.md",
+      "size": 2735,
+      "sha256": "e4b617bfc052f672f9c6428f4d258f73b969488462da25feb77366b10a14f3e6"
     },
     {
       "path": "docs/RELEASE-GATE.md",
@@ -1240,6 +1265,21 @@
       "sha256": "a7954976430ac9358c035b1e000eb50489b5478a5252d90cf9f7b446c9812190"
     },
     {
+      "path": "docs/SECURITY.md",
+      "size": 8594,
+      "sha256": "e63b21c963e487ea61a1f326743b162e0057bec39a89eb7c47909209712337c1"
+    },
+    {
+      "path": "docs/SECURITY_LIMITATIONS.md",
+      "size": 6262,
+      "sha256": "99594b29f6b4108b2e9e2b245df68932d868fa97750cfeee74e0f05a5fa7a2e8"
+    },
+    {
+      "path": "docs/SECURITY_THREAT_MODEL.md",
+      "size": 10107,
+      "sha256": "4780e08358ed661f5a8476adb0d6e183a372603ffa30d4e410cfb2b3ba20822e"
+    },
+    {
       "path": "docs/SIGNING_AND_NOTARIZATION.md",
       "size": 1524,
       "sha256": "beb7e093f5ad4f117afbbb5f139fc54ca30265108de066a0c7f8a58ca74165b3"
@@ -1256,8 +1296,8 @@
     },
     {
       "path": "docs/USER_ONE_CLICK_GUIDE.md",
-      "size": 673,
-      "sha256": "75ac0e73f088fc05bdbffb672077a285ad41e9acb3ac1ad74105981c2a13fdc6"
+      "size": 695,
+      "sha256": "54dce6d1fa239913c2fd92be26cd7c8ae520d4c8094d020145633469c925b395"
     },
     {
       "path": "docs/V10_GAP_ROADMAP.md",
@@ -1268,6 +1308,11 @@
       "path": "docs/V10_SPEC_MAPPING.md",
       "size": 7200,
       "sha256": "2c0722d29e84690d39f80badf26885386b4737e7278c202455d2785e11952840"
+    },
+    {
+      "path": "docs/VERSION.md",
+      "size": 29,
+      "sha256": "fcb2d189135f698c0e4ed22afc6e5b69dd2d418293109aab1c4968fb2370aa4d"
     },
     {
       "path": "docs/WHY_AEGIS_CORE_WINS.md",
@@ -1320,27 +1365,22 @@
       "sha256": "402c3ae54c165751e60f99729b06ed31a916fabd50d57a7e8233444ff1b03d76"
     },
     {
-      "path": "INSTALL.md",
-      "size": 2366,
-      "sha256": "49e4aa3d7326113303c34f38669dc9d0f6b2b5cb880f7d22e3a148c59bdb7d05"
-    },
-    {
-      "path": "install.sh",
+      "path": "installers/install.sh",
       "size": 92,
       "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
     },
     {
-      "path": "INSTALL_TRUTHKEEP_MAC_LINUX.sh",
+      "path": "installers/INSTALL_TRUTHKEEP_MAC_LINUX.sh",
       "size": 1036,
       "sha256": "2328feb76f39f32d98f09156c208d6ddf16b4c2fb9f57692866c1ced0bfe95bb"
     },
     {
-      "path": "INSTALL_TRUTHKEEP_WINDOWS.cmd",
+      "path": "installers/INSTALL_TRUTHKEEP_WINDOWS.cmd",
       "size": 1672,
       "sha256": "ef5c734fc57aebc45527e838c0410a9583dbd3caa56a0867b28658f08d6810f9"
     },
     {
-      "path": "INSTALL_TRUTHKEEP_WINDOWS.ps1",
+      "path": "installers/INSTALL_TRUTHKEEP_WINDOWS.ps1",
       "size": 1669,
       "sha256": "6c8ed125261a52540c6eb45834a9e660180fa74620113b9ce3c75b29c6ed7f6f"
     },
@@ -1370,6 +1410,21 @@
       "sha256": "8db05d6304aa5fd8bcaad059ff9d11fd1a305d0366de17e184b47e3f8a65e893"
     },
     {
+      "path": "installers/RUN_TRUTHKEEP_MAC_LINUX.sh",
+      "size": 92,
+      "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
+    },
+    {
+      "path": "installers/RUN_TRUTHKEEP_WINDOWS.cmd",
+      "size": 75,
+      "sha256": "a2e1f10d7721a710e1e92f440a5041519364cffa3c8e35fb2c395bc339f9c9a3"
+    },
+    {
+      "path": "installers/RUN_TRUTHKEEP_WINDOWS.ps1",
+      "size": 113,
+      "sha256": "640392cca698b9eb49c1d02b4978aa84cd1dff22996f1dd36491517ba966368e"
+    },
+    {
       "path": "installers/windows/build_installer.ps1",
       "size": 1181,
       "sha256": "fac9d4d0db8b6cce29a1f950db33763a10cc4484905fd119a44bebfb52b5d373"
@@ -1388,11 +1443,6 @@
       "path": "LICENSE",
       "size": 1084,
       "sha256": "30db6202a2d925b36deed480f76eb776e57734db0aa1568316ed0fd9bf4dd9f9"
-    },
-    {
-      "path": "MIGRATION_NOTES.md",
-      "size": 2888,
-      "sha256": "38bd5901efe9ff9cb5f58c85a67f11e49b02fa99b40771b43022017e3050853e"
     },
     {
       "path": "openclaw/truthkeep-memory.native.cjs",
@@ -1416,13 +1466,8 @@
     },
     {
       "path": "package.json",
-      "size": 2794,
-      "sha256": "12e8246e086079c8c97b7b9b74c5b99492229e8df6b0e8d279a95bb66b1c0b7e"
-    },
-    {
-      "path": "PRIVACY.md",
-      "size": 5762,
-      "sha256": "47e20cc0d5e66fc853d06d4a2bb7d8c395d7b28c7cf6262136e3b141300c4816"
+      "size": 2893,
+      "sha256": "f13b74bb709ab6439c2b8bdfdf106c24fd93aa953cd62de5466d3858175a13ae"
     },
     {
       "path": "pyproject.toml",
@@ -1430,19 +1475,9 @@
       "sha256": "5a52f4a7b153d972b82a198808f3ae91cf2a24e0b03c7b65fd80f8a1d7b48105"
     },
     {
-      "path": "QUICKSTART.md",
-      "size": 2207,
-      "sha256": "0cfe605238b788b9cc836c98b87ab2b2ee19097a7398136248af2f347832a209"
-    },
-    {
-      "path": "QUICKSTART_5_MINUTES.md",
-      "size": 2735,
-      "sha256": "e4b617bfc052f672f9c6428f4d258f73b969488462da25feb77366b10a14f3e6"
-    },
-    {
       "path": "README.md",
-      "size": 2972,
-      "sha256": "d779a5f6db61aaa4d3f752ececfeb1a3fc42ce2fadf54d9b0c417cba21165b01"
+      "size": 3005,
+      "sha256": "7b17abb33391255007cb03c4317e8175cfb64abf31e965d7223e213c94dcd6bd"
     },
     {
       "path": "reports/ablation_math_report.md",
@@ -1508,21 +1543,6 @@
       "path": "requirements.txt",
       "size": 80,
       "sha256": "d6a6c70314e13328851c88fad90a12ff54d713a3f90ca948a486d38ce8f42adb"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_MAC_LINUX.sh",
-      "size": 92,
-      "sha256": "e32101ed62e9e441d8ac68975193055b39d7cfc0022f980a97c3c6243c31f8ae"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_WINDOWS.cmd",
-      "size": 75,
-      "sha256": "a2e1f10d7721a710e1e92f440a5041519364cffa3c8e35fb2c395bc339f9c9a3"
-    },
-    {
-      "path": "RUN_TRUTHKEEP_WINDOWS.ps1",
-      "size": 113,
-      "sha256": "640392cca698b9eb49c1d02b4978aa84cd1dff22996f1dd36491517ba966368e"
     },
     {
       "path": "scratch/benchmark_debug.py",
@@ -1811,8 +1831,8 @@
     },
     {
       "path": "scripts/verify_enterprise_release.py",
-      "size": 4384,
-      "sha256": "c7989100789b97c348fca622e908f2be29663bfbb463dd7701befd1f836a3914"
+      "size": 4417,
+      "sha256": "7036d38090ae88c900edf2fef0dc09628c2d1cbdd4478e1931f84e5989ea6668"
     },
     {
       "path": "scripts/verify_polished_release.py",
@@ -1823,21 +1843,6 @@
       "path": "scripts/verify_ux.py",
       "size": 2623,
       "sha256": "15c974e85466058b620f67d0651e8a709f190f95507fae9407a969ef3615d520"
-    },
-    {
-      "path": "SECURITY.md",
-      "size": 8594,
-      "sha256": "e63b21c963e487ea61a1f326743b162e0057bec39a89eb7c47909209712337c1"
-    },
-    {
-      "path": "SECURITY_LIMITATIONS.md",
-      "size": 6262,
-      "sha256": "99594b29f6b4108b2e9e2b245df68932d868fa97750cfeee74e0f05a5fa7a2e8"
-    },
-    {
-      "path": "SECURITY_THREAT_MODEL.md",
-      "size": 10107,
-      "sha256": "4780e08358ed661f5a8476adb0d6e183a372603ffa30d4e410cfb2b3ba20822e"
     },
     {
       "path": "specs/130-truth-transition-timeline-ux/plan.md",
@@ -1946,8 +1951,8 @@
     },
     {
       "path": "START_HERE.md",
-      "size": 1635,
-      "sha256": "6078d498e9fdef4e2b78df49ee919632659e673a5b2e0a7b4c97fadd86884562"
+      "size": 1690,
+      "sha256": "0b8925f2ac4afc9bdbeda560f19cb30de7790af2f011e3b6209a3bcd0c2290f5"
     },
     {
       "path": "tests/conftest.py",
@@ -2036,8 +2041,8 @@
     },
     {
       "path": "tests/test_experience_brief_surface.py",
-      "size": 2397,
-      "sha256": "cf13f7b1d3139f894152677bbb690bb598033e22ef2553354b71513ae63683f1"
+      "size": 2952,
+      "sha256": "65d0303590a64fa43bed297615ac6da9dd21358c4ca36eaf22dc24ba30fe93ed"
     },
     {
       "path": "tests/test_facade_v10.py",
@@ -2161,8 +2166,8 @@
     },
     {
       "path": "tests/test_phase_132_openclaw_plugin_hardening.py",
-      "size": 2277,
-      "sha256": "896b3881eeee9bd89212e86cfcbd049a57a62383520ca77cd265ceb4b9111312"
+      "size": 2109,
+      "sha256": "79ba02858a530a0f2f025bf35e950539a22102c8ebe8167d14dadd9169872bd8"
     },
     {
       "path": "tests/test_phase_133_openclaw_native_adapter.py",
@@ -2448,11 +2453,6 @@
       "path": "truthkeep_memory.egg-info/top_level.txt",
       "size": 19,
       "sha256": "96496c7bb88c4ed78f5187bebd97212dee90ed7d799a4f9a3a3151eb71373f96"
-    },
-    {
-      "path": "VERSION.md",
-      "size": 29,
-      "sha256": "fcb2d189135f698c0e4ed22afc6e5b69dd2d418293109aab1c4968fb2370aa4d"
     }
   ]
 }
