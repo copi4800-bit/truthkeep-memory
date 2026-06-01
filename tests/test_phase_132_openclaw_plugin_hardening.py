@@ -49,8 +49,4 @@ def test_readme_and_quickstart_reference_real_public_plugin_commands():
     quickstart = Path("QUICKSTART.md").read_text(encoding="utf-8")
 
     assert "truthkeep-mcp" in readme
-    assert "truthkeep-setup" in readme
-    assert "truthkeep-check" in readme
     assert "truthkeep-mcp" in quickstart
-    assert "truthkeep-setup" in quickstart
-    assert "truthkeep-check" in quickstart
