@@ -1,7 +1,7 @@
 {
   "name": "TruthKeep Memory",
   "release": "v11.0.0-alpha-enterprise-installer-ready",
-  "generated_at_unix": 1780285841,
+  "generated_at_unix": 1780286541,
   "python": "3.12.10",
   "platform": "Windows-11-10.0.26200-SP0",
   "signing_status": "unsigned_source_manifest; sign platform installers with your own certificate/private key",
@@ -1441,8 +1441,8 @@
     },
     {
       "path": "README.md",
-      "size": 12190,
-      "sha256": "b8a8b282c15a42e9c3cd2a214784b7935c8a5e8678b04b6b9b7958fc491615f9"
+      "size": 2972,
+      "sha256": "d779a5f6db61aaa4d3f752ececfeb1a3fc42ce2fadf54d9b0c417cba21165b01"
     },
     {
       "path": "reports/ablation_math_report.md",
@@ -1946,8 +1946,8 @@
     },
     {
       "path": "START_HERE.md",
-      "size": 1648,
-      "sha256": "fb24d49b15861835daaeb3301cc3fdabd7e638a6816e83886cb6b77b84cfa290"
+      "size": 1635,
+      "sha256": "6078d498e9fdef4e2b78df49ee919632659e673a5b2e0a7b4c97fadd86884562"
     },
     {
       "path": "tests/conftest.py",
