@@ -115,6 +115,13 @@ def _poincare_tda_match(*, query: str, content: str | None, summary: str | None,
     """Poincaré TDA (Henri Poincaré) — Nhận diện bản chất tôpô bất chấp nhiễu từ ngữ."""
     if not features.ENABLE_TDA:
         return 0.0, []
+    try:
+        from aegis_py.security.config import SecurityConfig
+        from aegis_py.runtime.profile import heavy_hot_path_enabled
+        if not (SecurityConfig.tda_signature_enabled() and heavy_hot_path_enabled()):
+            return 0.0, []
+    except Exception:
+        return 0.0, []
     haystack = " ".join(filter(None, [content, summary, subject]))
 
     if not haystack.strip():

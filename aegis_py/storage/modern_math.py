@@ -575,8 +575,17 @@ def compute_memory_modern_math_fields(
     erdos_cell_id = ErdosIndexGrid.assign_grid_cell(hilbert_vector)
 
     # Poincaré TDA signature
-    tda_sig = PoincareTDAEngine.compute_persistence_signature(full_text)
-    tda_signature = PoincareTDAEngine.signature_to_string(tda_sig)
+    # Runtime Profiles keep this optional heavy diagnostic out of local/enterprise hot paths.
+    try:
+        from aegis_py.security.config import SecurityConfig
+        from aegis_py.runtime.profile import heavy_hot_path_enabled
+        if SecurityConfig.tda_signature_enabled() and heavy_hot_path_enabled():
+            tda_sig = PoincareTDAEngine.compute_persistence_signature(full_text)
+            tda_signature = PoincareTDAEngine.signature_to_string(tda_sig)
+        else:
+            tda_signature = ""
+    except Exception:
+        tda_signature = ""
 
     return {
         "hilbert_vector": hilbert_vector,

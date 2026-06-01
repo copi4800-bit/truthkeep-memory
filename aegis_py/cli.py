@@ -551,8 +551,25 @@ def build_parser() -> argparse.ArgumentParser:
     prove = subparsers.add_parser("prove-it", help="Run the short proof flow and print its summary.")
     prove.add_argument("--json", action="store_true", help="Emit structured JSON instead of a short summary.")
 
-    mcp = subparsers.add_parser("mcp", help="Print the MCP startup hint & Cursor/Claude config.")
-    mcp.add_argument("--json", action="store_true", help="Emit startup probe JSON.")
+    mcp = subparsers.add_parser("mcp", help="Universal MCP host integration commands.")
+    mcp.add_argument("--json", action="store_true", help="Emit startup probe JSON when no MCP subcommand is provided.")
+    mcp_sub = mcp.add_subparsers(dest="mcp_command", required=False)
+    mcp_sub.add_parser("list-hosts", help="List supported MCP host profiles.")
+    mcp_config = mcp_sub.add_parser("config", help="Print copy-paste MCP config for a host.")
+    mcp_config.add_argument("host", nargs="?", default="generic", help="Host profile: openclaw, claude, cursor, cline, roo, continue, vscode, generic.")
+    mcp_config.add_argument("--target", help="Optional target config path for documentation output.")
+    mcp_install = mcp_sub.add_parser("install", help="Install/merge TruthKeep MCP config for a host.")
+    mcp_install.add_argument("host", nargs="?", default="generic", help="Host profile to install.")
+    mcp_install.add_argument("--target", help="Explicit config path to write.")
+    mcp_install.add_argument("--dry-run", action="store_true", help="Show what would be written without touching files.")
+    mcp_doctor = mcp_sub.add_parser("doctor", help="Check TruthKeep MCP readiness for a host.")
+    mcp_doctor.add_argument("host", nargs="?", default="generic", help="Host profile to check.")
+    mcp_doctor.add_argument("--target", help="Explicit config path to check.")
+    mcp_smoke = mcp_sub.add_parser("smoke-test", help="Run a small local MCP memory smoke test.")
+    mcp_smoke.add_argument("host", nargs="?", default="generic", help="Host label for reporting.")
+    mcp_smoke.add_argument("--live", action="store_true", help="Also run developer live JSON-RPC probe.")
+    mcp_export = mcp_sub.add_parser("export-matrix", help="Write MCP compatibility matrix Markdown.")
+    mcp_export.add_argument("--out", default="docs/MCP_COMPATIBILITY.md", help="Output Markdown path.")
 
     # Local CLI Commands
     subparsers.add_parser("setup", help="Initialize the database and run migrations.")
@@ -589,6 +606,22 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("gui", help="Launch the premium desktop local UI application.")
     subparsers.add_parser("setup-hosts", help="Automatically configure TruthKeep MCP for Cursor and Claude Desktop.")
 
+    profile = subparsers.add_parser("profile", help="Show or change TruthKeep runtime performance profile.")
+    profile_sub = profile.add_subparsers(dest="profile_command", required=False)
+    profile_sub.add_parser("show", help="Show active runtime profile and feature flags.")
+    profile_set = profile_sub.add_parser("set", help="Persist runtime profile for future commands.")
+    profile_set.add_argument("profile_name", choices=["demo", "local", "hardened", "enterprise"], help="Runtime profile to persist.")
+    profile_sub.add_parser("doctor", help="Explain profile health and protected TruthKeep DNA flags.")
+    profile_sub.add_parser("list", help="List available profiles.")
+    profile_sub.add_parser("clear", help="Clear persisted profile and return to env/default resolution.")
+
+    benchmark = subparsers.add_parser("benchmark", help="Run lightweight local benchmarks.")
+    benchmark_sub = benchmark.add_subparsers(dest="benchmark_command", required=False)
+    benchmark_profiles = benchmark_sub.add_parser("profiles", help="Benchmark remember/recall/correct across runtime profiles.")
+    benchmark_profiles.add_argument("--records", type=int, default=10, help="Synthetic records per profile. Default: 10")
+    benchmark_profiles.add_argument("--out", default="reports/profile_benchmark.json", help="Raw JSON output path.")
+    benchmark_profiles.add_argument("--markdown", default="reports/profile_benchmark.md", help="Markdown report output path.")
+
     compact = subparsers.add_parser("compact", help="Compact and clean up database storage to reclaim disk space.")
     compact.add_argument("--archived-days", type=int, default=30, help="Days to keep archived memories. Default: 30")
     compact.add_argument("--superseded-days", type=int, default=14, help="Days to keep superseded memories. Default: 14")
@@ -620,6 +653,82 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 0
 
         if args.command == "mcp":
+            from .mcp_universal import (
+                SUPPORTED_HOSTS,
+                compatibility_matrix,
+                doctor_host_config,
+                install_host_config,
+                render_config,
+            )
+
+            if getattr(args, "mcp_command", None) == "list-hosts":
+                emit_output("Supported TruthKeep MCP host profiles:")
+                for row in compatibility_matrix():
+                    emit_output(f"- {row['host']:<10} {row['display_name']} [{row['status']}]")
+                return 0
+
+            if getattr(args, "mcp_command", None) == "config":
+                _friendly_header(f"TruthKeep MCP Config: {args.host}")
+                emit_output(render_config(args.host, db_path=args.db_path))
+                if getattr(args, "target", None):
+                    emit_output(f"\nSuggested target path: {args.target}")
+                return 0
+
+            if getattr(args, "mcp_command", None) == "install":
+                _friendly_header(f"TruthKeep MCP Install: {args.host}")
+                try:
+                    result = install_host_config(args.host, target=args.target, db_path=args.db_path, dry_run=args.dry_run)
+                except Exception as e:
+                    emit_output(f"[FAIL] MCP host install failed: {e}")
+                    return 1
+                emit_output(json.dumps(result, indent=2, ensure_ascii=False))
+                if not args.dry_run:
+                    emit_output("\nNext step: restart the target MCP host so it reloads configuration.")
+                return 0
+
+            if getattr(args, "mcp_command", None) == "doctor":
+                _friendly_header(f"TruthKeep MCP Doctor: {args.host}")
+                status = 0
+                try:
+                    info = doctor_host_config(args.host, target=args.target)
+                    emit_output(json.dumps(info, indent=2, ensure_ascii=False))
+                    if not info.get("registered"):
+                        emit_output(f"[WARN] TruthKeep is not registered for {args.host}. Run: truthkeep mcp install {args.host}")
+                        status = 1
+                except Exception as e:
+                    emit_output(f"[FAIL] Host config check failed: {e}")
+                    status = 1
+                if run_mcp_probe(args.db_path, live=False) != 0:
+                    status = 1
+                return status
+
+            if getattr(args, "mcp_command", None) == "smoke-test":
+                _friendly_header(f"TruthKeep MCP Smoke Test: {args.host}")
+                status = run_mcp_probe(args.db_path, live=False)
+                if getattr(args, "live", False):
+                    status = max(status, run_mcp_probe(args.db_path, live=True, timeout_seconds=5.0))
+                if status == 0:
+                    emit_output("[OK] MCP memory server startup is healthy. Host integration can now be tested in the real app.")
+                else:
+                    emit_output("[FAIL] MCP smoke test failed. Run: truthkeep doctor")
+                return status
+
+            if getattr(args, "mcp_command", None) == "export-matrix":
+                rows = compatibility_matrix()
+                out = args.out
+                try:
+                    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+                    lines = ["# TruthKeep MCP Compatibility Matrix", "", "| Host | Status | Config kind | Notes |", "|---|---:|---|---|"]
+                    for row in rows:
+                        lines.append(f"| {row['display_name']} | {row['status']} | {row['config_kind']} | {row['notes']} |")
+                    with open(out, "w", encoding="utf-8") as f:
+                        f.write("\n".join(lines) + "\n")
+                    emit_output(f"[OK] Wrote MCP compatibility matrix: {out}")
+                    return 0
+                except Exception as e:
+                    emit_output(f"[FAIL] Could not write matrix: {e}")
+                    return 1
+
             if args.json:
                 from .mcp.server import AegisMCPServer
 
@@ -629,28 +738,79 @@ def main(argv: Sequence[str] | None = None) -> int:
                 finally:
                     server.close()
             else:
-                emit_output(
-                    "======================================================================\n"
-                    "         TRUTHKEEP SECURE MCP STDIO CONFIGURATION GUIDANCE            \n"
-                    "======================================================================\n"
-                    "TruthKeep is fully secure with ZERO open ports. It launches automatically \n"
-                    "via MCP Stdio only when needed by your AI client (Cursor, Claude, etc.).\n\n"
-                    "1. Cursor Config (Settings -> Models -> MCP):\n"
-                    "   Name: truthkeep\n"
-                    "   Type: command\n"
-                    "   Command: truthkeep-mcp\n\n"
-                    "2. Claude Desktop Config (claude_desktop_config.json):\n"
-                    "   \"mcpServers\": {\n"
-                    "     \"truthkeep\": {\n"
-                    "       \"command\": \"truthkeep-mcp\"\n"
-                    "     }\n"
-                    "   }\n\n"
-                    "3. OpenClaw Plugin Config (openclaw.plugin.json):\n"
-                    "   Is fully integrated and auto-registered.\n\n"
-                    "Legacy alias `aegis-mcp` still works.\n"
-                    "To test your stdio setup, run: `truthkeep mcp-probe`"
-                )
+                guidance = "\n".join([
+                    "======================================================================",
+                    "         TRUTHKEEP UNIVERSAL MCP MEMORY CONFIGURATION                 ",
+                    "======================================================================",
+                    "TruthKeep runs as local MCP stdio memory. No HTTP daemon. No open ports.",
+                    "",
+                    "Recommended commands:",
+                    "  truthkeep mcp list-hosts",
+                    "  truthkeep mcp config <host>",
+                    "  truthkeep mcp install <host>",
+                    "  truthkeep mcp doctor <host>",
+                    "",
+                    "Supported profiles:",
+                    f"  {', '.join(SUPPORTED_HOSTS)}",
+                    "",
+                    "Core memory tools exposed in Easy Mode:",
+                    "  memory_remember, memory_recall, memory_correct, memory_status, memory_profile",
+                ])
+                emit_output(guidance)
             return 0
+
+        if args.command == "profile":
+            from .runtime.profile import (
+                clear_persisted_profile,
+                describe_current_profile,
+                get_profile,
+                list_profiles,
+                persist_profile,
+            )
+            cmd = getattr(args, "profile_command", None) or "show"
+            if cmd == "list":
+                emit_output("Available TruthKeep runtime profiles:")
+                for name in list_profiles():
+                    flags = get_profile(name)
+                    emit_output(f"- {name:<10} {flags.description}")
+                return 0
+            if cmd == "set":
+                result = persist_profile(args.profile_name)
+                emit_output(json.dumps(result, indent=2, ensure_ascii=False))
+                emit_output("Note: MCP host configs can still override this via TK_RUNTIME_PROFILE env.")
+                return 0
+            if cmd == "clear":
+                emit_output(json.dumps(clear_persisted_profile(), indent=2, ensure_ascii=False))
+                return 0
+            payload = describe_current_profile()
+            if cmd == "doctor":
+                flags = payload["flags"]
+                emit_output("======================================================================")
+                emit_output("                 TRUTHKEEP RUNTIME PROFILE DOCTOR                    ")
+                emit_output("======================================================================")
+                emit_output(f"Current profile: {payload['active_profile']} [{flags['hot_path_policy']}]")
+                emit_output("")
+                emit_output("[Core TruthKeep DNA — always enforced]")
+                for k, v in payload["dna_enforced"].items():
+                    emit_output(f"  - {k:<28}: {'ON' if v else 'OFF'}")
+                emit_output("")
+                emit_output("[Optional heavy engines]")
+                for key in ["enable_fhe_simulator", "enable_pqc_simulator", "enable_rsa_toy", "enable_tda_signature", "enable_strict_privacy", "enable_scoped_db_sharding", "enable_fast_crypto_backend"]:
+                    emit_output(f"  - {key:<28}: {flags[key]}")
+                emit_output("======================================================================")
+                return 0
+            emit_output(json.dumps(payload, indent=2, ensure_ascii=False))
+            return 0
+
+        if args.command == "benchmark":
+            cmd = getattr(args, "benchmark_command", None) or "profiles"
+            if cmd == "profiles":
+                from scripts.profile_benchmark import run_profile_benchmark, write_profile_reports
+                report = run_profile_benchmark(records=args.records, db_root=os.path.join(os.getcwd(), ".truthkeep-profile-bench"))
+                write_profile_reports(report, json_path=args.out, markdown_path=args.markdown)
+                emit_output(f"[OK] Wrote profile benchmark JSON: {args.out}")
+                emit_output(f"[OK] Wrote profile benchmark Markdown: {args.markdown}")
+                return 0
 
         if args.command == "setup":
             app = AegisApp(args.db_path)

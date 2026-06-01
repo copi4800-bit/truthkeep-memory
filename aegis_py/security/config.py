@@ -7,6 +7,8 @@ the active cryptographic key size, algorithm configurations, and keystore backen
 import os
 from typing import Literal
 
+from aegis_py.runtime.profile import get_current_profile
+
 SecurityMode = Literal["demo", "local", "hardened"]
 
 # Chế độ hoạt động bảo mật (mặc định là 'local', có thể ghi đè qua biến môi trường TK_SECURITY_MODE)
@@ -24,13 +26,13 @@ class SecurityConfig:
 
     @staticmethod
     def get_rsa_bit_size() -> int:
-        """Returns RSA key bit size based on active security level."""
-        if ACTIVE_SECURITY_MODE == "demo":
+        """Returns RSA key bit size based on active security/runtime profile."""
+        profile = get_current_profile().profile_name
+        if ACTIVE_SECURITY_MODE == "demo" or profile == "demo":
             return 512  # Fast key generation for test/embed
-        elif ACTIVE_SECURITY_MODE == "local":
-            return 1024 # Standard local personal security
-        else:
-            return 2048 # High hardened security
+        if ACTIVE_SECURITY_MODE == "hardened" or profile == "hardened":
+            return 2048
+        return 1024 # Standard local personal security
 
     @staticmethod
     def use_cryptographically_secure_prng() -> bool:
@@ -40,17 +42,30 @@ class SecurityConfig:
     @staticmethod
     def enforce_app_level_encryption() -> bool:
         """Returns True if memory contents must be encrypted at rest in SQLite."""
-        return STRICT_PRIVACY_ACTIVE
+        return STRICT_PRIVACY_ACTIVE or get_current_profile().enable_strict_privacy
 
     @staticmethod
     def is_simulator_enabled() -> bool:
-        """Returns True if cryptographic simulators (FHE, ZKP, PQC) are used."""
-        return ACTIVE_SECURITY_MODE in ("demo", "local")
+        """Returns True if cryptographic simulators are allowed by runtime profile."""
+        flags = get_current_profile()
+        return bool(flags.enable_fhe_simulator or flags.enable_pqc_simulator or flags.enable_rsa_toy)
+
+    @staticmethod
+    def fhe_simulator_enabled() -> bool:
+        return get_current_profile().enable_fhe_simulator
+
+    @staticmethod
+    def pqc_simulator_enabled() -> bool:
+        return get_current_profile().enable_pqc_simulator
+
+    @staticmethod
+    def tda_signature_enabled() -> bool:
+        return get_current_profile().enable_tda_signature
 
     @staticmethod
     def strict_privacy_enabled() -> bool:
         """Returns True if no plaintext indices are allowed to be persisted."""
-        return STRICT_PRIVACY_ACTIVE
+        return STRICT_PRIVACY_ACTIVE or get_current_profile().enable_strict_privacy
 
 def get_security_status() -> dict[str, object]:
     """Returns status dictionary of the active security environment."""
@@ -62,6 +77,10 @@ def get_security_status() -> dict[str, object]:
         "app_level_encryption": SecurityConfig.enforce_app_level_encryption(),
         "strict_privacy": SecurityConfig.strict_privacy_enabled(),
         "simulators_active": SecurityConfig.is_simulator_enabled(),
+        "runtime_profile": get_current_profile().profile_name,
+        "fhe_simulator": SecurityConfig.fhe_simulator_enabled(),
+        "pqc_simulator": SecurityConfig.pqc_simulator_enabled(),
+        "tda_signature": SecurityConfig.tda_signature_enabled(),
     }
 
 

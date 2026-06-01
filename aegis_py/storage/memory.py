@@ -282,8 +282,16 @@ class MemoryRepository:
             ),
         )
 
-        # Phase 5: Mã hóa Đồng cấu (FHE CKKS) & Cam kết ZKP Plonky3
+        # Phase 5: Mã hóa Đồng cấu (FHE CKKS) & Cam kết ZKP PlonK3
+        # Runtime Profiles keep this heavy simulator out of MCP hot paths by default.
         try:
+            from ..security.config import SecurityConfig
+            from ..runtime.profile import heavy_hot_path_enabled
+            if not (SecurityConfig.fhe_simulator_enabled() and heavy_hot_path_enabled()):
+                if commit:
+                    conn.commit()
+                return
+
             from ..security.key_manager import KeyManager
             from ..security.fhe import CKKSRealSimulator
             from ..security.zkp import ZKPPLONK3Simulator

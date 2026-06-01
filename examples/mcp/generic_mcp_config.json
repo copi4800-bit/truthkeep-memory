@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "truthkeep": {
+      "command": "truthkeep-mcp",
+      "args": [],
+      "env": {
+        "TRUTHKEEP_MODE": "easy",
+        "TRUTHKEEP_TRANSPORT": "stdio",
+        "TRUTHKEEP_OPEN_PORTS": "0"
+      }
+    }
+  }
+}
